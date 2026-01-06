@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Metal Prints — Thomas LeClair Photography</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0e0e0e;
+      color: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(14, 14, 14, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 10;
+    }
+
+    .brand img {
+      height: 50px;
+      width: auto;
+      display: block;
+      opacity: 0.95;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f5f5f5;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    main {
+      padding-top: 8rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      margin: 0 0 0.75rem 0;
+    }
+
+    .subtitle {
+      opacity: 0.75;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 720px;
+      font-size: 0.98rem;
+    }
+
+    .expect {
+      margin: 2.5rem auto 0 auto;
+      max-width: 720px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
+      padding: 1.25rem 1.25rem;
+      text-align: left;
+    }
+
+    .expect h3 {
+      margin: 0 0 0.75rem 0;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+
+    .expect ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      opacity: 0.8;
+      line-height: 1.7;
+      font-size: 0.92rem;
+    }
+
+    section {
+      margin: 3rem 0;
+    }
+
+    h2 {
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin: 0 0 1rem 0;
+      font-size: 1.05rem;
+    }
+
+    h3 {
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin: 1.25rem 0 0.5rem 0;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+
+    p {
+      margin: 0.75rem 0;
+      opacity: 0.78;
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    ul {
+      margin: 0.75rem 0;
+      padding-left: 1.15rem;
+      opacity: 0.78;
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 3.5rem 0;
+    }
+
+    .cta {
+      margin-top: 2.5rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 1.75rem 1.25rem;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .cta p {
+      margin: 0 0 1rem 0;
+      opacity: 0.85;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.2rem;
+      background: #f5f5f5;
+      color: #0e0e0e;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      opacity: 1;
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    @media (max-width: 720px) {
+      nav { padding: 1.25rem 1.25rem; }
+      nav ul { gap: 1rem; }
+      main { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .brand img { height: 44px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="brand">
+      <a href="/">
+        <img src="/images/logo.png" alt="Thomas LeClair Photography">
+      </a>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header>
+      <h1>Metal Prints</h1>
+      <p class="subtitle">
+        Crafted one at a time. Finished for the space they’ll live in.<br>
+        All prints are produced by an exclusive partner I’ve worked with for many years.
+      </p>
+
+      <div class="expect">
+        <h3>What to expect</h3>
+        <ul>
+          <li>Metal-only prints, produced individually (no automated checkout).</li>
+          <li>We’ll confirm size, surface/finish, and mounting based on your space.</li>
+          <li>You’ll receive a finished piece that’s ready to hang and built to last.</li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <h2>Crafted one at a time</h2>
+      <p>
+        A metal print is not a product you simply <em>order</em>. It’s a finished piece of art—designed for light,
+        scale, and environment—and every print I produce is handled that way.
+      </p>
+      <p>
+        Metal is chosen for its color fidelity, depth, and longevity. Each piece is created individually, with decisions
+        made around size, surface, and mounting to ensure the final result feels intentional—never generic.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>Why metal</h2>
+      <p>
+        Metal prints have a presence that paper simply cannot match. Light interacts with the surface, blacks gain depth,
+        and colors carry a subtle luminosity that changes throughout the day. The result is a piece that feels
+        architectural—equally at home in a gallery, office, or living space.
+      </p>
+      <p>
+        Metal is also exceptionally durable. It resists fading, moisture, and warping, making it ideal for long-term display.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>Surface &amp; finish</h2>
+      <p>Subtle choices that make a meaningful difference.</p>
+
+      <h3>White or Silver</h3>
+      <ul>
+        <li><strong>White</strong> is the most versatile and predictable option, preserving clean whites and neutral tones.</li>
+        <li><strong>Silver</strong> allows the natural aluminum to show through lighter areas, adding depth and dimension—particularly effective in images with strong contrast, texture, or metallic elements.</li>
+      </ul>
+      <p>
+        If silver isn’t right for an image, I won’t recommend it. When in doubt, white is always a safe and beautiful choice.
+      </p>
+
+      <h3>Gloss level</h3>
+      <ul>
+        <li><strong>Gloss</strong> delivers maximum vibrancy and depth.</li>
+        <li><strong>Satin or Matte</strong> reduce glare and work better in spaces with abundant natural light.</li>
+      </ul>
+      <p>
+        There’s no “correct” choice—only what works best for the image and the space it will live in.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>Size &amp; scale</h2>
+      <p>Chosen for the wall, not the catalog.</p>
+      <p>
+        Rather than locking prints into preset sizes, I work backward from the space where the piece will live.
+        Wall size, viewing distance, and surrounding elements all matter. If you’re unsure what size is appropriate,
+        that’s part of the conversation—I’ll guide you toward dimensions that feel balanced and intentional.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>Mounting &amp; framing</h2>
+      <p>Designed to let the image breathe.</p>
+      <p>
+        Framing isn’t an afterthought—it’s part of the presentation. Depending on the size and intent of the piece,
+        options may include:
+      </p>
+      <ul>
+        <li>Floating mounts that lift the print off the wall</li>
+        <li>Minimal aluminum framing for a clean, contemporary look</li>
+        <li>More substantial shadow-style frames that create visual separation and presence</li>
+      </ul>
+      <p>
+        The goal is always the same: support the image without distracting from it.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>Lighting considerations</h2>
+      <p>Let the print do what it was meant to do.</p>
+      <p>
+        Metal prints respond beautifully to proper lighting. Angle, distance, and color temperature all influence
+        how a piece reads. Warmer light enhances sunsets and earth tones; cooler light brings out blues, greens,
+        and fine detail. If lighting is a concern in your space, I’m happy to make recommendations so the finished
+        piece looks its best throughout the day.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>The process</h2>
+      <p>Simple, personal, and unhurried.</p>
+      <p>
+        There is no automated checkout and no blind ordering. If you’re interested in a metal print:
+      </p>
+      <ul>
+        <li>Reach out through the contact form</li>
+        <li>We’ll discuss the image, size, finish, and mounting</li>
+        <li>The print is produced specifically for you</li>
+      </ul>
+      <p>
+        This approach ensures the final piece feels considered—because it is.
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>A note on quality</h2>
+      <p>
+        My print partner has been producing metal prints since 2008 and is trusted by photographers and galleries across
+        the country for color accuracy, craftsmanship, and consistency. Their process, combined with careful preparation
+        on my end, ensures the finished piece reflects the original intent of the photograph.
+      </p>
+    </section>
+
+    <div class="cta">
+      <p><strong>Interested in a print or commission?</strong> Start the conversation.</p>
+      <a class="btn" href="/contact.html">CONTACT</a>
+    </div>
+  </main>
+</body>
+</html>
