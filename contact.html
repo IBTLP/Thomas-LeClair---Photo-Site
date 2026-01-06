@@ -6,9 +6,7 @@
   <title>Contact — Thomas LeClair Photography</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -26,7 +24,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14, 14, 14, 0.85);
+      background: rgba(14,14,14,0.85);
       backdrop-filter: blur(6px);
       z-index: 10;
     }
@@ -34,7 +32,6 @@
     .brand img {
       height: 50px;
       width: auto;
-      display: block;
       opacity: 0.95;
     }
 
@@ -53,9 +50,7 @@
       opacity: 0.8;
     }
 
-    nav a:hover {
-      opacity: 1;
-    }
+    nav a:hover { opacity: 1; }
 
     main {
       padding-top: 8rem;
@@ -91,9 +86,7 @@
       margin-bottom: 0.25rem;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 0.75rem;
       background: #151515;
@@ -119,17 +112,24 @@
       cursor: pointer;
     }
 
-    button:hover {
-      opacity: 0.9;
+    button:hover { opacity: 0.9; }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      opacity: 0.4;
+      font-size: 0.75rem;
     }
   </style>
 </head>
 
 <body>
+
   <nav>
     <div class="brand">
       <a href="/">
-        <img src="/images/Signature - TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+        <img src="/images/Signature - TuesdayNight_Font+photography_250.png"
+             alt="Thomas LeClair Photography">
       </a>
     </div>
     <ul>
@@ -147,14 +147,10 @@
       All prints are produced individually on metal.
     </p>
 
-    <!-- Netlify Form -->
+    <!-- FORM -->
     <form
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  action="/thanks.html">
-
-      <input type="hidden" name="form-name" value="contact">
+      action="https://formspree.io/f/abcdwxyz"
+      method="POST">
 
       <div>
         <label for="name">Name</label>
@@ -170,11 +166,11 @@
         <label for="size">Print Size (if applicable)</label>
         <select id="size" name="size">
           <option value="">— Select —</option>
-          <option>48" Wide</option>
-          <option>36" Wide</option>
-          <option>Small add note</option>
-          <option>Custom add note</option>
-          <option>Request Photoshoot</option>
+          <option>48&quot; Wide</option>
+          <option>36&quot; Wide</option>
+          <option>Small (please specify)</option>
+          <option>Custom size</option>
+          <option>Commission / Photoshoot</option>
         </select>
       </div>
 
@@ -183,5 +179,18 @@
         <textarea id="message" name="message"></textarea>
       </div>
 
+      <!-- Optional spam reduction -->
+      <input type="text" name="_gotcha" style="display:none">
+
       <button type="submit">SEND INQUIRY</button>
+    </form>
+
+    <footer>
+      © Thomas LeClair Photography
+    </footer>
+  </main>
+
+</body>
+</html>
+
     <
