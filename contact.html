@@ -141,44 +141,43 @@
     </p>
 
     <!-- FORMSPREE FORM -->
-    <form action="https://formspree.io/f/xpqwnqzz" method="POST">
+    <form
+  action="https://formspree.io/f/xpqwnzz"
+  method="POST"
+>
+  <div>
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required>
+  </div>
 
-      <!-- Reply directly to sender -->
-      <input type="hidden" name="_replyto" value="%email%">
-      <input type="hidden" name="_subject" value="New print inquiry from website">
+  <div>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+  </div>
 
-      <!-- Honeypot (spam protection) -->
-      <input type="text" name="_gotcha" style="display:none">
+  <div>
+    <label for="size">Print Size (if applicable)</label>
+    <select id="size" name="size">
+      <option value="">— Select —</option>
+      <option>48" Wide</option>
+      <option>36" Wide</option>
+      <option>Small (note details)</option>
+      <option>Custom size</option>
+      <option>Commission / Photoshoot</option>
+    </select>
+  </div>
 
-      <div>
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required>
-      </div>
+  <div>
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
 
-      <div>
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
-      </div>
+  <!-- Optional but recommended -->
+  <input type="hidden" name="_subject" value="New inquiry from tleclair.com">
+  <input type="hidden" name="_replyto">
 
-      <div>
-        <label for="size">Print Size (if applicable)</label>
-        <select id="size" name="Print Size">
-          <option value="">— Select —</option>
-          <option>48" Wide</option>
-          <option>36" Wide</option>
-          <option>Small / Undecided</option>
-          <option>Custom Size</option>
-          <option>Commission / Photoshoot</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="message">Message</label>
-        <textarea id="message" name="Message"></textarea>
-      </div>
-
-      <button type="submit">SEND INQUIRY</button>
-    </form>
+  <button type="submit">SEND INQUIRY</button>
+</form>
   </main>
 </body>
 </html>
