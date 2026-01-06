@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Thomas LeClair Photography</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0e0e0e;
+      color: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(14, 14, 14, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 10;
+    }
+
+    .brand img {
+      height: 50px;
+      width: auto;
+      display: block;
+      opacity: 0.95;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f5f5f5;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    main {
+      padding-top: 8rem;
+      max-width: 700px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    h1 {
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    p.intro {
+      text-align: center;
+      opacity: 0.75;
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+
+    form {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #f5f5f5;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.9rem;
+      background: #f5f5f5;
+      color: #0e0e0e;
+      border: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="brand">
+      <a href="/">
+        <img src="/images/logo.png" alt="Thomas LeClair Photography">
+      </a>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Contact</h1>
+    <p class="intro">
+      For print inquiries or commissioned work, please use the form below.
+      All prints are produced individually on metal.
+    </p>
+
+    <!-- Netlify Form -->
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
+
+      <div>
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+
+      <div>
+        <label for="size">Print Size (if applicable)</label>
+        <select id="size" name="size">
+          <option value="">— Select —</option>
+          <option>16 × 24</option>
+          <option>20 × 30</option>
+          <option>24 × 36</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+
+      <button type="submit">SEND INQUIRY</button>
+    <
