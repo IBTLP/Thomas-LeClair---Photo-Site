@@ -16,6 +16,8 @@
       min-height: 100vh;
     }
 
+    /* ---------------- NAV ---------------- */
+
     nav {
       position: fixed;
       top: 0;
@@ -24,7 +26,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14, 14, 14, 0.85);
+      background: rgba(14,14,14,0.85);
       backdrop-filter: blur(6px);
       z-index: 10;
     }
@@ -52,6 +54,53 @@
       opacity: 0.9;
     }
 
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      opacity: 0;
+      animation: fade 45s infinite;
+    }
+
+    .hero img:nth-child(1) { animation-delay: 0s; }
+    .hero img:nth-child(2) { animation-delay: 15s; }
+    .hero img:nth-child(3) { animation-delay: 30s; }
+
+    /* dark overlay */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.45)
+      );
+      z-index: 1;
+    }
+
+    @keyframes fade {
+      0%   { opacity: 0; }
+      10%  { opacity: 0.35; }
+      45%  { opacity: 0.35; }
+      55%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* ---------------- MAIN CONTENT ---------------- */
+
     main {
       height: 100vh;
       padding-top: 5rem;
@@ -61,7 +110,7 @@
       align-items: center;
       text-align: center;
       position: relative;
-      overflow: hidden;
+      z-index: 2;
     }
 
     h1 {
@@ -72,7 +121,7 @@
 
     .tagline {
       font-size: 0.95rem;
-      opacity: 0.7;
+      opacity: 0.75;
       line-height: 1.5;
     }
 
@@ -93,60 +142,16 @@
         transform: translateY(0);
       }
     }
-
-    /* hero background */
-.hero {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.hero img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-}
-
-/* timing */
-.hero img:nth-child(1) { animation-delay: 0s; }
-.hero img:nth-child(2) { animation-delay: 8s; }
-.hero img:nth-child(3) { animation-delay: 16s; }
-
-/* dark overlay */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.45)
-  );
-  z-index: 1;
-}
-
-/* fade animation */
-@keyframes fade {
-  0%   { opacity: 0; }
-  10%  { opacity: 0.35; }
-  45%  { opacity: 0.35; }
-  55%  { opacity: 0; }
-  100% { opacity: 0; }
-}
   </style>
 </head>
 
 <body>
+
   <nav>
     <div class="brand">
       <a href="/">
-        <img src="/images/Signature - TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+        <img src="/images/Signature - TuesdayNight_Font+photography_250.png"
+             alt="Thomas LeClair Photography">
       </a>
     </div>
     <ul>
@@ -157,19 +162,22 @@
     </ul>
   </nav>
 
-<main>
+  <!-- HERO IMAGES -->
   <div class="hero">
-    <img src="/images/home-auto.webp" alt="">
-    <img src="/images/home-landscape.webp" alt="">
-    <img src="/images/home-wildlife.webp" alt="">
+    <img src="/images/home-auto.webp" alt="Automotive photography">
+    <img src="/images/home-landscape.webp" alt="Landscape photography">
+    <img src="/images/home-wildlife.webp" alt="Wildlife photography">
   </div>
 
-  <h1 class="reveal">Photography</h1>
-  <p class="tagline reveal delay">
-    Fine art and commissioned photography.<br />
-    Metal prints produced individually.
-  </p>
-</main>
+  <!-- MAIN COPY -->
+  <main>
+    <h1 class="reveal">Photography</h1>
+    <p class="tagline reveal delay">
+      Fine art and commissioned photography.<br>
+      Metal prints produced individually.
+    </p>
+  </main>
 
 </body>
 </html>
+
