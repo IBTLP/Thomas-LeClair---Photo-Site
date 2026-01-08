@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thomas LeClair Photography</title>
-
   <style>
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -18,10 +16,9 @@
     }
 
     /* ================= NAV (AUTO-HIDE) ================= */
-
     nav {
       position: fixed;
-      top: -96px;
+      top: 0;
       left: 0;
       width: 100%;
       padding: 1.5rem 2rem;
@@ -30,24 +27,38 @@
       align-items: center;
       background: rgba(14,14,14,0.85);
       backdrop-filter: blur(6px);
-      transition: top 0.35s ease;
+      transition: transform 0.35s ease, opacity 0.35s ease;
       z-index: 10;
+
+      /* Default (no-JS / mobile-safe): visible */
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    body:hover nav,
-    nav:hover {
-      top: 0;
+    /* Desktop-only autohide enabled by JS (adds body.autohide) */
+    body.autohide nav {
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
     }
 
-    /* hover activation zone */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 28px;
-      z-index: 9;
+    /* Show nav when JS toggles it visible, or when user interacts */
+    body.autohide nav.is-visible,
+    body.autohide nav:hover,
+    body.autohide nav:focus-within {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* On touch / small screens: always show nav */
+    @media (max-width: 768px) {
+      body.autohide nav {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
     }
 
     nav ul {
@@ -57,7 +68,6 @@
       margin: 0;
       padding: 0;
     }
-
     nav a {
       text-decoration: none;
       color: #f5f5f5;
@@ -65,16 +75,10 @@
       opacity: 0.8;
       transition: opacity 0.2s ease;
     }
-
     nav a:hover { opacity: 1; }
-
-    .brand img {
-      height: 50px;
-      opacity: 0.9;
-    }
+    .brand img { height: 50px; opacity: 0.9; }
 
     /* ================= HERO ================= */
-
     .hero {
       position: fixed;
       inset: 0;
@@ -83,7 +87,6 @@
       z-index: 0;
       overflow: hidden;
     }
-
     .hero img {
       position: absolute;
       inset: 0;
@@ -93,7 +96,6 @@
       opacity: 0;
       animation: fade 30s infinite;
     }
-
     /* stagger timing */
     .hero img:nth-child(1) { animation-delay: 0s; }
     .hero img:nth-child(2) { animation-delay: 10s; }
@@ -112,15 +114,14 @@
     }
 
     @keyframes fade {
-      0%   { opacity: 0; }
-      10%  { opacity: 0.35; }
-      40%  { opacity: 0.35; }
-      50%  { opacity: 0; }
+      0% { opacity: 0; }
+      10% { opacity: 0.35; }
+      40% { opacity: 0.35; }
+      50% { opacity: 0; }
       100% { opacity: 0; }
     }
 
     /* ================= MAIN COPY ================= */
-
     main {
       height: 100vh;
       padding-top: 5rem;
@@ -132,44 +133,36 @@
       position: relative;
       z-index: 3;
     }
-
     h1 {
       font-weight: 300;
       letter-spacing: 0.06em;
       margin-bottom: 0.75rem;
     }
-
     .tagline {
       font-size: 0.95rem;
       opacity: 0.75;
       line-height: 1.5;
     }
-     footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.8rem;
-  color: #b8b8b8;
-}
-
-footer a {
-  color: #b8b8b8;
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-footer a:hover {
-  color: #e0e0e0;
-}
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #b8b8b8;
+    }
+    footer a {
+      color: #b8b8b8;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover { color: #e0e0e0; }
   </style>
 </head>
 
 <body>
-
-  <nav>
+  <nav id="siteNav">
     <div class="brand">
       <a href="/">
-        <img src="/images/Signature - TuesdayNight_Font+photography_250.png"
-             alt="Thomas LeClair Photography">
+        <img src="/images/Signature - TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
       </a>
     </div>
     <ul>
@@ -179,7 +172,6 @@ footer a:hover {
       <li><a href="/prints.html">Prints</a></li>
       <li><a href="/contact.html">Contact</a></li>
     </ul>
-
   </nav>
 
   <!-- HERO -->
@@ -189,30 +181,73 @@ footer a:hover {
     <img src="/images/home-wildlife.webp" alt="Wildlife photography">
   </div>
 
-<main>
-  <h1>Photography</h1>
+  <main>
+    <h1>Photography</h1>
+    <p class="tagline">
+      Fine art and commissioned photography.<br>
+      Metal prints produced individually.
+    </p>
 
-  <p class="tagline">
-    Fine art and commissioned photography.<br>
-    Metal prints produced individually.
-  </p>
+    <p style="margin-top:1.5rem; opacity:0.7;">
+      <a href="/about.html" style="color:#f5f5f5; text-decoration:none; letter-spacing:0.06em;">
+        About Thomas
+      </a>
+    </p>
+  </main>
 
-  <p style="margin-top:1.5rem; opacity:0.7;">
-    <a href="/about.html"
-       style="color:#f5f5f5; text-decoration:none; letter-spacing:0.06em;">
-      About Thomas
-    </a>
-  </p>
-</main>
-<footer>
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
-    Instagram — Motoring
-  </a>
-  <span>·</span>
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
-    Instagram — Outdoor
-  </a>
-</footer>
+  <footer>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank"> Instagram — Motoring </a>
+    <span>·</span>
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank"> Instagram — Outdoor </a>
+  </footer>
+
+  <script>
+    (() => {
+      const nav = document.getElementById('siteNav');
+      if (!nav) return;
+
+      // Enable auto-hide only on devices with real hover + fine pointer (mouse/trackpad)
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (!canHover) return;
+
+      document.body.classList.add('autohide');
+
+      let hideTimer = null;
+      const showNav = () => {
+        nav.classList.add('is-visible');
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          // Don’t hide while actively interacting
+          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+            nav.classList.remove('is-visible');
+          }
+        }, 1200);
+      };
+
+      const hideNavSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+            nav.classList.remove('is-visible');
+          }
+        }, 1200);
+      };
+
+      // Start visible briefly, then hide
+      showNav();
+
+      // Reveal when cursor is near top of window
+      document.addEventListener('mousemove', (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
+      nav.addEventListener('mouseenter', showNav);
+      nav.addEventListener('mouseleave', hideNavSoon);
+      nav.addEventListener('focusin', showNav);
+      nav.addEventListener('focusout', hideNavSoon);
+    })();
+  </script>
 </body>
 </html>
+
 
