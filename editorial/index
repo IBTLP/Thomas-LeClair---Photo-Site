@@ -223,19 +223,22 @@
 
 <body>
   <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="../index.html" aria-label="Home">
-        <span class="brand-dot"></span>
-        <span>Thomas LeClair Photography</span>
-      </a>
-      <nav class="navlinks" aria-label="Site">
-        <a href="../index.html">Home</a>
-        <a href="../gallery/">Gallery</a>
-        <a href="./">Editorial</a>
-        <a href="../prints.html">Prints</a>
-        <a href="../contact.html">Contact</a>
-      </nav>
-    </div>
+<nav id="siteNav">
+  <div class="brand">
+    <a href="../index.html">
+      <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+    </a>
+  </div>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../gallery/">Gallery</a></li>
+    <li><a href="./">Editorial</a></li>
+    <li><a href="../prints.html">Prints</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+  </ul>
+</nav>
+
   </header>
 
   <main class="wrap">
