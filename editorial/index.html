@@ -240,6 +240,36 @@
       main { padding: 7.25rem 1.25rem 3.5rem; }
       nav { padding: 1.25rem 1.25rem; }
     }
+    /* ==== Force pill/link colors (prevents purple visited links) ==== */
+.actions a,
+.meta a,
+.pill a,
+a.pill,
+a.pill-link,
+a.btn {
+  color: #f5f5f5 !important;
+}
+
+/* visited state is usually what turns purple */
+.actions a:visited,
+.meta a:visited,
+.pill a:visited,
+a.pill:visited,
+a.pill-link:visited,
+a.btn:visited {
+  color: #f5f5f5 !important;
+}
+
+/* optional hover */
+.actions a:hover,
+.meta a:hover,
+.pill a:hover,
+a.pill:hover,
+a.pill-link:hover,
+a.btn:hover {
+  color: #ffffff !important;
+}
+
   </style>
 </head>
 
@@ -309,7 +339,7 @@
             A collaborative build between owner and shop — designed around performance, craftsmanship, and obsessive detail.
           </p>
           <div class="meta">
-            <a class="pill pill-link" href="https://jrwrodsandcustoms.com" target="_blank" rel="noopener">JRW Rods &amp; Customs</a>
+           <a class="pill pill-link" href="https://jrwrodsandcustoms.com" target="_blank" rel="noopener">JRW Rods &amp; Customs</a>
             <span class="pill">Photo story</span>
             <span class="pill">PDF</span>
           </div>
