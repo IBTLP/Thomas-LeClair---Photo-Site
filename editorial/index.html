@@ -235,13 +235,6 @@
     .btn:hover { opacity: 1; background: rgba(255,255,255,0.08); }
     .btn.primary { background: rgba(255,255,255,0.12); }
 
-    footer {
-      text-align: center;
-      padding: 2.5rem 1rem 1.5rem;
-      font-size: 0.85rem;
-      color: rgba(245,245,245,0.6);
-    }
-
     @media (max-width: 980px) {
       .card { grid-column: span 12; }
       main { padding: 7.25rem 1.25rem 3.5rem; }
@@ -289,6 +282,8 @@
           </p>
           <div class="meta">
             <span class="pill">JRW Rods &amp; Customs</span>
+            <span class="pill">Photo story</span>
+            <span class="pill">PDF</span>
           </div>
         </div>
         <div class="actions">
@@ -301,30 +296,35 @@
       <article class="card">
         <a class="thumb" href="/editorial/C-10_Tiffany/" aria-label="Open C-10 Tiffany Feature">
           <span class="badge">Feature</span>
-          <img src="/editorial/C-10_Tiffany/Hero.webp" alt="C-10 Tiffany hero image"
-               loading="lazy" decoding="async"
-               onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02))';">
+          <img
+            src="/editorial/C-10_Tiffany/TiffanyHero.webp"
+            alt="1965 Chevy C-10 Tiffany hero image"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02))';">
         </a>
         <div class="content">
           <h2 class="title">C-10 Tiffany</h2>
           <p class="desc">
-            A clean, modern build with a classic backbone — a story driven by details, stance, and intention.
+            A collaborative build between owner and shop — designed around performance, craftsmanship, and obsessive detail.
           </p>
           <div class="meta">
-            <span class="pill">In progress</span>
-            <span class="pill">Coming soon</span>
+            <span class="pill">JRW Rods &amp; Customs</span>
+            <span class="pill">Photo story</span>
+            <span class="pill">PDF</span>
           </div>
         </div>
         <div class="actions">
           <a class="btn primary" href="/editorial/C-10_Tiffany/">Read</a>
+          <a class="btn" href="/editorial/C-10_Tiffany/c-10-tiffany-feature.pdf" target="_blank" rel="noopener">Open PDF</a>
         </div>
       </article>
 
     </section>
   </main>
 
-  <footer>
-    © <span id="year"></span> 
+  <footer style="text-align:center; padding:2.5rem 1rem 1.5rem; font-size:0.85rem; color:rgba(245,245,245,0.6);">
+    © <span id="year"></span> Thomas LeClair Photography
   </footer>
 
   <script>
@@ -376,3 +376,4 @@
   </script>
 </body>
 </html>
+
