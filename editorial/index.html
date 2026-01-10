@@ -17,7 +17,7 @@
       min-height: 100vh;
     }
 
-    /* ================= NAV (AUTO-HIDE) ================= */
+    /* ================= NAV ================= */
     nav {
       position: fixed;
       top: 0;
@@ -31,24 +31,14 @@
       backdrop-filter: blur(6px);
       transition: transform 0.35s ease, opacity 0.35s ease;
       z-index: 10;
-
-      /* Default (no-JS / mobile-safe): visible */
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-
-      /* --- Mobile overflow protection --- */
-      gap: 16px;
     }
 
-    /* Desktop-only autohide enabled by JS (adds body.autohide) */
     body.autohide nav {
       transform: translateY(-110%);
       opacity: 0;
       pointer-events: none;
     }
 
-    /* Show nav when JS toggles it visible, or when user interacts */
     body.autohide nav.is-visible,
     body.autohide nav:hover,
     body.autohide nav:focus-within {
@@ -57,7 +47,6 @@
       pointer-events: auto;
     }
 
-    /* On touch / small screens: always show nav */
     @media (max-width: 768px) {
       body.autohide nav {
         transform: translateY(0) !important;
@@ -72,10 +61,7 @@
       gap: 1.5rem;
       margin: 0;
       padding: 0;
-
-      /* --- Mobile overflow protection --- */
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
     nav a {
@@ -83,18 +69,13 @@
       color: #f5f5f5;
       font-size: 0.9rem;
       opacity: 0.8;
-      transition: opacity 0.2s ease;
     }
+
     nav a:hover { opacity: 1; }
 
-    .brand { flex: 0 1 auto; }
     .brand img {
       height: 50px;
       opacity: 0.9;
-
-      /* --- Mobile overflow protection --- */
-      max-width: 240px;
-      width: auto;
     }
 
     /* ================= PAGE ================= */
@@ -102,7 +83,7 @@
     main {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 7.5rem 2rem 4rem; /* room for fixed nav */
+      padding: 7.5rem 2rem 4rem;
     }
 
     h1 {
@@ -117,14 +98,16 @@
       opacity: 0.75;
       line-height: 1.6;
       max-width: 75ch;
-      margin: 0 0 2rem;
+      margin-bottom: 2.5rem;
     }
 
-    /* Cards */
+    /* ================= EDITORIAL CARDS ================= */
+
     .grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
+      margin-bottom: 3.5rem;
     }
 
     .card {
@@ -136,7 +119,12 @@
       box-shadow: 0 18px 45px rgba(0,0,0,0.35);
       display: flex;
       flex-direction: column;
-      min-height: 360px;
+    }
+
+    @media (max-width: 980px) {
+      .card { grid-column: span 12; }
+      main { padding: 7.25rem 1.25rem 3.5rem; }
+      nav { padding: 1.25rem; }
     }
 
     .thumb {
@@ -153,10 +141,11 @@
       display: block;
       transform: scale(1.01);
       transition: transform 0.28s ease;
-      filter: contrast(1.02) saturate(1.02);
     }
 
-    .card:hover .thumb img { transform: scale(1.045); }
+    .card:hover .thumb img {
+      transform: scale(1.045);
+    }
 
     .badge {
       position: absolute;
@@ -166,14 +155,13 @@
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(0,0,0,0.26);
-      color: rgba(255,255,255,0.82);
       font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .content {
-      padding: 16px 16px 12px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -183,25 +171,20 @@
     .title {
       margin: 0;
       font-size: 1.1rem;
-      letter-spacing: -0.01em;
-      line-height: 1.25;
       font-weight: 500;
     }
 
     .desc {
       margin: 0;
-      color: rgba(245,245,245,0.78);
       font-size: 0.95rem;
+      opacity: 0.8;
       line-height: 1.5;
-      max-width: 70ch;
     }
 
     .meta {
       margin-top: auto;
       display: flex;
-      flex-wrap: wrap;
       gap: 8px;
-      color: rgba(245,245,245,0.62);
       font-size: 0.85rem;
     }
 
@@ -215,61 +198,85 @@
     .actions {
       display: flex;
       gap: 10px;
-      flex-wrap: wrap;
       padding: 0 16px 16px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.06);
       color: #f5f5f5;
       font-size: 0.95rem;
-      opacity: 0.9;
+      text-decoration: none;
     }
 
-    .btn:hover { opacity: 1; background: rgba(255,255,255,0.08); }
     .btn.primary { background: rgba(255,255,255,0.12); }
 
-    @media (max-width: 980px) {
-      .card { grid-column: span 12; }
-      main { padding: 7.25rem 1.25rem 3.5rem; }
-      nav { padding: 1.25rem 1.25rem; }
+    /* ================= PUBLICATIONS ================= */
+
+    .editorial-publications {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 3rem;
     }
-    /* ==== Force pill/link colors (prevents purple visited links) ==== */
-.actions a,
-.meta a,
-.pill a,
-a.pill,
-a.pill-link,
-a.btn {
-  color: #f5f5f5 !important;
-}
 
-/* visited state is usually what turns purple */
-.actions a:visited,
-.meta a:visited,
-.pill a:visited,
-a.pill:visited,
-a.pill-link:visited,
-a.btn:visited {
-  color: #f5f5f5 !important;
-}
+    .pubs-header h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
 
-/* optional hover */
-.actions a:hover,
-.meta a:hover,
-.pill a:hover,
-a.pill:hover,
-a.pill-link:hover,
-a.btn:hover {
-  color: #ffffff !important;
-}
+    .pubs-sub {
+      opacity: 0.7;
+      max-width: 60ch;
+      margin-bottom: 1.5rem;
+    }
 
+    .pubs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .pubs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 540px) {
+      .pubs-grid { grid-template-columns: 1fr; }
+    }
+
+    .pub-card {
+      background: #141414;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .pub-card img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pub-card figcaption {
+      padding: 0.85rem;
+      font-size: 0.9rem;
+    }
+
+    .pub-type {
+      display: block;
+      opacity: 0.6;
+      font-size: 0.85rem;
+    }
+
+    .pubs-note {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      opacity: 0.55;
+      max-width: 70ch;
+    }
   </style>
 </head>
 
@@ -297,13 +304,14 @@ a.btn:hover {
       Each feature is designed to read clean on mobile and feel like a magazine spread.
     </p>
 
+    <!-- EDITORIAL CARDS -->
     <section class="grid">
 
       <!-- 56 WAGON -->
       <article class="card">
-        <a class="thumb" href="/editorial/56-Wagon/" aria-label="Open 1956 Wagon Feature">
+        <a class="thumb" href="/editorial/56-Wagon/">
           <span class="badge">Feature</span>
-          <img src="/editorial/56-Wagon/WagonHero.webp" alt="1956 wagon hero image" loading="lazy" decoding="async">
+          <img src="/editorial/56-Wagon/WagonHero.webp" alt="1956 Belair Wagon">
         </a>
         <div class="content">
           <h2 class="title">1956 Belair Wagon Feature</h2>
@@ -311,25 +319,20 @@ a.btn:hover {
             A classic silhouette with modern reliability — built to drive, finished to stop you in your tracks.
           </p>
           <div class="meta">
-           <a class="pill pill-link" href="https://jrwrodsandcustoms.com" target="_blank" rel="noopener">JRW Rods &amp; Customs</a>
+            <span class="pill">JRW Rods &amp; Customs</span>
           </div>
         </div>
         <div class="actions">
           <a class="btn primary" href="/editorial/56-Wagon/">Read</a>
-          <a class="btn" href="/editorial/56-Wagon/56-wagon-feature.pdf" target="_blank" rel="noopener">Open PDF</a>
+          <a class="btn" href="/editorial/56-Wagon/56-wagon-feature.pdf" target="_blank">Open PDF</a>
         </div>
       </article>
 
       <!-- C-10 TIFFANY -->
       <article class="card">
-        <a class="thumb" href="/editorial/C-10_Tiffany/" aria-label="Open C-10 Tiffany Feature">
+        <a class="thumb" href="/editorial/C-10_Tiffany/">
           <span class="badge">Feature</span>
-          <img
-            src="/editorial/C-10_Tiffany/TiffanyHero.webp"
-            alt="1965 Chevy C-10 Tiffany hero image"
-            loading="lazy"
-            decoding="async"
-            onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.02))';">
+          <img src="/editorial/C-10_Tiffany/TiffanyHero.webp" alt="1965 Chevy C-10 Tiffany">
         </a>
         <div class="content">
           <h2 class="title">C-10 Tiffany</h2>
@@ -337,59 +340,59 @@ a.btn:hover {
             A collaborative build between owner and shop — designed around performance, craftsmanship, and obsessive detail.
           </p>
           <div class="meta">
-           <a class="pill pill-link" href="https://jrwrodsandcustoms.com" target="_blank" rel="noopener">JRW Rods &amp; Customs</a>
+            <span class="pill">JRW Rods &amp; Customs</span>
           </div>
         </div>
         <div class="actions">
           <a class="btn primary" href="/editorial/C-10_Tiffany/">Read</a>
-          <a class="btn" href="/editorial/C-10_Tiffany/c-10-tiffany-feature.pdf" target="_blank" rel="noopener">Open PDF</a>
+          <a class="btn" href="/editorial/C-10_Tiffany/c-10-tiffany-feature.pdf" target="_blank">Open PDF</a>
         </div>
       </article>
-<section class="editorial-publications" aria-labelledby="pubs-title">
-  <div class="pubs-inner">
-    <header class="pubs-header">
-      <h2 id="pubs-title">Selected Publications</h2>
-      <p class="pubs-sub">
-        A small selection of publications where this editorial work has appeared.
+
+    </section>
+
+    <!-- SELECTED PUBLICATIONS -->
+    <section class="editorial-publications">
+      <header class="pubs-header">
+        <h2>Selected Publications</h2>
+        <p class="pubs-sub">
+          A small selection of publications where this editorial work has appeared.
+        </p>
+      </header>
+
+      <div class="pubs-grid">
+        <figure class="pub-card">
+          <img src="/images/press/MagCov2.webp" alt="Chevy Hub Magazine cover">
+          <figcaption>
+            Chevy Hub Magazine
+            <span class="pub-type">Cover Feature</span>
+          </figcaption>
+        </figure>
+
+        <figure class="pub-card">
+          <img src="/images/press/MagCov3.webp" alt="Hot Rod Magazine cover">
+          <figcaption>
+            Hot Rod Magazine
+            <span class="pub-type">Feature Photography</span>
+          </figcaption>
+        </figure>
+
+        <figure class="pub-card">
+          <img src="/images/press/MagCov4.webp" alt="Chevy Hub Magazine cover">
+          <figcaption>
+            Chevy Hub Magazine
+            <span class="pub-type">Cover Feature</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="pubs-note">
+        Covers shown for publication reference only. Not for sale. All trademarks remain the property of their respective owners.
       </p>
-    </header>
-
-    <div class="pubs-grid">
-      <figure class="pub-card">
-        <img src="images/press/MagCov2.webp" alt="Chevy Hub Magazine cover featuring pro touring Camaro" loading="lazy">
-        <figcaption>
-          <span class="pub-name">Chevy Hub Magazine</span>
-          <span class="pub-type">Cover Feature</span>
-        </figcaption>
-      </figure>
-
-      <figure class="pub-card">
-        <img src="images/press/MagCov3.webp" alt="Hot Rod Magazine cover featuring 1970 Camaro" loading="lazy">
-        <figcaption>
-          <span class="pub-name">Hot Rod Magazine</span>
-          <span class="pub-type">Feature Photography</span>
-        </figcaption>
-      </figure>
-
-      <figure class="pub-card">
-        <img src="images/press/MagCov4.webp" alt="Chevy Hub Magazine cover classic Chevrolet" loading="lazy">
-        <figcaption>
-          <span class="pub-name">Chevy Hub Magazine</span>
-          <span class="pub-type">Cover Feature</span>
-        </figcaption>
-      </figure>
-
-      <!-- Add up to 2–3 more if needed -->
-    </div>
-
-    <p class="pubs-note">
-      Covers shown for publication reference only. Not for sale. All trademarks remain the property of their respective owners.
-    </p>
-  </div>
     </section>
   </main>
 
-  <footer style="text-align:center; padding:2.5rem 1rem 1.5rem; font-size:0.85rem; color:rgba(245,245,245,0.6);">
+  <footer style="text-align:center; padding:2.5rem 1rem; font-size:0.85rem; opacity:0.6;">
     © <span id="year"></span> Thomas LeClair Photography
   </footer>
 
@@ -399,47 +402,18 @@ a.btn:hover {
     (() => {
       const nav = document.getElementById('siteNav');
       if (!nav) return;
-
-      // Enable auto-hide only on devices with real hover + fine pointer (mouse/trackpad)
       const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       if (!canHover) return;
-
       document.body.classList.add('autohide');
-
-      let hideTimer = null;
-      const showNav = () => {
+      let timer;
+      const show = () => {
         nav.classList.add('is-visible');
-        if (hideTimer) clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => {
-          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
-            nav.classList.remove('is-visible');
-          }
-        }, 1200);
+        clearTimeout(timer);
+        timer = setTimeout(() => nav.classList.remove('is-visible'), 1200);
       };
-
-      const hideNavSoon = () => {
-        if (hideTimer) clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => {
-          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
-            nav.classList.remove('is-visible');
-          }
-        }, 1200);
-      };
-
-      // Start visible briefly, then hide
-      showNav();
-
-      // Reveal when cursor is near top of window
-      document.addEventListener('mousemove', (e) => {
-        if (e.clientY < 90) showNav();
-      });
-
-      nav.addEventListener('mouseenter', showNav);
-      nav.addEventListener('mouseleave', hideNavSoon);
-      nav.addEventListener('focusin', showNav);
-      nav.addEventListener('focusout', hideNavSoon);
+      document.addEventListener('mousemove', e => e.clientY < 90 && show());
+      nav.addEventListener('mouseenter', show);
     })();
   </script>
 </body>
 </html>
-
