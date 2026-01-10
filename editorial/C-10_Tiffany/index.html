@@ -1,1 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C-10 Tiffany | Thomas LeClair Photography</title>
+  <meta name="description" content="A collaborative masterpiece — Jeremy Pierce’s 1965 Chevy C-10 'Tiffany' built by JRW Rods & Customs. Photo essay + feature PDF." />
+
+  <style>
+    :root{
+      --bg:#0e0e0e;
+      --text:#f5f5f5;
+      --muted:rgba(245,245,245,0.72);
+      --muted2:rgba(245,245,245,0.58);
+      --line:rgba(255,255,255,0.12);
+      --panel:rgba(255,255,255,0.03);
+      --shadow: 0 18px 45px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    /* ================= NAV (AUTO-HIDE) ================= */
+    nav{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(6px);
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      z-index: 10;
+
+      /* Default (no-JS / mobile-safe): visible */
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+
+      gap: 16px;
+    }
+
+    body.autohide nav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.autohide nav.is-visible,
+    body.autohide nav:hover,
+    body.autohide nav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 768px){
+      body.autohide nav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap: 1.5rem;
+      margin:0;
+      padding:0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a{
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+    nav a:hover{ opacity: 1; }
+
+    .brand{ flex: 0 1 auto; }
+    .brand img{
+      height: 50px;
+      opacity: 0.9;
+      max-width: 240px;
+      width: auto;
+    }
+
+    /* ================= HERO ================= */
+    header.hero{
+      padding-top: 92px; /* fixed nav offset */
+    }
+
+    .hero-wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.25rem 2rem 1.25rem;
+    }
+
+    .hero-card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: #0b0b0b;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-media{
+      position: relative;
+      min-height: 420px;
+      background: #0b0b0b;
+    }
+
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      max-height: 560px;
+    }
+
+    .hero-grad{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.12), rgba(0,0,0,0));
+      pointer-events:none;
+    }
+
+    .hero-text{
+      position:absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      width: fit-content;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.26);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+    }
+
+    h1{
+      margin:0;
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      font-size: clamp(28px, 3.2vw, 44px);
+    }
+
+    .sub{
+      margin:0;
+      max-width: 85ch;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 0.95rem;
+      opacity: 0.92;
+    }
+    .btn:hover{ opacity: 1; background: rgba(255,255,255,0.08); }
+    .btn.primary{ background: rgba(255,255,255,0.12); }
+
+    /* ================= CONTENT ================= */
+    main{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.25rem 2rem 3.5rem;
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0 18px;
+      color: var(--muted2);
+      font-size: 0.9rem;
+    }
+
+    .pill{
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    /* optional: clickable pill styling */
+    .pill-link{ text-decoration:none; color:inherit; }
+    .pill-link:hover{ background: rgba(255,255,255,0.06); }
+
+    .panel{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+      margin: 14px 0;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    @media (max-width: 980px){
+      .hero-wrap, main{ padding-left: 1.25rem; padding-right: 1.25rem; }
+      nav{ padding: 1.25rem 1.25rem; }
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    .section-title{
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      font-weight: 520;
+      letter-spacing: -0.01em;
+    }
+
+    .copy p{
+      margin: 0 0 12px;
+      color: rgba(245,245,245,0.82);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .copy p:last-child{ margin-bottom: 0; }
+
+    .specs{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(245,245,245,0.82);
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    .specs li{ margin: 6px 0; }
+    .specs b{ color: rgba(245,245,245,0.95); font-weight: 600; }
+
+    /* ================= GALLERY ================= */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .shot{
+      grid-column: span 6;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:#0b0b0b;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .shot.wide{ grid-column: span 12; }
+    .shot.third{ grid-column: span 4; }
+
+    @media (max-width: 980px){
+      .shot, .shot.wide, .shot.third{ grid-column: span 12; }
+    }
+
+    .shot img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit: cover;
+      transform: scale(1.01);
+      transition: transform 0.25s ease;
+    }
+
+    .shot:hover img{ transform: scale(1.03); }
+
+    .caption{
+      position:absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.35);
+      color: rgba(245,245,245,0.86);
+      font-size: 0.9rem;
+      line-height: 1.35;
+      backdrop-filter: blur(8px);
+    }
+
+    /* ================= LIGHTBOX ================= */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background: rgba(0,0,0,0.82);
+      z-index: 999;
+      padding: 18px;
+    }
+
+    .lightbox.is-open{ display:flex; }
+
+    .lightbox-inner{
+      max-width: min(1200px, 96vw);
+      max-height: 86vh;
+      position: relative;
+    }
+
+    .lightbox-inner img{
+      width:100%;
+      height:auto;
+      max-height: 86vh;
+      display:block;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background:#0b0b0b;
+    }
+
+    .lb-close{
+      position:absolute;
+      top: -10px;
+      right: -10px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.35);
+      color: rgba(255,255,255,0.9);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      backdrop-filter: blur(8px);
+      font-size: 18px;
+    }
+    .lb-close:hover{ background: rgba(255,255,255,0.10); }
+
+    /* ================= FOOTER ================= */
+    footer{
+      text-align:center;
+      padding: 2.5rem 1rem 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(245,245,245,0.6);
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="siteNav">
+    <div class="brand">
+      <a href="/">
+        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+      </a>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/editorial/">Editorial</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-wrap">
+      <div class="hero-card">
+        <div class="hero-media">
+          <img src="/editorial/C-10_Tiffany/TiffanyHero.webp" alt="1965 Chevy C-10 Tiffany" loading="eager" decoding="async">
+          <div class="hero-grad"></div>
+
+          <div class="hero-text">
+            <span class="kicker">Feature</span>
+            <h1>C-10 Tiffany</h1>
+            <p class="sub">
+              Jeremy Pierce’s 1965 Chevy C-10 — a collaborative build by JRW Rods &amp; Customs in Washington, Utah.
+              Designed to deliver modern performance with show-level finish, down to the smallest hidden details.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="/editorial/">← Back to Editorial</a>
+              <a class="btn primary" href="/editorial/C-10_Tiffany/c-10-tiffany-feature.pdf" target="_blank" rel="noopener">Open PDF</a>
+              <a class="btn" href="https://jrwrodsandcustoms.com" target="_blank" rel="noopener">Visit JRW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta-row">
+        <span class="pill">Owner: Jeremy Pierce</span>
+        <span class="pill">Builder: JRW Rods &amp; Customs</span>
+        <span class="pill">Washington, Utah</span>
+        <span class="pill">Photo essay + feature</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid-2">
+      <div class="panel copy">
+        <h2 class="section-title">The Story</h2>
+
+        <p><b>A Collaborative Masterpiece:</b> Jeremy Pierce's 1965 Chevy C-10 pick-up truck, crafted by JRW Rods and Customs.</p>
+
+        <p>
+          Nestled in the picturesque town of Washington, Utah, a remarkable 1965 Chevy C-10 pick-up truck reigns supreme,
+          embodying the perfect fusion of power, style, and craftsmanship. Owned by Jeremy Pierce, this stunning vehicle
+          stands as a testament to the collaborative effort between Jeremy and Wayne Glasgow, a skilled Project Manager
+          and the owner of JRW Rods and Customs.
+        </p>
+
+        <p>
+          The journey began when Jeremy stumbled upon the truck, originally a long bed, in Idaho and decided to turn his
+          vision into a reality—an awe-inspiring, “bad-ass” custom truck that delivers exceptional performance, power,
+          and reliability.
+        </p>
+
+        <p>
+          Throughout the project, inspiration and design cues echoed through the details — from the custom grille and
+          air filter cover, to interior vents and finishing touches. Every component was chosen and executed to unify
+          the truck’s overall aesthetic and showcase what’s possible when resolute dedication meets craftsmanship.
+        </p>
+
+        <p>
+          As with any ambitious project, challenges surfaced — rare parts, technical hurdles, and the constant push to
+          avoid compromise. But obstacle-by-obstacle, the build evolved into something more than a restoration or a
+          modification: it became a complete, modern driving experience wrapped in a classic shape.
+        </p>
+
+        <p>
+          The result is a truck that blends power with precision, and presence with purpose — a true reflection of the
+          owner’s vision and the builder’s relentless pursuit of excellence.
+        </p>
+      </div>
+
+      <aside class="panel">
+        <h2 class="section-title">Build Highlights</h2>
+        <ul class="specs">
+          <li><b>Power:</b> GM Performance LT4 Connect &amp; Cruise</li>
+          <li><b>Transmission:</b> T56 6-speed manual</li>
+          <li><b>Chassis:</b> Speedtech Performance ExtReme C-10 (Torque Arm Rear)</li>
+          <li><b>Rear:</b> Ford-style 9"</li>
+          <li><b>Finish:</b> Custom PPG teal + charcoal stripe</li>
+          <li><b>Interior:</b> Modified stock dash + Dakota Digital gauges + leather upholstery</li>
+          <li><b>Details:</b> Hidden service compartments (brake + supercharger coolant), pop-up fuel filler</li>
+        </ul>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn primary" href="/editorial/C-10_Tiffany/c-10-tiffany-feature.pdf" target="_blank" rel="noopener">Open PDF</a>
+          <a class="btn" href="https://jrwrodsandcustoms.com" target="_blank" rel="noopener">JRW Rods &amp; Customs</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="panel" style="margin-top:14px;">
+      <h2 class="section-title">Gallery</h2>
+      <p style="margin:0; color:rgba(245,245,245,0.72); line-height:1.6;">
+        Click any image to view full size.
+      </p>
+
+      <div class="gallery" style="margin-top:14px;">
+        <!-- Wide hero-style shot -->
+        <a class="shot wide" href="/editorial/C-10_Tiffany/Tiffany12.webp" data-full="/editorial/C-10_Tiffany/Tiffany12.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany12.webp" alt="C-10 Tiffany three-quarter view on the road" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Road presence — low, clean, and modern.</div>
+        </a>
+
+        <!-- Two-up -->
+        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany1.webp" data-full="/editorial/C-10_Tiffany/Tiffany1.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany1.webp" alt="C-10 Tiffany rear three-quarter view" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Tailgate lettering and perfect stance.</div>
+        </a>
+
+        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany3.webp" data-full="/editorial/C-10_Tiffany/Tiffany3.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany3.webp" alt="Bed wood detail" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Bed detail — finish work you can feel.</div>
+        </a>
+
+        <!-- Thirds -->
+        <a class="shot third" href="/editorial/C-10_Tiffany/Tiffany4.webp" data-full="/editorial/C-10_Tiffany/Tiffany4.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany4.webp" alt="Hidden reservoirs detail" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Hidden systems — clean bay, smart access.</div>
+        </a>
+
+        <a class="shot third" href="/editorial/C-10_Tiffany/Tiffany5.webp" data-full="/editorial/C-10_Tiffany/Tiffany5.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany5.webp" alt="Interior speaker detail" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Interior details — modern touches, period feel.</div>
+        </a>
+
+        <a class="shot third" href="/editorial/C-10_Tiffany/Tiffany6.webp" data-full="/editorial/C-10_Tiffany/Tiffany6.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany6.webp" alt="Dash and steering detail" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Driver’s view — simple, focused, high quality.</div>
+        </a>
+
+        <!-- Two-up -->
+        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany7.webp" data-full="/editorial/C-10_Tiffany/Tiffany7.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany7.webp" alt="Engine bay top view" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">LT4 power — packaged like a showpiece.</div>
+        </a>
+
+        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany8.webp" data-full="/editorial/C-10_Tiffany/Tiffany8.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany8.webp" alt="Engine bay with hood open" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Hood up — engineered and finished.</div>
+        </a>
+
+        <!-- Wide -->
+        <a class="shot wide" href="/editorial/C-10_Tiffany/Tiffany9.webp" data-full="/editorial/C-10_Tiffany/Tiffany9.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany9.webp" alt="Gauge cluster at night" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+          <div class="caption">Night details — the cockpit comes alive.</div>
+        </a>
+
+        <!-- Optionals (if present) -->
+        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany10.webp" data-full="/editorial/C-10_Tiffany/Tiffany10.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany10.webp" alt="Additional C-10 Tiffany photo" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+        </a>
+
+        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany11.webp" data-full="/editorial/C-10_Tiffany/Tiffany11.webp" aria-label="Open image">
+          <img src="/editorial/C-10_Tiffany/Tiffany11.webp" alt="Additional C-10 Tiffany photo" loading="lazy" decoding="async"
+               onerror="this.parentElement.style.display='none'">
+        </a>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:14px;">
+      <h2 class="section-title">Closing</h2>
+      <div class="copy">
+        <p>
+          Jeremy Pierce’s 1965 Chevy C-10 stands as a testament to what happens when an owner’s vision meets a shop’s
+          uncompromising execution. From the chassis to the smallest concealed compartments, every choice supports the
+          same goal: a truck that drives like a modern performance car while looking absolutely timeless.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Thomas LeClair Photography
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+      <img id="lbImg" alt="Full size image">
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Auto-hide nav (desktop hover only)
+    (() => {
+      const nav = document.getElementById('siteNav');
+      if (!nav) return;
+
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (!canHover) return;
+
+      document.body.classList.add('autohide');
+
+      let hideTimer = null;
+      const showNav = () => {
+        nav.classList.add('is-visible');
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+            nav.classList.remove('is-visible');
+          }
+        }, 1200);
+      };
+
+      const hideNavSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+            nav.classList.remove('is-visible');
+          }
+        }, 1200);
+      };
+
+      showNav();
+      document.addEventListener('mousemove', (e) => { if (e.clientY < 90) showNav(); });
+      nav.addEventListener('mouseenter', showNav);
+      nav.addEventListener('mouseleave', hideNavSoon);
+      nav.addEventListener('focusin', showNav);
+      nav.addEventListener('focusout', hideNavSoon);
+    })();
+
+    // Lightbox
+    (() => {
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbClose = document.getElementById('lbClose');
+
+      const open = (src) => {
+        lbImg.src = src;
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden', 'false');
+      };
+
+      const close = () => {
+        lb.classList.remove('is-open');
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+      };
+
+      document.querySelectorAll('[data-full]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const src = a.getAttribute('data-full');
+          if (src) open(src);
+        });
+      });
+
+      lbClose.addEventListener('click', close);
+      lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
+</html>
 
