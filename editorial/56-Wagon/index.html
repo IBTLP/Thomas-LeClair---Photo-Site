@@ -117,7 +117,12 @@
     .hero-grad{
       position:absolute;
       inset:0;
-      background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.12),rgba(0,0,0,0));
+      background:linear-gradient(
+        to top,
+        rgba(0,0,0,.72),
+        rgba(0,0,0,.18),
+        rgba(0,0,0,0)
+      );
     }
 
     .hero-text{
@@ -320,7 +325,7 @@
   </style>
 </head>
 
-<body>
+<body class="autohide">
 <nav id="siteNav">
   <div class="brand">
     <a href="/">
@@ -345,7 +350,9 @@
         <div class="hero-text">
           <span class="kicker">Feature</span>
           <h1>1956 Belair Wagon</h1>
-          <p class="sub">A classic silhouette with modern confidence — built to roam, finished to stop you in your tracks.</p>
+          <p class="sub">
+            A classic silhouette with modern confidence — built to roam, finished to stop you in your tracks.
+          </p>
           <div class="hero-actions">
             <a class="btn" href="/editorial/">← Back to Editorial</a>
             <a class="btn primary" href="56-wagon-feature.pdf" target="_blank">Open PDF</a>
@@ -366,16 +373,48 @@
   <section class="grid-2">
     <div class="panel copy">
       <h2 class="section-title">The Story</h2>
-      <!-- YOUR EXISTING WAGON COPY GOES HERE, UNCHANGED -->
+
+      <p>
+        There’s something almost cinematic about a wagon done right — the kind of car that feels equally at home
+        idling at a curb in the last light of day or chewing up miles with the stereo low and the windows cracked.
+      </p>
+
+      <p>
+        This 1956 Belair Wagon captures that feeling perfectly: timeless proportions, modern drivability, and
+        detail work that rewards a closer look.
+      </p>
+
+      <p>
+        At first glance, it’s pure mid-century Chevrolet. But spend a minute with it and you start noticing the
+        tells: the stance is too perfect, the reflections too clean, the panel fit too precise. It’s the kind of
+        build where nothing is accidental — and nothing is left “good enough.”
+      </p>
+
+      <p>
+        The goal wasn’t just to restore a wagon — it was to create something you can trust for long-distance
+        travel. Modern reliability, modern comfort, and a chassis and powertrain package that behaves like a
+        new car without losing the character that makes a ’56 special.
+      </p>
+
+      <p>
+        In the end, this Belair Wagon stands as a reminder that the best builds don’t just look good under show
+        lights. They’re meant to be driven — and enjoyed — on real roads.
+      </p>
     </div>
 
     <aside class="panel">
       <h2 class="section-title">Build Notes</h2>
-      <!-- YOUR EXISTING SPECS LIST -->
+      <ul class="specs">
+        <li><b>Chassis:</b> ExtReme Chassis full chassis</li>
+        <li><b>Powertrain:</b> GM Performance LS3 Connect &amp; Cruise</li>
+        <li><b>Transmission:</b> 6L80 automatic</li>
+        <li><b>Rear:</b> Strange 9&quot; with 3.55 gears</li>
+        <li><b>Wheels:</b> American Muscle “55” wheels</li>
+        <li><b>Interior:</b> Hand-built custom interior</li>
+        <li><b>Intent:</b> Built to drive — road trips encouraged</li>
+      </ul>
     </aside>
   </section>
-
-  <!-- GALLERY STRUCTURE MATCHES TIFFANY -->
 </main>
 
 <footer>
@@ -384,6 +423,21 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  (() => {
+    const nav = document.getElementById('siteNav');
+    let hideTimer = null;
+
+    const showNav = () => {
+      nav.classList.add('is-visible');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => nav.classList.remove('is-visible'), 1200);
+    };
+
+    document.addEventListener('mousemove', e => { if (e.clientY < 90) showNav(); });
+    nav.addEventListener('mouseenter', showNav);
+    nav.addEventListener('focusin', showNav);
+  })();
 </script>
 </body>
 </html>
