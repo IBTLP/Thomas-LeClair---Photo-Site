@@ -415,6 +415,56 @@
       </ul>
     </aside>
   </section>
+  <section class="panel" style="margin-top:14px;">
+  <h2 class="section-title">Gallery</h2>
+  <p style="margin:0; color:rgba(245,245,245,.72); line-height:1.6;">
+    Click any image to view full size.
+  </p>
+
+  <div class="gallery">
+    <!-- Wide hero-style image -->
+    <div class="shot wide" data-full="Wagon6.webp">
+      <img src="Wagon6.webp" alt="1956 Belair Wagon side profile" loading="lazy" decoding="async">
+    </div>
+
+    <!-- Two-up -->
+    <div class="shot" data-full="Wagon5.webp">
+      <img src="Wagon5.webp" alt="Wagon parked, side view" loading="lazy" decoding="async">
+    </div>
+
+    <div class="shot" data-full="Wagon10.webp">
+      <img src="Wagon10.webp" alt="Rear three-quarter view" loading="lazy" decoding="async">
+    </div>
+
+    <!-- Thirds -->
+    <div class="shot third" data-full="Wagon11.webp">
+      <img src="Wagon11.webp" alt="Engine bay detail" loading="lazy" decoding="async">
+    </div>
+
+    <div class="shot third" data-full="Wagon2.webp">
+      <img src="Wagon2.webp" alt="Wood cargo floor detail" loading="lazy" decoding="async">
+    </div>
+
+    <div class="shot third" data-full="Wagon1.webp">
+      <img src="Wagon1.webp" alt="Interior headliner detail" loading="lazy" decoding="async">
+    </div>
+
+    <!-- Two-up -->
+    <div class="shot" data-full="Wagon4.webp">
+      <img src="Wagon4.webp" alt="Front seat interior detail" loading="lazy" decoding="async">
+    </div>
+
+    <div class="shot" data-full="Wagon3.webp">
+      <img src="Wagon3.webp" alt="Rear bumper and plate detail" loading="lazy" decoding="async">
+    </div>
+
+    <!-- Wide closing image -->
+    <div class="shot wide" data-full="Wagon7.webp">
+      <img src="Wagon7.webp" alt="1956 Belair Wagon at dusk" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -437,6 +487,40 @@
     document.addEventListener('mousemove', e => { if (e.clientY < 90) showNav(); });
     nav.addEventListener('mouseenter', showNav);
     nav.addEventListener('focusin', showNav);
+  })();
+</script>
+  <script>
+  (() => {
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `
+      <button class="lb-close" aria-label="Close">✕</button>
+      <img alt="Expanded image">
+    `;
+    document.body.appendChild(lb);
+
+    const lbImg = lb.querySelector('img');
+    const closeBtn = lb.querySelector('.lb-close');
+
+    const open = (src) => {
+      lbImg.src = src;
+      lb.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+      lb.classList.remove('is-open');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('[data-full]').forEach(el => {
+      el.addEventListener('click', () => open(el.dataset.full));
+    });
+
+    closeBtn.addEventListener('click', close);
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   })();
 </script>
 </body>
