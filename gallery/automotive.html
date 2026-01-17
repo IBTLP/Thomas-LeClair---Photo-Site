@@ -6,9 +6,7 @@
   <title>Automotive — Thomas LeClair Photography</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -26,15 +24,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14, 14, 14, 0.85);
+      background: rgba(14,14,14,0.85);
       backdrop-filter: blur(6px);
       z-index: 10;
     }
 
     .brand img {
       height: 50px;
-      width: auto;
-      display: block;
       opacity: 0.95;
     }
 
@@ -53,16 +49,13 @@
       opacity: 0.8;
     }
 
-    nav a:hover {
-      opacity: 1;
-    }
+    nav a:hover { opacity: 1; }
 
     main {
       padding-top: 8rem;
       max-width: 1200px;
       margin: 0 auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding: 0 2rem;
     }
 
     h1 {
@@ -80,14 +73,9 @@
 
     .gallery-grid img {
       width: 100%;
-      height: auto;
-      display: block;
       border-radius: 2px;
-      transition: opacity 0.2s ease;
-    }
-
-    .gallery-grid a:hover img {
-      opacity: 0.9;
+      cursor: zoom-in;
+      user-select: none;
     }
 
     footer {
@@ -103,78 +91,98 @@
       margin: 0 0.5rem;
     }
 
-    footer a:hover {
-      color: #e0e0e0;
+    footer a:hover { color: #e0e0e0; }
+
+    /* ===== LIGHTBOX ===== */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,14,0.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      user-select: none;
+      pointer-events: none;
     }
   </style>
 </head>
 
 <body>
-  <nav>
-    <div class="brand">
-      <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-      </a>
-    </div>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <div class="brand">
+    <a href="/"><img src="/images/Signature-TuesdayNight_Font+photography_250.png"></a>
+  </div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/gallery/">Gallery</a></li>
+    <li><a href="/editorial/">Editorial</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/prints.html">Prints</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
 
-  <main>
-    <h1>Automotive</h1>
+<main>
+<h1>Automotive</h1>
 
-    <section class="gallery-grid">
+<section class="gallery-grid">
+  <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp">
+  <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp">
+  <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp">
+  <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp">
+  <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp">
+  <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp">
+  <img src="/images/gallery/Automotive/JRWBronco-029.webp">
+  <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp">
+</section>
+</main>
 
-      <a href="/images/gallery/Automotive/1962-Nova-Red-65.webp" target="_blank">
-        <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp" alt="1962 Nova Red">
-      </a>
+<footer>
+  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">Instagram — Motoring</a>
+  ·
+  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">Instagram — Outdoor</a>
+</footer>
 
-      <a href="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp" target="_blank">
-        <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp" alt="Rennsport Reunion VI">
-      </a>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
 
-      <a href="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp" target="_blank">
-        <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp" alt="Rennsport Reunion VI detail">
-      </a>
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
 
-      <a href="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp" target="_blank">
-        <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp" alt="Luftgekühlt 6">
-      </a>
+  document.querySelectorAll('.gallery-grid img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    });
 
-      <a href="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp" target="_blank">
-        <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp" alt="Lamborghini Champagne">
-      </a>
+    img.addEventListener('contextmenu', e => e.preventDefault());
+    img.setAttribute('draggable', 'false');
+  });
 
-      <a href="/images/gallery/Automotive/PetersonMuseum-146webp.webp" target="_blank">
-        <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp" alt="Peterson Automotive Museum">
-      </a>
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = '';
+  });
 
-      <a href="/images/gallery/Automotive/JRWBronco-029.webp" target="_blank">
-        <img src="/images/gallery/Automotive/JRWBronco-029.webp" alt="JRW Bronco">
-      </a>
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    }
+  });
 
-      <a href="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp" target="_blank">
-        <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp" alt="Classic Car Tour Utah">
-      </a>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
 
-    </section>
-  </main>
-
-  <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
-      Instagram — Motoring
-    </a>
-    <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
-      Instagram — Outdoor
-    </a>
-  </footer>
 </body>
 </html>
-
