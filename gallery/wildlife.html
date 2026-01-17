@@ -6,7 +6,9 @@
   <title>Wildlife — Thomas LeClair Photography</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -24,7 +26,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14,14,14,0.85);
+      background: rgba(14, 14, 14, 0.85);
       backdrop-filter: blur(6px);
       z-index: 10;
     }
@@ -51,10 +53,12 @@
       opacity: 0.8;
     }
 
-    nav a:hover { opacity: 1; }
+    nav a:hover {
+      opacity: 1;
+    }
 
     main {
-      padding-top: 8rem;
+      padding-top: 9.5rem; /* same vertical rhythm as other galleries */
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -65,13 +69,13 @@
       text-align: center;
       font-weight: 300;
       letter-spacing: 0.06em;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
     }
 
     .gallery-grid img {
@@ -82,7 +86,9 @@
       transition: opacity 0.2s ease;
     }
 
-    .gallery-grid a:hover img { opacity: 0.9; }
+    .gallery-grid a:hover img {
+      opacity: 0.9;
+    }
 
     footer {
       text-align: center;
@@ -97,7 +103,9 @@
       margin: 0 0.5rem;
     }
 
-    footer a:hover { color: #e0e0e0; }
+    footer a:hover {
+      color: #e0e0e0;
+    }
   </style>
 </head>
 
@@ -122,18 +130,35 @@
     <h1>Wildlife</h1>
 
     <section class="gallery-grid">
-      <a href="/images/gallery/wildlife/wildlife-01.webp" target="_blank">
-        <img src="/images/gallery/wildlife/wildlife-01.webp" alt="">
+
+      <a href="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" target="_blank">
+        <img src="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" alt="Bolsa Chica Wildlife">
       </a>
-      <a href="/images/gallery/wildlife/wildlife-02.webp" target="_blank">
-        <img src="/images/gallery/wildlife/wildlife-02.webp" alt="">
+
+      <a href="/images/gallery/wildlife/20120408SoCalCoast-170.webp" target="_blank">
+        <img src="/images/gallery/wildlife/20120408SoCalCoast-170.webp" alt="Southern California Coast">
       </a>
-      <a href="/images/gallery/wildlife/wildlife-03.webp" target="_blank">
-        <img src="/images/gallery/wildlife/wildlife-03.webp" alt="">
+
+      <a href="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp" target="_blank">
+        <img src="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp" alt="Bolsa Chica Reserve">
       </a>
-      <a href="/images/gallery/wildlife/wildlife-04.webp" target="_blank">
-        <img src="/images/gallery/wildlife/wildlife-04.webp" alt="">
+
+      <a href="/images/gallery/wildlife/RanchSpring2018.webp" target="_blank">
+        <img src="/images/gallery/wildlife/RanchSpring2018.webp" alt="Ranch Spring 2018">
       </a>
+
+      <a href="/images/gallery/wildlife/ToadstoolTrailHead-55812018.webp" target="_blank">
+        <img src="/images/gallery/wildlife/ToadstoolTrailHead-55812018.webp" alt="Toadstool Trailhead">
+      </a>
+
+      <a href="/images/gallery/wildlife/VacationJune-315webp.webp" target="_blank">
+        <img src="/images/gallery/wildlife/VacationJune-315webp.webp" alt="Vacation Wildlife">
+      </a>
+
+      <a href="/images/gallery/wildlife/Zion-389.webp" target="_blank">
+        <img src="/images/gallery/wildlife/Zion-389.webp" alt="Zion National Park">
+      </a>
+
     </section>
   </main>
 
@@ -148,4 +173,3 @@
   </footer>
 </body>
 </html>
-
