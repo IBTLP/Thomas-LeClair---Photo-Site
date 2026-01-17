@@ -58,7 +58,7 @@
     }
 
     main {
-      padding-top: 9.5rem; /* same vertical rhythm as other galleries */
+      padding-top: 9.5rem;
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -78,16 +78,19 @@
       gap: 1.75rem;
     }
 
+    /* === MATCH AUTOMOTIVE / LANDSCAPE === */
+
     .gallery-grid img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 2px;
       transition: opacity 0.2s ease;
+      cursor: zoom-in;
     }
 
-    .gallery-grid a:hover img {
-      opacity: 0.9;
+    .gallery-grid img:hover {
+      opacity: 0.85;
     }
 
     footer {
@@ -106,66 +109,78 @@
     footer a:hover {
       color: #e0e0e0;
     }
+
+    /* === GLOBAL LIGHTBOX (shared) === */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,14,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+      pointer-events: none;
+    }
+
+    .lightbox[style*="display: flex"] {
+      pointer-events: auto;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+    }
   </style>
 </head>
 
 <body>
-  <nav>
-    <div class="brand">
-      <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-      </a>
-    </div>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <h1>Wildlife</h1>
-
-    <section class="gallery-grid">
-
-      <a href="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" target="_blank">
-        <img src="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" alt="Bolsa Chica Wildlife">
-      </a>
-
-      <a href="/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp" target="_blank">
-        <img src="/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp" alt="Deer Springs Ranch Longhorn">
-      </a>
-
-      <a href="/images/gallery/wildlife/20120408SoCalCoast-170.webp" target="_blank">
-        <img src="/images/gallery/wildlife/20120408SoCalCoast-170.webp" alt="Southern California Coast">
-      </a>
-
-      <a href="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp" target="_blank">
-        <img src="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp" alt="Bolsa Chica Reserve">
-      </a>
-
-      <a href="/images/gallery/wildlife/RanchSpring2018.webp" target="_blank">
-        <img src="/images/gallery/wildlife/RanchSpring2018.webp" alt="Ranch Spring 2018">
-      </a>
-
-      <a href="/images/gallery/wildlife/Zion-389.webp" target="_blank">
-        <img src="/images/gallery/wildlife/Zion-389.webp" alt="Zion National Park">
-      </a>
-
-    </section>
-  </main>
-
-  <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
-      Instagram — Motoring
+<nav>
+  <div class="brand">
+    <a href="/">
+      <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
     </a>
-    <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
-      Instagram — Outdoor
-    </a>
-  </footer>
+  </div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/gallery/">Gallery</a></li>
+    <li><a href="/editorial/">Editorial</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/prints.html">Prints</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Wildlife</h1>
+
+  <section class="gallery-grid">
+    <!-- Replace / expand with your actual wildlife images -->
+    <img src="/images/gallery/wildlife/Elk-01.webp" alt="Elk">
+    <img src="/images/gallery/wildlife/Deer-02.webp" alt="Deer">
+    <img src="/images/gallery/wildlife/Fox-03.webp" alt="Fox">
+    <img src="/images/gallery/wildlife/Bird-04.webp" alt="Bird">
+  </section>
+</main>
+
+<footer>
+  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
+    Instagram — Motoring
+  </a>
+  ·
+  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
+    Instagram — Outdoor
+  </a>
+</footer>
+
+<!-- GLOBAL LIGHTBOX -->
+<div class="lightbox" id="global-lightbox" aria-hidden="true">
+  <img id="global-lightbox-img" alt="">
+</div>
+
+<script src="/js/lightbox.js" defer></script>
+
 </body>
 </html>
