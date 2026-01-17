@@ -69,7 +69,18 @@
       text-align: center;
       font-weight: 300;
       letter-spacing: 0.06em;
-      margin-bottom: 3.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* === STUDIES INTRO COPY === */
+
+    .page-intro {
+      max-width: 720px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(245,245,245,0.75);
     }
 
     .gallery-grid {
@@ -78,16 +89,19 @@
       gap: 1.75rem;
     }
 
+    /* === MATCH OTHER GALLERIES === */
+
     .gallery-grid img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 2px;
       transition: opacity 0.2s ease;
+      cursor: zoom-in;
     }
 
-    .gallery-grid a:hover img {
-      opacity: 0.9;
+    .gallery-grid img:hover {
+      opacity: 0.85;
     }
 
     footer {
@@ -106,79 +120,85 @@
     footer a:hover {
       color: #e0e0e0;
     }
+
+    /* === GLOBAL LIGHTBOX (shared) === */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,14,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+      pointer-events: none;
+    }
+
+    .lightbox[style*="display: flex"] {
+      pointer-events: auto;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+    }
   </style>
 </head>
 
 <body>
-  <nav>
-    <div class="brand">
-      <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-      </a>
-    </div>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <h1>Studies</h1>
-
-    <section class="gallery-grid">
-
-      
-      <a href="/images/gallery/studies/20190115lamborghini-champagne-IMG_7444.webp" target="_blank">
-        <img src="/images/gallery/studies/20190115lamborghini-champagne-IMG_7444.webp" alt="Lamborghini Champagne Study">
-      </a>
-
-      <a href="/images/gallery/studies/20181010the-Wedge-IMG_6905-Edit.webp" target="_blank">
-        <img src="/images/gallery/studies/20181010the-Wedge-IMG_6905-Edit.webp" alt="The Wedge Study">
-      </a>
-
-      <a href="/images/gallery/studies/2018Super-Girl-Pro19.webp" target="_blank">
-        <img src="/images/gallery/studies/2018Super-Girl-Pro19.webp" alt="Super Girl Pro 2018">
-      </a>
-
-      <a href="/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp" target="_blank">
-        <img src="/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp" alt="Lamborghini Champagne Detail">
-      </a>
-
-      <a href="/images/gallery/studies/20181012the-Wedge-IMG_7654.webp" target="_blank">
-        <img src="/images/gallery/studies/20181012the-Wedge-IMG_7654.webp" alt="The Wedge Detail">
-      </a>
-
-      <a href="/images/gallery/studies/20191204Lay-Flat-IMG_5269.webp" target="_blank">
-        <img src="/images/gallery/studies/20191204Lay-Flat-IMG_5269.webp" alt="Lay Flat Study">
-      </a>
-
-      <a href="/images/gallery/studies/20191222Caitlin-IMG_0072.webp" target="_blank">
-        <img src="/images/gallery/studies/20191222Caitlin-IMG_0072.webp" alt="Portrait Study">
-      </a>
-
-      <<a href="/images/gallery/studies/20201012GailWinegar-Head-shot-307A5697webp.webp" target="_blank">
-        <img src="/images/gallery/studies/20201012GailWinegar-Head-shot-307A5697webp.webp" alt="Headshot Study">
-      </a>
-
-      <a href="/images/gallery/studies/VansProAM Surf-262.webp" target="_blank">
-        <img src="/images/gallery/studies/VansProAM Surf-262.webp" alt="Vans Pro AM Surf">
-      </a>
-
-    </section>
-  </main>
-
-  <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
-      Instagram — Motoring
+<nav>
+  <div class="brand">
+    <a href="/">
+      <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
     </a>
-    <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
-      Instagram — Outdoor
-    </a>
-  </footer>
+  </div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/gallery/">Gallery</a></li>
+    <li><a href="/editorial/">Editorial</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/prints.html">Prints</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Studies</h1>
+
+  <p class="page-intro">
+    These images are personal studies — experiments in light, form, and process.
+    They’re created purely for exploration and enjoyment, not as commissioned work
+    or items for sale. This space exists to document curiosity, technique, and ideas
+    that may (or may not) inform future projects.
+  </p>
+
+  <section class="gallery-grid">
+    <!-- Replace / expand with your actual studies images -->
+    <img src="/images/gallery/studies/Study-01.webp" alt="">
+    <img src="/images/gallery/studies/Study-02.webp" alt="">
+    <img src="/images/gallery/studies/Study-03.webp" alt="">
+    <img src="/images/gallery/studies/Study-04.webp" alt="">
+  </section>
+</main>
+
+<footer>
+  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
+    Instagram — Motoring
+  </a>
+  ·
+  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
+    Instagram — Outdoor
+  </a>
+</footer>
+
+<!-- GLOBAL LIGHTBOX -->
+<div class="lightbox" id="global-lightbox" aria-hidden="true">
+  <img id="global-lightbox-img" alt="">
+</div>
+
+<script src="/js/lightbox.js" defer></script>
+
 </body>
 </html>
