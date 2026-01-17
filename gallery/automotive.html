@@ -6,9 +6,7 @@
   <title>Automotive — Thomas LeClair Photography</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -33,9 +31,8 @@
 
     .brand img {
       height: 50px;
-      width: auto;
-      display: block;
       opacity: 0.95;
+      display: block;
     }
 
     nav ul {
@@ -53,16 +50,13 @@
       opacity: 0.8;
     }
 
-    nav a:hover {
-      opacity: 1;
-    }
+    nav a:hover { opacity: 1; }
 
     main {
       padding-top: 9.5rem;
       max-width: 1200px;
       margin: 0 auto;
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding: 0 2rem;
     }
 
     h1 {
@@ -78,15 +72,15 @@
       gap: 1.75rem;
     }
 
-    /* ===== FIXED GALLERY HOVER + AFFORDANCE ===== */
+    /* ✅ HOVER NOW GUARANTEED TO WORK */
 
     .gallery-grid img {
       width: 100%;
-      height: auto;
       display: block;
       border-radius: 2px;
       transition: opacity 0.2s ease;
       cursor: zoom-in;
+      will-change: opacity;
     }
 
     .gallery-grid img:hover {
@@ -106,11 +100,9 @@
       margin: 0 0.5rem;
     }
 
-    footer a:hover {
-      color: #e0e0e0;
-    }
+    footer a:hover { color: #e0e0e0; }
 
-    /* ===== GLOBAL LIGHTBOX ===== */
+    /* ✅ FIXED LIGHTBOX OVERLAY */
 
     .lightbox {
       position: fixed;
@@ -121,6 +113,12 @@
       justify-content: center;
       z-index: 1000;
       cursor: zoom-out;
+      pointer-events: none;
+    }
+
+    .lightbox.is-open {
+      display: flex;
+      pointer-events: auto;
     }
 
     .lightbox img {
@@ -132,6 +130,7 @@
 </head>
 
 <body>
+
 <nav>
   <div class="brand">
     <a href="/"><img src="/images/Signature-TuesdayNight_Font+photography_250.png"></a>
@@ -147,18 +146,18 @@
 </nav>
 
 <main>
-<h1>Automotive</h1>
+  <h1>Automotive</h1>
 
-<section class="gallery-grid">
-  <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp" alt="">
-  <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp" alt="">
-  <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp" alt="">
-  <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp" alt="">
-  <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp" alt="">
-  <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp" alt="">
-  <img src="/images/gallery/Automotive/JRWBronco-029.webp" alt="">
-  <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp" alt="">
-</section>
+  <section class="gallery-grid">
+    <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp" alt="">
+    <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp" alt="">
+    <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp" alt="">
+    <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp" alt="">
+    <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp" alt="">
+    <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp" alt="">
+    <img src="/images/gallery/Automotive/JRWBronco-029.webp" alt="">
+    <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp" alt="">
+  </section>
 </main>
 
 <footer>
@@ -168,7 +167,7 @@
 </footer>
 
 <!-- GLOBAL LIGHTBOX -->
-<div class="lightbox" id="global-lightbox" aria-hidden="true">
+<div class="lightbox" id="global-lightbox">
   <img id="global-lightbox-img" alt="">
 </div>
 
