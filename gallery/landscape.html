@@ -58,7 +58,7 @@
     }
 
     main {
-      padding-top: 9.5rem; /* keeps images slightly lower, consistent with Automotive */
+      padding-top: 9.5rem;
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -78,16 +78,19 @@
       gap: 1.75rem;
     }
 
+    /* === MATCH AUTOMOTIVE GALLERY BEHAVIOR === */
+
     .gallery-grid img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 2px;
       transition: opacity 0.2s ease;
+      cursor: zoom-in;
     }
 
-    .gallery-grid a:hover img {
-      opacity: 0.9;
+    .gallery-grid img:hover {
+      opacity: 0.85;
     }
 
     footer {
@@ -106,58 +109,77 @@
     footer a:hover {
       color: #e0e0e0;
     }
+
+    /* === GLOBAL LIGHTBOX (same as Automotive) === */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,14,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+      pointer-events: none;
+    }
+
+    .lightbox[style*="display: flex"] {
+      pointer-events: auto;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+    }
   </style>
 </head>
 
 <body>
-  <nav>
-    <div class="brand">
-      <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-      </a>
-    </div>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <h1>Landscape</h1>
-
-    <section class="gallery-grid">
-
-      <a href="/images/gallery/landscape/20190604GardenoftheGods-IMG_4471webp.webp" target="_blank">
-        <img src="/images/gallery/landscape/20190604GardenoftheGods-IMG_4471webp.webp" alt="Garden of the Gods">
-      </a>
-
-      <a href="/images/gallery/landscape/Canyonlands-31.webp" target="_blank">
-        <img src="/images/gallery/landscape/Canyonlands-31.webp" alt="Canyonlands">
-      </a>
-
-      <a href="/images/gallery/landscape/VacationJune-315webp.webp" target="_blank">
-        <img src="/images/gallery/landscape/VacationJune-315webp.webp" alt="Vacation Landscape">
-      </a>
-
-      <a href="/images/gallery/wildlife/ToadstoolTrailHead-55812018.webp" target="_blank">
-        <img src="/images/gallery/wildlife/ToadstoolTrailHead-55812018.webp" alt="Toadstool Trailhead">
-      </a>
-
-    </section>
-  </main>
-
-  <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
-      Instagram — Motoring
+<nav>
+  <div class="brand">
+    <a href="/">
+      <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
     </a>
-    <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
-      Instagram — Outdoor
-    </a>
-  </footer>
+  </div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/gallery/">Gallery</a></li>
+    <li><a href="/editorial/">Editorial</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/prints.html">Prints</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <h1>Landscape</h1>
+
+  <section class="gallery-grid">
+    <img src="/images/gallery/landscape/20190604GardenoftheGods-IMG_4471webp.webp" alt="Garden of the Gods">
+    <img src="/images/gallery/landscape/Canyonlands-31.webp" alt="Canyonlands">
+    <img src="/images/gallery/landscape/VacationJune-315webp.webp" alt="Vacation Landscape">
+    <img src="/images/gallery/wildlife/ToadstoolTrailHead-55812018.webp" alt="Toadstool Trailhead">
+  </section>
+</main>
+
+<footer>
+  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
+    Instagram — Motoring
+  </a>
+  ·
+  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
+    Instagram — Outdoor
+  </a>
+</footer>
+
+<!-- GLOBAL LIGHTBOX -->
+<div class="lightbox" id="global-lightbox" aria-hidden="true">
+  <img id="global-lightbox-img" alt="">
+</div>
+
+<script src="/js/lightbox.js" defer></script>
+
 </body>
 </html>
