@@ -78,15 +78,18 @@
       gap: 1.75rem;
     }
 
+    /* ===== FIXED GALLERY HOVER + AFFORDANCE ===== */
+
     .gallery-grid img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 2px;
       transition: opacity 0.2s ease;
+      cursor: zoom-in;
     }
 
-    .gallery-grid a:hover img {
+    .gallery-grid img:hover {
       opacity: 0.9;
     }
 
@@ -107,7 +110,7 @@
       color: #e0e0e0;
     }
 
-    /* ===== GLOBAL LIGHTBOX (ADDED) ===== */
+    /* ===== GLOBAL LIGHTBOX ===== */
 
     .lightbox {
       position: fixed;
@@ -147,14 +150,14 @@
 <h1>Automotive</h1>
 
 <section class="gallery-grid">
-  <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp">
-  <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp">
-  <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp">
-  <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp">
-  <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp">
-  <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp">
-  <img src="/images/gallery/Automotive/JRWBronco-029.webp">
-  <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp">
+  <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp" alt="">
+  <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp" alt="">
+  <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp" alt="">
+  <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp" alt="">
+  <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp" alt="">
+  <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp" alt="">
+  <img src="/images/gallery/Automotive/JRWBronco-029.webp" alt="">
+  <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp" alt="">
 </section>
 </main>
 
@@ -164,7 +167,7 @@
   <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">Instagram — Outdoor</a>
 </footer>
 
-<!-- GLOBAL LIGHTBOX (ADDED) -->
+<!-- GLOBAL LIGHTBOX -->
 <div class="lightbox" id="global-lightbox" aria-hidden="true">
   <img id="global-lightbox-img" alt="">
 </div>
