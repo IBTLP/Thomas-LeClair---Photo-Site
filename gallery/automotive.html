@@ -103,28 +103,29 @@
     footer a:hover { color: #e0e0e0; }
 
     /* ✅ FIXED LIGHTBOX OVERLAY */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(14,14,14,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+  pointer-events: none;
+}
 
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(14,14,14,0.95);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      cursor: zoom-out;
-      pointer-events: none;
-    }
+.lightbox.is-open {
+  display: flex;
+  pointer-events: auto;
+}
 
-    .lightbox.is-open {
-      display: flex;
-      pointer-events: auto;
-    }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+}
 
-    .lightbox img {
-      max-width: 92vw;
-      max-height: 92vh;
-      object-fit: contain;
     }
   </style>
 </head>
