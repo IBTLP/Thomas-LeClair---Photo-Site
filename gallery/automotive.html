@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Automotive — Thomas LeClair Photography</title>
 
-   <style>
+  <style>
     * {
       box-sizing: border-box;
     }
@@ -58,7 +58,7 @@
     }
 
     main {
-      padding-top: 9.5rem; /* same vertical rhythm as other galleries */
+      padding-top: 9.5rem;
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -106,6 +106,25 @@
     footer a:hover {
       color: #e0e0e0;
     }
+
+    /* ===== GLOBAL LIGHTBOX (ADDED) ===== */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,14,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+    }
   </style>
 </head>
 
@@ -145,11 +164,12 @@
   <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">Instagram — Outdoor</a>
 </footer>
 
-<!-- LIGHTBOX -->
-<!-- GLOBAL LIGHTBOX -->
+<!-- GLOBAL LIGHTBOX (ADDED) -->
+<div class="lightbox" id="global-lightbox" aria-hidden="true">
+  <img id="global-lightbox-img" alt="">
+</div>
 
 <script src="/js/lightbox.js" defer></script>
-
 
 </body>
 </html>
