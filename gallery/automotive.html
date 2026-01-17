@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Automotive — Thomas LeClair Photography</title>
 
-  <style>
-    * { box-sizing: border-box; }
+   <style>
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -24,13 +26,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14,14,14,0.85);
+      background: rgba(14, 14, 14, 0.85);
       backdrop-filter: blur(6px);
       z-index: 10;
     }
 
     .brand img {
       height: 50px;
+      width: auto;
+      display: block;
       opacity: 0.95;
     }
 
@@ -49,13 +53,16 @@
       opacity: 0.8;
     }
 
-    nav a:hover { opacity: 1; }
+    nav a:hover {
+      opacity: 1;
+    }
 
     main {
-      padding-top: 9.5rem;
+      padding-top: 9.5rem; /* same vertical rhythm as other galleries */
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
 
     h1 {
@@ -67,15 +74,20 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
     }
 
     .gallery-grid img {
       width: 100%;
+      height: auto;
+      display: block;
       border-radius: 2px;
-      cursor: zoom-in;
-      user-select: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .gallery-grid a:hover img {
+      opacity: 0.9;
     }
 
     footer {
@@ -91,25 +103,8 @@
       margin: 0 0.5rem;
     }
 
-    footer a:hover { color: #e0e0e0; }
-
-    /* ===== LIGHTBOX ===== */
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(14,14,14,0.96);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-
-    .lightbox img {
-      max-width: 92vw;
-      max-height: 92vh;
-      user-select: none;
-      pointer-events: none;
+    footer a:hover {
+      color: #e0e0e0;
     }
   </style>
 </head>
