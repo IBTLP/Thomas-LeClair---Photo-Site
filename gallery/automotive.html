@@ -148,38 +148,8 @@
 <!-- LIGHTBOX -->
 <!-- GLOBAL LIGHTBOX -->
 
-  <div class="lightbox" id="global-lightbox" aria-hidden="true">
-  <img id="global-lightbox-img" alt="">
-</div>
+<script src="/js/lightbox.js" defer></script>
 
-<script>
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-
-  document.querySelectorAll('.gallery-grid img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightbox.style.display = 'flex';
-    });
-
-    img.addEventListener('contextmenu', e => e.preventDefault());
-    img.setAttribute('draggable', 'false');
-  });
-
-  lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    lightboxImg.src = '';
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-    }
-  });
-
-  document.addEventListener('contextmenu', e => e.preventDefault());
-</script>
 
 </body>
 </html>
