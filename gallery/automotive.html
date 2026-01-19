@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Automotive — Thomas LeClair Photography</title>
+
+  <title>Automotive Photography — Thomas LeClair</title>
+
+  <meta name="description" content="Automotive photography by Thomas LeClair—track panning is my specialty, with recent static portraits and editorial-ready work. Featuring a classic Bronco published by Power Auto Media." />
+  <link rel="canonical" href="https://www.tleclair.com/gallery/automotive.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Automotive Photography — Thomas LeClair" />
+  <meta property="og:description" content="Track panning is my specialty, with recent static portraits and editorial-ready work—including a classic Bronco published by Power Auto Media." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tleclair.com/gallery/automotive/" />
+  <meta property="og:image" content="https://tleclair.com/images/gallery/Automotive/round213.webp" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Automotive Photography — Thomas LeClair" />
+  <meta name="twitter:description" content="Track panning specialty + recent static portraits. Editorial-ready automotive photography." />
+  <meta name="twitter:image" content="https://tleclair.com/images/gallery/Automotive/1962-Nova-Red-65.webp" />
 
   <style>
     * { box-sizing: border-box; }
@@ -73,7 +90,6 @@
     }
 
     /* ✅ HOVER NOW GUARANTEED TO WORK */
-
     .gallery-grid img {
       width: 100%;
       display: block;
@@ -103,28 +119,48 @@
     footer a:hover { color: #e0e0e0; }
 
     /* ✅ FIXED LIGHTBOX OVERLAY */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(14,14,14,0.95);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  cursor: zoom-out;
-  pointer-events: none;
-}
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14,14,14,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+      pointer-events: none;
+    }
 
-.lightbox[style*="display: flex"] {
-  pointer-events: auto;
-}
+    .lightbox[style*="display: flex"] {
+      pointer-events: auto;
+    }
 
-.lightbox img {
-  max-width: 92vw;
-  max-height: 92vh;
-  object-fit: contain;
-}
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+    }
 
+    /* === ADDITIONS (NO STYLE CHANGES TO EXISTING RULES) === */
+    .page-head { margin-bottom: 2rem; }
+    .subtitle {
+      max-width: 820px;
+      margin: -2.5rem auto 0;
+      text-align: center;
+      color: rgba(245,245,245,0.72);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .section-title{
+      margin: 2.25rem 0 1rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      font-size: 1rem;
+      color: rgba(245,245,245,0.75);
+      text-transform: uppercase;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -132,7 +168,7 @@
 
 <nav>
   <div class="brand">
-    <a href="/"><img src="/images/Signature-TuesdayNight_Font+photography_250.png"></a>
+    <a href="/"><img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography"></a>
   </div>
   <ul>
     <li><a href="/">Home</a></li>
@@ -145,27 +181,67 @@
 </nav>
 
 <main>
-  <h1>Automotive</h1>
+  <header class="page-head">
+    <h1>Automotive Photography</h1>
+    <p class="subtitle">
+      Track panning is my specialty—images built around speed, timing, and clean technique.
+      You’ll also see more of my recent static work, plus a classic Bronco shoot published by Power Auto Media.
+    </p>
+  </header>
 
-  <section class="gallery-grid">
-    <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp" alt="">
-    <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp" alt="">
-    <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp" alt="">
-    <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp" alt="">
-    <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp" alt="">
-    <img src="/images/gallery/Automotive/KoH2023-184.webp" alt="">
-    <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp" alt="">
-    <img src="/images/gallery/Automotive/round214.webp" alt="">
-    <img src="/images/gallery/Automotive/round213.webp" alt="">
-    <img src="/images/gallery/Automotive/round41.webp" alt="">
-    <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp" alt="">
+  <h2 class="section-title">Selected Work</h2>
+
+  <section class="gallery-grid" aria-label="Automotive photo gallery">
+    <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp"
+         alt="1962 Chevrolet Nova in red, automotive portrait photo"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp"
+         alt="Track panning photo at Rennsport Reunion, Porsche on track"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp"
+         alt="Panning shot at Rennsport Reunion, race car in motion"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp"
+         alt="Luftgekühlt event automotive photograph, editorial-style scene"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp"
+         alt="Lamborghini automotive portrait photograph"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/KoH2023-184.webp"
+         alt="Off-road racing scene, automotive action photograph"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp"
+         alt="Peterson Automotive Museum scene, car detail photo"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/round214.webp"
+         alt="Track panning shot, race car in motion"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/round213.webp"
+         alt="On-track panning shot, race car with motion blur"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/round41.webp"
+         alt="Track panning photograph, car passing at speed"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp"
+         alt="Classic car tour in Utah, automotive photograph"
+         loading="lazy" decoding="async">
   </section>
 </main>
 
 <footer>
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">Instagram — Motoring</a>
+  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
   ·
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">Instagram — Outdoor</a>
+  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
 </footer>
 
 <!-- GLOBAL LIGHTBOX -->
