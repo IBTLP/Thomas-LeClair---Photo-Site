@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wildlife — Thomas LeClair Photography</title>
+
+  <title>Wildlife Photography — Thomas LeClair</title>
+
+  <meta name="description" content="Wildlife photography by Thomas LeClair—quiet, patient images from the American West. Highlights include a bald eagle and a longhorn portrait." />
+  <link rel="canonical" href="https://tleclair.com/gallery/wildlife/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Wildlife Photography — Thomas LeClair" />
+  <meta property="og:description" content="Wildlife photography with an emphasis on timing and restraint—highlights include a bald eagle and a longhorn portrait." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tleclair.com/gallery/wildlife/" />
+  <meta property="og:image" content="https://tleclair.com/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wildlife Photography — Thomas LeClair" />
+  <meta name="twitter:description" content="Quiet, patient wildlife images—highlights include a bald eagle and a longhorn portrait." />
+  <meta name="twitter:image" content="https://tleclair.com/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" />
 
   <style>
     * {
@@ -79,7 +96,6 @@
     }
 
     /* === MATCH AUTOMOTIVE / LANDSCAPE === */
-
     .gallery-grid img {
       width: 100%;
       height: auto;
@@ -111,7 +127,6 @@
     }
 
     /* === GLOBAL LIGHTBOX (shared) === */
-
     .lightbox {
       position: fixed;
       inset: 0;
@@ -132,6 +147,27 @@
       max-width: 92vw;
       max-height: 92vh;
       object-fit: contain;
+    }
+
+    /* === ADDITIONS (NO STYLE CHANGES TO EXISTING RULES) === */
+    .page-head { margin-bottom: 2rem; }
+    .subtitle {
+      max-width: 820px;
+      margin: 0.25rem auto 0;
+      text-align: center;
+      color: rgba(245,245,245,0.72);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .section-title{
+      margin: 2.25rem 0 1rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      font-size: 1rem;
+      color: rgba(245,245,245,0.75);
+      text-transform: uppercase;
+      text-align: center;
     }
   </style>
 </head>
@@ -154,29 +190,61 @@
 </nav>
 
 <main>
-  <h1>Wildlife</h1>
+  <header class="page-head">
+    <h1>Wildlife Photography</h1>
+    <p class="subtitle">
+      Wildlife is about timing and restraint—being ready without forcing the scene.
+      Highlights include a bald eagle and a longhorn portrait.
+    </p>
+  </header>
 
-  <section class="gallery-grid">
-    <!-- Replace / expand with your actual wildlife images -->
-  <img src="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" alt="Bolsa Chica wetlands wildlife">
-  <img src="/images/gallery/wildlife/round25.webp" alt="Deer Springs Ranch wildlife">
-  <img src="/images/gallery/wildlife/20120408SoCalCoast-170.webp" alt="Southern California coast wildlife">
-  <img src="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp" alt="Bolsa Chica wildlife">
-  <img src="/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp" alt="Deer Springs Ranch wildlife">
-  <img src="/images/gallery/wildlife/RanchSpring2018.webp" alt="Spring wildlife at the ranch">
-  <img src="/images/gallery/wildlife/Zion-389.webp" alt="Zion National Park wildlife">
-  <img src="/images/gallery/wildlife/round27.webp" alt="Deer Springs Ranch wildlife">
-  <img src="/images/gallery/wildlife/round44.webp" alt="BOLSA CHICA">
+  <h2 class="section-title">Selected Work</h2>
 
+  <section class="gallery-grid" aria-label="Wildlife photo gallery">
+    <img src="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp"
+         alt="Wildlife photograph at Bolsa Chica wetlands"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/round25.webp"
+         alt="Wildlife photograph at Deer Springs Ranch"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/20120408SoCalCoast-170.webp"
+         alt="Coastal wildlife photograph, Southern California"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp"
+         alt="Wildlife photograph at Bolsa Chica wetlands, second view"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp"
+         alt="Wildlife photograph at Deer Springs Ranch, 2019"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/RanchSpring2018.webp"
+         alt="Springtime wildlife photograph at the ranch"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/Zion-389.webp"
+         alt="Wildlife photograph near Zion National Park"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/round27.webp"
+         alt="Wildlife photograph at Deer Springs Ranch, alternate scene"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/wildlife/round44.webp"
+         alt="Wildlife photograph at Bolsa Chica wetlands, close detail"
+         loading="lazy" decoding="async">
   </section>
 </main>
 
 <footer>
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
+  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
     Instagram — Motoring
   </a>
   ·
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
+  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
     Instagram — Outdoor
   </a>
 </footer>
