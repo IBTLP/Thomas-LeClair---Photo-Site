@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Landscape — Thomas LeClair Photography</title>
+
+  <title>Landscape Photography — Thomas LeClair</title>
+
+  <meta name="description" content="Landscape photography by Thomas LeClair—light-driven scenes from the American West, including a photograph made with 120+ year-old vintage glass." />
+  <link rel="canonical" href="https://tleclair.com/gallery/landscape/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Landscape Photography — Thomas LeClair" />
+  <meta property="og:description" content="Light-driven landscapes from the American West, including a photograph made with 120+ year-old vintage glass." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tleclair.com/gallery/landscape/" />
+  <meta property="og:image" content="https://tleclair.com/images/gallery/landscape/Canyonlands-31.webp" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Landscape Photography — Thomas LeClair" />
+  <meta name="twitter:description" content="Light-driven landscapes from the American West, including an image made with 120+ year-old vintage glass." />
+  <meta name="twitter:image" content="https://tleclair.com/images/gallery/landscape/Canyonlands-31.webp" />
 
   <style>
     * {
@@ -79,7 +96,6 @@
     }
 
     /* === MATCH AUTOMOTIVE GALLERY BEHAVIOR === */
-
     .gallery-grid img {
       width: 100%;
       height: auto;
@@ -111,7 +127,6 @@
     }
 
     /* === GLOBAL LIGHTBOX (same as Automotive) === */
-
     .lightbox {
       position: fixed;
       inset: 0;
@@ -132,6 +147,27 @@
       max-width: 92vw;
       max-height: 92vh;
       object-fit: contain;
+    }
+
+    /* === ADDITIONS (NO STYLE CHANGES TO EXISTING RULES) === */
+    .page-head { margin-bottom: 2rem; }
+    .subtitle {
+      max-width: 820px;
+      margin: -2.5rem auto 0;
+      text-align: center;
+      color: rgba(245,245,245,0.72);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .section-title{
+      margin: 2.25rem 0 1rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      font-size: 1rem;
+      color: rgba(245,245,245,0.75);
+      text-transform: uppercase;
+      text-align: center;
     }
   </style>
 </head>
@@ -154,24 +190,49 @@
 </nav>
 
 <main>
-  <h1>Landscape</h1>
+  <header class="page-head">
+    <h1>Landscape Photography</h1>
+    <p class="subtitle">
+      Landscapes where light does the heavy lifting—quiet moments, big space, and weather.
+      One image in this set was made with vintage glass over 120 years old.
+    </p>
+  </header>
 
-  <section class="gallery-grid">
-    <img src="/images/gallery/landscape/20190604GardenoftheGods-IMG_4471webp.webp" alt="Garden of the Gods">
-    <img src="/images/gallery/landscape/Canyonlands-31.webp" alt="Canyonlands">
-    <img src="/images/gallery/landscape/VacationJune-315webp.webp" alt="Vacation Landscape">
-    <img src="/images/gallery/landscape/ToadstoolTrailHead-55812018.webp" alt="Toadstool Trailhead">
-    <img src="/images/gallery/landscape/round21.webp" alt="Deer Springs Ranch">
-    <img src="/images/gallery/landscape/round211.webp" alt="Deer Springs Ranch">
+  <h2 class="section-title">Selected Work</h2>
+
+  <section class="gallery-grid" aria-label="Landscape photo gallery">
+    <img src="/images/gallery/landscape/20190604GardenoftheGods-IMG_4471webp.webp"
+         alt="Garden of the Gods landscape photograph"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/landscape/Canyonlands-31.webp"
+         alt="Canyonlands landscape photograph"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/landscape/VacationJune-315webp.webp"
+         alt="Landscape photograph from the American West"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/landscape/ToadstoolTrailHead-55812018.webp"
+         alt="Toadstool Trailhead landscape photograph"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/landscape/round21.webp"
+         alt="Deer Springs Ranch landscape photograph"
+         loading="lazy" decoding="async">
+
+    <img src="/images/gallery/landscape/round211.webp"
+         alt="Deer Springs Ranch landscape photograph, second view"
+         loading="lazy" decoding="async">
   </section>
 </main>
 
 <footer>
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">
+  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
     Instagram — Motoring
   </a>
   ·
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">
+  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
     Instagram — Outdoor
   </a>
 </footer>
