@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact — Thomas LeClair Photography</title>
 
+  <meta name="description" content="Contact Thomas LeClair Photography for commissioned work or metal print inquiries. Share your preferred reply method (text/email/phone) and project details." />
+  <link rel="canonical" href="https://tleclair.com/contact.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Contact — Thomas LeClair Photography" />
+  <meta property="og:description" content="Commissioned photography + metal print inquiries. Send a message and include your preferred reply method." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tleclair.com/contact.html" />
+  <meta property="og:image" content="https://tleclair.com/images/home-auto.webp" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — Thomas LeClair Photography" />
+  <meta name="twitter:description" content="Commissioned photography + metal print inquiries. Send a message and include your preferred reply method." />
+  <meta name="twitter:image" content="https://tleclair.com/images/home-auto.webp" />
+
   <style>
     * { box-sizing: border-box; }
 
@@ -133,14 +149,14 @@
         <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
       </a>
     </div>
-<ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/gallery/">Gallery</a></li>
-  <li><a href="/editorial/">Editorial</a></li>
-  <li><a href="/about.html">About</a></li>
-  <li><a href="/prints.html">Prints</a></li>
-  <li><a href="/contact.html">Contact</a></li>
-</ul>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/editorial/">Editorial</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
   </nav>
 
   <main>
@@ -175,12 +191,11 @@
       </div>
 
       <div>
-      <label for="message">Message me</label>
-      <div style="font-size:0.85rem; opacity:0.65; margin-top:-0.5rem; margin-bottom:0.25rem;">
-        Let me know the best way to reply to you.
-      </div>
-      <textarea id="message" name="message" placeholder="How can I help? Preferred reply method (text/email/phone) + your best contact info." required></textarea>
-
+        <label for="message">Message me</label>
+        <div style="font-size:0.85rem; opacity:0.65; margin-top:-0.5rem; margin-bottom:0.25rem;">
+          Let me know the best way to reply to you.
+        </div>
+        <textarea id="message" name="message" placeholder="How can I help? Preferred reply method (text/email/phone) + your best contact info." required></textarea>
       </div>
 
       <input type="hidden" name="_subject" value="New inquiry from tleclair.com">
@@ -188,56 +203,51 @@
       <!-- keep _next as a fallback (some setups honor it) -->
       <input type="hidden" name="_next" value="https://www.tleclair.com/thank-you.html">
       <input type="text" name="_gotcha" style="display:none">
-      
 
       <button type="submit">SEND INQUIRY</button>
     </form>
   </main>
 
   <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank">Instagram — Motoring</a>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
     <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank">Instagram — Outdoor</a>
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
   </footer>
 
- <script>
-  (function () {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
+  <script>
+    (function () {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-      // Ensure Formspree gets a proper Reply-To value
-      const emailField = form.querySelector('#email');
-      const replytoHidden = form.querySelector('#replytoHidden');
-      if (emailField && replytoHidden) {
-        replytoHidden.value = emailField.value.trim();
-      }
-
-      const formData = new FormData(form);
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          window.location.href = 'https://www.tleclair.com/thank-you.html';
-        } else {
-          alert('Sorry — something went wrong sending your message. Please try again.');
+        // Ensure Formspree gets a proper Reply-To value
+        const emailField = form.querySelector('#email');
+        const replytoHidden = form.querySelector('#replytoHidden');
+        if (emailField && replytoHidden) {
+          replytoHidden.value = emailField.value.trim();
         }
-      } catch (err) {
-        alert('Network error — please try again.');
-      }
-    });
-  })();
-</script>
+
+        const formData = new FormData(form);
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            window.location.href = 'https://www.tleclair.com/thank-you.html';
+          } else {
+            alert('Sorry — something went wrong sending your message. Please try again.');
+          }
+        } catch (err) {
+          alert('Network error — please try again.');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
