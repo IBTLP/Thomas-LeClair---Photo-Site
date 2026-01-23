@@ -16,6 +16,8 @@
       min-height: 100vh;
     }
 
+    /* ---------------- NAV ---------------- */
+
     nav {
       position: fixed;
       top: 0;
@@ -24,15 +26,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14, 14, 14, 0.85);
+      background: rgba(14,14,14,0.85);
       backdrop-filter: blur(6px);
       z-index: 10;
     }
 
     .brand img {
       height: 50px;
-      width: auto;
-      display: block;
       opacity: 0.95;
     }
 
@@ -53,6 +53,8 @@
 
     nav a:hover { opacity: 1; }
 
+    /* ---------------- MAIN ---------------- */
+
     main {
       padding-top: 8rem;
       max-width: 1100px;
@@ -64,36 +66,73 @@
     h1 {
       font-weight: 300;
       letter-spacing: 0.06em;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
       text-align: center;
     }
+
+    /* ---------------- GALLERY CARDS ---------------- */
 
     .gallery-section {
       margin-bottom: 4rem;
     }
 
-    .gallery-section h2 {
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.25rem;
-    }
-
-    .gallery-section a {
+    .gallery-card {
+      position: relative;
+      display: block;
+      padding: 3rem;
+      border: 1px solid rgba(255,255,255,0.15);
       color: #f5f5f5;
       text-decoration: none;
+      overflow: hidden;
     }
 
-    .gallery-section a:hover {
-      opacity: 0.9;
+    .gallery-card h2 {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      font-weight: 400;
+      letter-spacing: 0.05em;
     }
 
-    .placeholder {
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 3rem;
-      text-align: center;
-      opacity: 0.5;
-      font-size: 0.9rem;
+    .gallery-card .cta {
+      position: relative;
+      z-index: 2;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      opacity: 0.75;
     }
+
+    /* background image */
+    .gallery-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      filter: blur(4px);
+      transition: opacity 0.6s ease, filter 0.6s ease;
+    }
+
+    /* dark overlay */
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(14,14,14,0.55);
+      z-index: 1;
+    }
+
+    /* hover reveal (desktop only) */
+    @media (hover: hover) {
+      .gallery-card:hover::before {
+        opacity: 0.45;
+        filter: blur(2px);
+      }
+    }
+
+    /* ---------------- FOOTER ---------------- */
 
     footer {
       text-align: center;
@@ -109,14 +148,17 @@
     }
 
     footer a:hover { color: #e0e0e0; }
+
   </style>
 </head>
 
 <body>
+
   <nav>
     <div class="brand">
       <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+        <img src="/images/Signature-TuesdayNight_Font+photography_250.png"
+             alt="Thomas LeClair Photography">
       </a>
     </div>
     <ul>
@@ -133,24 +175,41 @@
     <h1>Gallery</h1>
 
     <section class="gallery-section">
-      <h2><a href="/gallery/wildlife.html">Wildlife</a></h2>
-      <div class="placeholder">View gallery →</div>
+      <a class="gallery-card" href="/gallery/wildlife.html"
+         style="--bg:url('/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp');"
+         aria-label="View Wildlife gallery">
+        <h2>Wildlife</h2>
+        <div class="cta">View gallery →</div>
+      </a>
     </section>
 
     <section class="gallery-section">
-      <h2><a href="/gallery/automotive.html">Automotive</a></h2>
-      <div class="placeholder">View gallery →</div>
+      <a class="gallery-card" href="/gallery/automotive.html"
+         style="--bg:url('/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp');"
+         aria-label="View Automotive gallery">
+        <h2>Automotive</h2>
+        <div class="cta">View gallery →</div>
+      </a>
     </section>
 
     <section class="gallery-section">
-      <h2><a href="/gallery/landscape.html">Landscape</a></h2>
-      <div class="placeholder">View gallery →</div>
+      <a class="gallery-card" href="/gallery/landscape.html"
+         style="--bg:url('/images/gallery/landscape/Canyonlands-31.webp');"
+         aria-label="View Landscape gallery">
+        <h2>Landscape</h2>
+        <div class="cta">View gallery →</div>
+      </a>
     </section>
 
     <section class="gallery-section">
-      <h2><a href="/gallery/studies.html">Studies</a></h2>
-      <div class="placeholder">View gallery →</div>
+      <a class="gallery-card" href="/gallery/studies.html"
+         style="--bg:url('/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp');"
+         aria-label="View Studies gallery">
+        <h2>Studies</h2>
+        <div class="cta">View gallery →</div>
+      </a>
     </section>
+
   </main>
 
   <footer>
@@ -162,6 +221,6 @@
       Instagram — Outdoor
     </a>
   </footer>
+
 </body>
 </html>
-
