@@ -24,45 +24,53 @@
   <meta property="og:url" content="https://www.tleclair.com/commissioned-shoots.html" />
   <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Commissioned Shoots — Thomas LeClair Photography" />
+  <meta name="twitter:description" content="Understated, editorial commissioned automotive photography with curated delivery." />
+  <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
+
   <link rel="icon" href="/favicon.ico" />
-  
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://www.tleclair.com/commissioned-shoots.html#service",
-  "name": "Commissioned Automotive Photography",
-  "serviceType": "Automotive photography commission",
-  "description": "Commissioned automotive shoots with editorial direction and curated delivery, designed to hold up in print and on screen.",
-  "url": "https://www.tleclair.com/commissioned-shoots.html",
-  "provider": {
-    "@type": "Person",
-    "@id": "https://www.tleclair.com/#person"
-  },
-  "areaServed": [
-    { "@type": "Country", "name": "United States" }
-  ],
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "Local Commission",
-      "price": "500",
-      "priceCurrency": "USD",
-      "url": "https://www.tleclair.com/commissioned-shoots.html"
+
+  <!-- Service Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.tleclair.com/commissioned-shoots.html#service",
+    "name": "Commissioned Automotive Photography",
+    "serviceType": "Automotive photography commission",
+    "description": "Commissioned automotive shoots with editorial direction and curated delivery, designed to hold up in print and on screen.",
+    "url": "https://www.tleclair.com/commissioned-shoots.html",
+    "mainEntityOfPage": "https://www.tleclair.com/commissioned-shoots.html",
+    "provider": {
+      "@type": "Person",
+      "@id": "https://www.tleclair.com/#person"
     },
-    {
-      "@type": "Offer",
-      "name": "Signature Commission",
-      "url": "https://www.tleclair.com/commissioned-shoots.html"
-    },
-    {
-      "@type": "Offer",
-      "name": "Editorial Feature Commission",
-      "url": "https://www.tleclair.com/commissioned-shoots.html"
-    }
-  ]
-}
-</script>
+    "areaServed": [
+      { "@type": "Country", "name": "United States" }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Local Commission",
+        "price": "500",
+        "priceCurrency": "USD",
+        "url": "https://www.tleclair.com/commissioned-shoots.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Signature Commission",
+        "url": "https://www.tleclair.com/commissioned-shoots.html"
+      },
+      {
+        "@type": "Offer",
+        "name": "Editorial Feature Commission",
+        "url": "https://www.tleclair.com/commissioned-shoots.html"
+      }
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -111,15 +119,18 @@
       opacity: 1;
       pointer-events: auto;
 
+      /* Mobile overflow protection */
       gap: 16px;
     }
 
+    /* Desktop-only autohide enabled by JS (adds body.autohide) */
     body.autohide nav {
       transform: translateY(-110%);
       opacity: 0;
       pointer-events: none;
     }
 
+    /* Show nav when JS toggles it visible, or when user interacts */
     body.autohide nav.is-visible,
     body.autohide nav:hover,
     body.autohide nav:focus-within {
@@ -128,6 +139,7 @@
       pointer-events: auto;
     }
 
+    /* On touch / small screens: always show nav */
     @media (max-width: 768px) {
       body.autohide nav {
         transform: translateY(0) !important;
@@ -163,6 +175,7 @@
       width: auto;
     }
 
+    /* Mobile: stack logo above links so nothing clips */
     @media (max-width: 640px) {
       nav {
         flex-direction: column;
@@ -199,7 +212,7 @@
       margin-bottom:1.6rem;
       background:
         linear-gradient(180deg, rgba(0,0,0,.34), rgba(14,14,14,.92)),
-        url("/images/home-auto.webp"); /* swap to your automotive hero if desired */
+        url("/images/home-auto.webp"); /* CHANGE THIS IMAGE */
       background-size:cover;
       background-position:center;
     }
@@ -382,34 +395,6 @@
       main{ padding:6.75rem 1.1rem 3rem; }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "name": "Thomas LeClair",
-        "url": "https://www.tleclair.com/",
-        "jobTitle": ["Automotive Photographer","Automotive Journalist","Automotive Expert"],
-        "knowsAbout": ["Automotive photography","Automotive journalism","Motorsports","Performance cars","Editorial features"]
-      },
-      {
-        "@type": "Service",
-        "name": "Commissioned Automotive Photography",
-        "provider": { "@type": "Person", "name": "Thomas LeClair" },
-        "areaServed": "United States",
-        "serviceType": "Automotive photography commission",
-        "url": "https://www.tleclair.com/commissioned-shoots.html",
-        "offers": [
-          { "@type": "Offer", "name": "Local Commission", "price": "500", "priceCurrency": "USD" },
-          { "@type": "Offer", "name": "Signature Commission" },
-          { "@type": "Offer", "name": "Editorial Feature Commission" }
-        ]
-      }
-    ]
-  }
-  </script>
 </head>
 
 <body>
@@ -629,6 +614,7 @@
       const nav = document.getElementById('siteNav');
       if (!nav) return;
 
+      // Enable auto-hide only on devices with real hover + fine pointer (mouse/trackpad)
       const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       if (!canHover) return;
 
@@ -654,8 +640,10 @@
         }, 1200);
       };
 
+      // Start visible briefly, then hide
       showNav();
 
+      // Reveal when cursor is near top of window
       document.addEventListener('mousemove', (e) => {
         if (e.clientY < 90) showNav();
       });
