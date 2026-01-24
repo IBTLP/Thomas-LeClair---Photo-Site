@@ -16,6 +16,9 @@
   <!-- Swap this image to one you want as the share preview -->
   <meta property="og:image" content="https://www.tleclair.com/images/home-landscape.webp" />
 
+  <!-- Optional -->
+  <link rel="icon" href="/favicon.ico" />
+
   <style>
     :root{
       --bg:#0e0e0e;
@@ -31,7 +34,6 @@
     }
 
     *{ box-sizing:border-box; }
-
     html, body{ height:100%; }
 
     body{
@@ -45,10 +47,10 @@
     a{ color:var(--text); text-decoration:none; }
     a:hover{ opacity:.92; }
 
-    /* ---------------- NAV (Auto-hide on scroll up) ---------------- */
+    /* ---------------- NAV (visible on load, auto-hide after scroll) ---------------- */
     nav{
       position:fixed;
-      top:-96px; /* hidden by default */
+      top:0;
       left:0;
       width:100%;
       padding:1.5rem 2rem;
@@ -61,8 +63,6 @@
       transition: top 0.28s ease;
       z-index:1000;
     }
-
-    nav.show{ top:0; }
 
     nav .logo{
       font-weight:650;
@@ -101,14 +101,11 @@
     }
     nav a:hover::after{ width:100%; }
 
-    /* Highlight nothing here — this page is a “hidden gem” */
-    /* You can add .active to About link later if you want */
-
     /* ---------------- PAGE WRAP ---------------- */
     main{
       max-width:var(--max);
       margin:0 auto;
-      padding:7.25rem 1.25rem 3.25rem; /* room for hidden nav */
+      padding:7.25rem 1.25rem 3.25rem; /* room for nav */
     }
 
     /* ---------------- HERO (Arrived) ---------------- */
@@ -325,7 +322,8 @@
     }
 
     @media (max-width: 640px){
-      nav ul{ display:none; } /* clean mobile */
+      /* Keep nav from feeling "missing" on mobile: show only key links */
+      nav ul li:nth-child(-n+6){ display:none; } /* hides first 6 links */
       .btn{ width:100%; }
       .btn.secondary{ width:100%; }
       .hero-inner{ padding:2rem 1.25rem; }
@@ -363,13 +361,13 @@
   </script>
 
   <!-- If GA4 is already on all pages, don't duplicate it here -->
-
 </head>
 
 <body>
   <nav id="siteNav">
     <a class="logo" href="/index.html">Thomas LeClair</a>
 
+    <!-- NOTE: no link to this page in the nav (hidden gem) -->
     <ul>
       <li><a href="/automotive.html">Automotive</a></li>
       <li><a href="/landscape.html">Landscape</a></li>
@@ -578,7 +576,7 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Auto-hide nav: show when scrolling up, hide when scrolling down
+    // Auto-hide nav after user scrolls: hide on scroll down, show on scroll up
     const nav = document.getElementById("siteNav");
     let lastY = window.scrollY;
     let ticking = false;
@@ -587,8 +585,8 @@
       const y = window.scrollY;
       const goingUp = y < lastY;
 
-      if (y < 40) nav.classList.remove("show");
-      else nav.classList.toggle("show", goingUp);
+      if (y > 120 && !goingUp) nav.style.top = "-96px";
+      else nav.style.top = "0";
 
       lastY = y;
       ticking = false;
@@ -599,12 +597,6 @@
         window.requestAnimationFrame(onScroll);
         ticking = true;
       }
-    });
-
-    // Show nav briefly on load (subtle)
-    window.addEventListener("load", () => {
-      setTimeout(() => nav.classList.add("show"), 120);
-      setTimeout(() => nav.classList.remove("show"), 1200);
     });
   </script>
 </body>
