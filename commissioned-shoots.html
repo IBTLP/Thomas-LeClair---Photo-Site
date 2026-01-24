@@ -50,23 +50,94 @@
     "areaServed": [
       { "@type": "Country", "name": "United States" }
     ],
-    "offers": [
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Commission Options",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Local Commission",
+          "price": "500",
+          "priceCurrency": "USD",
+          "url": "https://www.tleclair.com/commissioned-shoots.html"
+        },
+        {
+          "@type": "Offer",
+          "name": "Signature Commission",
+          "url": "https://www.tleclair.com/commissioned-shoots.html"
+        },
+        {
+          "@type": "Offer",
+          "name": "Editorial Feature Commission",
+          "url": "https://www.tleclair.com/commissioned-shoots.html"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://www.tleclair.com/commissioned-shoots.html#faq",
+    "mainEntity": [
       {
-        "@type": "Offer",
-        "name": "Local Commission",
-        "price": "500",
-        "priceCurrency": "USD",
-        "url": "https://www.tleclair.com/commissioned-shoots.html"
+        "@type": "Question",
+        "name": "How do I book a commission?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with a short message that includes the car, your city, and what you want the images used for. I’ll reply with a recommended option, scope, and next steps."
+        }
       },
       {
-        "@type": "Offer",
-        "name": "Signature Commission",
-        "url": "https://www.tleclair.com/commissioned-shoots.html"
+        "@type": "Question",
+        "name": "Do you provide raw files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Deliverables are a curated set of finished images—edited for consistency and delivered ready for print and web."
+        }
       },
       {
-        "@type": "Offer",
-        "name": "Editorial Feature Commission",
-        "url": "https://www.tleclair.com/commissioned-shoots.html"
+        "@type": "Question",
+        "name": "How many final images will I receive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enough to match the scope. Local is tight and curated, Signature adds variety and coverage, and Editorial is feature-level depth built around the story."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What’s the turnaround time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Typically 1–3 weeks depending on scope and season. If you have a deadline, include it in your initial request."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you travel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes—Editorial Feature commissions are available nationwide. Travel is scoped per project."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if weather doesn’t cooperate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We adjust timing or reschedule. The goal is the images—not forcing a bad day."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you help with locations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. I’ll recommend locations that match the look and avoid visual clutter."
+        }
       }
     ]
   }
@@ -114,23 +185,18 @@
       transition: transform 0.35s ease, opacity 0.35s ease;
       z-index: 1000;
 
-      /* Default visible */
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
-
-      /* Mobile overflow protection */
       gap: 16px;
     }
 
-    /* Desktop-only autohide enabled by JS (adds body.autohide) */
     body.autohide nav {
       transform: translateY(-110%);
       opacity: 0;
       pointer-events: none;
     }
 
-    /* Show nav when JS toggles it visible, or when user interacts */
     body.autohide nav.is-visible,
     body.autohide nav:hover,
     body.autohide nav:focus-within {
@@ -139,7 +205,6 @@
       pointer-events: auto;
     }
 
-    /* On touch / small screens: always show nav */
     @media (max-width: 768px) {
       body.autohide nav {
         transform: translateY(0) !important;
@@ -175,7 +240,6 @@
       width: auto;
     }
 
-    /* Mobile: stack logo above links so nothing clips */
     @media (max-width: 640px) {
       nav {
         flex-direction: column;
@@ -201,7 +265,7 @@
     main{
       max-width:var(--max);
       margin:0 auto;
-      padding:7.25rem 1.25rem 3.25rem; /* room for nav */
+      padding:7.25rem 1.25rem 3.25rem;
     }
 
     /* ---------------- HERO ---------------- */
@@ -348,6 +412,60 @@
 
     .bestfor{ margin:.8rem 0 0; color:var(--muted2); font-size:.98rem; }
 
+    /* ---------------- FAQ (Accordion) ---------------- */
+    .faq{
+      background:linear-gradient(180deg, var(--panel), var(--panel2));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:1.25rem 1.25rem;
+    }
+
+    .faq details{
+      border-top:1px solid rgba(255,255,255,.06);
+      padding:.85rem 0;
+    }
+    .faq details:first-of-type{ border-top:none; padding-top:0; }
+
+    .faq summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-weight:650;
+      color:rgba(245,245,245,.92);
+    }
+
+    .faq summary::-webkit-details-marker{ display:none; }
+
+    .faq summary::after{
+      content:"+";
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      color:rgba(245,245,245,.85);
+      background:rgba(255,255,255,.03);
+      flex:0 0 auto;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .faq details[open] summary::after{
+      content:"–";
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.22);
+    }
+
+    .faq .answer{
+      margin:.55rem 0 0;
+      color:var(--muted);
+      max-width:80ch;
+    }
+
     /* ---------------- REQUEST CTA ---------------- */
     .cta{
       display:flex;
@@ -364,24 +482,22 @@
     .cta strong{ font-size:1.05rem; }
     .cta p{ margin:.35rem 0 0; color:var(--muted); max-width:70ch; }
 
-    /* ---------------- FOOTER ---------------- */
+    /* ---------------- FOOTER (MATCH ABOUT) ---------------- */
     footer{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:1.25rem 1.25rem 2.5rem;
-      color:var(--muted2);
+      text-align:center;
+      padding:2rem 1rem;
+      font-size:0.8rem;
+      color:#b8b8b8;
       border-top:1px solid rgba(255,255,255,.06);
     }
 
-    footer .footlinks{
-      display:flex;
-      flex-wrap:wrap;
-      gap:1rem;
-      margin-top:.6rem;
+    footer a{
+      color:#b8b8b8;
+      text-decoration:none;
+      margin:0 0.5rem;
     }
 
-    footer a{ color:var(--muted2); }
-    footer a:hover{ color:var(--text); }
+    footer a:hover{ color:#e0e0e0; }
 
     @media (min-width: 860px){
       .grid{ grid-template-columns: 1fr 1fr; }
@@ -523,6 +639,62 @@
 
     <div class="rule"></div>
 
+    <!-- FAQ (Option A) -->
+    <section class="faq" id="faq" aria-label="Commission FAQ">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>How do I book a commission?</summary>
+        <p class="answer">
+          Start with a short message (car, city, and what you want the images used for). I’ll recommend the best option and confirm scope before booking.
+        </p>
+      </details>
+
+      <details>
+        <summary>Do you provide raw files?</summary>
+        <p class="answer">
+          No. Deliverables are a curated set of finished images—edited for consistency and delivered ready for print and web.
+        </p>
+      </details>
+
+      <details>
+        <summary>How many final images will I receive?</summary>
+        <p class="answer">
+          Enough to match the scope. Local is tight and curated, Signature adds variety and coverage, and Editorial is feature-level depth built around the story.
+        </p>
+      </details>
+
+      <details>
+        <summary>What’s the turnaround time?</summary>
+        <p class="answer">
+          Typically 1–3 weeks depending on scope and season. If you have a deadline, include it in your initial request.
+        </p>
+      </details>
+
+      <details>
+        <summary>Do you travel?</summary>
+        <p class="answer">
+          Yes—Editorial Feature commissions are available nationwide. Travel is scoped per project.
+        </p>
+      </details>
+
+      <details>
+        <summary>What happens if weather doesn’t cooperate?</summary>
+        <p class="answer">
+          We adjust timing or reschedule. The goal is the images—not forcing a bad day.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can you help with locations?</summary>
+        <p class="answer">
+          Yes. I’ll recommend locations that match the look and avoid visual clutter.
+        </p>
+      </details>
+    </section>
+
+    <div class="rule"></div>
+
     <section class="panel">
       <h2>Owner Prep Guide</h2>
       <p class="muted" style="margin:.25rem 0 0; max-width:78ch;">
@@ -596,25 +768,19 @@
   </main>
 
   <footer>
-    <div>© <span id="year"></span> Thomas LeClair Photography</div>
-    <div class="footlinks">
-      <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/prints.html">Prints</a>
-    </div>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
+    <span>·</span>
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
+    <span>·</span>
+    <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </footer>
 
   <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
     // HOME nav behavior (auto-hide on hover devices)
     (() => {
       const nav = document.getElementById('siteNav');
       if (!nav) return;
 
-      // Enable auto-hide only on devices with real hover + fine pointer (mouse/trackpad)
       const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       if (!canHover) return;
 
@@ -640,10 +806,8 @@
         }, 1200);
       };
 
-      // Start visible briefly, then hide
       showNav();
 
-      // Reveal when cursor is near top of window
       document.addEventListener('mousemove', (e) => {
         if (e.clientY < 90) showNav();
       });
