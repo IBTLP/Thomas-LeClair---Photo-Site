@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -13,10 +22,8 @@
   <meta property="og:description" content="A tailored, editorial-style experience designed to create finished images—clean, intentional, and built to hold up in print or on screen." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.tleclair.com/commissioned-shoots.html" />
-  <!-- Swap this image to one you want as the share preview -->
-  <meta property="og:image" content="https://www.tleclair.com/images/home-landscape.webp" />
+  <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
-  <!-- Optional -->
   <link rel="icon" href="/favicon.ico" />
 
   <style>
@@ -28,7 +35,6 @@
       --muted:rgba(245,245,245,.72);
       --muted2:rgba(245,245,245,.58);
       --line:rgba(255,255,255,.12);
-      --soft:rgba(255,255,255,.06);
       --max:980px;
       --radius:18px;
     }
@@ -47,59 +53,98 @@
     a{ color:var(--text); text-decoration:none; }
     a:hover{ opacity:.92; }
 
-    /* ---------------- NAV (visible on load, auto-hide after scroll) ---------------- */
-    nav{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      padding:1.5rem 2rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:rgba(14,14,14,0.85);
+    /* ================= NAV (AUTO-HIDE) — MATCH HOME ================= */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(14,14,14,0.85);
       backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      transition: top 0.28s ease;
-      z-index:1000;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      z-index: 1000;
+
+      /* Default visible */
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+
+      gap: 16px;
     }
 
-    nav .logo{
-      font-weight:650;
-      letter-spacing:.2px;
-      color:var(--text);
-      white-space:nowrap;
+    body.autohide nav {
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
     }
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:1.5rem;
-      margin:0;
-      padding:0;
-      align-items:center;
+    body.autohide nav.is-visible,
+    body.autohide nav:hover,
+    body.autohide nav:focus-within {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    nav a{
-      color:rgba(245,245,245,.78);
-      font-size:0.95rem;
-      letter-spacing:.2px;
-      position:relative;
+    @media (max-width: 768px) {
+      body.autohide nav {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
     }
 
-    nav a:hover{ color:var(--text); }
-
-    nav a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-6px;
-      width:0%;
-      height:1px;
-      background:rgba(255,255,255,.38);
-      transition: width .25s ease;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
-    nav a:hover::after{ width:100%; }
+
+    nav a {
+      text-decoration: none;
+      color: #f5f5f5;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+    nav a:hover { opacity: 1; }
+
+    .brand { flex: 0 1 auto; }
+    .brand img {
+      height: 50px;
+      opacity: 0.9;
+      max-width: 240px;
+      width: auto;
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 1rem;
+      }
+      .brand img {
+        max-width: 280px;
+        height: 46px;
+      }
+      nav ul {
+        width: 100%;
+        justify-content: center;
+        gap: 1.0rem;
+      }
+      nav a {
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+    }
 
     /* ---------------- PAGE WRAP ---------------- */
     main{
@@ -108,7 +153,7 @@
       padding:7.25rem 1.25rem 3.25rem; /* room for nav */
     }
 
-    /* ---------------- HERO (Arrived) ---------------- */
+    /* ---------------- HERO ---------------- */
     .hero{
       border:1px solid rgba(255,255,255,.10);
       border-radius:var(--radius);
@@ -116,15 +161,12 @@
       margin-bottom:1.6rem;
       background:
         linear-gradient(180deg, rgba(0,0,0,.34), rgba(14,14,14,.92)),
-        /* Replace with a hero image you love */
-        url("/images/home-auto.webp");
+        url("/images/home-auto.webp"); /* swap to your automotive hero if desired */
       background-size:cover;
       background-position:center;
     }
 
-    .hero-inner{
-      padding:2.35rem 1.65rem;
-    }
+    .hero-inner{ padding:2.35rem 1.65rem; }
 
     .kicker{
       margin:0 0 .65rem;
@@ -207,25 +249,13 @@
       padding:1.25rem 1.25rem;
     }
 
-    h2{
-      margin:0 0 .65rem;
-      font-size:1.4rem;
-      letter-spacing:-.01em;
-    }
-
-    h3{
-      margin:0 0 .35rem;
-      font-size:1.15rem;
-      letter-spacing:-.01em;
-    }
+    h2{ margin:0 0 .65rem; font-size:1.4rem; letter-spacing:-.01em; }
+    h3{ margin:0 0 .35rem; font-size:1.15rem; letter-spacing:-.01em; }
 
     .muted{ color:var(--muted); }
     .muted2{ color:var(--muted2); }
 
-    ul{
-      margin:.55rem 0 0 1.15rem;
-      color:var(--muted);
-    }
+    ul{ margin:.55rem 0 0 1.15rem; color:var(--muted); }
     li{ margin:.35rem 0; }
 
     .rule{
@@ -248,11 +278,7 @@
       background:rgba(255,255,255,.03);
     }
 
-    .tagline{
-      margin:.2rem 0 0;
-      color:var(--muted2);
-      max-width: 78ch;
-    }
+    .tagline{ margin:.2rem 0 0; color:var(--muted2); max-width: 78ch; }
 
     .price{
       display:inline-flex;
@@ -269,11 +295,7 @@
       font-size:.95rem;
     }
 
-    .bestfor{
-      margin:.8rem 0 0;
-      color:var(--muted2);
-      font-size:.98rem;
-    }
+    .bestfor{ margin:.8rem 0 0; color:var(--muted2); font-size:.98rem; }
 
     /* ---------------- REQUEST CTA ---------------- */
     .cta{
@@ -310,28 +332,19 @@
     footer a{ color:var(--muted2); }
     footer a:hover{ color:var(--text); }
 
-    /* ---------------- RESPONSIVE ---------------- */
     @media (min-width: 860px){
       .grid{ grid-template-columns: 1fr 1fr; }
       .grid .card:last-child{ grid-column: 1 / -1; }
     }
 
-    @media (max-width: 760px){
-      nav{ padding:1.25rem 1.25rem; }
-      nav ul{ gap:1rem; }
-    }
-
     @media (max-width: 640px){
-      /* Keep nav from feeling "missing" on mobile: show only key links */
-      nav ul li:nth-child(-n+6){ display:none; } /* hides first 6 links */
       .btn{ width:100%; }
       .btn.secondary{ width:100%; }
       .hero-inner{ padding:2rem 1.25rem; }
-      main{ padding:6.5rem 1.1rem 3rem; }
+      main{ padding:6.75rem 1.1rem 3rem; }
     }
   </style>
 
-  <!-- Structured Data (optional but helpful) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -359,29 +372,26 @@
     ]
   }
   </script>
-
-  <!-- If GA4 is already on all pages, don't duplicate it here -->
 </head>
 
 <body>
   <nav id="siteNav">
-    <a class="logo" href="/index.html">Thomas LeClair</a>
-
-    <!-- NOTE: no link to this page in the nav (hidden gem) -->
+    <div class="brand">
+      <a href="/">
+        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+      </a>
+    </div>
     <ul>
-      <li><a href="/automotive.html">Automotive</a></li>
-      <li><a href="/landscape.html">Landscape</a></li>
-      <li><a href="/wildlife.html">Wildlife</a></li>
-      <li><a href="/studies.html">Studies</a></li>
-      <li><a href="/editorial.html">Editorial</a></li>
-      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/editorial/">Editorial</a></li>
       <li><a href="/about.html">About</a></li>
+      <li><a href="/prints.html">Prints</a></li>
       <li><a href="/contact.html">Contact</a></li>
     </ul>
   </nav>
 
   <main>
-    <!-- Hero (swap background image in CSS) -->
     <section class="hero" aria-label="Commissioned shoots hero">
       <div class="hero-inner">
         <p class="kicker">Commissioned Shoots</p>
@@ -393,7 +403,7 @@
         <div class="hero-meta">
           <span class="pill">Limited commissions</span>
           <span class="pill">Curated delivery</span>
-          <span class="pill">Santa Clara, Utah</span>
+          <span class="pill">Southern Utah</span>
           <span class="pill">Available nationwide</span>
         </div>
 
@@ -440,7 +450,7 @@
           <p class="muted"><strong>Includes:</strong></p>
           <ul>
             <li>Quick consult to plan location and style</li>
-            <li>Up to <strong>60 minutes</strong> of shooting within <strong>30 minutes of Santa Clara, Utah</strong></li>
+            <li>Up to <strong>60 minutes</strong> of shooting within <strong>30 minutes</strong> of my base</li>
             <li>A curated gallery of <strong>fully edited final images</strong> delivered ready to share or print</li>
             <li>Optional upgrades available (including <strong>gallery-quality metal prints</strong> by request)</li>
           </ul>
@@ -576,28 +586,47 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Auto-hide nav after user scrolls: hide on scroll down, show on scroll up
-    const nav = document.getElementById("siteNav");
-    let lastY = window.scrollY;
-    let ticking = false;
+    // HOME nav behavior (auto-hide on hover devices)
+    (() => {
+      const nav = document.getElementById('siteNav');
+      if (!nav) return;
 
-    function onScroll(){
-      const y = window.scrollY;
-      const goingUp = y < lastY;
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (!canHover) return;
 
-      if (y > 120 && !goingUp) nav.style.top = "-96px";
-      else nav.style.top = "0";
+      document.body.classList.add('autohide');
 
-      lastY = y;
-      ticking = false;
-    }
+      let hideTimer = null;
+      const showNav = () => {
+        nav.classList.add('is-visible');
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+            nav.classList.remove('is-visible');
+          }
+        }, 1200);
+      };
 
-    window.addEventListener("scroll", () => {
-      if (!ticking){
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
-      }
-    });
+      const hideNavSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+            nav.classList.remove('is-visible');
+          }
+        }, 1200);
+      };
+
+      showNav();
+
+      document.addEventListener('mousemove', (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
+      nav.addEventListener('mouseenter', showNav);
+      nav.addEventListener('mouseleave', hideNavSoon);
+      nav.addEventListener('focusin', showNav);
+      nav.addEventListener('focusout', hideNavSoon);
+    })();
   </script>
 </body>
 </html>
