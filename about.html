@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
 
-  gtag('config', 'G-GYPE7JD4H9');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About — Thomas LeClair Photography</title>
@@ -95,21 +95,20 @@
       text-align: center;
     }
 
-.about-copy a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.35);
-  text-underline-offset: 3px;
-}
+    .about-copy a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.35);
+      text-underline-offset: 3px;
+    }
 
-.about-copy a:hover {
-  text-decoration-color: rgba(255,255,255,0.6);
-}
+    .about-copy a:hover {
+      text-decoration-color: rgba(255,255,255,0.6);
+    }
 
-.about-copy a:visited {
-  color: inherit;
-}
-
+    .about-copy a:visited {
+      color: inherit;
+    }
 
     .divider {
       width: 60px;
@@ -118,25 +117,55 @@
       margin: 3rem auto;
     }
 
+    /* ---------------- CTA (UPDATED) ---------------- */
+
     .cta {
       text-align: center;
       margin-top: 3rem;
     }
 
-    .cta a {
-      display: inline-block;
-      padding: 0.75rem 1.75rem;
-      background: #f5f5f5;
-      color: #0e0e0e;
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      opacity: 0.9;
-      transition: opacity 0.25s ease;
+    .cta-grid{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:0.75rem;
     }
 
-    .cta a:hover {
-      opacity: 1;
+    .cta a{
+      display:inline-block;
+      padding:0.75rem 1.75rem;
+      font-size:0.85rem;
+      letter-spacing:0.08em;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      opacity:0.92;
+    }
+
+    .cta a:hover{
+      opacity:1;
+      transform: translateY(-1px);
+    }
+
+    /* Primary = Commissioned Shoots (premium) */
+    .cta .btn-primary{
+      background:#f5f5f5;
+      color:#0e0e0e;
+      text-decoration:none;
+    }
+
+    /* Secondary = Contact (quiet) */
+    .cta .btn-secondary{
+      background:transparent;
+      color:#f5f5f5;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,0.22);
+    }
+
+    .cta-note{
+      margin:1rem auto 0;
+      max-width:70ch;
+      color:rgba(245,245,245,0.65);
+      font-size:0.85rem;
+      line-height:1.5;
     }
 
     footer {
@@ -179,51 +208,57 @@
   <main>
     <h1>About</h1>
 
-<div class="about-copy">
-  <p>
-    I’m Thomas LeClair — a photographer drawn to light, contrast, and the quiet
-    moments that often go unnoticed. My work spans automotive, landscape, and
-    wildlife photography, but the common thread is intention: understanding the
-    subject, the environment, and the moment before pressing the shutter.
-  </p>
+    <div class="about-copy">
+      <p>
+        I’m Thomas LeClair — a photographer drawn to light, contrast, and the quiet
+        moments that often go unnoticed. My work spans automotive, landscape, and
+        wildlife photography, but the common thread is intention: understanding the
+        subject, the environment, and the moment before pressing the shutter.
+      </p>
 
-  <p>
-    My background spans motorsports, automotive manufacturing, and editorial
-    photography. I’ve worked alongside performance and racing organizations,
-    contributed to marketing and content creation efforts, and photographed
-    vehicles and stories that have appeared in print and long-form features.
-    That path — from engineering and trackside environments to visual
-    storytelling — has shaped a disciplined, editorial approach to photography
-    that values preparation, context, and authenticity.
-  </p>
+      <p>
+        My background spans motorsports, automotive manufacturing, and editorial
+        photography. I’ve worked alongside performance and racing organizations,
+        contributed to marketing and content creation efforts, and photographed
+        vehicles and stories that have appeared in print and long-form features.
+        That path — from engineering and trackside environments to visual
+        storytelling — has shaped a disciplined, editorial approach to photography
+        that values preparation, context, and authenticity.
+      </p>
 
-  <p>
-    This perspective has also led to long-form conversations about process and
-    craft, including a recorded interview with
-    <a href="https://carsyeah.com/ourportfolio/2054-thomas-leclair/"
-       target="_blank"
-       rel="noopener noreferrer">
-      Cars Yeah
-    </a>,
-    where I discuss automotive photography, creative discipline, and the role
-    of storytelling in visual work.
-  </p>
+      <p>
+        This perspective has also led to long-form conversations about process and
+        craft, including a recorded interview with
+        <a href="https://carsyeah.com/ourportfolio/2054-thomas-leclair/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Cars Yeah
+        </a>,
+        where I discuss automotive photography, creative discipline, and the role
+        of storytelling in visual work.
+      </p>
 
-  <p>
-    Based in southern Utah, I work throughout the West and travel for commissioned
-    assignments. Whether photographing machines built for motion, landscapes
-    shaped by time, or wildlife on their own terms, I aim to produce work that
-    holds up — visually and materially — over the long term. All fine art prints
-    are produced individually on metal, with decisions around size, surface, and
-    mounting made specifically for each piece and the space it will live in.
-  </p>
-</div>
-
+      <p>
+        Based in southern Utah, I work throughout the West and travel for commissioned
+        assignments. Whether photographing machines built for motion, landscapes
+        shaped by time, or wildlife on their own terms, I aim to produce work that
+        holds up — visually and materially — over the long term. All fine art prints
+        are produced individually on metal, with decisions around size, surface, and
+        mounting made specifically for each piece and the space it will live in.
+      </p>
+    </div>
 
     <div class="divider"></div>
 
     <div class="cta">
-      <a href="/contact.html">Start a Conversation</a>
+      <div class="cta-grid">
+        <a class="btn-primary" href="/commissioned-shoots.html">View Commissioned Shoots</a>
+        <a class="btn-secondary" href="/contact.html">Start a Conversation</a>
+      </div>
+
+      <div class="cta-note">
+        Commissioned shoots are limited so each project gets full attention—from planning to final delivery.
+      </div>
     </div>
   </main>
 
