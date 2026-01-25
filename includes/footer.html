@@ -1,6 +1,16 @@
-<footer class="site-footer" role="contentinfo" aria-label="Site footer">
+<footer class="site-footer" aria-label="Site footer">
   <div class="footer-inner">
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="/editorial/">Editorial</a>
+      <span class="dot">·</span>
+      <a href="/prints.html">Prints</a>
+      <span class="dot">·</span>
+      <a href="/commissioned.html">Commissioned</a>
+      <span class="dot">·</span>
+      <a href="/contact.html">Contact</a>
+    </nav>
+
+    <div class="footer-social" aria-label="Social links">
       <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
         Instagram — Motoring
       </a>
@@ -13,51 +23,85 @@
         LinkedIn
       </a>
     </div>
+
+    <div class="footer-meta">
+      © <span id="footerYear"></span> Thomas LeClair Photography
+    </div>
   </div>
 </footer>
 
 <style>
-  .site-footer{
-    padding: 2rem 1rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #b8b8b8;
+  :root{
+    --footer-text: rgba(245,245,245,.68);
+    --footer-text-strong: rgba(245,245,245,.82);
+    --footer-hair: rgba(255,255,255,.10);
+  }
 
-    /* gradient hairline */
+  .site-footer{
+    padding: 2.25rem 0 2rem;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--footer-text);
+
+    /* gradient hairline (matches nav concept) */
     border-top: 1px solid transparent;
     border-image: linear-gradient(
       90deg,
       rgba(255,255,255,0),
-      rgba(255,255,255,.10),
+      var(--footer-hair),
       rgba(255,255,255,0)
     ) 1;
   }
 
   .site-footer .footer-inner{
-    width: min(1040px, calc(100% - 64px));
+    width: min(1040px, calc(100% - 84px));
     margin: 0 auto;
+    display: grid;
+    gap: 12px;
+    justify-items: center;
   }
 
   .site-footer a{
-    color: #b8b8b8;
+    color: var(--footer-text);
     text-decoration: none;
-    margin: 0 0.4rem;
-    opacity: 0.92;
+    opacity: .95;
     transition: opacity 160ms ease, color 160ms ease;
   }
-
   .site-footer a:hover{
-    color: #e0e0e0;
     opacity: 1;
+    color: var(--footer-text-strong);
   }
 
   .site-footer .dot{
-    opacity: 0.55;
-    margin: 0 0.15rem;
+    opacity: .45;
+    margin: 0 .35rem;
+  }
+
+  .footer-links,
+  .footer-social{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .35rem;
+    line-height: 1.7;
+  }
+
+  .footer-meta{
+    opacity: .55;
+    letter-spacing: .02em;
   }
 
   @media (max-width: 640px){
-    .site-footer .footer-inner{ width: calc(100% - 28px); }
-    .site-footer a{ margin: 0 0.25rem; }
+    .site-footer .footer-inner{
+      width: calc(100% - 32px);
+    }
   }
 </style>
+
+<script>
+  (function(){
+    var y = document.getElementById('footerYear');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+</script>
