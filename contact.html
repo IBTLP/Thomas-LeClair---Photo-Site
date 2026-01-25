@@ -38,7 +38,7 @@
       --text:#f5f5f5;
     }
 
-    body {
+    body{
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
@@ -46,13 +46,10 @@
       min-height: 100vh;
     }
 
-    /* NOTE:
-      Nav + Footer now come from /includes/Nav.html and /includes/Footer.html
-      So we REMOVE nav/footer styling from this page.
-    */
+    /* Nav + Footer come from includes, so this page only styles its own content */
 
-    main {
-      padding-top: 10.5rem; /* keeps spacing under fixed global nav */
+    main{
+      padding-top: 10.5rem; /* space under fixed global nav */
       max-width: 700px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -61,37 +58,37 @@
     }
 
     @media (max-width: 640px){
-      main { padding-top: 11.25rem; }
+      main{ padding-top: 11.25rem; }
     }
 
-    h1 {
+    h1{
       font-weight: 300;
       letter-spacing: 0.06em;
       text-align: center;
       margin-bottom: 1rem;
     }
 
-    p.intro {
+    p.intro{
       text-align: center;
       opacity: 0.75;
       margin-bottom: 3rem;
       line-height: 1.6;
     }
 
-    form {
+    form{
       display: grid;
       gap: 1.5rem;
       margin-top: 0;
     }
 
-    label {
+    label{
       font-size: 0.85rem;
       opacity: 0.8;
       margin-bottom: 0.25rem;
       display: block;
     }
 
-    input, select, textarea {
+    input, select, textarea{
       width: 100%;
       padding: 0.75rem;
       background: #151515;
@@ -107,12 +104,12 @@
       border-color: rgba(245,245,245,0.45);
     }
 
-    textarea {
+    textarea{
       resize: vertical;
       min-height: 140px;
     }
 
-    button {
+    button{
       margin-top: 0.25rem;
       padding: 0.95rem;
       background: #f5f5f5;
@@ -123,7 +120,8 @@
       cursor: pointer;
       border-radius: 10px;
     }
-    button:hover { opacity: 0.9; }
+
+    button:hover{ opacity: 0.9; }
   </style>
 </head>
 
@@ -182,6 +180,7 @@
   <!-- GLOBAL FOOTER INCLUDE -->
   <div id="site-footer"></div>
 
+  <!-- Include loader (case sensitive paths) -->
   <script>
     async function includeHTML(id, url) {
       const el = document.getElementById(id);
@@ -195,10 +194,12 @@
       el.innerHTML = await res.text();
     }
 
-    includeHTML("site-nav", "/includes/Nav.html");
-    includeHTML("site-footer", "/includes/footer.html");
+    // IMPORTANT: case sensitive on GitHub Pages
+    includeHTML("site-nav", "/includes/Nav.html");      // Uppercase N
+    includeHTML("site-footer", "/includes/footer.html"); // all lowercase
   </script>
 
+  <!-- Formspree submit + redirect -->
   <script>
     (function () {
       const form = document.getElementById('contactForm');
