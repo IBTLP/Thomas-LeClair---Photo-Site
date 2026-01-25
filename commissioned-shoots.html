@@ -31,6 +31,8 @@
   <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
   <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#0e0e0e" />
+  <meta name="robots" content="index,follow" />
 
   <!-- Service Schema (JSON-LD) -->
   <script type="application/ld+json">
@@ -54,28 +56,10 @@
       "@type": "OfferCatalog",
       "name": "Commission Options",
       "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "One Perfect Frame",
-          "price": "135",
-          "priceCurrency": "USD",
-          "url": "https://www.tleclair.com/commissioned-shoots.html"
-        },
-        {
-          "@type": "Offer",
-          "name": "Essential Commission",
-          "url": "https://www.tleclair.com/commissioned-shoots.html"
-        },
-        {
-          "@type": "Offer",
-          "name": "Signature Commission",
-          "url": "https://www.tleclair.com/commissioned-shoots.html"
-        },
-        {
-          "@type": "Offer",
-          "name": "Château Commission",
-          "url": "https://www.tleclair.com/commissioned-shoots.html"
-        }
+        { "@type": "Offer", "name": "One Perfect Frame", "price": "135", "priceCurrency": "USD", "url": "https://www.tleclair.com/commissioned-shoots.html" },
+        { "@type": "Offer", "name": "Essential Commission", "url": "https://www.tleclair.com/commissioned-shoots.html" },
+        { "@type": "Offer", "name": "Signature Commission", "url": "https://www.tleclair.com/commissioned-shoots.html" },
+        { "@type": "Offer", "name": "Château Commission", "url": "https://www.tleclair.com/commissioned-shoots.html" }
       ]
     }
   }
@@ -167,6 +151,7 @@
       --line:rgba(255,255,255,.12);
       --max:980px;
       --radius:18px;
+      --shadow: 0 18px 45px rgba(0,0,0,0.35);
     }
 
     *{ box-sizing:border-box; }
@@ -286,10 +271,11 @@
       border:1px solid rgba(255,255,255,.10);
       border-radius:var(--radius);
       overflow:hidden;
-      margin-bottom:1.6rem;
+      margin-bottom:1.25rem;
+      box-shadow: var(--shadow);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.34), rgba(14,14,14,.92)),
-        url("/images/home-auto.webp"); /* CHANGE THIS IMAGE */
+        linear-gradient(180deg, rgba(0,0,0,.32), rgba(14,14,14,.92)),
+        url("/images/home-auto.webp");
       background-size:cover;
       background-position:center;
     }
@@ -334,39 +320,49 @@
       background:rgba(255,255,255,.03);
     }
 
+    /* --- Tasteful CTA links (NOT buttons) --- */
     .hero-actions{
       margin-top:1.25rem;
       display:flex;
-      gap:.7rem;
+      gap:1.25rem;
       flex-wrap:wrap;
       align-items:center;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.82rem;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:.72rem 1.05rem;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:650;
-      letter-spacing:.2px;
-      min-width: 190px;
-      text-align:center;
-      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    .cta-link{
+      position:relative;
+      display:inline-block;
+      color:rgba(245,245,245,.92);
+      padding:.15rem 0;
+      opacity:.92;
     }
-    .btn:hover{
-      border-color:rgba(255,255,255,.30);
-      background:rgba(255,255,255,.08);
-      transform: translateY(-1px);
+    .cta-link::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-2px;
+      width:100%;
+      height:1px;
+      background:rgba(245,245,245,.42);
+      transform: scaleX(.28);
+      transform-origin:left;
+      transition: transform 260ms ease, background 260ms ease, opacity 260ms ease;
+      opacity:.9;
     }
-
-    .btn.secondary{
-      background:transparent;
-      border-color:rgba(255,255,255,.12);
-      min-width: 150px;
+    @media (hover:hover){
+      .cta-link:hover{ opacity:1; }
+      .cta-link:hover::after{
+        transform: scaleX(1);
+        background:rgba(245,245,245,.72);
+      }
+    }
+    .cta-link:focus-visible{
+      outline:2px solid rgba(245,245,245,.55);
+      outline-offset:4px;
+      border-radius:2px;
     }
 
     /* ---------------- SECTIONS / PANELS ---------------- */
@@ -375,6 +371,7 @@
       border:1px solid rgba(255,255,255,.08);
       border-radius:var(--radius);
       padding:1.25rem 1.25rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
     }
 
     h2{ margin:0 0 .65rem; font-size:1.4rem; letter-spacing:-.01em; }
@@ -392,6 +389,33 @@
       margin:1.25rem 0;
     }
 
+    /* ---------------- PROCESS ---------------- */
+    .process{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: .9rem;
+    }
+    .step{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      padding: 1rem 1rem;
+    }
+    .step .mini{
+      display:block;
+      font-size:.76rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(245,245,245,.62);
+      margin-bottom:.35rem;
+    }
+    .step p{ margin:.2rem 0 0; color:var(--muted); }
+
+    @media (max-width: 860px){
+      .process{ grid-template-columns: 1fr; }
+    }
+
     /* ---------------- CARDS ---------------- */
     .grid{
       display:grid;
@@ -405,28 +429,30 @@
       padding:1.15rem 1.15rem;
       background:rgba(255,255,255,.03);
       position:relative;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.24);
     }
 
     .tagline{ margin:.2rem 0 0; color:var(--muted2); max-width: 78ch; }
 
     .price{
       display:inline-flex;
-      align-items:center;
-      gap:.45rem;
+      align-items:baseline;
+      gap:.55rem;
       margin:.45rem 0 0;
-      font-weight:700;
+      font-weight:750;
       color:var(--text);
+      letter-spacing:.2px;
     }
 
     .price span{
       font-weight:500;
       color:var(--muted2);
       font-size:.95rem;
+      letter-spacing:0;
     }
 
     .bestfor{ margin:.8rem 0 0; color:var(--muted2); font-size:.98rem; }
 
-    /* NEW: small badge for featured card */
     .badge{
       position:absolute;
       top:14px;
@@ -440,12 +466,27 @@
       letter-spacing:.02em;
     }
 
+    /* micro-CTA inside cards */
+    .card-actions{
+      margin-top: .95rem;
+      display:flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items:center;
+      font-size:.82rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color: rgba(245,245,245,.86);
+    }
+    .card-actions .cta-link{ opacity:.9; }
+
     /* ---------------- FAQ (Accordion) ---------------- */
     .faq{
       background:linear-gradient(180deg, var(--panel), var(--panel2));
       border:1px solid rgba(255,255,255,.08);
       border-radius:var(--radius);
       padding:1.25rem 1.25rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
     }
 
     .faq details{
@@ -505,12 +546,13 @@
       border:1px solid rgba(255,255,255,.14);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       padding:1.1rem 1.1rem;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.28);
     }
 
     .cta strong{ font-size:1.05rem; }
     .cta p{ margin:.35rem 0 0; color:var(--muted); max-width:70ch; }
 
-    /* ---------------- FOOTER (MATCH ABOUT) ---------------- */
+    /* ---------------- FOOTER ---------------- */
     footer{
       text-align:center;
       padding:2rem 1rem;
@@ -533,10 +575,9 @@
     }
 
     @media (max-width: 640px){
-      .btn{ width:100%; }
-      .btn.secondary{ width:100%; }
       .hero-inner{ padding:2rem 1.25rem; }
       main{ padding:6.75rem 1.1rem 3rem; }
+      .hero-actions{ gap: .9rem; }
     }
   </style>
 </head>
@@ -548,14 +589,15 @@
         <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
       </a>
     </div>
-<ul>
-  <li><a href="/editorial/">Editorial</a></li>
-  <li><a href="/gallery/">Gallery</a></li>
-  <li><a href="/commissioned/">Commissioned</a></li>
-  <li><a href="/prints.html">Prints</a></li>
-  <li><a href="/about.html">About</a></li>
-  <li><a href="/contact.html">Contact</a></li>
-</ul>
+    <ul>
+      <li><a href="/editorial/">Editorial</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <!-- short nav path (create /commissioned/index.html redirect) -->
+      <li><a href="/commissioned/">Commissioned</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
   </nav>
 
   <main>
@@ -575,44 +617,67 @@
         </div>
 
         <div class="hero-actions">
-          <a class="btn" href="#request">Request a Commission</a>
-          <a class="btn secondary" href="/about.html">About Thomas</a>
+          <a class="cta-link" href="#request">Request a commission</a>
+          <a class="cta-link" href="/editorial/">View editorial</a>
+          <a class="cta-link" href="/about.html">About Thomas</a>
         </div>
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel" aria-label="Commission overview">
       <p class="muted" style="margin:0; max-width:78ch;">
         I take on a limited number of commissions so each project gets full attention from planning through final delivery.
-        If you’re looking for images that feel like they belong in a magazine—this is for you.
+        If you’re after images that read like a magazine spread—quiet direction, controlled light, and clean composition—this is built for you.
       </p>
+
+      <div class="rule"></div>
+
+      <h2>How it works</h2>
+      <div class="process">
+        <div class="step">
+          <span class="mini">01 — Discovery</span>
+          <p>Car, city, intent. We align on the look and how the images will be used.</p>
+        </div>
+        <div class="step">
+          <span class="mini">02 — Plan</span>
+          <p>Location, timing, and shot priorities. Discretion available when needed.</p>
+        </div>
+        <div class="step">
+          <span class="mini">03 — Shoot</span>
+          <p>Calm pacing, subtle direction. The car stays the hero—not the production.</p>
+        </div>
+        <div class="step">
+          <span class="mini">04 — Curate & deliver</span>
+          <p>Finished images only. Consistent color and a premium, natural finish.</p>
+        </div>
+      </div>
 
       <div class="rule"></div>
 
       <h2>What you can expect</h2>
       <ul>
-        <li><strong>Consultation first</strong> to align on the look, location, and how you’ll use the images</li>
-        <li><strong>Guidance and direction</strong> during the shoot (posing the car, angles, lighting, pacing)</li>
-        <li><strong>A curated set of fully edited final images</strong>—not a dump of hundreds of files</li>
-        <li><strong>Consistent color and retouching</strong> with a premium, natural finish</li>
-        <li><strong>Professional delivery</strong> in high-resolution + web-ready formats</li>
+        <li><strong>Consultation first</strong> to align on look, location, and usage</li>
+        <li><strong>Guidance and direction</strong> during the shoot (angles, light, pacing)</li>
+        <li><strong>A curated set of fully edited finals</strong>—not hundreds of raw files</li>
+        <li><strong>Delivery in high-resolution + web-ready formats</strong></li>
+        <li class="muted2"><strong>Any added costs</strong> (extended travel, permits, private locations) are <strong>quoted in advance</strong></li>
       </ul>
     </section>
 
     <div class="rule"></div>
 
-    <section>
+    <section aria-label="Commission packages">
       <h2>Select your experience</h2>
       <p class="muted" style="margin:.2rem 0 1rem; max-width:78ch;">
-        Every client receives the same respect and care. The packages simply reflect scope—how deep we go, how much we create, and what you want the final work to become.
+        Every client gets the same respect and care. The packages simply reflect scope—how deep we go, how much we create, and what you want the final work to become.
       </p>
 
       <div class="grid">
-        <div class="card">
+        <div class="card" id="one">
           <h3>One Perfect Frame</h3>
           <div class="price">$135 <span>— one finished image</span></div>
           <p class="tagline">
-            One image, made properly. Clean, intentional, ready to share or print. Perfect as a first commission—or when you want one image that simply nails it.
+            One image, made properly. Clean, intentional, ready to share or print. Ideal as a first commission—or when you only need one frame that simply nails it.
           </p>
 
           <div class="rule"></div>
@@ -622,81 +687,100 @@
             <li>One-vehicle focus</li>
             <li>Local location within <strong>~20 minutes of Santa Clara</strong></li>
             <li><strong>1 fully edited final image</strong> delivered ready to share or print</li>
-            <li class="muted2"><strong>Note:</strong> Any additional costs (extended travel, location access, permits) are <strong>quoted in advance</strong>.</li>
           </ul>
 
-          <p class="bestfor"><strong>Best for:</strong> a single hero image, a quick refresh, a gift, or your first time working together.</p>
+          <p class="bestfor"><strong>Best for:</strong> a single hero image, a quick refresh, or your first time working together.</p>
+
+          <div class="card-actions">
+            <a class="cta-link" href="#request">Request this</a>
+            <a class="cta-link" href="/gallery/automotive.html">See automotive</a>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="essential">
           <h3>Essential Commission</h3>
           <p class="tagline">
-            A focused session for one vehicle—built to deliver a tight, elevated set that feels editorial and timeless.
+            A focused commission for one vehicle—built to deliver a tight, elevated set that feels editorial and timeless.
           </p>
 
           <div class="rule"></div>
 
           <p class="muted"><strong>Designed to include:</strong></p>
           <ul>
-            <li>One-vehicle focus (static, with optional motion when location allows)</li>
+            <li>One-vehicle focus (static; optional motion when location allows)</li>
             <li>Light planning (timing, location, visual direction)</li>
-            <li>A curated gallery of <strong>fully edited final images</strong> delivered ready to share or print</li>
+            <li>A curated set of <strong>fully edited final images</strong></li>
           </ul>
 
-          <p class="bestfor"><strong>Best for:</strong> personal keepsakes, social content, tasteful marketplace listings, and clean portfolio updates.</p>
+          <p class="bestfor"><strong>Best for:</strong> personal keepsakes, social content, clean listings, and subtle flex images.</p>
+
+          <div class="card-actions">
+            <a class="cta-link" href="#request">Request this</a>
+            <a class="cta-link" href="/editorial/">View editorial</a>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="signature">
           <span class="badge">Most selected</span>
           <h3>Signature Commission</h3>
           <p class="tagline">
-            The full story—built as a cohesive collection. Consistent, intentional, and designed to live together.
+            The full story—built as a cohesive collection. Consistent, intentional, designed to live together.
           </p>
 
           <div class="rule"></div>
 
           <p class="muted"><strong>Designed to include:</strong></p>
           <ul>
-            <li>One primary vehicle focus (supporting vehicles can be included when it serves the goal)</li>
-            <li>A cohesive set of finals with deeper retouching consistency</li>
-            <li><strong>Book + fine print</strong> as part of the experience (final size/finish priced to match your intent)</li>
+            <li>One primary vehicle focus (supporting vehicles when it serves the goal)</li>
+            <li>Deeper consistency across the set (color, finish, retouching)</li>
+            <li><strong>Book + fine print</strong> as part of the experience (selected together)</li>
           </ul>
 
-          <p class="bestfor"><strong>Best for:</strong> cars with provenance, full builds, sponsor decks, brand content, and collector-level documentation.</p>
+          <p class="bestfor"><strong>Best for:</strong> cars with provenance, full builds, brand decks, and collector-level documentation.</p>
+
+          <div class="card-actions">
+            <a class="cta-link" href="#request">Request this</a>
+            <a class="cta-link" href="/prints.html">Prints</a>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="chateau">
           <h3>Château Commission</h3>
           <p class="tagline">
-            The everything package. Worldwide. Outcome-driven. For collectors and curators where the standard is concours-level, museum-level, or personal legacy.
+            Outcome-driven depth. Worldwide. For collectors and curators where the standard is concours-level, museum-level, or personal legacy.
           </p>
 
           <div class="rule"></div>
 
           <p class="muted"><strong>Designed to include:</strong></p>
           <ul>
-            <li><strong>Consultation first</strong> to decide which car—or cars—best serve the objective</li>
-            <li>Shooting time based on outcome, not the clock (static, dynamic, or both)</li>
+            <li><strong>Consultation first</strong> to align cars, locations, and outcome</li>
+            <li>Shooting time based on outcome—not the clock</li>
             <li>Multi-location coverage when it supports the story</li>
-            <li><strong>Book + fine print</strong> as part of the experience (final size/finish priced to match your intent)</li>
-            <li class="muted2"><strong>Pricing:</strong> Individually priced based on scope (cars, locations, travel, deliverables, usage)</li>
+            <li><strong>Book + fine print</strong> as part of the experience</li>
+            <li class="muted2"><strong>Pricing:</strong> individually scoped (cars, locations, travel, deliverables, usage)</li>
           </ul>
 
-          <p class="bestfor"><strong>Best for:</strong> multi-car collections, pinnacle restorations, rare collectors, and high-stakes presentation.</p>
+          <p class="bestfor"><strong>Best for:</strong> multi-car collections, rare restorations, and high-stakes presentation.</p>
+
+          <div class="card-actions">
+            <a class="cta-link" href="#request">Request this</a>
+            <a class="cta-link" href="/contact.html">Contact</a>
+          </div>
         </div>
       </div>
     </section>
 
     <div class="rule"></div>
 
-    <!-- FAQ (Option A) -->
     <section class="faq" id="faq" aria-label="Commission FAQ">
       <h2>FAQ</h2>
 
       <details>
         <summary>How do I book a commission?</summary>
         <p class="answer">
-          Start with a short message (car, city, and what you want the images used for). I’ll recommend the best option and confirm scope before booking.
+          Start with a short message that includes the car, your city, and what you want the images used for.
+          I’ll reply with a recommended option, scope, and next steps.
         </p>
       </details>
 
@@ -710,7 +794,8 @@
       <details>
         <summary>How many final images will I receive?</summary>
         <p class="answer">
-          Enough to match the scope. One Perfect Frame is one finished image. Essential is a tight curated set. Signature becomes a cohesive collection. Château is outcome-driven depth scoped to the project.
+          Enough to match the scope. One Perfect Frame is one finished image. Essential is a tight curated set.
+          Signature becomes a cohesive collection. Château is outcome-driven depth scoped to the project.
         </p>
       </details>
 
@@ -745,14 +830,15 @@
       <details>
         <summary>What’s included with books and prints?</summary>
         <p class="answer">
-          Signature and Château include a book and a fine print as part of the experience. Final size, finish, and presentation are selected together and priced to match your intent.
+          Signature and Château include a book and a fine print as part of the experience.
+          Final size, finish, and presentation are selected together and priced to match intent.
         </p>
       </details>
     </section>
 
     <div class="rule"></div>
 
-    <section class="panel">
+    <section class="panel" aria-label="Owner prep guide">
       <h2>Owner Prep Guide</h2>
       <p class="muted" style="margin:.25rem 0 0; max-width:78ch;">
         You don’t need to overthink this—but a little prep makes a big difference in the final images.
@@ -772,37 +858,29 @@
       <ul>
         <li>Window cleaner + microfiber (glass shows everything)</li>
         <li>Soft duster or clean microfiber for light dust</li>
-        <li>Optional: a light tire dressing (use sparingly—best applied after the car is positioned)</li>
-      </ul>
-
-      <div class="rule"></div>
-
-      <h3>Keep the car “photo-ready”</h3>
-      <ul>
-        <li>Remove parking passes, cables, clutter, and anything in cup holders</li>
-        <li>If we’re shooting interior, wipe screens and the gauge cluster</li>
+        <li>Optional: light tire dressing (use sparingly—best applied after positioning)</li>
       </ul>
 
       <div class="rule"></div>
 
       <h3>Lights without idling</h3>
       <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
-        Headlights and interior lighting can add a unique look—especially during golden hour. A <strong>strong battery</strong> helps so we can keep the engine <strong>off</strong>.
-        Idling can create subtle vibrations that reduce sharpness—especially in close-ups and interior shots.
+        Headlights and interior lighting can add a unique look—especially during golden hour.
+        A <strong>strong battery</strong> helps so we can keep the engine <strong>off</strong>. Idling can create subtle vibrations that reduce sharpness.
       </p>
 
       <div class="rule"></div>
 
       <h3>Timing makes the look</h3>
       <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
-        Golden hour (sunrise/sunset) is the most flattering light. Midday is workable, but it’s harsher and less forgiving.
+        Golden hour (sunrise/sunset) is the most flattering light. Midday is workable, but harsher and less forgiving.
       </p>
 
       <div class="rule"></div>
 
       <h3>Weather and flexibility</h3>
       <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
-        If weather doesn’t cooperate, we’ll adjust timing or reschedule—no stress.
+        If weather doesn’t cooperate, we’ll adjust timing or reschedule. The goal is the images—not forcing a bad day.
       </p>
     </section>
 
@@ -812,14 +890,17 @@
       <div>
         <strong>Request a Commission</strong>
         <p>
-          Tell me what you’re driving, what you want the images to feel like, and where you’re located.
+          Tell me the car, your city, and the intended use (personal archive, print, publication, listing).
           I’ll recommend the best option and confirm scope before booking.
+        </p>
+        <p class="muted2" style="margin:.5rem 0 0;">
+          Discretion available. Added costs (travel, permits, location access) are quoted in advance.
         </p>
       </div>
 
       <div class="hero-actions" style="margin:0;">
-        <a class="btn" href="/contact.html?subject=Commissioned%20Shoot%20Inquiry">Start a Request</a>
-        <a class="btn secondary" href="/prints.html">Explore Prints</a>
+        <a class="cta-link" href="/contact.html?subject=Commissioned%20Shoot%20Inquiry">Start a request</a>
+        <a class="cta-link" href="/prints.html">Prints</a>
       </div>
     </section>
   </main>
