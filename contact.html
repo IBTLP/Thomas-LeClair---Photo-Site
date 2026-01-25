@@ -36,6 +36,8 @@
     :root{
       --bg:#0e0e0e;
       --text:#f5f5f5;
+      --muted:rgba(245,245,245,.72);
+      --muted2:rgba(245,245,245,.58);
     }
 
     body{
@@ -44,12 +46,64 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+
+      /* keeps footer behaving nicely even on short pages */
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Nav + Footer come from includes, so this page only styles its own content */
+    main { flex: 1 0 auto; }
 
+    /* ================= INLINE NAV (NO INCLUDE) ================= */
+    nav#siteNav{
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+    }
+
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* force visible on touch devices */
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    /* padding under fixed nav */
     main{
-      padding-top: 10.5rem; /* space under fixed global nav */
+      padding-top: 10.5rem; /* keep your original contact spacing */
       max-width: 700px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -122,12 +176,42 @@
     }
 
     button:hover{ opacity: 0.9; }
+
+    /* ================= INCLUDED FOOTER (GLOBAL) ================= */
+    /* footer.html should contain: <footer class="site-footer"> ... </footer> */
+    .site-footer{
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #b8b8b8;
+      text-align: center;
+    }
+
+    .site-footer a{
+      color: #b8b8b8;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    .site-footer a:hover{ color:#e0e0e0; }
   </style>
 </head>
 
 <body>
-  <!-- GLOBAL NAV INCLUDE -->
-  <div id="site-nav"></div>
+  <!-- INLINE NAV (PASTE YOUR PERFECTED NAV MARKUP HERE) -->
+  <nav id="siteNav">
+    <!--
+      IMPORTANT:
+      Paste the exact <nav> contents from your perfected page here.
+      I kept the ID and the autohide controller exactly as-is.
+    -->
+  </nav>
 
   <main>
     <h1>Contact</h1>
@@ -180,41 +264,76 @@
   <!-- GLOBAL FOOTER INCLUDE -->
   <div id="site-footer"></div>
 
-  <!-- Include loader + NAV behavior loader -->
   <script>
     async function includeHTML(id, url) {
       const el = document.getElementById(id);
       if (!el) return false;
 
-      const res = await fetch(url, { cache: "no-cache" });
-      if (!res.ok) {
-        el.innerHTML = "Missing include: " + url + " (HTTP " + res.status + ")";
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = "Missing include: " + url + " (HTTP " + res.status + ")";
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (e) {
+        el.innerHTML = "Failed to load include: " + url;
         return false;
       }
-      el.innerHTML = await res.text();
-      return true;
     }
 
-    function loadScript(src) {
-      return new Promise((resolve, reject) => {
-        const s = document.createElement("script");
-        s.src = src;
-        s.defer = true;
-        s.onload = resolve;
-        s.onerror = reject;
-        document.body.appendChild(s);
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
+
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
+
+      document.body.classList.add("autohide");
+
+      let hideTimer = null;
+      const HIDE_DELAY = 900;
+
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, HIDE_DELAY);
+      };
+
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, HIDE_DELAY);
+      };
+
+      // Start hidden
+      nav.classList.remove("is-visible");
+
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
       });
+
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
     }
 
-    (async function(){
-      const navOK  = await includeHTML("site-nav", "/includes/Nav.html");        // Uppercase N
-      const footOK = await includeHTML("site-footer", "/includes/footer.html"); // lowercase footer
+    (async () => {
+      // Nav is now inline on the page
+      initNavAutoHide();
 
-      // IMPORTANT: scripts inside injected HTML don't execute,
-      // so we load nav behavior after nav is in the DOM.
-      if (navOK) {
-        try { await loadScript("/assets/nav.js"); } catch(e) {}
-      }
+      // Footer stays as include (works great)
+      const footOK = await includeHTML("site-footer", "/includes/footer.html");
+      if (!footOK) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
     })();
   </script>
 
