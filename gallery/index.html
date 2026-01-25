@@ -17,65 +17,148 @@
   <style>
     * { box-sizing: border-box; }
 
+    :root{
+      --bg:#0e0e0e;
+      --text:#f5f5f5;
+      --muted:rgba(245,245,245,.72);
+      --muted2:rgba(245,245,245,.58);
+      --line:rgba(255,255,255,.12);
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0e0e0e;
-      color: #f5f5f5;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
+
+      /* keeps footer behaving nicely even on short pages */
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ---------------- NAV ---------------- */
+    main { flex: 1 0 auto; }
 
-    nav {
+    /* ================= NAV (HARD-CODED, PRINTS BEHAVIOR) ================= */
+    nav#siteNav{
       position: fixed;
-      top: 0;
+      top: 0; left: 0;
       width: 100%;
+      z-index: 1000;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+
+      /* gradient hairline */
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+    }
+
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* force visible on touch devices */
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    /* Nav layout (match your other pages) */
+    nav#siteNav{
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14,14,14,0.85);
-      backdrop-filter: blur(6px);
-      z-index: 10;
+      gap: 16px;
     }
 
+    .brand { flex: 0 1 auto; }
     .brand img {
       height: 50px;
       opacity: 0.95;
+      max-width: 240px;
+      width: auto;
     }
 
-    nav ul {
+    nav#siteNav ul{
       list-style: none;
       display: flex;
       gap: 1.5rem;
       margin: 0;
       padding: 0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    nav a {
+    nav#siteNav a{
       text-decoration: none;
       color: #f5f5f5;
       font-size: 0.9rem;
       opacity: 0.8;
+      transition: opacity 0.2s ease;
     }
+    nav#siteNav a:hover{ opacity: 1; }
 
-    nav a:hover { opacity: 1; }
-
-    nav a:focus-visible {
+    nav#siteNav a:focus-visible{
       outline: 2px solid rgba(245,245,245,0.55);
       outline-offset: 3px;
       border-radius: 2px;
     }
 
-    /* ---------------- MAIN ---------------- */
+    /* Mobile: stack logo above links */
+    @media (max-width: 640px) {
+      nav#siteNav{
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 1rem;
+      }
+      .brand img{
+        max-width: 280px;
+        height: 46px;
+      }
+      nav#siteNav ul{
+        width: 100%;
+        justify-content: center;
+        gap: 1.0rem;
+      }
+      nav#siteNav a{
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+    }
 
+    /* ---------------- MAIN ---------------- */
     main {
       padding-top: 8rem;
       max-width: 1100px;
       margin: 0 auto;
       padding-left: 2rem;
       padding-right: 2rem;
+      padding-bottom: 4rem;
     }
 
     header {
@@ -94,11 +177,10 @@
       max-width: 56ch;
       font-size: 0.95rem;
       line-height: 1.5;
-      color: rgba(245,245,245,0.72);
+      color: var(--muted);
     }
 
     /* ---------------- GALLERY CARDS ---------------- */
-
     .gallery-grid {
       display: grid;
       gap: 1.25rem;
@@ -113,7 +195,7 @@
       color: #f5f5f5;
       text-decoration: none;
       overflow: hidden;
-      border-radius: 2px; /* subtle, stays in your style */
+      border-radius: 2px;
       transform: translateZ(0);
     }
 
@@ -144,7 +226,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: var(--bg);
+      background-image: var(--bgimg);
       background-size: cover;
       background-position: center;
       opacity: 0.14;
@@ -173,50 +255,52 @@
 
     /* responsive spacing */
     @media (max-width: 640px) {
-      nav { padding: 1.25rem 1.25rem; }
       main { padding-left: 1.25rem; padding-right: 1.25rem; }
       .gallery-card { padding: 2.5rem 1.75rem; }
+      main{ padding-top: 9.25rem; } /* if nav wraps */
     }
 
-    /* ---------------- FOOTER ---------------- */
+    /* ================= INCLUDED FOOTER (GLOBAL) ================= */
+    /* /includes/footer.html should contain: <footer class="site-footer"> ... </footer> */
+    .site-footer{
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
 
-    footer {
-      text-align: center;
       padding: 2rem 1rem;
       font-size: 0.8rem;
       color: #b8b8b8;
+      text-align: center;
     }
 
-    footer a {
+    .site-footer a{
       color: #b8b8b8;
       text-decoration: none;
       margin: 0 0.5rem;
     }
-
-    footer a:hover { color: #e0e0e0; }
-
-    footer a:focus-visible {
-      outline: 2px solid rgba(245,245,245,0.45);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
+    .site-footer a:hover{ color:#e0e0e0; }
   </style>
 </head>
 
 <body>
 
-  <nav>
+  <!-- HARD-CODED NAV -->
+  <nav id="siteNav">
     <div class="brand">
       <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png"
-             alt="Thomas LeClair Photography">
+        <img
+          src="/images/Signature-TuesdayNight_Font+photography_250.png"
+          alt="Thomas LeClair Photography">
       </a>
     </div>
-
     <ul>
       <li><a href="/editorial/">Editorial</a></li>
       <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/commissioned/">Commissioned</a></li>
+      <li><a href="/commissioned.html">Commissioned</a></li>
       <li><a href="/prints.html">Prints</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/contact.html">Contact</a></li>
@@ -233,30 +317,29 @@
 
     <section class="gallery-grid">
 
-      <!-- Automotive (TOP) -->
       <a class="gallery-card" href="/gallery/automotive.html"
-         style="--bg:url('/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp');"
+         style="--bgimg:url('/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp');"
          aria-label="View Automotive gallery">
         <h2>Automotive</h2>
         <div class="cta">View gallery →</div>
       </a>
 
       <a class="gallery-card" href="/gallery/landscape.html"
-         style="--bg:url('/images/gallery/landscape/Canyonlands-31.webp');"
+         style="--bgimg:url('/images/gallery/landscape/Canyonlands-31.webp');"
          aria-label="View Landscape gallery">
         <h2>Landscape</h2>
         <div class="cta">View gallery →</div>
       </a>
 
       <a class="gallery-card" href="/gallery/wildlife.html"
-         style="--bg:url('/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp');"
+         style="--bgimg:url('/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp');"
          aria-label="View Wildlife gallery">
         <h2>Wildlife</h2>
         <div class="cta">View gallery →</div>
       </a>
 
       <a class="gallery-card" href="/gallery/studies.html"
-         style="--bg:url('/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp');"
+         style="--bgimg:url('/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp');"
          aria-label="View Studies gallery">
         <h2>Studies</h2>
         <div class="cta">View gallery →</div>
@@ -265,15 +348,82 @@
     </section>
   </main>
 
-  <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
-      Instagram — Motoring
-    </a>
-    <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
-      Instagram — Outdoor
-    </a>
-  </footer>
+  <!-- GLOBAL FOOTER INCLUDE -->
+  <div id="site-footer"></div>
+
+  <script>
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
+    }
+
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
+
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
+
+      document.body.classList.add("autohide");
+
+      let hideTimer = null;
+
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
+
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
+
+      // Start hidden (same as Prints)
+      nav.classList.remove("is-visible");
+
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
+
+    (async () => {
+      const footOk = await includeHTML("site-footer", "/includes/footer.html");
+      if (!footOk) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
+
+      initNavAutoHide();
+    })();
+  </script>
 
 </body>
 </html>
