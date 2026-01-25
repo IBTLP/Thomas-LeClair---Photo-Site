@@ -46,18 +46,30 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+
+      /* keeps footer behaving nicely even on short pages */
+      display: flex;
+      flex-direction: column;
     }
 
+    main { flex: 1 0 auto; }
+
     /* ================= INCLUDED NAV (GLOBAL) ================= */
+    /* NOTE: Nav.html should contain: <nav id="siteNav"> ... </nav> */
+    /* These styles apply once it’s injected */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(8,8,8,.72);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 1.15rem 0;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
 
       /* gradient hairline */
       border-bottom: 1px solid transparent;
@@ -69,90 +81,32 @@
       ) 1;
     }
 
-    nav#siteNav .nav-inner{
-      width: min(1120px, calc(100% - 64px));
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    nav#siteNav .brand img{
-      height: 44px;
-      opacity: .92;
-      width: auto;
-      display: block;
-    }
-
-    nav#siteNav ul{
-      list-style: none;
-      display: flex;
-      gap: 1.25rem;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    nav#siteNav a{
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.9rem;
-      opacity: 0.82;
-      letter-spacing: .02em;
-      position: relative;
-      padding: .35rem 0;
-      line-height: 1;
-      transition: opacity 160ms ease;
-    }
-    nav#siteNav a:hover{ opacity: 1; }
-
-    /* underline hover (premium) */
-    nav#siteNav a::after{
-      content:"";
-      position:absolute;
-      left:0; bottom:-6px;
-      width:100%;
-      height:1px;
-      background: rgba(245,245,245,.38);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 220ms ease;
-    }
-    @media (hover:hover){
-      nav#siteNav a:hover::after{ transform: scaleX(1); }
-    }
-
-    /* subtle “primary” emphasis for Commissions (optional) */
-    nav#siteNav a.nav-primary{
-      opacity: .95;
-    }
-    nav#siteNav a.nav-primary::after{
-      background: rgba(245,245,245,.55);
-      transform: scaleX(.35);
-    }
-    @media (hover:hover){
-      nav#siteNav a.nav-primary:hover::after{ transform: scaleX(1); }
-    }
-
-    @media (max-width: 640px){
-      nav#siteNav .nav-inner{
-        width: calc(100% - 28px);
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-      nav#siteNav ul{
-        justify-content: center;
-        gap: 1.0rem;
+    /* force visible on touch devices */
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
       }
     }
 
-    /* ================= PAGE CONTENT ================= */
+    /* padding under fixed nav */
     main {
-      padding-top: 8rem; /* nav space */
+      padding-top: 8rem;
       max-width: 900px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -204,9 +158,7 @@
       font-size: 0.92rem;
     }
 
-    section {
-      margin: 3rem 0;
-    }
+    section { margin: 3rem 0; }
 
     h2 {
       font-weight: 400;
@@ -274,40 +226,31 @@
     }
 
     /* ================= INCLUDED FOOTER (GLOBAL) ================= */
+    /* Footer.html should contain: <footer class="site-footer"> ... </footer> */
     .site-footer{
-      border-top: 1px solid rgba(255,255,255,.06);
-      padding: 2.25rem 0 2rem;
-      color: rgba(245,245,245,.62);
-      text-align: center;
-      font-size: .82rem;
-    }
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
 
-    .site-footer .footer-inner{
-      width: min(1120px, calc(100% - 64px));
-      margin: 0 auto;
-      display: grid;
-      gap: 10px;
-      justify-items: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #b8b8b8;
+      text-align: center;
     }
 
     .site-footer a{
-      color: rgba(245,245,245,.62);
+      color: #b8b8b8;
       text-decoration: none;
-      margin: 0 .5rem;
-      opacity: .95;
+      margin: 0 0.5rem;
     }
-    .site-footer a:hover{ color: rgba(245,245,245,.88); }
-
-    .site-footer .dot{ opacity: .5; margin: 0 .25rem; }
-
-    .site-footer .footer-meta{
-      opacity: .6;
-      letter-spacing: .02em;
-    }
+    .site-footer a:hover{ color:#e0e0e0; }
 
     @media (max-width: 640px){
-      .site-footer .footer-inner{ width: calc(100% - 28px); }
-      main{ padding-top: 9.25rem; } /* nav becomes taller on small screens */
+      main{ padding-top: 9.25rem; } /* if nav wraps on small screens */
     }
   </style>
 </head>
@@ -470,18 +413,79 @@
   <!-- GLOBAL FOOTER INCLUDE -->
   <div id="site-footer"></div>
 
-  <!-- Include loader -->
   <script>
     async function includeHTML(id, url) {
       const el = document.getElementById(id);
-      if (!el) return;
-      const res = await fetch(url, { cache: "no-cache" });
-      if (!res.ok) return;
-      el.innerHTML = await res.text();
+      if (!el) return false;
+
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
     }
 
-    includeHTML("site-nav", "/includes/Nav.html");
-    includeHTML("site-footer", "/includes/Footer.html");
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
+
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
+
+      document.body.classList.add("autohide");
+
+      let hideTimer = null;
+
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
+
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
+
+      // Start hidden
+      nav.classList.remove("is-visible");
+
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
+
+    (async () => {
+      const navOk = await includeHTML("site-nav", "/includes/Nav.html");
+      const footOk = await includeHTML("site-footer", "/includes/Footer.html");
+
+      if (navOk) initNavAutoHide();
+      if (!footOk) console.warn("Footer include failed. Check exact path/case: /includes/Footer.html");
+    })();
   </script>
 </body>
 </html>
