@@ -180,23 +180,42 @@
   <!-- GLOBAL FOOTER INCLUDE -->
   <div id="site-footer"></div>
 
-  <!-- Include loader (case sensitive paths) -->
+  <!-- Include loader + NAV behavior loader -->
   <script>
     async function includeHTML(id, url) {
       const el = document.getElementById(id);
-      if (!el) return;
+      if (!el) return false;
 
       const res = await fetch(url, { cache: "no-cache" });
       if (!res.ok) {
         el.innerHTML = "Missing include: " + url + " (HTTP " + res.status + ")";
-        return;
+        return false;
       }
       el.innerHTML = await res.text();
+      return true;
     }
 
-    // IMPORTANT: case sensitive on GitHub Pages
-    includeHTML("site-nav", "/includes/Nav.html");      // Uppercase N
-    includeHTML("site-footer", "/includes/footer.html"); // all lowercase
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = src;
+        s.defer = true;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.body.appendChild(s);
+      });
+    }
+
+    (async function(){
+      const navOK  = await includeHTML("site-nav", "/includes/Nav.html");        // Uppercase N
+      const footOK = await includeHTML("site-footer", "/includes/footer.html"); // lowercase footer
+
+      // IMPORTANT: scripts inside injected HTML don't execute,
+      // so we load nav behavior after nav is in the DOM.
+      if (navOK) {
+        try { await loadScript("/assets/nav.js"); } catch(e) {}
+      }
+    })();
   </script>
 
   <!-- Formspree submit + redirect -->
