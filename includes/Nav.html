@@ -1,7 +1,7 @@
 <nav id="siteNav" class="site-nav" aria-label="Primary navigation">
   <div class="nav-inner">
     <div class="brand">
-      <a href="/" aria-label="Home">
+      <a href="/" aria-label="Home" class="brand-link">
         <img
           src="/images/Signature-TuesdayNight_Font+photography_250.png"
           alt="Thomas LeClair Photography"
@@ -26,7 +26,6 @@
   :root{
     --nav-bg: rgba(14,14,14,0.85);
     --nav-text: rgba(245,245,245,0.92);
-    --nav-muted: rgba(245,245,245,0.82);
     --nav-hair: rgba(255,255,255,0.10);
   }
 
@@ -36,14 +35,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.25rem 0;               /* no edge padding; handled by nav-inner */
+    padding: 1.25rem 0;
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
     transition: transform 0.35s ease, opacity 0.35s ease;
 
-    /* Hairline (gradient) */
+    /* gradient hairline */
     border-bottom: 1px solid transparent;
     border-image: linear-gradient(
       90deg,
@@ -53,9 +52,9 @@
     ) 1;
   }
 
-  /* Pull nav content away from the edges */
+  /* Pull nav content away from edges */
   nav.site-nav .nav-inner{
-    width: min(1040px, calc(100% - 84px)); /* more inset than before */
+    width: min(1040px, calc(100% - 84px));
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -63,15 +62,19 @@
     gap: 18px;
   }
 
-  nav.site-nav .brand{
-    flex: 0 1 auto;
-  }
-
+  /* Brand + logo hover brighten */
   nav.site-nav .brand img{
-    height: 54px;          /* slightly larger */
+    height: 54px;
     width: auto;
     display: block;
-    opacity: 0.93;
+    opacity: 0.90;
+    transition: opacity 180ms ease, filter 180ms ease;
+  }
+  @media (hover:hover){
+    nav.site-nav .brand-link:hover img{
+      opacity: 1;
+      filter: brightness(1.12) contrast(1.05);
+    }
   }
 
   nav.site-nav .nav-links{
@@ -98,7 +101,7 @@
   }
   nav.site-nav a:hover{ opacity: 1; }
 
-  /* Underline on hover */
+  /* Underline hover */
   nav.site-nav a::after{
     content: "";
     position: absolute;
@@ -115,7 +118,7 @@
     nav.site-nav a:hover::after{ transform: scaleX(1); }
   }
 
-  /* Optional: make Commissioned feel slightly “primary” without being loud */
+  /* Optional subtle emphasis */
   nav.site-nav a.nav-primary{
     opacity: 0.92;
   }
@@ -127,9 +130,12 @@
     nav.site-nav a.nav-primary:hover::after{ transform: scaleX(1); }
   }
 
-  /* ================= AUTO-HIDE BEHAVIOR ================= */
+  /* ================= AUTO-HIDE (DESKTOP ONLY) =================
+     Default state (when body has .autohide): hidden.
+     It appears when nav is .is-visible OR hovered OR focused.
+  */
   body.autohide nav.site-nav{
-    transform: translateY(-110%);
+    transform: translateY(-115%);
     opacity: 0;
     pointer-events: none;
   }
@@ -142,9 +148,9 @@
     pointer-events: auto;
   }
 
-  /* ================= MOBILE / SMALL SCREENS ================= */
+  /* ================= MOBILE / TOUCH ================= */
   @media (max-width: 768px){
-    /* Do NOT auto-hide on touch devices; keep it stable */
+    /* keep nav visible on touch devices */
     body.autohide nav.site-nav{
       transform: translateY(0) !important;
       opacity: 1 !important;
@@ -153,20 +159,16 @@
   }
 
   @media (max-width: 640px){
-    nav.site-nav{
-      padding: 1.05rem 0;
-    }
+    nav.site-nav{ padding: 1.05rem 0; }
 
     nav.site-nav .nav-inner{
-      width: calc(100% - 32px); /* inset on mobile */
+      width: calc(100% - 32px);
       flex-direction: column;
       align-items: center;
       gap: 10px;
     }
 
-    nav.site-nav .brand img{
-      height: 50px; /* still a touch bigger than before */
-    }
+    nav.site-nav .brand img{ height: 50px; }
 
     nav.site-nav .nav-links{
       width: 100%;
@@ -190,6 +192,7 @@
     var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!canHover) return;
 
+    // Enable auto-hide mode (default hidden)
     document.body.classList.add('autohide');
 
     var hideTimer = null;
@@ -201,22 +204,30 @@
         if (!nav.matches(':hover') && !nav.matches(':focus-within')){
           nav.classList.remove('is-visible');
         }
-      }, 1200);
+      }, 900); // a bit snappier
     }
 
-    function hideNavSoon(){
+    function scheduleHide(){
       if (hideTimer) clearTimeout(hideTimer);
       hideTimer = setTimeout(function(){
         if (!nav.matches(':hover') && !nav.matches(':focus-within')){
           nav.classList.remove('is-visible');
         }
-      }, 1200);
+      }, 900);
     }
 
-    showNav();
+    // Start hidden, only show when user approaches top
+    nav.classList.remove('is-visible');
 
+    // Show when cursor is near top edge
     document.addEventListener('mousemove', function(e){
       if (e.clientY < 90) showNav();
     });
 
-    nav.addEventListener('mouseente
+    // Keep visible while interacting
+    nav.addEventListener('mouseenter', showNav);
+    nav.addEventListener('mouseleave', scheduleHide);
+    nav.addEventListener('focusin', showNav);
+    nav.addEventListener('focusout', scheduleHide);
+  })();
+</script>
