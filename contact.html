@@ -54,7 +54,7 @@
 
     main { flex: 1 0 auto; }
 
-    /* ================= INLINE NAV (NO INCLUDE) ================= */
+    /* ================= NAV STYLES (works whether nav is inline OR injected) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
@@ -101,7 +101,7 @@
       }
     }
 
-    /* padding under fixed nav */
+    /* space under fixed nav */
     main{
       padding-top: 10.5rem; /* keep your original contact spacing */
       max-width: 700px;
@@ -110,7 +110,6 @@
       padding-right: 2rem;
       padding-bottom: 3rem;
     }
-
     @media (max-width: 640px){
       main{ padding-top: 11.25rem; }
     }
@@ -174,7 +173,6 @@
       cursor: pointer;
       border-radius: 10px;
     }
-
     button:hover{ opacity: 0.9; }
 
     /* ================= INCLUDED FOOTER (GLOBAL) ================= */
@@ -204,14 +202,8 @@
 </head>
 
 <body>
-  <!-- INLINE NAV (PASTE YOUR PERFECTED NAV MARKUP HERE) -->
-  <nav id="siteNav">
-    <!--
-      IMPORTANT:
-      Paste the exact <nav> contents from your perfected page here.
-      I kept the ID and the autohide controller exactly as-is.
-    -->
-  </nav>
+  <!-- NAV: this version *works* because it loads your existing perfected Nav.html -->
+  <div id="site-nav"></div>
 
   <main>
     <h1>Contact</h1>
@@ -272,13 +264,17 @@
       try {
         const res = await fetch(url, { cache: "no-cache" });
         if (!res.ok) {
-          el.innerHTML = "Missing include: " + url + " (HTTP " + res.status + ")";
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
           return false;
         }
         el.innerHTML = await res.text();
         return true;
-      } catch (e) {
-        el.innerHTML = "Failed to load include: " + url;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
         return false;
       }
     }
@@ -314,7 +310,7 @@
         }, HIDE_DELAY);
       };
 
-      // Start hidden
+      // Start hidden (it will reveal when mouse hits top band)
       nav.classList.remove("is-visible");
 
       document.addEventListener("mousemove", (e) => {
@@ -328,11 +324,14 @@
     }
 
     (async () => {
-      // Nav is now inline on the page
-      initNavAutoHide();
-
-      // Footer stays as include (works great)
+      // Load your perfected nav markup
+      const navOK  = await includeHTML("site-nav", "/includes/Nav.html");
+      // Load footer (this already works well)
       const footOK = await includeHTML("site-footer", "/includes/footer.html");
+
+      // Init nav behavior only AFTER nav is present in DOM
+      if (navOK) initNavAutoHide();
+
       if (!footOK) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
     })();
   </script>
