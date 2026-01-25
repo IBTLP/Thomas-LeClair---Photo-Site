@@ -481,10 +481,10 @@
 
     (async () => {
       const navOk = await includeHTML("site-nav", "/includes/Nav.html");
-      const footOk = await includeHTML("site-footer", "/includes/Footer.html");
+      const footOk = await includeHTML("site-footer", "/includes/footer.html");
 
       if (navOk) initNavAutoHide();
-      if (!footOk) console.warn("Footer include failed. Check exact path/case: /includes/Footer.html");
+      if (!footOk) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
     })();
   </script>
 </body>
