@@ -19,7 +19,7 @@
 
   <!-- Open Graph / Social -->
   <meta property="og:title" content="Thomas LeClair Photography" />
-  <meta property="og:description" content="Fine art and commissioned photography. Metal prints produced individually." />
+  <meta property="og:description" content="Editorial and commissioned automotive photography for private collectors and premium publications." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.tleclair.com/" />
   <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
@@ -27,15 +27,13 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Thomas LeClair Photography" />
-  <meta name="twitter:description" content="Fine art and commissioned photography. Metal prints produced individually." />
+  <meta name="twitter:description" content="Editorial and commissioned automotive photography for private collectors and premium publications." />
   <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
-  <!-- Optional but helpful -->
   <link rel="icon" href="/favicon.ico" />
   <meta name="theme-color" content="#0e0e0e" />
   <meta name="robots" content="index,follow" />
 
-  <!-- Identity links (harmless + useful for “this is me”) -->
   <link rel="me" href="https://www.instagram.com/tlp_motoring_photography/" />
   <link rel="me" href="https://www.instagram.com/tlp_outdoor_photography/" />
   <link rel="me" href="https://www.linkedin.com/in/tomleclairphotography/" />
@@ -54,7 +52,7 @@
         "jobTitle": [
           "Automotive Photographer",
           "Automotive Journalist",
-          "Automotive Expert"
+          "Editorial Photographer"
         ],
         "knowsAbout": [
           "Automotive photography",
@@ -75,7 +73,7 @@
         "@id": "https://www.tleclair.com/#website",
         "url": "https://www.tleclair.com/",
         "name": "Thomas LeClair Photography",
-        "description": "Fine art and commissioned photography across automotive, landscape, and wildlife. Metal prints produced individually.",
+        "description": "Editorial and commissioned automotive photography for private collectors and premium publications.",
         "publisher": { "@id": "https://www.tleclair.com/#person" },
         "inLanguage": "en-US"
       },
@@ -84,7 +82,7 @@
         "@id": "https://www.tleclair.com/#webpage",
         "url": "https://www.tleclair.com/",
         "name": "Thomas LeClair Photography",
-        "description": "Fine art and commissioned photography across automotive, landscape, and wildlife. Metal prints produced individually.",
+        "description": "Editorial and commissioned automotive photography for private collectors and premium publications.",
         "isPartOf": { "@id": "https://www.tleclair.com/#website" },
         "about": { "@id": "https://www.tleclair.com/#person" },
         "primaryImageOfPage": {
@@ -123,23 +121,19 @@
       transition: transform 0.35s ease, opacity 0.35s ease;
       z-index: 10;
 
-      /* Default (no-JS / mobile-safe): visible */
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
 
-      /* --- Mobile overflow protection --- */
       gap: 16px;
     }
 
-    /* Desktop-only autohide enabled by JS (adds body.autohide) */
     body.autohide nav {
       transform: translateY(-110%);
       opacity: 0;
       pointer-events: none;
     }
 
-    /* Show nav when JS toggles it visible, or when user interacts */
     body.autohide nav.is-visible,
     body.autohide nav:hover,
     body.autohide nav:focus-within {
@@ -148,7 +142,6 @@
       pointer-events: auto;
     }
 
-    /* On touch / small screens: always show nav */
     @media (max-width: 768px) {
       body.autohide nav {
         transform: translateY(0) !important;
@@ -163,8 +156,6 @@
       gap: 1.5rem;
       margin: 0;
       padding: 0;
-
-      /* --- Mobile overflow protection --- */
       flex-wrap: wrap;
       justify-content: flex-end;
     }
@@ -182,13 +173,10 @@
     .brand img {
       height: 50px;
       opacity: 0.9;
-
-      /* --- Mobile overflow protection --- */
       max-width: 240px;
       width: auto;
     }
 
-    /* ===== Mobile: stack logo above links so nothing clips ===== */
     @media (max-width: 640px) {
       nav {
         flex-direction: column;
@@ -231,20 +219,15 @@
       opacity: 0;
       animation: fade 30s infinite;
     }
-    /* stagger timing */
     .hero img:nth-child(1) { animation-delay: 0s; }
     .hero img:nth-child(2) { animation-delay: 10s; }
     .hero img:nth-child(3) { animation-delay: 20s; }
 
-    /* dark overlay */
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        rgba(0,0,0,0.45),
-        rgba(0,0,0,0.45)
-      );
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
       z-index: 2;
     }
 
@@ -267,23 +250,87 @@
       text-align: center;
       position: relative;
       z-index: 3;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
     }
+
     h1 {
       font-weight: 300;
       letter-spacing: 0.06em;
-      margin-bottom: 0.75rem;
+      margin: 0 0 0.75rem 0;
     }
+
     .tagline {
-      font-size: 0.95rem;
-      opacity: 0.75;
+      font-size: 0.98rem;
+      opacity: 0.78;
+      line-height: 1.55;
+      max-width: 62ch;
+      margin: 0;
+    }
+
+    .subtag {
+      margin-top: 0.9rem;
+      font-size: 0.92rem;
+      opacity: 0.68;
       line-height: 1.5;
     }
+
+    /* ===== Tasteful CTAs (editorial links, not buttons) ===== */
+    .cta-row{
+      margin-top: 1.6rem;
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+    }
+
+    .cta-link{
+      position: relative;
+      color: rgba(245,245,245,0.92);
+      text-decoration: none;
+      padding: 0.15rem 0;
+      opacity: 0.9;
+    }
+
+    .cta-link::after{
+      content:"";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: rgba(245,245,245,0.40);
+      transform: scaleX(0.25);
+      transform-origin: left;
+      transition: transform 280ms ease, background 280ms ease;
+    }
+
+    @media (hover:hover){
+      .cta-link:hover{ opacity: 1; }
+      .cta-link:hover::after{
+        transform: scaleX(1);
+        background: rgba(245,245,245,0.70);
+      }
+    }
+
+    .cta-link:focus-visible{
+      outline: 2px solid rgba(245,245,245,0.55);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.8rem;
       color: #b8b8b8;
+      position: relative;
+      z-index: 3;
     }
+
     footer a {
       color: #b8b8b8;
       text-decoration: none;
@@ -300,14 +347,14 @@
         <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
       </a>
     </div>
-<ul>
-  <li><a href="/editorial/">Editorial</a></li>
-  <li><a href="/gallery/">Gallery</a></li>
-  <li><a href="/commissioned/">Commissioned</a></li>
-  <li><a href="/prints.html">Prints</a></li>
-  <li><a href="/about.html">About</a></li>
-  <li><a href="/contact.html">Contact</a></li>
-</ul>
+    <ul>
+      <li><a href="/editorial/">Editorial</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/commissioned/">Commissioned</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
   </nav>
 
   <!-- HERO -->
@@ -319,24 +366,29 @@
 
   <main>
     <h1>Thomas LeClair Photography</h1>
+
     <p class="tagline">
-      Fine art and commissioned photography.<br>
-      Metal prints produced individually.
+      Editorial and commissioned automotive photography for private collectors and premium publications.
     </p>
 
-    <p style="margin-top:1.5rem; opacity:0.7;">
-      <a href="/about.html" style="color:#f5f5f5; text-decoration:none; letter-spacing:0.06em;">
-        About Thomas
-      </a>
+    <p class="subtag">
+      Metal prints produced individually on request.
+      <br>
+      Published in Hot Rod and Chevy Hub.
     </p>
+
+    <div class="cta-row" aria-label="Primary actions">
+      <a class="cta-link" href="/editorial/">View Editorial</a>
+      <a class="cta-link" href="/commissioned/">Commissioned Work</a>
+    </div>
   </main>
 
   <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer"> Instagram — Motoring </a>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
     <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer"> Instagram — Outdoor </a>
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
     <span>·</span>
-    <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
+    <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </footer>
 
   <script>
@@ -344,7 +396,6 @@
       const nav = document.getElementById('siteNav');
       if (!nav) return;
 
-      // Enable auto-hide only on devices with real hover + fine pointer (mouse/trackpad)
       const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       if (!canHover) return;
 
@@ -355,7 +406,6 @@
         nav.classList.add('is-visible');
         if (hideTimer) clearTimeout(hideTimer);
         hideTimer = setTimeout(() => {
-          // Don’t hide while actively interacting
           if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
             nav.classList.remove('is-visible');
           }
@@ -371,10 +421,8 @@
         }, 1200);
       };
 
-      // Start visible briefly, then hide
       showNav();
 
-      // Reveal when cursor is near top of window
       document.addEventListener('mousemove', (e) => {
         if (e.clientY < 90) showNav();
       });
