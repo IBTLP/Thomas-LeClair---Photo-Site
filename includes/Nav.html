@@ -1,26 +1,168 @@
-<nav id="siteNav">
-  <div class="nav-hairline" aria-hidden="true"></div>
+<!-- /includes/Nav.html -->
+<nav id="siteNav" aria-label="Primary">
+  <a class="brand" href="/" aria-label="Thomas LeClair Photography — Home">
+    <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+  </a>
 
-  <div class="nav-inner">
-    <div class="brand">
-      <a href="/" aria-label="Home">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+  <ul class="nav-links">
+    <li><a href="/editorial/">Editorial</a></li>
+    <li><a href="/gallery/">Gallery</a></li>
+    <li><a href="/commissioned.html">Commissioned</a></li>
+    <li><a href="/prints.html">Prints</a></li>
+    <li><a href="/about.html">About</a></li>
+
+    <li class="cta">
+      <a
+        class="contact-cta"
+        href="/contact.html?subject=Commission%20Inquiry&message=Car%3A%20%0ACity%3A%20%0AUse%20%28personal%2Fprint%2Fpublication%2Flisting%29%3A%20%0ADeadline%3A%20%0A"
+      >
+        Contact
       </a>
-    </div>
-
-    <ul>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/commissioned.html">Commissioned</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </div>
+    </li>
+  </ul>
 </nav>
 
+<style>
+  /* ================= NAV (AUTO-HIDE + HAIRLINE) ================= */
+
+  #siteNav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    /* Hairline baked into background (safe w/ position: fixed) */
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.12),
+        rgba(255,255,255,0)
+      ) bottom / 100% 1px no-repeat,
+      rgba(14,14,14,0.85);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    z-index: 1000;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #siteNav .brand{
+    flex: 0 1 auto;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  #siteNav .brand img{
+    height: 50px;
+    width: auto;
+    display: block;
+    opacity: 0.92;
+    max-width: 260px;
+  }
+
+  #siteNav .nav-links{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  #siteNav a{
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 0.9rem;
+    opacity: 0.82;
+    transition: opacity 0.2s ease;
+  }
+
+  #siteNav a:hover{ opacity: 1; }
+
+  /* Contact CTA: quiet luxury pill */
+  #siteNav .contact-cta{
+    display: inline-flex;
+    align-items: center;
+    padding: 0.46rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.04);
+    opacity: 0.9;
+  }
+
+  #siteNav .contact-cta:hover{
+    opacity: 1;
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.22);
+  }
+
+  /* -------- Auto-hide behavior (desktop/hover devices only) -------- */
+  body.autohide #siteNav{
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  body.autohide #siteNav.is-visible,
+  body.autohide #siteNav:hover,
+  body.autohide #siteNav:focus-within{
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile/tablet: always visible */
+  @media (max-width: 768px){
+    body.autohide #siteNav{
+      transform: translateY(0) !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+  }
+
+  /* Narrow phones: centered stack */
+  @media (max-width: 640px){
+    #siteNav{
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 1rem;
+      gap: 10px;
+    }
+
+    #siteNav .brand img{
+      height: 46px;
+      max-width: 280px;
+    }
+
+    #siteNav .nav-links{
+      width: 100%;
+      justify-content: center;
+      gap: 1.0rem;
+    }
+
+    #siteNav a{
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+  }
+</style>
+
 <script>
-  // Old behavior: auto-hide nav on hover-capable devices
+  // Auto-hide nav (show on hover/mouse-top) only on hover-capable devices
   (() => {
     const nav = document.getElementById('siteNav');
     if (!nav) return;
@@ -31,6 +173,7 @@
     document.body.classList.add('autohide');
 
     let hideTimer = null;
+
     const showNav = () => {
       nav.classList.add('is-visible');
       if (hideTimer) clearTimeout(hideTimer);
