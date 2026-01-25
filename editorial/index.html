@@ -13,7 +13,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Editorial — Automotive Features & Photo Essays | Thomas LeClair</title>
+  <title>Editorial — Automotive Features &amp; Photo Essays | Thomas LeClair</title>
 
   <meta name="description" content="Editorial and commissioned automotive photography for private collectors and premium publications. Contributor to Hot Rod, Chevy Hub, Off Road Xtreme, LSX, and Chevy Hardcore." />
   <link rel="canonical" href="https://www.tleclair.com/editorial/" />
@@ -34,77 +34,140 @@
   <style>
     * { box-sizing: border-box; }
 
+    :root{
+      --bg:#0e0e0e;
+      --text:#f5f5f5;
+      --muted:rgba(245,245,245,.72);
+      --muted2:rgba(245,245,245,.58);
+      --line:rgba(255,255,255,.12);
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0e0e0e;
-      color: #f5f5f5;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
+
+      /* keeps footer behaving nicely even on short pages */
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ================= NAV ================= */
-    nav {
+    main { flex: 1 0 auto; }
+
+    /* ================= NAV (HARD-CODED, PRINTS BEHAVIOR) ================= */
+    nav#siteNav{
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
+      z-index: 1000;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      /* Prints timing */
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+
+      /* gradient hairline */
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+
+      /* layout */
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(14,14,14,0.85);
-      backdrop-filter: blur(6px);
-      transition: transform 0.35s ease, opacity 0.35s ease;
-      z-index: 10;
+      gap: 16px;
     }
 
-    body.autohide nav {
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
+    body.autohide nav#siteNav{
       transform: translateY(-110%);
       opacity: 0;
       pointer-events: none;
     }
-
-    body.autohide nav.is-visible,
-    body.autohide nav:hover,
-    body.autohide nav:focus-within {
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
     }
 
+    /* force visible on touch devices */
     @media (max-width: 768px) {
-      body.autohide nav {
+      body.autohide nav#siteNav{
         transform: translateY(0) !important;
         opacity: 1 !important;
         pointer-events: auto !important;
       }
     }
 
-    nav ul {
+    nav#siteNav ul {
       list-style: none;
       display: flex;
       gap: 1.5rem;
       margin: 0;
       padding: 0;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    nav a {
+    nav#siteNav a {
       text-decoration: none;
       color: #f5f5f5;
       font-size: 0.9rem;
       opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+    nav#siteNav a:hover { opacity: 1; }
+
+    nav#siteNav a:focus-visible {
+      outline: 2px solid rgba(245,245,245,0.55);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
-    nav a:hover { opacity: 1; }
-
+    .brand { flex: 0 1 auto; }
     .brand img {
       height: 50px;
       opacity: 0.9;
+      max-width: 240px;
+      width: auto;
+    }
+
+    /* Mobile: stack logo above links so nothing clips */
+    @media (max-width: 640px) {
+      nav#siteNav {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 1rem;
+      }
+      .brand img {
+        max-width: 280px;
+        height: 46px;
+      }
+      nav#siteNav ul {
+        width: 100%;
+        justify-content: center;
+        gap: 1.0rem;
+      }
+      nav#siteNav a {
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
     }
 
     /* ================= PAGE ================= */
-
     main {
       max-width: 1120px;
       margin: 0 auto;
@@ -127,7 +190,6 @@
     }
 
     /* ================= EDITORIAL CARDS ================= */
-
     .grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -149,7 +211,7 @@
     @media (max-width: 980px) {
       .card { grid-column: span 12; }
       main { padding: 7.25rem 1.25rem 3.5rem; }
-      nav { padding: 1.25rem; }
+      /* nav padding handled above; leave this alone */
     }
 
     .thumb {
@@ -243,7 +305,6 @@
     .btn.primary { background: rgba(255,255,255,0.12); }
 
     /* ================= EXTERNAL FEATURES ================= */
-
     .external-features {
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 3rem;
@@ -299,7 +360,6 @@
     }
 
     /* ================= PUBLICATIONS ================= */
-
     .editorial-publications {
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 3rem;
@@ -362,10 +422,35 @@
       opacity: 0.55;
       max-width: 70ch;
     }
+
+    /* ================= INCLUDED FOOTER (GLOBAL) ================= */
+    /* /includes/footer.html should contain: <footer class="site-footer"> ... </footer> */
+    .site-footer{
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #b8b8b8;
+      text-align: center;
+    }
+
+    .site-footer a{
+      color: #b8b8b8;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    .site-footer a:hover{ color:#e0e0e0; }
   </style>
 </head>
 
 <body>
+  <!-- HARD-CODED NAV -->
   <nav id="siteNav">
     <div class="brand">
       <a href="/">
@@ -375,7 +460,7 @@
     <ul>
       <li><a href="/editorial/">Editorial</a></li>
       <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/commissioned/">Commissioned</a></li>
+      <li><a href="/commissioned.html">Commissioned</a></li>
       <li><a href="/prints.html">Prints</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/contact.html">Contact</a></li>
@@ -437,7 +522,7 @@
 
     </section>
 
-    <!-- SELECTED EXTERNAL FEATURES (ADD-ONS) -->
+    <!-- SELECTED EXTERNAL FEATURES -->
     <section class="external-features">
       <h2>Selected External Features</h2>
       <p class="external-sub">
@@ -510,27 +595,80 @@
     </section>
   </main>
 
-  <footer style="text-align:center; padding:2.5rem 1rem; font-size:0.85rem; opacity:0.6;">
-    © <span id="year"></span> Thomas LeClair Photography
-  </footer>
+  <!-- GLOBAL FOOTER INCLUDE -->
+  <div id="site-footer"></div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
 
-    (() => {
-      const nav = document.getElementById('siteNav');
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
+    }
+
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
       if (!nav) return;
-      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      if (!canHover) return;
-      document.body.classList.add('autohide');
-      let timer;
-      const show = () => {
-        nav.classList.add('is-visible');
-        clearTimeout(timer);
-        timer = setTimeout(() => nav.classList.remove('is-visible'), 1200);
+
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
+
+      document.body.classList.add("autohide");
+
+      let hideTimer = null;
+
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
       };
-      document.addEventListener('mousemove', e => e.clientY < 90 && show());
-      nav.addEventListener('mouseenter', show);
+
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
+
+      // Start hidden (same as Prints)
+      nav.classList.remove("is-visible");
+
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
+
+    (async () => {
+      const footOk = await includeHTML("site-footer", "/includes/footer.html");
+      if (!footOk) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
+
+      initNavAutoHide();
     })();
   </script>
 </body>
