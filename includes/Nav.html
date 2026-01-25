@@ -1,182 +1,222 @@
-<!-- /includes/Nav.html -->
-<nav id="siteNav" aria-label="Primary">
-  <a class="brand" href="/" aria-label="Thomas LeClair Photography — Home">
-    <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-  </a>
+<nav id="siteNav" class="site-nav" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <div class="brand">
+      <a href="/" aria-label="Home">
+        <img
+          src="/images/Signature-TuesdayNight_Font+photography_250.png"
+          alt="Thomas LeClair Photography"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+    </div>
 
-  <ul class="nav-links">
-    <li><a href="/editorial/">Editorial</a></li>
-    <li><a href="/gallery/">Gallery</a></li>
-    <li><a href="/commissioned.html">Commissioned</a></li>
-    <li><a href="/prints.html">Prints</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-  </ul>
+    <ul class="nav-links">
+      <li><a href="/editorial/">Editorial</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/commissioned.html" class="nav-primary">Commissioned</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
 <style>
-  /* ================= NAV (AUTO-HIDE + HAIRLINE) ================= */
+  :root{
+    --nav-bg: rgba(14,14,14,0.85);
+    --nav-text: rgba(245,245,245,0.92);
+    --nav-muted: rgba(245,245,245,0.82);
+    --nav-hair: rgba(255,255,255,0.10);
+  }
 
-  #siteNav{
+  /* ================= NAV (AUTO-HIDE + HAIRLINE) ================= */
+  nav.site-nav{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    padding: 1.25rem 0;               /* no edge padding; handled by nav-inner */
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: transform 0.35s ease, opacity 0.35s ease;
 
-    padding: 1.5rem 2rem;
+    /* Hairline (gradient) */
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(
+      90deg,
+      rgba(255,255,255,0),
+      var(--nav-hair),
+      rgba(255,255,255,0)
+    ) 1;
+  }
+
+  /* Pull nav content away from the edges */
+  nav.site-nav .nav-inner{
+    width: min(1040px, calc(100% - 84px)); /* more inset than before */
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-
-    /* Hairline baked into background (safe w/ position: fixed) */
-    background:
-      linear-gradient(
-        90deg,
-        rgba(255,255,255,0),
-        rgba(255,255,255,.12),
-        rgba(255,255,255,0)
-      ) bottom / 100% 1px no-repeat,
-      rgba(14,14,14,0.85);
-
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    z-index: 1000;
-    transition: transform 0.35s ease, opacity 0.35s ease;
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    gap: 18px;
   }
 
-  #siteNav .brand{
+  nav.site-nav .brand{
     flex: 0 1 auto;
-    display: inline-flex;
-    align-items: center;
   }
 
-  #siteNav .brand img{
-    height: 50px;
+  nav.site-nav .brand img{
+    height: 54px;          /* slightly larger */
     width: auto;
     display: block;
-    opacity: 0.92;
-    max-width: 260px;
+    opacity: 0.93;
   }
 
-  #siteNav .nav-links{
+  nav.site-nav .nav-links{
     list-style: none;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-
-    gap: 1.5rem;
+    gap: 1.35rem;
     margin: 0;
     padding: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
   }
 
-  #siteNav a{
+  nav.site-nav a{
+    color: var(--nav-text);
     text-decoration: none;
-    color: #f5f5f5;
     font-size: 0.9rem;
-    opacity: 0.82;
+    letter-spacing: 0.02em;
+    opacity: 0.80;
+    padding: 0.35rem 0;
+    position: relative;
     transition: opacity 0.2s ease;
+    line-height: 1;
+  }
+  nav.site-nav a:hover{ opacity: 1; }
+
+  /* Underline on hover */
+  nav.site-nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 1px;
+    background: rgba(245,245,245,0.42);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms ease, background 220ms ease;
+  }
+  @media (hover:hover){
+    nav.site-nav a:hover::after{ transform: scaleX(1); }
   }
 
-  #siteNav a:hover{ opacity: 1; }
+  /* Optional: make Commissioned feel slightly “primary” without being loud */
+  nav.site-nav a.nav-primary{
+    opacity: 0.92;
+  }
+  nav.site-nav a.nav-primary::after{
+    background: rgba(245,245,245,0.55);
+    transform: scaleX(0.33);
+  }
+  @media (hover:hover){
+    nav.site-nav a.nav-primary:hover::after{ transform: scaleX(1); }
+  }
 
-  /* -------- Auto-hide behavior (desktop/hover devices only) -------- */
-  body.autohide #siteNav{
+  /* ================= AUTO-HIDE BEHAVIOR ================= */
+  body.autohide nav.site-nav{
     transform: translateY(-110%);
     opacity: 0;
     pointer-events: none;
   }
 
-  body.autohide #siteNav.is-visible,
-  body.autohide #siteNav:hover,
-  body.autohide #siteNav:focus-within{
+  body.autohide nav.site-nav.is-visible,
+  body.autohide nav.site-nav:hover,
+  body.autohide nav.site-nav:focus-within{
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
   }
 
-  /* Mobile/tablet: always visible */
+  /* ================= MOBILE / SMALL SCREENS ================= */
   @media (max-width: 768px){
-    body.autohide #siteNav{
+    /* Do NOT auto-hide on touch devices; keep it stable */
+    body.autohide nav.site-nav{
       transform: translateY(0) !important;
       opacity: 1 !important;
       pointer-events: auto !important;
     }
   }
 
-  /* Narrow phones: centered stack */
   @media (max-width: 640px){
-    #siteNav{
+    nav.site-nav{
+      padding: 1.05rem 0;
+    }
+
+    nav.site-nav .nav-inner{
+      width: calc(100% - 32px); /* inset on mobile */
       flex-direction: column;
       align-items: center;
-      padding: 1rem 1rem;
       gap: 10px;
     }
 
-    #siteNav .brand img{
-      height: 46px;
-      max-width: 280px;
+    nav.site-nav .brand img{
+      height: 50px; /* still a touch bigger than before */
     }
 
-    #siteNav .nav-links{
+    nav.site-nav .nav-links{
       width: 100%;
       justify-content: center;
       gap: 1.0rem;
     }
 
-    #siteNav a{
+    nav.site-nav a{
       font-size: 0.95rem;
-      opacity: 0.9;
+      opacity: 0.90;
     }
   }
 </style>
 
 <script>
-  // Auto-hide nav (show on hover/mouse-top) only on hover-capable devices
-  (() => {
-    const nav = document.getElementById('siteNav');
+  // Auto-hide nav on hover-capable devices only
+  (function(){
+    var nav = document.getElementById('siteNav');
     if (!nav) return;
 
-    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!canHover) return;
 
     document.body.classList.add('autohide');
 
-    let hideTimer = null;
+    var hideTimer = null;
 
-    const showNav = () => {
+    function showNav(){
       nav.classList.add('is-visible');
       if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => {
-        if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+      hideTimer = setTimeout(function(){
+        if (!nav.matches(':hover') && !nav.matches(':focus-within')){
           nav.classList.remove('is-visible');
         }
       }, 1200);
-    };
+    }
 
-    const hideNavSoon = () => {
+    function hideNavSoon(){
       if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => {
-        if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+      hideTimer = setTimeout(function(){
+        if (!nav.matches(':hover') && !nav.matches(':focus-within')){
           nav.classList.remove('is-visible');
         }
       }, 1200);
-    };
+    }
 
     showNav();
 
-    document.addEventListener('mousemove', (e) => {
+    document.addEventListener('mousemove', function(e){
       if (e.clientY < 90) showNav();
     });
 
-    nav.addEventListener('mouseenter', showNav);
-    nav.addEventListener('mouseleave', hideNavSoon);
-    nav.addEventListener('focusin', showNav);
-    nav.addEventListener('focusout', hideNavSoon);
-  })();
-</script>
+    nav.addEventListener('mouseente
