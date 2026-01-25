@@ -31,34 +31,34 @@
   <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
   <!-- Person Schema (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://www.tleclair.com/#person",
-  "name": "Thomas LeClair",
-  "url": "https://www.tleclair.com/",
-  "mainEntityOfPage": "https://www.tleclair.com/about.html",
-  "image": "https://www.tleclair.com/images/home-auto.webp",
-  "jobTitle": [
-    "Automotive Photographer",
-    "Automotive Journalist",
-    "Automotive Expert"
-  ],
-  "knowsAbout": [
-    "Automotive photography",
-    "Automotive journalism",
-    "Motorsports",
-    "Editorial photography",
-    "Fine art prints"
-  ],
-  "sameAs": [
-    "https://www.instagram.com/tlp_motoring_photography/",
-    "https://www.instagram.com/tlp_outdoor_photography/",
-    "https://www.linkedin.com/in/tomleclairphotography/"
-  ]
-}
-</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://www.tleclair.com/#person",
+    "name": "Thomas LeClair",
+    "url": "https://www.tleclair.com/",
+    "mainEntityOfPage": "https://www.tleclair.com/about.html",
+    "image": "https://www.tleclair.com/images/home-auto.webp",
+    "jobTitle": [
+      "Automotive Photographer",
+      "Automotive Journalist",
+      "Editorial Photographer"
+    ],
+    "knowsAbout": [
+      "Automotive photography",
+      "Automotive journalism",
+      "Motorsports",
+      "Editorial photography",
+      "Fine art prints"
+    ],
+    "sameAs": [
+      "https://www.instagram.com/tlp_motoring_photography/",
+      "https://www.instagram.com/tlp_outdoor_photography/",
+      "https://www.linkedin.com/in/tomleclairphotography/"
+    ]
+  }
+  </script>
 
   <style>
     * { box-sizing: border-box; }
@@ -288,14 +288,14 @@
         <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
       </a>
     </div>
-<ul>
-  <li><a href="/editorial/">Editorial</a></li>
-  <li><a href="/gallery/">Gallery</a></li>
-  <li><a href="/commissioned/">Commissioned</a></li>
-  <li><a href="/prints.html">Prints</a></li>
-  <li><a href="/about.html">About</a></li>
-  <li><a href="/contact.html">Contact</a></li>
-</ul>
+    <ul>
+      <li><a href="/editorial/">Editorial</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/commissioned/">Commissioned</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
   </nav>
 
   <main>
@@ -311,24 +311,29 @@
 
       <p>
         My background spans motorsports, automotive manufacturing, and editorial
-        photography. I’ve worked alongside performance and racing organizations,
+        photography. I’ve worked inside performance and racing organizations,
         contributed to marketing and content creation efforts, and photographed
         vehicles and stories that have appeared in print and long-form features.
-        That path — from engineering and trackside environments to visual
-        storytelling — has shaped a disciplined, editorial approach to photography
+        That path from engineering and trackside environments to visual
+        storytelling has shaped a disciplined, editorial approach to photography
         that values preparation, context, and authenticity.
       </p>
 
-      <p>
-        This perspective has also led to long-form conversations about process and
-        craft, including a recorded interview with
+      <!-- Most high-end presentation: footnote-style links (findable, not loud) -->
+      <p style="
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: rgba(245,245,245,0.62);
+      ">
+        Selected interviews:
         <a href="https://carsyeah.com/ourportfolio/2054-thomas-leclair/"
            target="_blank"
-           rel="noopener noreferrer">
-          Cars Yeah
-        </a>,
-        where I discuss automotive photography, creative discipline, and the role
-        of storytelling in visual work.
+           rel="noopener noreferrer">Cars Yeah</a>
+        ·
+        <a href="https://voyageutah.com/interview/life-work-with-thomas-leclair-of-north-side-on-the-santa-clara-boarder/"
+           target="_blank"
+           rel="noopener noreferrer">Voyage Utah</a>
       </p>
 
       <p>
@@ -379,7 +384,6 @@
         nav.classList.add('is-visible');
         if (hideTimer) clearTimeout(hideTimer);
         hideTimer = setTimeout(() => {
-          // Don’t hide while actively interacting
           if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
             nav.classList.remove('is-visible');
           }
