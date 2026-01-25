@@ -14,31 +14,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery — Thomas LeClair Photography</title>
 
+  <meta name="description" content="Curated selections across automotive, landscape, wildlife, and studies by Thomas LeClair." />
+  <link rel="canonical" href="https://www.tleclair.com/gallery/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Gallery — Thomas LeClair Photography" />
+  <meta property="og:description" content="Curated selections across automotive, landscape, wildlife, and studies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.tleclair.com/gallery/" />
+  <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gallery — Thomas LeClair Photography" />
+  <meta name="twitter:description" content="Curated selections across automotive, landscape, wildlife, and studies." />
+  <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
+
   <style>
     * { box-sizing: border-box; }
 
     :root{
       --bg:#0e0e0e;
       --text:#f5f5f5;
-      --muted:rgba(245,245,245,.72);
-      --muted2:rgba(245,245,245,.58);
     }
 
-    body{
+    body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
 
-      /* keep footer behaving nicely even on short pages */
+      /* Prints-page footer behavior on short pages */
       display: flex;
       flex-direction: column;
     }
 
-    main{ flex: 1 0 auto; }
+    main { flex: 1 0 auto; }
 
-    /* ================= NAV (MATCH PRINTS PAGE “PLANE” + SLIDE) ================= */
+    /* ================= NAV (PRINTS-PAGE TREATMENT) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
@@ -61,8 +75,10 @@
         rgba(255,255,255,.10),
         rgba(255,255,255,0)
       ) 1;
+    }
 
-      /* inner spacing matches your nav pattern */
+    /* layout inside nav (keeps your original nav spacing) */
+    nav#siteNav .nav-inner{
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -93,15 +109,14 @@
       }
     }
 
-    /* nav content (same general look as your other pages) */
-    .brand img{
+    .brand img {
       height: 50px;
       opacity: 0.95;
       width: auto;
-      max-width: 240px;
+      display: block;
     }
 
-    nav#siteNav ul{
+    nav#siteNav ul {
       list-style: none;
       display: flex;
       gap: 1.5rem;
@@ -111,88 +126,84 @@
       justify-content: flex-end;
     }
 
-    nav#siteNav a{
+    nav#siteNav a {
       text-decoration: none;
-      color: var(--text);
+      color: #f5f5f5;
       font-size: 0.9rem;
       opacity: 0.8;
       transition: opacity 0.2s ease;
     }
-    nav#siteNav a:hover{ opacity: 1; }
 
-    nav#siteNav a:focus-visible{
+    nav#siteNav a:hover { opacity: 1; }
+
+    nav#siteNav a:focus-visible {
       outline: 2px solid rgba(245,245,245,0.55);
       outline-offset: 3px;
       border-radius: 2px;
     }
 
-    @media (max-width: 640px){
-      nav#siteNav{
+    /* Small-screen stacking like your other pages */
+    @media (max-width: 640px) {
+      nav#siteNav .nav-inner{
         flex-direction: column;
         align-items: center;
-        padding: 1rem 1rem;
+        padding: 1rem 1.25rem;
       }
-      .brand img{ max-width: 280px; height: 46px; }
       nav#siteNav ul{
         width: 100%;
         justify-content: center;
-        gap: 1.0rem;
-      }
-      nav#siteNav a{
-        font-size: 0.95rem;
-        opacity: 0.9;
+        gap: 1rem;
       }
     }
 
-    /* ================= MAIN (RESTORE ORIGINAL “WIDER” GALLERY FEEL) ================= */
-    main{
+    /* ================= MAIN (KEEP YOUR ORIGINAL GALLERY GEOMETRY) ================= */
+    main {
       padding-top: 8rem;
-      max-width: 1240px;          /* wider so cards don’t feel narrowed */
+      max-width: 1100px; /* same as your original */
       margin: 0 auto;
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-      padding-bottom: 4rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
 
-    header{
+    header {
       text-align: center;
       margin-bottom: 3rem;
     }
 
-    h1{
+    h1 {
       font-weight: 300;
       letter-spacing: 0.06em;
       margin: 0 0 0.75rem 0;
     }
 
-    .subhead{
+    .subhead {
       margin: 0 auto;
       max-width: 56ch;
       font-size: 0.95rem;
       line-height: 1.5;
-      color: var(--muted);
+      color: rgba(245,245,245,0.72);
     }
 
-    /* ================= GALLERY CARDS (AS THEY WERE) ================= */
-    .gallery-grid{
+    /* ================= GALLERY CARDS (UNCHANGED FROM YOUR ORIGINAL) ================= */
+    .gallery-grid {
       display: grid;
       gap: 1.25rem;
       margin-bottom: 4rem;
     }
 
-    .gallery-card{
+    .gallery-card {
       position: relative;
       display: block;
-      padding: 3.25rem 3rem; /* restored roomy card padding */
+      padding: 3.25rem 3rem; /* same as your original */
       border: 1px solid rgba(255,255,255,0.14);
-      color: var(--text);
+      color: #f5f5f5;
       text-decoration: none;
       overflow: hidden;
       border-radius: 2px;
       transform: translateZ(0);
     }
 
-    .gallery-card h2{
+    .gallery-card h2 {
       position: relative;
       z-index: 2;
       margin: 0;
@@ -201,7 +212,7 @@
       font-size: 1.15rem;
     }
 
-    .gallery-card .cta{
+    .gallery-card .cta {
       position: relative;
       z-index: 2;
       margin-top: 0.9rem;
@@ -209,17 +220,17 @@
       opacity: 0.75;
     }
 
-    .gallery-card:focus-visible{
+    .gallery-card:focus-visible {
       outline: 2px solid rgba(245,245,245,0.55);
       outline-offset: 3px;
     }
 
     /* background image */
-    .gallery-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image: var(--bgimg);
+    .gallery-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg);
       background-size: cover;
       background-position: center;
       opacity: 0.14;
@@ -229,36 +240,31 @@
     }
 
     /* dark overlay */
-    .gallery-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
       background: rgba(14,14,14,0.58);
       z-index: 1;
     }
 
     /* hover reveal (desktop only) */
-    @media (hover:hover){
-      .gallery-card:hover::before{
+    @media (hover: hover) {
+      .gallery-card:hover::before {
         opacity: 0.42;
         filter: blur(2px);
         transform: scale(1.06);
       }
     }
 
-    /* responsive spacing */
-    @media (max-width: 640px){
-      main{
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-        padding-top: 9.25rem; /* if nav wraps on small screens */
-      }
-      .gallery-card{
-        padding: 2.5rem 1.75rem;
-      }
+    /* responsive spacing (same as your original) */
+    @media (max-width: 640px) {
+      main { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .gallery-card { padding: 2.5rem 1.75rem; }
+      main { padding-top: 9.25rem; } /* if nav wraps */
     }
 
-    /* ================= GLOBAL FOOTER INCLUDE (matches your include styling) ================= */
+    /* ================= INCLUDED FOOTER (GLOBAL) ================= */
     .site-footer{
       border-top: 1px solid transparent;
       border-image: linear-gradient(
@@ -284,26 +290,25 @@
 </head>
 
 <body>
+  <!-- HARD-CODED NAV (BUT PRINTS-PAGE BEHAVIOR/STYLE) -->
+  <nav id="siteNav">
+    <div class="nav-inner">
+      <div class="brand">
+        <a href="/">
+          <img src="/images/Signature-TuesdayNight_Font+photography_250.png"
+               alt="Thomas LeClair Photography">
+        </a>
+      </div>
 
-  <!-- HARD-CODED NAV (but same plane + slide behavior as Prints) -->
-  <nav id="siteNav" aria-label="Site navigation">
-    <div class="brand">
-      <a href="/">
-        <img
-          src="/images/Signature-TuesdayNight_Font+photography_250.png"
-          alt="Thomas LeClair Photography"
-        >
-      </a>
+      <ul>
+        <li><a href="/editorial/">Editorial</a></li>
+        <li><a href="/gallery/">Gallery</a></li>
+        <li><a href="/commissioned/">Commissioned</a></li>
+        <li><a href="/prints.html">Prints</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
     </div>
-
-    <ul>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/commissioned.html">Commissioned</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
   </nav>
 
   <main>
@@ -317,28 +322,28 @@
     <section class="gallery-grid">
 
       <a class="gallery-card" href="/gallery/automotive.html"
-         style="--bgimg:url('/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp');"
+         style="--bg:url('/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp');"
          aria-label="View Automotive gallery">
         <h2>Automotive</h2>
         <div class="cta">View gallery →</div>
       </a>
 
       <a class="gallery-card" href="/gallery/landscape.html"
-         style="--bgimg:url('/images/gallery/landscape/Canyonlands-31.webp');"
+         style="--bg:url('/images/gallery/landscape/Canyonlands-31.webp');"
          aria-label="View Landscape gallery">
         <h2>Landscape</h2>
         <div class="cta">View gallery →</div>
       </a>
 
       <a class="gallery-card" href="/gallery/wildlife.html"
-         style="--bgimg:url('/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp');"
+         style="--bg:url('/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp');"
          aria-label="View Wildlife gallery">
         <h2>Wildlife</h2>
         <div class="cta">View gallery →</div>
       </a>
 
       <a class="gallery-card" href="/gallery/studies.html"
-         style="--bgimg:url('/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp');"
+         style="--bg:url('/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp');"
          aria-label="View Studies gallery">
         <h2>Studies</h2>
         <div class="cta">View gallery →</div>
@@ -403,7 +408,7 @@
         }, 900);
       };
 
-      // Start hidden (match Prints behavior)
+      // Start hidden (Prints behavior)
       nav.classList.remove("is-visible");
 
       document.addEventListener("mousemove", (e) => {
@@ -417,10 +422,11 @@
     }
 
     (async () => {
-      await includeHTML("site-footer", "/includes/footer.html");
+      const footOk = await includeHTML("site-footer", "/includes/footer.html");
+      if (!footOk) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
+
       initNavAutoHide();
     })();
   </script>
-
 </body>
 </html>
