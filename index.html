@@ -97,13 +97,17 @@
 
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: #0e0e0e;
       color: #f5f5f5;
       min-height: 100vh;
-      overflow: hidden;
+
+      /* IMPORTANT: don’t trap the user */
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     /* ================= NAV (AUTO-HIDE) ================= */
@@ -124,7 +128,6 @@
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
-
       gap: 16px;
     }
 
@@ -210,6 +213,7 @@
       z-index: 0;
       overflow: hidden;
     }
+
     .hero img {
       position: absolute;
       inset: 0;
@@ -227,7 +231,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+      background: linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.50));
       z-index: 2;
     }
 
@@ -239,9 +243,9 @@
       100% { opacity: 0; }
     }
 
-    /* ================= MAIN COPY ================= */
+    /* ================= MAIN ================= */
     main {
-      height: 100vh;
+      min-height: 100vh;
       padding-top: 5rem;
       display: flex;
       flex-direction: column;
@@ -261,30 +265,32 @@
     }
 
     .tagline {
-      font-size: 0.98rem;
-      opacity: 0.78;
+      font-size: 1.02rem;
+      opacity: 0.80;
       line-height: 1.55;
-      max-width: 62ch;
+      max-width: 66ch;
       margin: 0;
     }
 
-    .subtag {
+    /* quiet proof (high-end signal without flexing) */
+    .proof {
       margin-top: 0.9rem;
       font-size: 0.92rem;
-      opacity: 0.68;
+      opacity: 0.64;
       line-height: 1.5;
     }
 
     /* ===== Tasteful CTAs (editorial links, not buttons) ===== */
     .cta-row{
-      margin-top: 1.6rem;
+      margin-top: 1.7rem;
       display: flex;
-      gap: 1.25rem;
+      gap: 1.35rem;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       font-size: 0.95rem;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .cta-link{
@@ -292,7 +298,7 @@
       color: rgba(245,245,245,0.92);
       text-decoration: none;
       padding: 0.15rem 0;
-      opacity: 0.9;
+      opacity: 0.90;
     }
 
     .cta-link::after{
@@ -312,7 +318,7 @@
       .cta-link:hover{ opacity: 1; }
       .cta-link:hover::after{
         transform: scaleX(1);
-        background: rgba(245,245,245,0.70);
+        background: rgba(245,245,245,0.72);
       }
     }
 
@@ -320,6 +326,26 @@
       outline: 2px solid rgba(245,245,245,0.55);
       outline-offset: 4px;
       border-radius: 2px;
+    }
+
+    /* subtle secondary line under CTAs */
+    .secondary-row{
+      margin-top: 0.85rem;
+      font-size: 0.9rem;
+      opacity: 0.62;
+      letter-spacing: 0.02em;
+    }
+    .secondary-row a{
+      color: rgba(245,245,245,0.78);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,245,245,0.22);
+      padding-bottom: 2px;
+    }
+    @media (hover:hover){
+      .secondary-row a:hover{
+        color: rgba(245,245,245,0.92);
+        border-bottom-color: rgba(245,245,245,0.42);
+      }
     }
 
     footer {
@@ -358,10 +384,10 @@
   </nav>
 
   <!-- HERO -->
-  <div class="hero">
-    <img src="/images/home-auto.webp" alt="Automotive photography">
-    <img src="/images/home-landscape.webp" alt="Landscape photography">
-    <img src="/images/home-wildlife.webp" alt="Wildlife photography">
+  <div class="hero" aria-hidden="true">
+    <img src="/images/home-auto.webp" alt="">
+    <img src="/images/home-landscape.webp" alt="">
+    <img src="/images/home-wildlife.webp" alt="">
   </div>
 
   <main>
@@ -371,15 +397,17 @@
       Editorial and commissioned automotive photography for private collectors and premium publications.
     </p>
 
-    <p class="subtag">
-      Metal prints produced individually on request.
-      <br>
-      Published in Hot Rod and Chevy Hub.
+    <p class="proof">
+      Published in Hot Rod and Chevy Hub. Prints produced individually on request.
     </p>
 
     <div class="cta-row" aria-label="Primary actions">
-      <a class="cta-link" href="/editorial/">View Editorial</a>
-      <a class="cta-link" href="/commissioned/">Commissioned Work</a>
+      <a class="cta-link" href="/commissioned/">Commissioned work</a>
+      <a class="cta-link" href="/editorial/">View editorial</a>
+    </div>
+
+    <div class="secondary-row" aria-label="Secondary action">
+      <a href="/gallery/">Browse the gallery</a>
     </div>
   </main>
 
