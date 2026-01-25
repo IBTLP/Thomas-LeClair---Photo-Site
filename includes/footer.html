@@ -1,27 +1,29 @@
 <footer class="site-footer" aria-label="Site footer">
-  
-<div class="footer-row" aria-label="Footer links and socials">
-  <a href="/editorial/">Editorial</a>
-  <span class="dot">·</span>
-  <a href="/commissioned.html">Commissioned</a>
-  <span class="dot">·</span>
+  <div class="footer-inner">
 
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
-    Instagram — Motoring
-  </a>
-  <span class="dot">·</span>
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
-    Instagram — Outdoor
-  </a>
-  <span class="dot">·</span>
-  <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer">
-    LinkedIn
-  </a>
-</div>
+    <div class="footer-row" aria-label="Footer links and socials">
+      <a href="/editorial/">Editorial</a>
+      <span class="dot">·</span>
+      <a href="/commissioned.html">Commissioned</a>
+      <span class="dot">·</span>
+
+      <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
+        Instagram — Motoring
+      </a>
+      <span class="dot">·</span>
+      <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
+        Instagram — Outdoor
+      </a>
+      <span class="dot">·</span>
+      <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+    </div>
 
     <div class="footer-meta">
       © <span id="footerYear"></span> Thomas LeClair Photography
     </div>
+
   </div>
 </footer>
 
@@ -38,7 +40,7 @@
     font-size: .82rem;
     color: var(--footer-text);
 
-    /* gradient hairline (matches nav concept) */
+    /* gradient hairline across top of footer (matches nav concept) */
     border-top: 1px solid transparent;
     border-image: linear-gradient(
       90deg,
@@ -52,28 +54,11 @@
     width: min(1040px, calc(100% - 84px));
     margin: 0 auto;
     display: grid;
-    gap: 18px;
+    gap: 0;                 /* we’ll control spacing per row */
     justify-items: center;
   }
 
-  .site-footer a{
-    color: var(--footer-text);
-    text-decoration: none;
-    opacity: .95;
-    transition: opacity 160ms ease, color 160ms ease;
-  }
-  .site-footer a:hover{
-    opacity: 1;
-    color: var(--footer-text-strong);
-  }
-
-  .site-footer .dot{
-    opacity: .45;
-    margin: 0 .35rem;
-  }
-
-  .footer-links,
-  .footer-social{
+  .footer-row{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -82,7 +67,48 @@
     line-height: 1.7;
   }
 
+  .site-footer a{
+    color: var(--footer-text);
+    text-decoration: none;
+    opacity: .95;
+    position: relative;
+    padding: .15rem 0;      /* gives room for underline */
+    transition: opacity 160ms ease, color 160ms ease;
+  }
+
+  .site-footer a:hover{
+    opacity: 1;
+    color: var(--footer-text-strong);
+  }
+
+  /* underline hairline on hover (like nav) */
+  .site-footer a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:100%;
+    height:1px;
+    background: rgba(245,245,245,.38);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms ease, background 260ms ease;
+  }
+
+  @media (hover:hover){
+    .site-footer a:hover::after{
+      transform: scaleX(1);
+      background: rgba(245,245,245,.60);
+    }
+  }
+
+  .site-footer .dot{
+    opacity: .45;
+    margin: 0 .35rem;
+  }
+
   .footer-meta{
+    margin-top: .8rem;      /* “another line” of air */
     opacity: .55;
     letter-spacing: .02em;
   }
