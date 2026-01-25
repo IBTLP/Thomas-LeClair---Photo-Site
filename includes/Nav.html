@@ -1,5 +1,6 @@
-<!-- /includes/Nav.html -->
 <nav id="siteNav">
+  <div class="nav-hairline" aria-hidden="true"></div>
+
   <div class="nav-inner">
     <div class="brand">
       <a href="/" aria-label="Home">
@@ -7,13 +8,57 @@
       </a>
     </div>
 
-    <ul aria-label="Primary">
+    <ul>
       <li><a href="/editorial/">Editorial</a></li>
       <li><a href="/gallery/">Gallery</a></li>
-      <li><a class="nav-primary" href="/commissioned.html">Commissions</a></li>
+      <li><a href="/commissioned.html">Commissioned</a></li>
       <li><a href="/prints.html">Prints</a></li>
       <li><a href="/about.html">About</a></li>
       <li><a href="/contact.html">Contact</a></li>
     </ul>
   </div>
 </nav>
+
+<script>
+  // Old behavior: auto-hide nav on hover-capable devices
+  (() => {
+    const nav = document.getElementById('siteNav');
+    if (!nav) return;
+
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) return;
+
+    document.body.classList.add('autohide');
+
+    let hideTimer = null;
+    const showNav = () => {
+      nav.classList.add('is-visible');
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+          nav.classList.remove('is-visible');
+        }
+      }, 1200);
+    };
+
+    const hideNavSoon = () => {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
+          nav.classList.remove('is-visible');
+        }
+      }, 1200);
+    };
+
+    showNav();
+
+    document.addEventListener('mousemove', (e) => {
+      if (e.clientY < 90) showNav();
+    });
+
+    nav.addEventListener('mouseenter', showNav);
+    nav.addEventListener('mouseleave', hideNavSoon);
+    nav.addEventListener('focusin', showNav);
+    nav.addEventListener('focusout', hideNavSoon);
+  })();
+</script>
