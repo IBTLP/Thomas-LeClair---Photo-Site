@@ -56,25 +56,22 @@
 
     main { flex: 1 0 auto; }
 
-    /* ================= NAV (HARD-CODED, AUTO-HIDE, NO INCLUDE) ================= */
+    /* ================= NAV (MATCH PRINTS TEMPLATE — HARD-CODED) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 1000;
-
-      /* EXACT look you had */
       background: rgba(14,14,14,.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
 
-      /* EXACT timing you had */
       transition: transform 1.25s ease, opacity 1.55s ease;
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
 
-      /* EXACT hairline you had */
+      /* gradient hairline */
       border-bottom: 1px solid transparent;
       border-image: linear-gradient(
         90deg,
@@ -83,7 +80,7 @@
         rgba(255,255,255,0)
       ) 1;
 
-      /* EXACT width/spacing you had */
+      /* this is the “nav width/feel” */
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -114,7 +111,7 @@
       }
     }
 
-    nav#siteNav ul {
+    nav#siteNav ul{
       list-style: none;
       display: flex;
       gap: 1.5rem;
@@ -124,23 +121,23 @@
       justify-content: flex-end;
     }
 
-    nav#siteNav a {
+    nav#siteNav a{
       text-decoration: none;
       color: #f5f5f5;
       font-size: 0.9rem;
       opacity: 0.8;
       transition: opacity 0.2s ease;
     }
-    nav#siteNav a:hover { opacity: 1; }
+    nav#siteNav a:hover{ opacity: 1; }
 
-    nav#siteNav a:focus-visible {
+    nav#siteNav a:focus-visible{
       outline: 2px solid rgba(245,245,245,0.55);
       outline-offset: 3px;
       border-radius: 2px;
     }
 
-    .brand { flex: 0 1 auto; }
-    .brand img {
+    .brand{ flex: 0 1 auto; }
+    .brand img{
       height: 50px;
       opacity: 0.9;
       max-width: 240px;
@@ -148,47 +145,47 @@
     }
 
     /* Mobile: stack logo above links so nothing clips */
-    @media (max-width: 640px) {
-      nav#siteNav {
+    @media (max-width: 640px){
+      nav#siteNav{
         flex-direction: column;
         align-items: center;
         padding: 1rem 1rem;
       }
-      .brand img {
+      .brand img{
         max-width: 280px;
         height: 46px;
       }
-      nav#siteNav ul {
+      nav#siteNav ul{
         width: 100%;
         justify-content: center;
         gap: 1.0rem;
       }
-      nav#siteNav a {
+      nav#siteNav a{
         font-size: 0.95rem;
         opacity: 0.9;
       }
     }
 
     /* ================= PAGE ================= */
-    main {
+    main{
       max-width: 1120px;
       margin: 0 auto;
-      padding: 7.5rem 2rem 4rem;
+      padding: 8rem 2rem 4rem; /* match prints “under-nav” spacing */
     }
 
-    /* extra safety if nav wraps on very small screens */
+    /* if nav wraps on small screens */
     @media (max-width: 640px){
-      main { padding-top: 9.25rem; }
+      main{ padding-top: 9.25rem; }
     }
 
-    h1 {
+    h1{
       font-weight: 300;
       letter-spacing: 0.04em;
       margin: 0 0 0.75rem;
       font-size: clamp(28px, 3.4vw, 44px);
     }
 
-    .tagline {
+    .tagline{
       font-size: 1rem;
       opacity: 0.75;
       line-height: 1.6;
@@ -197,14 +194,14 @@
     }
 
     /* ================= EDITORIAL CARDS ================= */
-    .grid {
+    .grid{
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
       margin-bottom: 3.5rem;
     }
 
-    .card {
+    .card{
       grid-column: span 6;
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 22px;
@@ -217,10 +214,10 @@
 
     @media (max-width: 980px) {
       .card { grid-column: span 12; }
-      main { padding: 7.25rem 1.25rem 3.5rem; }
+      main { padding: 8rem 1.25rem 3.5rem; }
     }
 
-    .thumb {
+    .thumb{
       position: relative;
       aspect-ratio: 16/10;
       overflow: hidden;
@@ -228,7 +225,7 @@
       display: block;
     }
 
-    .thumb img {
+    .thumb img{
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -237,9 +234,9 @@
       transition: transform 0.28s ease;
     }
 
-    .card:hover .thumb img { transform: scale(1.045); }
+    .card:hover .thumb img{ transform: scale(1.045); }
 
-    .badge {
+    .badge{
       position: absolute;
       left: 14px;
       top: 14px;
@@ -253,7 +250,7 @@
       z-index: 2;
     }
 
-    .content {
+    .content{
       padding: 16px;
       display: flex;
       flex-direction: column;
@@ -261,16 +258,16 @@
       flex: 1;
     }
 
-    .title { margin: 0; font-size: 1.1rem; font-weight: 500; }
+    .title{ margin: 0; font-size: 1.1rem; font-weight: 500; }
 
-    .desc {
+    .desc{
       margin: 0;
       font-size: 0.95rem;
       opacity: 0.8;
       line-height: 1.5;
     }
 
-    .meta {
+    .meta{
       margin-top: auto;
       display: flex;
       gap: 8px;
@@ -278,21 +275,21 @@
       flex-wrap: wrap;
     }
 
-    .pill {
+    .pill{
       border: 1px solid rgba(255,255,255,0.12);
       padding: 8px 10px;
       border-radius: 999px;
       background: rgba(255,255,255,0.03);
     }
 
-    .actions {
+    .actions{
       display: flex;
       gap: 10px;
       padding: 0 16px 16px;
       flex-wrap: wrap;
     }
 
-    .btn {
+    .btn{
       padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.14);
@@ -302,30 +299,30 @@
       text-decoration: none;
     }
 
-    .btn.primary { background: rgba(255,255,255,0.12); }
+    .btn.primary{ background: rgba(255,255,255,0.12); }
 
     /* ================= EXTERNAL FEATURES ================= */
-    .external-features {
+    .external-features{
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 3rem;
       margin-top: 0.5rem;
     }
 
-    .external-features h2 { font-size: 1.5rem; margin: 0 0 0.25rem; }
+    .external-features h2{ font-size: 1.5rem; margin: 0 0 0.25rem; }
 
-    .external-sub {
+    .external-sub{
       opacity: 0.7;
       max-width: 65ch;
       margin: 0 0 1.5rem;
     }
 
-    .external-list {
+    .external-list{
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
 
-    .ext-item {
+    .ext-item{
       grid-column: span 6;
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 18px;
@@ -333,62 +330,71 @@
       padding: 16px;
     }
 
-    @media (max-width: 980px) { .ext-item { grid-column: span 12; } }
+    @media (max-width: 980px){
+      .ext-item { grid-column: span 12; }
+    }
 
-    .ext-title { margin: 0 0 0.35rem; font-size: 1.02rem; font-weight: 500; }
+    .ext-title{ margin: 0 0 0.35rem; font-size: 1.02rem; font-weight: 500; }
 
-    .ext-meta {
+    .ext-meta{
       margin: 0 0 0.9rem;
       font-size: 0.9rem;
       opacity: 0.72;
       line-height: 1.45;
     }
 
-    .ext-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ext-actions{ display: flex; gap: 10px; flex-wrap: wrap; }
 
     /* ================= PUBLICATIONS ================= */
-    .editorial-publications {
+    .editorial-publications{
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 3rem;
       margin-top: 3rem;
     }
 
-    .pubs-header h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    .pubs-header h2{ font-size: 1.5rem; margin-bottom: 0.25rem; }
 
-    .pubs-sub {
+    .pubs-sub{
       opacity: 0.7;
       max-width: 60ch;
       margin-bottom: 1.5rem;
     }
 
-    .pubs-grid {
+    .pubs-grid{
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.2rem;
     }
 
-    @media (max-width: 900px) { .pubs-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 540px) { .pubs-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px){ .pubs-grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px){ .pubs-grid{ grid-template-columns: 1fr; } }
 
-    .pub-card {
+    .pub-card{
       background: #141414;
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .pub-card img {
+    .pub-card img{
       width: 100%;
       aspect-ratio: 3 / 4;
       object-fit: cover;
       display: block;
     }
 
-    .pub-card figcaption { padding: 0.85rem; font-size: 0.9rem; }
+    .pub-card figcaption{
+      padding: 0.85rem;
+      font-size: 0.9rem;
+    }
 
-    .pub-type { display: block; opacity: 0.6; font-size: 0.85rem; }
+    .pub-type{
+      display: block;
+      opacity: 0.6;
+      font-size: 0.85rem;
+    }
 
-    .pubs-note {
+    .pubs-note{
       margin-top: 1.25rem;
       font-size: 0.8rem;
       opacity: 0.55;
@@ -421,7 +427,7 @@
 </head>
 
 <body>
-  <!-- HARD-CODED NAV -->
+  <!-- HARD-CODED NAV (TEMPLATE FROM PRINTS) -->
   <nav id="siteNav">
     <div class="brand">
       <a href="/">
@@ -620,7 +626,7 @@
         }, 900);
       };
 
-      // Start hidden (same as Prints/Gallery)
+      // Start hidden (Prints behavior)
       nav.classList.remove("is-visible");
 
       document.addEventListener("mousemove", (e) => {
