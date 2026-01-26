@@ -142,7 +142,7 @@
         
         /* Single dial for card width */
         :root{
-          --card-max: 1100px; /* <- change this (900 / 1200 / 1400 / 1600 etc.) */
+          --card-max: clamp(560px, 38vw, 1100px);
         }
         
         .gallery-card {
