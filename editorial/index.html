@@ -56,17 +56,17 @@
 
     main { flex: 1 0 auto; }
 
-    /* ================= NAV (HARD-CODED, PRINTS BEHAVIOR) ================= */
+    /* ================= NAV (HARD-CODED, GALLERY/PRINTS AUTO-HIDE) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 1000;
+
       background: rgba(14,14,14,.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
 
-      /* Prints timing */
       transition: transform 1.25s ease, opacity 1.55s ease;
       transform: translateY(0);
       opacity: 1;
@@ -211,7 +211,11 @@
     @media (max-width: 980px) {
       .card { grid-column: span 12; }
       main { padding: 7.25rem 1.25rem 3.5rem; }
-      /* nav padding handled above; leave this alone */
+    }
+
+    /* extra safety if nav wraps on very small screens */
+    @media (max-width: 640px){
+      main { padding-top: 9.25rem; }
     }
 
     .thumb {
@@ -651,7 +655,7 @@
         }, 900);
       };
 
-      // Start hidden (same as Prints)
+      // Start hidden (same as Prints/Gallery)
       nav.classList.remove("is-visible");
 
       document.addEventListener("mousemove", (e) => {
