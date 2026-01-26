@@ -2,415 +2,458 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
 
-  gtag('config', 'G-GYPE7JD4H9');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>C-10 Tiffany | Thomas LeClair Photography</title>
-  <meta name="description" content="A collaborative masterpiece — Jeremy Pierce’s 1965 Chevy C-10 'Tiffany' built by JRW Rods & Customs. Photo essay + feature PDF." />
+  <meta name="description" content="A collaborative masterpiece — Jeremy Pierce’s 1965 Chevy C-10 'Tiffany' built by JRW Rods &amp; Customs. Photo essay + feature PDF." />
 
   <style>
     :root{
       --bg:#0e0e0e;
       --text:#f5f5f5;
-      --muted:rgba(245,245,245,0.72);
-      --muted2:rgba(245,245,245,0.58);
-      --line:rgba(255,255,255,0.12);
-      --panel:rgba(255,255,255,0.03);
-      --shadow: 0 18px 45px rgba(0,0,0,0.35);
-      --radius: 22px;
-      --max: 1120px;
+      --muted:rgba(245,245,245,.72);
+      --muted2:rgba(245,245,245,.58);
+      --line:rgba(255,255,255,.12);
+      --panel:rgba(255,255,255,.03);
+      --shadow:0 18px 45px rgba(0,0,0,.35);
+      --radius:22px;
+      --max:1120px;
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      min-height:100vh;
     }
 
     a{ color:inherit; text-decoration:none; }
 
-    /* ================= NAV (AUTO-HIDE) ================= */
-    nav{
+    /* ================= NAV (MATCH WAGON PAGE) ================= */
+    nav#siteNav{
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(14,14,14,0.85);
-      backdrop-filter: blur(6px);
-      transition: transform 0.35s ease, opacity 0.35s ease;
-      z-index: 10;
+      z-index: 1000;
 
-      /* Default (no-JS / mobile-safe): visible */
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: transform 1.25s ease, opacity 1.55s ease;
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
 
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+    }
+
+    nav#siteNav .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 16px;
     }
 
-    body.autohide nav{
+    body.autohide nav#siteNav{
       transform: translateY(-110%);
       opacity: 0;
       pointer-events: none;
     }
-
-    body.autohide nav.is-visible,
-    body.autohide nav:hover,
-    body.autohide nav:focus-within{
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
     }
 
-    @media (max-width: 768px){
-      body.autohide nav{
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
         transform: translateY(0) !important;
         opacity: 1 !important;
         pointer-events: auto !important;
       }
     }
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap: 1.5rem;
-      margin:0;
-      padding:0;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    nav a{
-      font-size: 0.9rem;
-      opacity: 0.8;
-      transition: opacity 0.2s ease;
-    }
-    nav a:hover{ opacity: 1; }
-
-    .brand{ flex: 0 1 auto; }
-    .brand img{
-      height: 50px;
-      opacity: 0.9;
+    nav#siteNav .brand{ flex: 0 0 auto; }
+    nav#siteNav .brand img{
+      height: 48px;
+      opacity: .9;
       max-width: 240px;
       width: auto;
     }
 
+    nav#siteNav ul{
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      flex: 0 0 auto;
+    }
+
+    nav#siteNav a{
+      font-size: .9rem;
+      opacity: .8;
+      text-decoration: none;
+    }
+    nav#siteNav a:hover{ opacity: 1; }
+
+    nav#siteNav a[aria-current="page"]{
+      opacity: 1;
+      position: relative;
+    }
+    nav#siteNav a[aria-current="page"]::after{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      bottom:-10px;
+      height:1px;
+      background: rgba(245,245,245,.35);
+    }
+
+    @media (max-width: 640px){
+      nav#siteNav .nav-inner{
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 1rem;
+      }
+      nav#siteNav .brand img{
+        max-width: 280px;
+        height: 46px;
+      }
+      nav#siteNav ul{
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+      }
+      nav#siteNav a{ opacity: .9; }
+    }
+
     /* ================= HERO ================= */
     header.hero{
-      padding-top: 92px; /* fixed nav offset */
+      padding-top:110px; /* match Wagon */
     }
 
     .hero-wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 2.25rem 2rem 1.25rem;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:2.25rem 2rem 1.25rem;
     }
 
     .hero-card{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
       overflow:hidden;
-      background: #0b0b0b;
-      box-shadow: var(--shadow);
+      background:#0b0b0b;
+      box-shadow:var(--shadow);
     }
 
     .hero-media{
-      position: relative;
-      min-height: 420px;
-      background: #0b0b0b;
+      position:relative;
+      min-height:420px;
+      background:#0b0b0b;
     }
 
     .hero-media img{
       width:100%;
       height:100%;
-      object-fit: cover;
+      object-fit:cover;
       display:block;
-      max-height: 560px;
+      max-height:560px;
     }
 
     .hero-grad{
       position:absolute;
       inset:0;
-      background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.12), rgba(0,0,0,0));
+      background:linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,.12), rgba(0,0,0,0));
       pointer-events:none;
     }
 
     .hero-text{
       position:absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 16px;
+      left:18px;
+      right:18px;
+      bottom:16px;
       display:flex;
-      flex-direction: column;
-      gap: 10px;
+      flex-direction:column;
+      gap:10px;
     }
 
     .kicker{
       display:inline-flex;
-      width: fit-content;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.26);
-      border-radius: 999px;
-      padding: 7px 10px;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.82);
+      width:fit-content;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.26);
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.82);
     }
 
     h1{
       margin:0;
-      font-weight: 450;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight:450;
+      letter-spacing:-.01em;
+      line-height:1.1;
+      font-size:clamp(28px,3.2vw,44px);
     }
 
     .sub{
       margin:0;
-      max-width: 85ch;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 1rem;
+      max-width:85ch;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:1rem;
     }
 
     .hero-actions{
       display:flex;
       gap:10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
+      flex-wrap:wrap;
+      margin-top:6px;
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      font-size: 0.95rem;
-      opacity: 0.92;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      font-size:.95rem;
+      opacity:.92;
     }
-    .btn:hover{ opacity: 1; background: rgba(255,255,255,0.08); }
-    .btn.primary{ background: rgba(255,255,255,0.12); }
+    .btn:hover{ opacity:1; background:rgba(255,255,255,.08); }
+    .btn.primary{ background:rgba(255,255,255,.12); }
 
     /* ================= CONTENT ================= */
     main{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 1.25rem 2rem 3.5rem;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:1.25rem 2rem 3.5rem;
     }
 
     .meta-row{
       display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 10px 0 18px;
-      color: var(--muted2);
-      font-size: 0.9rem;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:10px 0 18px;
+      color:var(--muted2);
+      font-size:.9rem;
     }
 
     .pill{
-      border: 1px solid var(--line);
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
     }
 
-    /* optional: clickable pill styling */
-    .pill-link{ text-decoration:none; color:inherit; }
-    .pill-link:hover{ background: rgba(255,255,255,0.06); }
-
     .panel{
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      padding: 18px 18px;
-      margin: 14px 0;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--panel);
+      box-shadow:var(--shadow);
+      padding:18px;
+      margin:14px 0;
     }
 
     .grid-2{
       display:grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 14px;
-      align-items: start;
+      grid-template-columns:1.6fr 1fr;
+      gap:14px;
+      align-items:start;
     }
 
-    @media (max-width: 980px){
-      .hero-wrap, main{ padding-left: 1.25rem; padding-right: 1.25rem; }
-      nav{ padding: 1.25rem 1.25rem; }
-      .grid-2{ grid-template-columns: 1fr; }
+    @media (max-width:980px){
+      .hero-wrap,main{ padding-left:1.25rem; padding-right:1.25rem; }
+      nav#siteNav .nav-inner{ padding:1.25rem; }
+      .grid-2{ grid-template-columns:1fr; }
     }
 
     .section-title{
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-      font-weight: 520;
-      letter-spacing: -0.01em;
+      margin:0 0 10px;
+      font-size:1.1rem;
+      font-weight:520;
+      letter-spacing:-.01em;
     }
 
     .copy p{
-      margin: 0 0 12px;
-      color: rgba(245,245,245,0.82);
-      line-height: 1.7;
-      font-size: 1rem;
+      margin:0 0 12px;
+      color:rgba(245,245,245,.82);
+      line-height:1.7;
+      font-size:1rem;
     }
-
-    .copy p:last-child{ margin-bottom: 0; }
+    .copy p:last-child{ margin-bottom:0; }
 
     .specs{
-      margin: 0;
-      padding-left: 18px;
-      color: rgba(245,245,245,0.82);
-      line-height: 1.65;
-      font-size: 0.98rem;
+      margin:0;
+      padding-left:18px;
+      color:rgba(245,245,245,.82);
+      line-height:1.65;
+      font-size:.98rem;
     }
 
-    .specs li{ margin: 6px 0; }
-    .specs b{ color: rgba(245,245,245,0.95); font-weight: 600; }
+    .specs li{ margin:6px 0; }
+    .specs b{ color:rgba(245,245,245,.95); font-weight:600; }
 
     /* ================= GALLERY ================= */
     .gallery{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-      margin-top: 14px;
+      grid-template-columns:repeat(12,1fr);
+      gap:12px;
+      margin-top:14px;
     }
 
     .shot{
-      grid-column: span 6;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      grid-column:span 6;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
       overflow:hidden;
       background:#0b0b0b;
-      box-shadow: var(--shadow);
-      position: relative;
+      box-shadow:var(--shadow);
+      position:relative;
+      cursor:pointer;
     }
 
-    .shot.wide{ grid-column: span 12; }
-    .shot.third{ grid-column: span 4; }
+    .shot.wide{ grid-column:span 12; }
+    .shot.third{ grid-column:span 4; }
 
-    @media (max-width: 980px){
-      .shot, .shot.wide, .shot.third{ grid-column: span 12; }
+    @media (max-width:980px){
+      .shot,.shot.wide,.shot.third{ grid-column:span 12; }
     }
 
     .shot img{
       width:100%;
       height:100%;
       display:block;
-      object-fit: cover;
-      transform: scale(1.01);
-      transition: transform 0.25s ease;
+      object-fit:cover;
+      transform:scale(1.01);
+      transition:transform .25s ease;
     }
 
-    .shot:hover img{ transform: scale(1.03); }
+    .shot:hover img{ transform:scale(1.03); }
 
     .caption{
       position:absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.35);
-      color: rgba(245,245,245,0.86);
-      font-size: 0.9rem;
-      line-height: 1.35;
+      left:12px;
+      right:12px;
+      bottom:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.35);
+      color:rgba(245,245,245,.86);
+      font-size:.9rem;
+      line-height:1.35;
       backdrop-filter: blur(8px);
     }
 
     /* ================= LIGHTBOX ================= */
     .lightbox{
-      position: fixed;
-      inset: 0;
+      position:fixed;
+      inset:0;
       display:none;
       align-items:center;
       justify-content:center;
-      background: rgba(0,0,0,0.82);
-      z-index: 999;
-      padding: 18px;
+      background:rgba(0,0,0,.82);
+      z-index:999;
+      padding:18px;
     }
 
     .lightbox.is-open{ display:flex; }
 
     .lightbox-inner{
-      max-width: min(1200px, 96vw);
-      max-height: 86vh;
-      position: relative;
+      max-width:min(1200px,96vw);
+      max-height:86vh;
+      position:relative;
     }
 
     .lightbox-inner img{
       width:100%;
       height:auto;
-      max-height: 86vh;
+      max-height:86vh;
       display:block;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.16);
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
       background:#0b0b0b;
     }
 
     .lb-close{
       position:absolute;
-      top: -10px;
-      right: -10px;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.35);
-      color: rgba(255,255,255,0.9);
+      top:-10px;
+      right:-10px;
+      width:42px;
+      height:42px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.35);
+      color:rgba(255,255,255,.9);
       display:flex;
       align-items:center;
       justify-content:center;
       cursor:pointer;
       backdrop-filter: blur(8px);
-      font-size: 18px;
+      font-size:18px;
     }
-    .lb-close:hover{ background: rgba(255,255,255,0.10); }
+    .lb-close:hover{ background: rgba(255,255,255,.10); }
 
     /* ================= FOOTER ================= */
     footer{
       text-align:center;
-      padding: 2.5rem 1rem 1.5rem;
-      font-size: 0.85rem;
-      color: rgba(245,245,245,0.6);
+      padding:2.5rem 1rem 1.5rem;
+      font-size:.85rem;
+      color:rgba(245,245,245,.6);
     }
   </style>
 </head>
 
 <body>
   <nav id="siteNav">
-    <div class="brand">
-      <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-      </a>
+    <div class="nav-inner">
+      <div class="brand">
+        <a href="/">
+          <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+        </a>
+      </div>
+
+      <ul>
+        <li><a href="/editorial/" aria-current="page">Editorial</a></li>
+        <li><a href="/gallery/">Gallery</a></li>
+        <li><a href="/commissioned.html">Commissioned</a></li>
+        <li><a href="/prints.html">Prints</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
     </div>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
   </nav>
 
   <header class="hero">
@@ -504,80 +547,74 @@
 
     <section class="panel" style="margin-top:14px;">
       <h2 class="section-title">Gallery</h2>
-      <p style="margin:0; color:rgba(245,245,245,0.72); line-height:1.6;">
+      <p style="margin:0; color:rgba(245,245,245,.72); line-height:1.6;">
         Click any image to view full size.
       </p>
 
       <div class="gallery" style="margin-top:14px;">
-        <!-- Wide hero-style shot -->
-        <a class="shot wide" href="/editorial/C-10_Tiffany/Tiffany12.webp" data-full="/editorial/C-10_Tiffany/Tiffany12.webp" aria-label="Open image">
+        <div class="shot wide" data-full="/editorial/C-10_Tiffany/Tiffany12.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany12.webp" alt="C-10 Tiffany three-quarter view on the road" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">Road presence — low, clean, and modern.</div>
-        </a>
+        </div>
 
-        <!-- Two-up -->
-        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany1.webp" data-full="/editorial/C-10_Tiffany/Tiffany1.webp" aria-label="Open image">
+        <div class="shot" data-full="/editorial/C-10_Tiffany/Tiffany1.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany1.webp" alt="C-10 Tiffany rear three-quarter view" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">Tailgate lettering and perfect stance.</div>
-        </a>
+        </div>
 
-        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany3.webp" data-full="/editorial/C-10_Tiffany/Tiffany3.webp" aria-label="Open image">
+        <div class="shot" data-full="/editorial/C-10_Tiffany/Tiffany3.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany3.webp" alt="Bed wood detail" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">Bed detail — finish work you can feel.</div>
-        </a>
+        </div>
 
-        <!-- Thirds -->
-        <a class="shot third" href="/editorial/C-10_Tiffany/Tiffany4.webp" data-full="/editorial/C-10_Tiffany/Tiffany4.webp" aria-label="Open image">
+        <div class="shot third" data-full="/editorial/C-10_Tiffany/Tiffany4.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany4.webp" alt="Hidden reservoirs detail" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">Hidden systems — clean bay, smart access.</div>
-        </a>
+        </div>
 
-        <a class="shot third" href="/editorial/C-10_Tiffany/Tiffany5.webp" data-full="/editorial/C-10_Tiffany/Tiffany5.webp" aria-label="Open image">
+        <div class="shot third" data-full="/editorial/C-10_Tiffany/Tiffany5.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany5.webp" alt="Interior speaker detail" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">Interior details — modern touches, period feel.</div>
-        </a>
+        </div>
 
-        <a class="shot third" href="/editorial/C-10_Tiffany/Tiffany6.webp" data-full="/editorial/C-10_Tiffany/Tiffany6.webp" aria-label="Open image">
+        <div class="shot third" data-full="/editorial/C-10_Tiffany/Tiffany6.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany6.webp" alt="Dash and steering detail" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">Driver’s view — simple, focused, high quality.</div>
-        </a>
+        </div>
 
-        <!-- Two-up -->
-        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany7.webp" data-full="/editorial/C-10_Tiffany/Tiffany7.webp" aria-label="Open image">
+        <div class="shot" data-full="/editorial/C-10_Tiffany/Tiffany7.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany7.webp" alt="Engine bay top view" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">LT4 power — packaged like a showpiece.</div>
-        </a>
+        </div>
 
-        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany8.webp" data-full="/editorial/C-10_Tiffany/Tiffany8.webp" aria-label="Open image">
+        <div class="shot" data-full="/editorial/C-10_Tiffany/Tiffany8.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany8.webp" alt="Engine bay with hood open" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
-          <div class="caption">Night Details - the cockpit comes alive.</div>
-        </a>
+          <div class="caption">Night details — the cockpit comes alive.</div>
+        </div>
 
-        <!-- Wide -->
-        <a class="shot wide" href="/editorial/C-10_Tiffany/Tiffany9.webp" data-full="/editorial/C-10_Tiffany/Tiffany9.webp" aria-label="Open image">
+        <div class="shot wide" data-full="/editorial/C-10_Tiffany/Tiffany9.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany9.webp" alt="Gauge cluster at night" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
           <div class="caption">Hood up — engineered and finished.</div>
-        </a>
+        </div>
 
-        <!-- Optionals (if present) -->
-        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany10.webp" data-full="/editorial/C-10_Tiffany/Tiffany10.webp" aria-label="Open image">
+        <div class="shot" data-full="/editorial/C-10_Tiffany/Tiffany10.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany10.webp" alt="Additional C-10 Tiffany photo" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
-        </a>
+        </div>
 
-        <a class="shot" href="/editorial/C-10_Tiffany/Tiffany11.webp" data-full="/editorial/C-10_Tiffany/Tiffany11.webp" aria-label="Open image">
+        <div class="shot" data-full="/editorial/C-10_Tiffany/Tiffany11.webp">
           <img src="/editorial/C-10_Tiffany/Tiffany11.webp" alt="Additional C-10 Tiffany photo" loading="lazy" decoding="async"
                onerror="this.parentElement.style.display='none'">
-        </a>
+        </div>
       </div>
     </section>
 
@@ -608,46 +645,48 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Auto-hide nav (desktop hover only)
-    (() => {
-      const nav = document.getElementById('siteNav');
+    // Auto-hide nav (desktop hover only) — matches Wagon behavior
+    (function initNavAutoHide(){
+      const nav = document.getElementById("siteNav");
       if (!nav) return;
 
-      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      if (!canHover) return;
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
 
-      document.body.classList.add('autohide');
+      document.body.classList.add("autohide");
 
       let hideTimer = null;
+      const HIDE_DELAY = 900;
+
       const showNav = () => {
-        nav.classList.add('is-visible');
+        nav.classList.add("is-visible");
         if (hideTimer) clearTimeout(hideTimer);
         hideTimer = setTimeout(() => {
-          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
-            nav.classList.remove('is-visible');
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
           }
-        }, 1200);
+        }, HIDE_DELAY);
       };
 
-      const hideNavSoon = () => {
+      const hideSoon = () => {
         if (hideTimer) clearTimeout(hideTimer);
         hideTimer = setTimeout(() => {
-          if (!nav.matches(':hover') && !nav.matches(':focus-within')) {
-            nav.classList.remove('is-visible');
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
           }
-        }, 1200);
+        }, HIDE_DELAY);
       };
 
-      showNav();
-      document.addEventListener('mousemove', (e) => { if (e.clientY < 90) showNav(); });
-      nav.addEventListener('mouseenter', showNav);
-      nav.addEventListener('mouseleave', hideNavSoon);
-      nav.addEventListener('focusin', showNav);
-      nav.addEventListener('focusout', hideNavSoon);
+      nav.classList.remove("is-visible");
+      document.addEventListener("mousemove", (e) => { if (e.clientY < 90) showNav(); });
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
     })();
 
-    // Lightbox
-    (() => {
+    // Lightbox (click any tile with data-full)
+    (function(){
       const lb = document.getElementById('lightbox');
       const lbImg = document.getElementById('lbImg');
       const lbClose = document.getElementById('lbClose');
@@ -655,28 +694,25 @@
       const open = (src) => {
         lbImg.src = src;
         lb.classList.add('is-open');
-        lb.setAttribute('aria-hidden', 'false');
+        lb.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
       };
 
       const close = () => {
         lb.classList.remove('is-open');
-        lb.setAttribute('aria-hidden', 'true');
+        lb.setAttribute('aria-hidden','true');
         lbImg.src = '';
+        document.body.style.overflow = '';
       };
 
-      document.querySelectorAll('[data-full]').forEach(a => {
-        a.addEventListener('click', (e) => {
-          e.preventDefault();
-          const src = a.getAttribute('data-full');
-          if (src) open(src);
-        });
+      document.querySelectorAll('[data-full]').forEach(el => {
+        el.addEventListener('click', () => open(el.dataset.full));
       });
 
       lbClose.addEventListener('click', close);
-      lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
     })();
   </script>
 </body>
 </html>
-
