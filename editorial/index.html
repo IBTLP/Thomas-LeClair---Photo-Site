@@ -56,23 +56,25 @@
 
     main { flex: 1 0 auto; }
 
-    /* ================= NAV (HARD-CODED, GALLERY/PRINTS AUTO-HIDE) ================= */
+    /* ================= NAV (HARD-CODED, AUTO-HIDE, NO INCLUDE) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 1000;
 
+      /* EXACT look you had */
       background: rgba(14,14,14,.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
 
+      /* EXACT timing you had */
       transition: transform 1.25s ease, opacity 1.55s ease;
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
 
-      /* gradient hairline */
+      /* EXACT hairline you had */
       border-bottom: 1px solid transparent;
       border-image: linear-gradient(
         90deg,
@@ -81,7 +83,7 @@
         rgba(255,255,255,0)
       ) 1;
 
-      /* layout */
+      /* EXACT width/spacing you had */
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -174,6 +176,11 @@
       padding: 7.5rem 2rem 4rem;
     }
 
+    /* extra safety if nav wraps on very small screens */
+    @media (max-width: 640px){
+      main { padding-top: 9.25rem; }
+    }
+
     h1 {
       font-weight: 300;
       letter-spacing: 0.04em;
@@ -213,11 +220,6 @@
       main { padding: 7.25rem 1.25rem 3.5rem; }
     }
 
-    /* extra safety if nav wraps on very small screens */
-    @media (max-width: 640px){
-      main { padding-top: 9.25rem; }
-    }
-
     .thumb {
       position: relative;
       aspect-ratio: 16/10;
@@ -235,9 +237,7 @@
       transition: transform 0.28s ease;
     }
 
-    .card:hover .thumb img {
-      transform: scale(1.045);
-    }
+    .card:hover .thumb img { transform: scale(1.045); }
 
     .badge {
       position: absolute;
@@ -261,11 +261,7 @@
       flex: 1;
     }
 
-    .title {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
+    .title { margin: 0; font-size: 1.1rem; font-weight: 500; }
 
     .desc {
       margin: 0;
@@ -315,10 +311,7 @@
       margin-top: 0.5rem;
     }
 
-    .external-features h2 {
-      font-size: 1.5rem;
-      margin: 0 0 0.25rem;
-    }
+    .external-features h2 { font-size: 1.5rem; margin: 0 0 0.25rem; }
 
     .external-sub {
       opacity: 0.7;
@@ -340,15 +333,9 @@
       padding: 16px;
     }
 
-    @media (max-width: 980px) {
-      .ext-item { grid-column: span 12; }
-    }
+    @media (max-width: 980px) { .ext-item { grid-column: span 12; } }
 
-    .ext-title {
-      margin: 0 0 0.35rem;
-      font-size: 1.02rem;
-      font-weight: 500;
-    }
+    .ext-title { margin: 0 0 0.35rem; font-size: 1.02rem; font-weight: 500; }
 
     .ext-meta {
       margin: 0 0 0.9rem;
@@ -357,11 +344,7 @@
       line-height: 1.45;
     }
 
-    .ext-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .ext-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
     /* ================= PUBLICATIONS ================= */
     .editorial-publications {
@@ -370,10 +353,7 @@
       margin-top: 3rem;
     }
 
-    .pubs-header h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem;
-    }
+    .pubs-header h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
 
     .pubs-sub {
       opacity: 0.7;
@@ -387,13 +367,8 @@
       gap: 1.2rem;
     }
 
-    @media (max-width: 900px) {
-      .pubs-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 540px) {
-      .pubs-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 900px) { .pubs-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .pubs-grid { grid-template-columns: 1fr; } }
 
     .pub-card {
       background: #141414;
@@ -409,16 +384,9 @@
       display: block;
     }
 
-    .pub-card figcaption {
-      padding: 0.85rem;
-      font-size: 0.9rem;
-    }
+    .pub-card figcaption { padding: 0.85rem; font-size: 0.9rem; }
 
-    .pub-type {
-      display: block;
-      opacity: 0.6;
-      font-size: 0.85rem;
-    }
+    .pub-type { display: block; opacity: 0.6; font-size: 0.85rem; }
 
     .pubs-note {
       margin-top: 1.25rem;
@@ -428,7 +396,6 @@
     }
 
     /* ================= INCLUDED FOOTER (GLOBAL) ================= */
-    /* /includes/footer.html should contain: <footer class="site-footer"> ... </footer> */
     .site-footer{
       border-top: 1px solid transparent;
       border-image: linear-gradient(
@@ -534,7 +501,6 @@
       </p>
 
       <div class="external-list">
-
         <div class="ext-item">
           <h3 class="ext-title">1961 Corvette — Tribute to a Fallen Soldier</h3>
           <p class="ext-meta">Chevy Hardcore · Feature</p>
@@ -554,7 +520,6 @@
             </a>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -671,7 +636,6 @@
     (async () => {
       const footOk = await includeHTML("site-footer", "/includes/footer.html");
       if (!footOk) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
-
       initNavAutoHide();
     })();
   </script>
