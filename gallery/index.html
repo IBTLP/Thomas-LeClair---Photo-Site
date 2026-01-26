@@ -129,84 +129,110 @@
       color: rgba(245,245,245,0.72);
     }
 
-    /* ================= GALLERY CARDS (UNCHANGED) ================= */
-    .gallery-grid {
-      display: grid;
-      gap: 1.25rem;
-      margin-bottom: 4rem;
-    }
-
-    .gallery-card {
-      position: relative;
-      display: block;
-      padding: 3.25rem 3rem; /* your original */
-      border: 1px solid rgba(255,255,255,0.14);
-      color: #f5f5f5;
-      text-decoration: none;
-      overflow: hidden;
-      border-radius: 2px;
-      transform: translateZ(0);
-    }
-
-    .gallery-card h2 {
-      position: relative;
-      z-index: 2;
-      margin: 0;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      font-size: 1.15rem;
-    }
-
-    .gallery-card .cta {
-      position: relative;
-      z-index: 2;
-      margin-top: 0.9rem;
-      font-size: 0.85rem;
-      opacity: 0.75;
-    }
-
-    .gallery-card:focus-visible {
-      outline: 2px solid rgba(245,245,245,0.55);
-      outline-offset: 3px;
-    }
-
-    /* background image */
-    .gallery-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--bg);
-      background-size: cover;
-      background-position: center;
-      opacity: 0.24;
-      filter: blur(4px);
-      transform: scale(1.03);
-      transition: opacity 0.6s ease, filter 0.6s ease, transform 0.8s ease;
-    }
-
-    /* dark overlay */
-    .gallery-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(14,14,14,0.58);
-      z-index: 1;
-    }
-
-    /* hover reveal (desktop only) */
-    @media (hover: hover) {
-      .gallery-card:hover::before {
-        opacity: 0.82;
-        filter: blur(2px);
-        transform: scale(1.06);
-      }
-    }
-
-    /* responsive spacing (your original intent) */
-    @media (max-width: 640px) {
-      main { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .gallery-card { padding: 2.5rem 1.75rem; }
-    }
+           /* ================= GALLERY CARDS (WIDTH + OPACITY + AFTER-BLUR) ================= */
+        
+        .gallery-grid {
+          display: grid;
+          gap: 1.25rem;
+          margin-bottom: 4rem;
+        
+          /* key: prevent cards from stretching full-width when main gets wider */
+          justify-items: center;
+        }
+        
+        /* Single dial for card width */
+        :root{
+          --card-max: 1100px; /* <- change this (900 / 1200 / 1400 / 1600 etc.) */
+        }
+        
+        .gallery-card {
+          position: relative;
+          display: block;
+        
+          width: 100%;
+          max-width: var(--card-max);
+        
+          padding: 3.25rem 3rem; /* your original */
+          border: 1px solid rgba(255,255,255,0.14);
+          color: #f5f5f5;
+          text-decoration: none;
+          overflow: hidden;
+          border-radius: 2px;
+          transform: translateZ(0);
+        }
+        
+        .gallery-card h2 {
+          position: relative;
+          z-index: 2;
+          margin: 0;
+          font-weight: 400;
+          letter-spacing: 0.06em;
+          font-size: 1.15rem;
+        }
+        
+        .gallery-card .cta {
+          position: relative;
+          z-index: 2;
+          margin-top: 0.9rem;
+          font-size: 0.85rem;
+          opacity: 0.75;
+        }
+        
+        .gallery-card:focus-visible {
+          outline: 2px solid rgba(245,245,245,0.55);
+          outline-offset: 3px;
+        }
+        
+        /* background image layer */
+        .gallery-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image: var(--bg);
+          background-size: cover;
+          background-position: center;
+        
+          /* back to your original feel */
+          opacity: 0.14;
+          filter: blur(4px);
+          transform: scale(1.03);
+        
+          transition: opacity 0.6s ease, filter 0.6s ease, transform 0.8s ease;
+        }
+        
+        /* dark overlay + AFTER-BLUR (blurs what's behind it) */
+        .gallery-card::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(14,14,14,0.58);
+          z-index: 1;
+        
+          /* after blur (supported Safari/Chrome/Edge) */
+          backdrop-filter: blur(2px);
+          -webkit-backdrop-filter: blur(2px);
+        }
+        
+        /* hover reveal (desktop only) */
+        @media (hover: hover) {
+          .gallery-card:hover::before {
+            opacity: 0.42;
+            filter: blur(2px);
+            transform: scale(1.06);
+          }
+        
+          .gallery-card:hover::after {
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+          }
+        }
+        
+        /* responsive spacing (your original intent) */
+        @media (max-width: 640px) {
+          main { padding-left: 1.25rem; padding-right: 1.25rem; }
+          .gallery-card { padding: 2.5rem 1.75rem; }
+          :root{ --card-max: 1100px; } /* keep full width on mobile */
+        }
 
     /* ================= INCLUDED FOOTER (EXACTLY LIKE PRINTS) ================= */
     /* /includes/footer.html should contain: <footer class="site-footer"> ... </footer> */
