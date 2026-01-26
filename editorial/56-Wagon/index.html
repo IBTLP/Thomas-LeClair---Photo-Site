@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
 
-  gtag('config', 'G-GYPE7JD4H9');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>1956 Belair Wagon | Thomas LeClair Photography</title>
@@ -39,129 +39,122 @@
 
     a{ color:inherit; text-decoration:none; }
 
-   /* ================= NAV (MATCH ABOUT / TARGET) ================= */
-nav#siteNav{
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  z-index: 1000;
+    /* ================= NAV (MATCH ABOUT / EDITORIAL TARGET) ================= */
+    nav#siteNav{
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
 
-  background: rgba(14,14,14,.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
 
-  transition: transform 1.25s ease, opacity 1.55s ease;
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
 
-  /* subtle hairline like About */
-  border-bottom: 1px solid transparent;
-  border-image: linear-gradient(
-    90deg,
-    rgba(255,255,255,0),
-    rgba(255,255,255,.10),
-    rgba(255,255,255,0)
-  ) 1;
-}
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+    }
 
-/* inner “contained” bar */
-nav#siteNav .nav-inner{
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
+    nav#siteNav .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
 
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-/* auto-hide behavior (desktop only, JS adds body.autohide) */
-body.autohide nav#siteNav{
-  transform: translateY(-110%);
-  opacity: 0;
-  pointer-events: none;
-}
-body.autohide nav#siteNav.is-visible,
-body.autohide nav#siteNav:hover,
-body.autohide nav#siteNav:focus-within{
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-/* force visible on touch devices */
-@media (max-width: 768px) {
-  body.autohide nav#siteNav{
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-}
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
 
-/* logo */
-nav#siteNav .brand{ flex: 0 0 auto; }
-nav#siteNav .brand img{
-  height: 48px;
-  opacity: .9;
-  max-width: 240px;
-  width: auto;
-}
+    nav#siteNav .brand{ flex: 0 0 auto; }
+    nav#siteNav .brand img{
+      height: 48px;
+      opacity: .9;
+      max-width: 240px;
+      width: auto;
+    }
 
-/* CENTER the links like About */
-nav#siteNav ul{
-  list-style: none;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
+    nav#siteNav ul{
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      flex: 0 0 auto;
+    }
 
-nav#siteNav a{
-  font-size: .9rem;
-  opacity: .8;
-  text-decoration: none;
-}
-nav#siteNav a:hover{ opacity: 1; }
+    nav#siteNav a{
+      font-size: .9rem;
+      opacity: .8;
+      text-decoration: none;
+    }
+    nav#siteNav a:hover{ opacity: 1; }
 
-/* optional: active underline like About */
-nav#siteNav a[aria-current="page"]{
-  opacity: 1;
-  position: relative;
-}
-nav#siteNav a[aria-current="page"]::after{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  bottom:-10px;
-  height:1px;
-  background: rgba(245,245,245,.35);
-}
+    nav#siteNav a[aria-current="page"]{
+      opacity: 1;
+      position: relative;
+    }
+    nav#siteNav a[aria-current="page"]::after{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      bottom:-10px;
+      height:1px;
+      background: rgba(245,245,245,.35);
+    }
 
-/* Mobile: stack logo above links */
-@media (max-width: 640px){
-  nav#siteNav .nav-inner{
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 1rem;
-  }
-  nav#siteNav .brand img{
-    max-width: 280px;
-    height: 46px;
-  }
-  nav#siteNav ul{
-    width: 100%;
-    justify-content: center;
-    gap: 1rem;
-  }
-  nav#siteNav a{ opacity: .9; }
-}
+    @media (max-width: 640px){
+      nav#siteNav .nav-inner{
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 1rem;
+      }
+      nav#siteNav .brand img{
+        max-width: 280px;
+        height: 46px;
+      }
+      nav#siteNav ul{
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+      }
+      nav#siteNav a{ opacity: .9; }
+    }
 
     /* ================= HERO ================= */
-    header.hero{ padding-top:92px; }
+    header.hero{ padding-top:110px; }
 
     .hero-wrap{
       max-width:var(--max);
@@ -295,7 +288,7 @@ nav#siteNav a[aria-current="page"]::after{
 
     @media (max-width:980px){
       .grid-2{ grid-template-columns:1fr; }
-      nav{ padding:1.25rem; }
+      nav#siteNav .nav-inner{ padding:1.25rem; }
       .hero-wrap,main{ padding-left:1.25rem; padding-right:1.25rem; }
     }
 
@@ -402,205 +395,225 @@ nav#siteNav a[aria-current="page"]::after{
 </head>
 
 <body class="autohide">
-<nav id="siteNav">
-  <div class="nav-inner">
-    <div class="brand">
-      <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-      </a>
+  <nav id="siteNav">
+    <div class="nav-inner">
+      <div class="brand">
+        <a href="/">
+          <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+        </a>
+      </div>
+
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/gallery/">Gallery</a></li>
+        <li><a href="/editorial/" aria-current="page">Editorial</a></li>
+        <li><a href="/prints.html">Prints</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/editorial/" aria-current="page">Editorial</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="hero-wrap">
-    <div class="hero-card">
-      <div class="hero-media">
-        <img src="WagonHero.webp" alt="1956 Chevrolet Belair Wagon" loading="eager">
-        <div class="hero-grad"></div>
-        <div class="hero-text">
-          <span class="kicker">Feature</span>
-          <h1>1956 Belair Wagon</h1>
-          <p class="sub">
-            A classic silhouette with modern confidence — built to roam, finished to stop you in your tracks.
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="/editorial/">← Back to Editorial</a>
-            <a class="btn primary" href="56-wagon-feature.pdf" target="_blank">Open PDF</a>
+  <header class="hero">
+    <div class="hero-wrap">
+      <div class="hero-card">
+        <div class="hero-media">
+          <img src="WagonHero.webp" alt="1956 Chevrolet Belair Wagon" loading="eager">
+          <div class="hero-grad"></div>
+          <div class="hero-text">
+            <span class="kicker">Feature</span>
+            <h1>1956 Belair Wagon</h1>
+            <p class="sub">
+              A classic silhouette with modern confidence — built to roam, finished to stop you in your tracks.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="/editorial/">← Back to Editorial</a>
+              <a class="btn primary" href="56-wagon-feature.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="meta-row">
+        <span class="pill">Build: JRW Rods &amp; Customs</span>
+        <span class="pill">Photography: Thomas LeClair</span>
+        <span class="pill">Photo essay + feature</span>
+      </div>
     </div>
+  </header>
 
-    <div class="meta-row">
-      <span class="pill">Build: JRW Rods &amp; Customs</span>
-      <span class="pill">Photography: Thomas LeClair</span>
-      <span class="pill">Photo essay + feature</span>
-    </div>
-  </div>
-</header>
+  <main>
+    <section class="grid-2">
+      <div class="panel copy">
+        <h2 class="section-title">The Story</h2>
 
-<main>
-  <section class="grid-2">
-    <div class="panel copy">
-      <h2 class="section-title">The Story</h2>
+        <p>
+          There’s something almost cinematic about a wagon done right — the kind of car that feels equally at home
+          idling at a curb in the last light of day or chewing up miles with the stereo low and the windows cracked.
+        </p>
 
-      <p>
-        There’s something almost cinematic about a wagon done right — the kind of car that feels equally at home
-        idling at a curb in the last light of day or chewing up miles with the stereo low and the windows cracked.
+        <p>
+          This 1956 Belair Wagon captures that feeling perfectly: timeless proportions, modern drivability, and
+          detail work that rewards a closer look.
+        </p>
+
+        <p>
+          At first glance, it’s pure mid-century Chevrolet. But spend a minute with it and you start noticing the
+          tells: the stance is too perfect, the reflections too clean, the panel fit too precise. It’s the kind of
+          build where nothing is accidental — and nothing is left “good enough.”
+        </p>
+
+        <p>
+          The goal wasn’t just to restore a wagon — it was to create something you can trust for long-distance
+          travel. Modern reliability, modern comfort, and a chassis and powertrain package that behaves like a
+          new car without losing the character that makes a ’56 special.
+        </p>
+
+        <p>
+          In the end, this Belair Wagon stands as a reminder that the best builds don’t just look good under show
+          lights. They’re meant to be driven — and enjoyed — on real roads.
+        </p>
+      </div>
+
+      <aside class="panel">
+        <h2 class="section-title">Build Notes</h2>
+        <ul class="specs">
+          <li><b>Chassis:</b> ExtReme Chassis full chassis</li>
+          <li><b>Powertrain:</b> GM Performance LS3 Connect &amp; Cruise</li>
+          <li><b>Transmission:</b> 6L80 automatic</li>
+          <li><b>Rear:</b> Strange 9&quot; with 3.55 gears</li>
+          <li><b>Wheels:</b> American Muscle “55” wheels</li>
+          <li><b>Interior:</b> Hand-built custom interior</li>
+          <li><b>Intent:</b> Built to drive — road trips encouraged</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="panel" style="margin-top:14px;">
+      <h2 class="section-title">Gallery</h2>
+      <p style="margin:0; color:rgba(245,245,245,.72); line-height:1.6;">
+        Click any image to view full size.
       </p>
 
-      <p>
-        This 1956 Belair Wagon captures that feeling perfectly: timeless proportions, modern drivability, and
-        detail work that rewards a closer look.
-      </p>
+      <div class="gallery">
+        <div class="shot wide" data-full="Wagon6.webp">
+          <img src="Wagon6.webp" alt="1956 Belair Wagon side profile" loading="lazy" decoding="async">
+        </div>
 
-      <p>
-        At first glance, it’s pure mid-century Chevrolet. But spend a minute with it and you start noticing the
-        tells: the stance is too perfect, the reflections too clean, the panel fit too precise. It’s the kind of
-        build where nothing is accidental — and nothing is left “good enough.”
-      </p>
+        <div class="shot" data-full="Wagon5.webp">
+          <img src="Wagon5.webp" alt="Wagon parked, side view" loading="lazy" decoding="async">
+        </div>
 
-      <p>
-        The goal wasn’t just to restore a wagon — it was to create something you can trust for long-distance
-        travel. Modern reliability, modern comfort, and a chassis and powertrain package that behaves like a
-        new car without losing the character that makes a ’56 special.
-      </p>
+        <div class="shot" data-full="Wagon10.webp">
+          <img src="Wagon10.webp" alt="Rear three-quarter view" loading="lazy" decoding="async">
+        </div>
 
-      <p>
-        In the end, this Belair Wagon stands as a reminder that the best builds don’t just look good under show
-        lights. They’re meant to be driven — and enjoyed — on real roads.
-      </p>
-    </div>
+        <div class="shot third" data-full="Wagon11.webp">
+          <img src="Wagon11.webp" alt="Engine bay detail" loading="lazy" decoding="async">
+        </div>
 
-    <aside class="panel">
-      <h2 class="section-title">Build Notes</h2>
-      <ul class="specs">
-        <li><b>Chassis:</b> ExtReme Chassis full chassis</li>
-        <li><b>Powertrain:</b> GM Performance LS3 Connect &amp; Cruise</li>
-        <li><b>Transmission:</b> 6L80 automatic</li>
-        <li><b>Rear:</b> Strange 9&quot; with 3.55 gears</li>
-        <li><b>Wheels:</b> American Muscle “55” wheels</li>
-        <li><b>Interior:</b> Hand-built custom interior</li>
-        <li><b>Intent:</b> Built to drive — road trips encouraged</li>
-      </ul>
-    </aside>
-  </section>
-  <section class="panel" style="margin-top:14px;">
-  <h2 class="section-title">Gallery</h2>
-  <p style="margin:0; color:rgba(245,245,245,.72); line-height:1.6;">
-    Click any image to view full size.
-  </p>
+        <div class="shot third" data-full="Wagon2.webp">
+          <img src="Wagon2.webp" alt="Wood cargo floor detail" loading="lazy" decoding="async">
+        </div>
 
-  <div class="gallery">
-    <!-- Wide hero-style image -->
-    <div class="shot wide" data-full="Wagon6.webp">
-      <img src="Wagon6.webp" alt="1956 Belair Wagon side profile" loading="lazy" decoding="async">
-    </div>
+        <div class="shot third" data-full="Wagon1.webp">
+          <img src="Wagon1.webp" alt="Interior headliner detail" loading="lazy" decoding="async">
+        </div>
 
-    <!-- Two-up -->
-    <div class="shot" data-full="Wagon5.webp">
-      <img src="Wagon5.webp" alt="Wagon parked, side view" loading="lazy" decoding="async">
-    </div>
+        <div class="shot" data-full="Wagon4.webp">
+          <img src="Wagon4.webp" alt="Front seat interior detail" loading="lazy" decoding="async">
+        </div>
 
-    <div class="shot" data-full="Wagon10.webp">
-      <img src="Wagon10.webp" alt="Rear three-quarter view" loading="lazy" decoding="async">
-    </div>
+        <div class="shot" data-full="Wagon3.webp">
+          <img src="Wagon3.webp" alt="Rear bumper and plate detail" loading="lazy" decoding="async">
+        </div>
 
-    <!-- Thirds -->
-    <div class="shot third" data-full="Wagon11.webp">
-      <img src="Wagon11.webp" alt="Engine bay detail" loading="lazy" decoding="async">
-    </div>
+        <div class="shot wide" data-full="Wagon7.webp">
+          <img src="Wagon7.webp" alt="1956 Belair Wagon at dusk" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="shot third" data-full="Wagon2.webp">
-      <img src="Wagon2.webp" alt="Wood cargo floor detail" loading="lazy" decoding="async">
-    </div>
+  <footer>
+    © <span id="year"></span> Thomas LeClair Photography
+  </footer>
 
-    <div class="shot third" data-full="Wagon1.webp">
-      <img src="Wagon1.webp" alt="Interior headliner detail" loading="lazy" decoding="async">
-    </div>
-
-    <!-- Two-up -->
-    <div class="shot" data-full="Wagon4.webp">
-      <img src="Wagon4.webp" alt="Front seat interior detail" loading="lazy" decoding="async">
-    </div>
-
-    <div class="shot" data-full="Wagon3.webp">
-      <img src="Wagon3.webp" alt="Rear bumper and plate detail" loading="lazy" decoding="async">
-    </div>
-
-    <!-- Wide closing image -->
-    <div class="shot wide" data-full="Wagon7.webp">
-      <img src="Wagon7.webp" alt="1956 Belair Wagon at dusk" loading="lazy" decoding="async">
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  © <span id="year"></span> Thomas LeClair Photography
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  (() => {
-    const nav = document.getElementById('siteNav');
-    let hideTimer = null;
-
-    const showNav = () => {
-      nav.classList.add('is-visible');
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => nav.classList.remove('is-visible'), 1200);
-    };
-
-    document.addEventListener('mousemove', e => { if (e.clientY < 90) showNav(); });
-    nav.addEventListener('mouseenter', showNav);
-    nav.addEventListener('focusin', showNav);
-  })();
-</script>
   <script>
-  (() => {
-    const lb = document.createElement('div');
-    lb.className = 'lightbox';
-    lb.innerHTML = `
-      <button class="lb-close" aria-label="Close">✕</button>
-      <img alt="Expanded image">
-    `;
-    document.body.appendChild(lb);
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    const lbImg = lb.querySelector('img');
-    const closeBtn = lb.querySelector('.lb-close');
+    (function initNavAutoHide(){
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
 
-    const open = (src) => {
-      lbImg.src = src;
-      lb.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-    };
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
 
-    const close = () => {
-      lb.classList.remove('is-open');
-      lbImg.src = '';
-      document.body.style.overflow = '';
-    };
+      document.body.classList.add("autohide");
 
-    document.querySelectorAll('[data-full]').forEach(el => {
-      el.addEventListener('click', () => open(el.dataset.full));
-    });
+      let hideTimer = null;
+      const HIDE_DELAY = 900;
 
-    closeBtn.addEventListener('click', close);
-    lb.addEventListener('click', e => { if (e.target === lb) close(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-  })();
-</script>
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, HIDE_DELAY);
+      };
+
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, HIDE_DELAY);
+      };
+
+      nav.classList.remove("is-visible");
+      document.addEventListener("mousemove", (e) => { if (e.clientY < 90) showNav(); });
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const lb = document.createElement('div');
+      lb.className = 'lightbox';
+      lb.innerHTML = `
+        <button class="lb-close" aria-label="Close">✕</button>
+        <img alt="Expanded image">
+      `;
+      document.body.appendChild(lb);
+
+      const lbImg = lb.querySelector('img');
+      const closeBtn = lb.querySelector('.lb-close');
+
+      const open = (src) => {
+        lbImg.src = src;
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const close = () => {
+        lb.classList.remove('is-open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      };
+
+      document.querySelectorAll('[data-full]').forEach(el => {
+        el.addEventListener('click', () => open(el.dataset.full));
+      });
+
+      closeBtn.addEventListener('click', close);
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 </body>
 </html>
