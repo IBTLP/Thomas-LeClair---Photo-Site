@@ -42,26 +42,25 @@
       --line:rgba(255,255,255,.12);
     }
 
-    body{
+    body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-
-      /* keeps footer behaving nicely even on short pages */
       display: flex;
       flex-direction: column;
     }
 
-    main{ flex: 1 0 auto; }
+    main { flex: 1 0 auto; }
 
-    /* ================= NAV (ABOUT/PRINTS STYLE — HARD-CODED) ================= */
+    /* ================= NAV (MATCH ABOUT LOOK, HARD-CODED) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 1000;
+
       background: rgba(14,14,14,.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -78,9 +77,14 @@
         rgba(255,255,255,.10),
         rgba(255,255,255,0)
       ) 1;
+    }
 
-      /* layout / “width feel” */
-      padding: 1.5rem 2rem;
+    /* THIS is what fixes your screenshot mismatch:
+       an inner wrapper that centers nav content like About */
+    .nav-inner{
+      max-width: 1120px;          /* adjust if you want tighter/wider */
+      margin: 0 auto;
+      padding: 1.5rem 2rem;       /* “width/feel” you like */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -102,7 +106,7 @@
     }
 
     /* force visible on touch devices */
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
       body.autohide nav#siteNav{
         transform: translateY(0) !important;
         opacity: 1 !important;
@@ -118,6 +122,7 @@
       padding: 0;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
     }
 
     nav#siteNav a{
@@ -126,6 +131,8 @@
       font-size: 0.9rem;
       opacity: 0.8;
       transition: opacity 0.2s ease;
+      position: relative;
+      padding-bottom: 6px; /* gives room for active underline */
     }
     nav#siteNav a:hover{ opacity: 1; }
 
@@ -135,17 +142,32 @@
       border-radius: 2px;
     }
 
+    /* active underline like About */
+    nav#siteNav a[aria-current="page"]{
+      opacity: 1;
+    }
+    nav#siteNav a[aria-current="page"]::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width: 34px;
+      height: 1px;
+      background: rgba(245,245,245,0.65);
+    }
+
     .brand{ flex: 0 1 auto; }
     .brand img{
       height: 50px;
       opacity: 0.9;
       max-width: 240px;
       width: auto;
+      display:block;
     }
 
     /* Mobile: stack logo above links so nothing clips */
     @media (max-width: 640px){
-      nav#siteNav{
+      .nav-inner{
         flex-direction: column;
         align-items: center;
         padding: 1rem 1rem;
@@ -165,16 +187,14 @@
       }
     }
 
-    /* ================= PAGE ================= */
+    /* ================= PAGE (UNCHANGED) ================= */
     main{
       max-width: 1120px;
       margin: 0 auto;
-      padding: 8rem 2rem 4rem; /* About/Prints under-nav spacing */
+      padding: 8rem 2rem 4rem; /* under fixed nav */
     }
-
-    /* extra safety if nav wraps on very small screens */
     @media (max-width: 640px){
-      main{ padding-top: 9.25rem; }
+      main{ padding-top: 9.25rem; } /* if nav wraps */
     }
 
     h1{
@@ -192,7 +212,7 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ================= EDITORIAL CARDS ================= */
+    /* ================= EDITORIAL CARDS (AS YOU HAVE IT) ================= */
     .grid{
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -211,9 +231,9 @@
       flex-direction: column;
     }
 
-    @media (max-width: 980px){
-      .card{ grid-column: span 12; }
-      main{ padding: 8rem 1.25rem 3.5rem; }
+    @media (max-width: 980px) {
+      .card { grid-column: span 12; }
+      main { padding: 8rem 1.25rem 3.5rem; }
     }
 
     .thumb{
@@ -300,7 +320,7 @@
 
     .btn.primary{ background: rgba(255,255,255,0.12); }
 
-    /* ================= EXTERNAL FEATURES ================= */
+    /* ================= EXTERNAL FEATURES (UNCHANGED) ================= */
     .external-features{
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 3rem;
@@ -329,7 +349,9 @@
       padding: 16px;
     }
 
-    @media (max-width: 980px){ .ext-item{ grid-column: span 12; } }
+    @media (max-width: 980px){
+      .ext-item { grid-column: span 12; }
+    }
 
     .ext-title{ margin: 0 0 0.35rem; font-size: 1.02rem; font-weight: 500; }
 
@@ -342,7 +364,7 @@
 
     .ext-actions{ display: flex; gap: 10px; flex-wrap: wrap; }
 
-    /* ================= PUBLICATIONS ================= */
+    /* ================= PUBLICATIONS (UNCHANGED) ================= */
     .editorial-publications{
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 3rem;
@@ -385,7 +407,11 @@
       font-size: 0.9rem;
     }
 
-    .pub-type{ display: block; opacity: 0.6; font-size: 0.85rem; }
+    .pub-type{
+      display: block;
+      opacity: 0.6;
+      font-size: 0.85rem;
+    }
 
     .pubs-note{
       margin-top: 1.25rem;
@@ -394,7 +420,7 @@
       max-width: 70ch;
     }
 
-    /* ================= GLOBAL FOOTER (INCLUDE) ================= */
+    /* ================= GLOBAL FOOTER (UNCHANGED) ================= */
     .site-footer{
       border-top: 1px solid transparent;
       border-image: linear-gradient(
@@ -420,21 +446,23 @@
 </head>
 
 <body>
-  <!-- HARD-CODED NAV (ABOUT/PRINTS STYLE) -->
+  <!-- HARD-CODED NAV (NO /includes/Nav.html) -->
   <nav id="siteNav">
-    <div class="brand">
-      <a href="/">
-        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-      </a>
+    <div class="nav-inner">
+      <div class="brand">
+        <a href="/">
+          <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+        </a>
+      </div>
+      <ul>
+        <li><a href="/editorial/" aria-current="page">Editorial</a></li>
+        <li><a href="/gallery/">Gallery</a></li>
+        <li><a href="/commissioned.html">Commissioned</a></li>
+        <li><a href="/prints.html">Prints</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
     </div>
-    <ul>
-      <li><a href="/editorial/">Editorial</a></li>
-      <li><a href="/gallery/">Gallery</a></li>
-      <li><a href="/commissioned.html">Commissioned</a></li>
-      <li><a href="/prints.html">Prints</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
   </nav>
 
   <main>
@@ -563,7 +591,7 @@
     </section>
   </main>
 
-  <!-- GLOBAL FOOTER INCLUDE -->
+  <!-- GLOBAL FOOTER INCLUDE (ONLY INCLUDE YOU KEEP) -->
   <div id="site-footer"></div>
 
   <script>
@@ -619,7 +647,7 @@
         }, 900);
       };
 
-      // Start hidden (About/Prints behavior)
+      // Start hidden
       nav.classList.remove("is-visible");
 
       document.addEventListener("mousemove", (e) => {
@@ -635,7 +663,6 @@
     (async () => {
       const footOk = await includeHTML("site-footer", "/includes/footer.html");
       if (!footOk) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
-
       initNavAutoHide();
     })();
   </script>
