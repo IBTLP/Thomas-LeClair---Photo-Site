@@ -39,59 +39,126 @@
 
     a{ color:inherit; text-decoration:none; }
 
-    /* ================= NAV ================= */
-    nav{
-      position:fixed;
-      top:0; left:0;
-      width:100%;
-      padding:1.5rem 2rem;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:rgba(14,14,14,.85);
-      backdrop-filter:blur(6px);
-      z-index:10;
-      transition:transform .35s ease,opacity .35s ease;
-    }
+   /* ================= NAV (MATCH ABOUT / TARGET) ================= */
+nav#siteNav{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
 
-    body.autohide nav{
-      transform:translateY(-110%);
-      opacity:0;
-      pointer-events:none;
-    }
+  background: rgba(14,14,14,.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
-    body.autohide nav.is-visible,
-    body.autohide nav:hover,
-    body.autohide nav:focus-within{
-      transform:translateY(0);
-      opacity:1;
-      pointer-events:auto;
-    }
+  transition: transform 1.25s ease, opacity 1.55s ease;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 
-    @media (max-width:768px){
-      body.autohide nav{
-        transform:none !important;
-        opacity:1 !important;
-        pointer-events:auto !important;
-      }
-    }
+  /* subtle hairline like About */
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,.10),
+    rgba(255,255,255,0)
+  ) 1;
+}
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:1.5rem;
-      margin:0;
-      padding:0;
-      flex-wrap:wrap;
-    }
+/* inner “contained” bar */
+nav#siteNav .nav-inner{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
 
-    nav a{ font-size:.9rem; opacity:.8; }
-    nav a:hover{ opacity:1; }
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-    .brand img{
-      height:48px;
-      opacity:.9;
-    }
+/* auto-hide behavior (desktop only, JS adds body.autohide) */
+body.autohide nav#siteNav{
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+}
+body.autohide nav#siteNav.is-visible,
+body.autohide nav#siteNav:hover,
+body.autohide nav#siteNav:focus-within{
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* force visible on touch devices */
+@media (max-width: 768px) {
+  body.autohide nav#siteNav{
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* logo */
+nav#siteNav .brand{ flex: 0 0 auto; }
+nav#siteNav .brand img{
+  height: 48px;
+  opacity: .9;
+  max-width: 240px;
+  width: auto;
+}
+
+/* CENTER the links like About */
+nav#siteNav ul{
+  list-style: none;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+nav#siteNav a{
+  font-size: .9rem;
+  opacity: .8;
+  text-decoration: none;
+}
+nav#siteNav a:hover{ opacity: 1; }
+
+/* optional: active underline like About */
+nav#siteNav a[aria-current="page"]{
+  opacity: 1;
+  position: relative;
+}
+nav#siteNav a[aria-current="page"]::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  bottom:-10px;
+  height:1px;
+  background: rgba(245,245,245,.35);
+}
+
+/* Mobile: stack logo above links */
+@media (max-width: 640px){
+  nav#siteNav .nav-inner{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem;
+  }
+  nav#siteNav .brand img{
+    max-width: 280px;
+    height: 46px;
+  }
+  nav#siteNav ul{
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+  }
+  nav#siteNav a{ opacity: .9; }
+}
 
     /* ================= HERO ================= */
     header.hero{ padding-top:92px; }
@@ -336,18 +403,21 @@
 
 <body class="autohide">
 <nav id="siteNav">
-  <div class="brand">
-    <a href="/">
-      <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-    </a>
+  <div class="nav-inner">
+    <div class="brand">
+      <a href="/">
+        <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+      </a>
+    </div>
+
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/editorial/" aria-current="page">Editorial</a></li>
+      <li><a href="/prints.html">Prints</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
   </div>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/gallery/">Gallery</a></li>
-    <li><a href="/editorial/">Editorial</a></li>
-    <li><a href="/prints.html">Prints</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-  </ul>
 </nav>
 
 <header class="hero">
