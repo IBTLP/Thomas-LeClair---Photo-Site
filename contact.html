@@ -12,22 +12,22 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact — Thomas LeClair Photography</title>
+  <title>Introduce Me to Your Car — Thomas LeClair Photography</title>
 
-  <meta name="description" content="Contact Thomas LeClair Photography for commissioned work or metal print inquiries. Share your preferred reply method (text/email/phone) and project details." />
+  <meta name="description" content="Introduce me to your car. Share the year and model, what this is regarding, and how you'd like me to reach you. A few words is enough — details can come later." />
   <link rel="canonical" href="https://www.tleclair.com/contact.html" />
 
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="Contact — Thomas LeClair Photography" />
-  <meta property="og:description" content="Commissioned photography + metal print inquiries. Send a message and include your preferred reply method." />
+  <meta property="og:title" content="Introduce Me to Your Car — Thomas LeClair Photography" />
+  <meta property="og:description" content="Introduce me to your car. Year + model, what this is regarding, and a short note is enough." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.tleclair.com/contact.html" />
   <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact — Thomas LeClair Photography" />
-  <meta name="twitter:description" content="Commissioned photography + metal print inquiries. Send a message and include your preferred reply method." />
+  <meta name="twitter:title" content="Introduce Me to Your Car — Thomas LeClair Photography" />
+  <meta name="twitter:description" content="Introduce me to your car. Year + model, what this is regarding, and a short note is enough." />
   <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
   <style>
@@ -175,6 +175,14 @@
     }
     button:hover{ opacity: 0.9; }
 
+    .privacy-note{
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.58;
+      line-height: 1.5;
+      margin-top: 0.75rem;
+    }
+
     /* ================= INCLUDED FOOTER (GLOBAL) ================= */
     /* footer.html should contain: <footer class="site-footer"> ... </footer> */
     .site-footer{
@@ -206,17 +214,16 @@
   <div id="site-nav"></div>
 
   <main>
-    <h1>Contact</h1>
+    <h1>Introduce me to your car</h1>
     <p class="intro">
-      For print inquiries or commissioned work, please use the form below.
-      All prints are produced individually on metal.
+      If the work resonates, you’re welcome to leave a note. A few words is enough — details can come later.
     </p>
 
     <!-- Formspree form (JS intercept guarantees redirect without paid plan) -->
     <form id="contactForm" action="https://formspree.io/f/xpqwgnzz" method="POST">
       <div>
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required>
+        <label for="car">Car year + model</label>
+        <input id="car" name="car" type="text" placeholder="e.g., 1995 Porsche 993 Carrera RS" required>
       </div>
 
       <div>
@@ -225,22 +232,19 @@
       </div>
 
       <div>
-        <label for="size">Print Size (if applicable)</label>
-        <select id="size" name="size">
+        <label for="regarding">Regarding</label>
+        <select id="regarding" name="regarding">
           <option value="">— Select —</option>
-          <option>48" Wide</option>
-          <option>36" Wide</option>
-          <option>Small (note details)</option>
-          <option>Custom size</option>
-          <option>Commission / Photoshoot</option>
+          <option>Editorial</option>
+          <option>Commission</option>
+          <option>Order Print</option>
+          <option>Other</option>
         </select>
       </div>
 
       <div>
-        <label for="message">Message me - Let me know the best way to reply to you.</label>
-        <div style="font-size:0.85rem; opacity:0.65; margin-top:-0.5rem; margin-bottom:0.25rem;">
-        </div>
-        <textarea id="message" name="message" placeholder="How can I help? Preferred reply method (text/email/phone) + your best contact info." required></textarea>
+        <label for="message">A note</label>
+        <textarea id="message" name="message" placeholder="A few words is enough. Preferred reply method (email/text/phone) + best number if texting/calling. If you want to include location and timing, great — details can come later. If it’s private, just say so. If you’d like, include your name." required></textarea>
       </div>
 
       <input type="hidden" name="_subject" value="New inquiry from tleclair.com">
@@ -248,7 +252,11 @@
       <input type="hidden" name="_next" value="https://www.tleclair.com/thank-you.html">
       <input type="text" name="_gotcha" style="display:none">
 
-      <button type="submit">SEND INQUIRY</button>
+      <button type="submit">LEAVE A NOTE</button>
+
+      <div class="privacy-note">
+        Replies are personal. No mailing list. Nothing shared.
+      </div>
     </form>
   </main>
 
