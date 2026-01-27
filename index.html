@@ -110,13 +110,12 @@
       overflow-y: auto;
     }
 
-    /* ================= NAV (MATCH WAGON PAGE) ================= */
+    /* ================= NAV STYLES (MATCH CONTACT / OTHER PAGES) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 1000;
-
       background: rgba(14,14,14,.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -126,42 +125,22 @@
       opacity: 1;
       pointer-events: auto;
 
-      /* border-image hairline can be flaky on some browsers; use ::after instead */
-      border-bottom: 0;
-    }
-
-    /* ✅ Hairline (reliable, matches other pages) */
-    nav#siteNav::after{
-      content:"";
-      position:absolute;
-      left:0; right:0; bottom:0;
-      height:1px;
-      pointer-events:none;
-      background: linear-gradient(
+      /* ✅ same “hairline” treatment as your contact page */
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
         90deg,
         rgba(255,255,255,0),
-        rgba(255,255,255,.12),
+        rgba(255,255,255,.10),
         rgba(255,255,255,0)
-      );
+      ) 1;
     }
 
-    nav#siteNav .nav-inner{
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
     body.autohide nav#siteNav{
       transform: translateY(-110%);
       opacity: 0;
       pointer-events: none;
     }
-
     body.autohide nav#siteNav.is-visible,
     body.autohide nav#siteNav:hover,
     body.autohide nav#siteNav:focus-within{
@@ -170,75 +149,12 @@
       pointer-events: auto;
     }
 
+    /* force visible on touch devices */
     @media (max-width: 768px) {
       body.autohide nav#siteNav{
         transform: translateY(0) !important;
         opacity: 1 !important;
         pointer-events: auto !important;
-      }
-    }
-
-    nav#siteNav .brand{ flex: 0 0 auto; }
-    nav#siteNav .brand img{
-      height: 48px;
-      opacity: .9;
-      max-width: 240px;
-      width: auto;
-    }
-
-    nav#siteNav ul{
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
-      flex: 0 0 auto;
-    }
-
-    nav#siteNav a{
-      text-decoration: none;
-      color: #f5f5f5;
-      font-size: .9rem;
-      opacity: .8;
-    }
-    nav#siteNav a:hover{ opacity: 1; }
-
-    nav#siteNav a[aria-current="page"]{
-      opacity: 1;
-      position: relative;
-    }
-    nav#siteNav a[aria-current="page"]::after{
-      content:"";
-      position:absolute;
-      left:0; right:0;
-      bottom:-10px;
-      height:1px;
-      background: rgba(245,245,245,.35);
-    }
-
-    @media (max-width: 640px){
-      nav#siteNav .nav-inner{
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 1rem;
-      }
-
-      nav#siteNav .brand img{
-        max-width: 280px;
-        height: 46px;
-      }
-
-      nav#siteNav ul{
-        width: 100%;
-        justify-content: center;
-        gap: 1.0rem;
-      }
-
-      nav#siteNav a{
-        font-size: 0.95rem;
-        opacity: 0.9;
       }
     }
 
@@ -310,7 +226,6 @@
       margin: 0;
     }
 
-    /* quiet proof (high-end signal without flexing) */
     .proof {
       margin-top: 0.9rem;
       font-size: 0.92rem;
@@ -318,7 +233,6 @@
       line-height: 1.5;
     }
 
-    /* ===== Tasteful CTAs (editorial links, not buttons) ===== */
     .cta-row{
       margin-top: 1.7rem;
       display: flex;
@@ -366,7 +280,6 @@
       border-radius: 2px;
     }
 
-    /* subtle secondary line under CTAs */
     .secondary-row{
       margin-top: 0.85rem;
       font-size: 0.9rem;
@@ -405,23 +318,8 @@
 </head>
 
 <body>
-  <nav id="siteNav">
-    <div class="nav-inner">
-      <div class="brand">
-        <a href="/">
-          <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
-        </a>
-      </div>
-      <ul>
-        <li><a href="/editorial/">Editorial</a></li>
-        <li><a href="/gallery/">Gallery</a></li>
-        <li><a href="/commissioned.html">Commissioned</a></li>
-        <li><a href="/prints.html">Prints</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- NAV INCLUDE (matches contact page exactly) -->
+  <div id="site-nav"></div>
 
   <!-- HERO -->
   <div class="hero" aria-hidden="true">
@@ -460,8 +358,29 @@
   </footer>
 
   <script>
-    // Auto-hide nav (desktop hover only) — matches Wagon behavior
-    (function initNavAutoHide(){
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
+    }
+
+    function initNavAutoHide() {
       const nav = document.getElementById("siteNav");
       if (!nav) return;
 
@@ -471,7 +390,6 @@
       document.body.classList.add("autohide");
 
       let hideTimer = null;
-      const HIDE_DELAY = 900;
 
       const showNav = () => {
         nav.classList.add("is-visible");
@@ -480,7 +398,7 @@
           if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
             nav.classList.remove("is-visible");
           }
-        }, HIDE_DELAY);
+        }, 900);
       };
 
       const hideSoon = () => {
@@ -489,15 +407,23 @@
           if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
             nav.classList.remove("is-visible");
           }
-        }, HIDE_DELAY);
+        }, 900);
       };
 
       nav.classList.remove("is-visible");
-      document.addEventListener("mousemove", (e) => { if (e.clientY < 90) showNav(); });
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
       nav.addEventListener("mouseenter", showNav);
       nav.addEventListener("mouseleave", hideSoon);
       nav.addEventListener("focusin", showNav);
       nav.addEventListener("focusout", hideSoon);
+    }
+
+    (async () => {
+      const navOk = await includeHTML("site-nav", "/includes/Nav.html");
+      if (navOk) initNavAutoHide();
     })();
   </script>
 </body>
