@@ -152,6 +152,9 @@
       --max:980px;
       --radius:18px;
       --shadow: 0 18px 45px rgba(0,0,0,0.35);
+
+      /* ✅ nav clearance dial (matches Prints fix) */
+      --nav-pad: 7.25rem; /* desktop/default */
     }
 
     *{ box-sizing:border-box; }
@@ -175,7 +178,7 @@
     a{ color:var(--text); text-decoration:none; }
     a:hover{ opacity:.92; }
 
-    /* ================= NAV (SAME AS PRINTS PAGE: injected from /includes/Nav.html) ================= */
+    /* ================= NAV (injected from /includes/Nav.html) ================= */
     nav#siteNav{
       position: fixed;
       top: 0; left: 0;
@@ -221,11 +224,24 @@
       }
     }
 
-    /* ---------------- PAGE WRAP ---------------- */
+    /* ✅ PAGE WRAP (uses variable nav clearance + iOS safe area) */
     main{
       max-width:var(--max);
       margin:0 auto;
-      padding:7.25rem 1.25rem 3.25rem; /* already accounts for fixed nav */
+      padding-top: calc(var(--nav-pad) + env(safe-area-inset-top));
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      padding-bottom: 3.25rem;
+    }
+
+    /* ✅ When nav wraps (iPhone), increase clearance */
+    @media (max-width: 640px){
+      :root{ --nav-pad: 6.75rem; }
+    }
+
+    /* ✅ anchor jumps won’t hide under the nav */
+    :where(h1,h2,h3,h4,h5,h6,[id]){
+      scroll-margin-top: calc(var(--nav-pad) + 18px);
     }
 
     /* ---------------- HERO ---------------- */
@@ -521,7 +537,6 @@
 
     @media (max-width: 640px){
       .hero-inner{ padding:2rem 1.25rem; }
-      main{ padding:6.75rem 1.1rem 3rem; }
       .hero-actions{ gap: .9rem; }
     }
 
@@ -666,281 +681,3 @@
 
           <p class="muted"><strong>Designed to include:</strong></p>
           <ul>
-            <li>One-vehicle focus (static; optional motion when location allows)</li>
-            <li>Light planning (timing, location, visual direction)</li>
-            <li>A curated set of <strong>fully edited final images</strong></li>
-          </ul>
-
-          <p class="bestfor"><strong>Best for:</strong> personal keepsakes, social content, clean listings, and subtle flex images.</p>
-
-          <div class="card-actions">
-            <a class="cta-link" href="#request">Request this</a>
-            <a class="cta-link" href="/editorial/">View editorial</a>
-          </div>
-        </div>
-
-        <div class="card" id="signature">
-          <span class="badge">Most selected</span>
-          <h3>Signature Commission</h3>
-          <p class="tagline">
-            The full story—built as a cohesive collection. Consistent, intentional, designed to live together.
-          </p>
-
-          <div class="rule"></div>
-
-          <p class="muted"><strong>Designed to include:</strong></p>
-          <ul>
-            <li>One primary vehicle focus (supporting vehicles when it serves the goal)</li>
-            <li>Deeper consistency across the set (color, finish, retouching)</li>
-            <li><strong>Book + fine print</strong> as part of the experience (selected together)</li>
-          </ul>
-
-          <p class="bestfor"><strong>Best for:</strong> cars with provenance, full builds, brand decks, and collector-level documentation.</p>
-
-          <div class="card-actions">
-            <a class="cta-link" href="#request">Request this</a>
-            <a class="cta-link" href="/prints.html">Prints</a>
-          </div>
-        </div>
-
-        <div class="card" id="chateau">
-          <h3>Château Commission</h3>
-          <p class="tagline">
-            Outcome-driven depth. Worldwide. For collectors and curators where the standard is concours-level, museum-level, or personal legacy.
-          </p>
-
-          <div class="rule"></div>
-
-          <p class="muted"><strong>Designed to include:</strong></p>
-          <ul>
-            <li><strong>Consultation first</strong> to align cars, locations, and outcome</li>
-            <li>Shooting time based on outcome—not the clock</li>
-            <li>Multi-location coverage when it supports the story</li>
-            <li><strong>Book + fine print</strong> as part of the experience</li>
-            <li class="muted2"><strong>Pricing:</strong> individually scoped (cars, locations, travel, deliverables, usage)</li>
-          </ul>
-
-          <p class="bestfor"><strong>Best for:</strong> multi-car collections, rare restorations, and high-stakes presentation.</p>
-
-          <div class="card-actions">
-            <a class="cta-link" href="#request">Request this</a>
-            <a class="cta-link" href="/contact.html">Contact</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="rule"></div>
-
-    <section class="faq" id="faq" aria-label="Commission FAQ">
-      <h2>FAQ</h2>
-
-      <details>
-        <summary>How do I book a commission?</summary>
-        <p class="answer">
-          Start with a short message that includes the car, your city, and what you want the images used for.
-          I’ll reply with a recommended option, scope, and next steps.
-        </p>
-      </details>
-
-      <details>
-        <summary>Do you provide raw files?</summary>
-        <p class="answer">
-          No. Deliverables are a curated set of finished images—edited for consistency and delivered ready for print and web.
-        </p>
-      </details>
-
-      <details>
-        <summary>How many final images will I receive?</summary>
-        <p class="answer">
-          Enough to match the scope. One Perfect Frame is one finished image. Essential is a tight curated set.
-          Signature becomes a cohesive collection. Château is outcome-driven depth scoped to the project.
-        </p>
-      </details>
-
-      <details>
-        <summary>What’s the turnaround time?</summary>
-        <p class="answer">
-          Typically 1–3 weeks depending on scope and season. If you have a deadline, include it in your initial request.
-        </p>
-      </details>
-
-      <details>
-        <summary>Do you travel?</summary>
-        <p class="answer">
-          Yes—Château Commissions are available worldwide. Travel is scoped per project.
-        </p>
-      </details>
-
-      <details>
-        <summary>What happens if weather doesn’t cooperate?</summary>
-        <p class="answer">
-          We adjust timing or reschedule. The goal is the images—not forcing a bad day.
-        </p>
-      </details>
-
-      <details>
-        <summary>Can you help with locations?</summary>
-        <p class="answer">
-          Yes. I’ll recommend locations that match the look and avoid visual clutter.
-        </p>
-      </details>
-
-      <details>
-        <summary>What’s included with books and prints?</summary>
-        <p class="answer">
-          Signature and Château include a book and a fine print as part of the experience.
-          Final size, finish, and presentation are selected together and priced to match your intent.
-        </p>
-      </details>
-    </section>
-
-    <div class="rule"></div>
-
-    <section class="panel" aria-label="Owner prep guide">
-      <h2>Owner Prep Guide</h2>
-      <p class="muted" style="margin:.25rem 0 0; max-width:78ch;">
-        You don’t need to overthink this—but a little prep makes a big difference in the final images.
-      </p>
-
-      <div class="rule"></div>
-
-      <h3>Detail matters</h3>
-      <ul>
-        <li>Full detail recommended (paint, wheels, glass, interior). Same-day detail is ideal.</li>
-        <li>Clean tires/wheels are the fastest way to make a car look expensive in photos.</li>
-      </ul>
-
-      <div class="rule"></div>
-
-      <h3>Bring a quick touch-up kit</h3>
-      <ul>
-        <li>Window cleaner + microfiber (glass shows everything)</li>
-        <li>Soft duster or clean microfiber for light dust</li>
-        <li>Optional: light tire dressing (use sparingly—best applied after positioning)</li>
-      </ul>
-
-      <div class="rule"></div>
-
-      <h3>Lights without idling</h3>
-      <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
-        Headlights and interior lighting can add a unique look—especially during golden hour.
-        A <strong>strong battery</strong> helps so we can keep the engine <strong>off</strong>. Idling can create subtle vibrations that reduce sharpness.
-      </p>
-
-      <div class="rule"></div>
-
-      <h3>Timing makes the look</h3>
-      <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
-        Golden hour (sunrise/sunset) is the most flattering light. Midday is workable, but harsher and less forgiving.
-      </p>
-
-      <div class="rule"></div>
-
-      <h3>Weather and flexibility</h3>
-      <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
-        If weather doesn’t cooperate, we’ll adjust timing or reschedule. The goal is the images—not forcing a bad day.
-      </p>
-    </section>
-
-    <div class="rule"></div>
-
-    <section id="request" class="cta" aria-label="Request a commission">
-      <div>
-        <strong>Request a Commission</strong>
-        <p>
-          Tell me the car, your city, and the intended use (personal archive, print, publication, listing).
-          I’ll recommend the best option and confirm scope before booking.
-        </p>
-        <p class="muted2" style="margin:.5rem 0 0;">
-          Discretion available. Added costs (travel, permits, location access) are quoted in advance.
-        </p>
-      </div>
-
-      <div class="hero-actions" style="margin:0;">
-        <a class="cta-link" href="/contact.html?subject=Commissioned%20Shoot%20Inquiry">Start a request</a>
-        <a class="cta-link" href="/prints.html">Prints</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- GLOBAL FOOTER INCLUDE -->
-  <div id="site-footer"></div>
-
-  <script>
-    async function includeHTML(id, url) {
-      const el = document.getElementById(id);
-      if (!el) return false;
-
-      try {
-        const res = await fetch(url, { cache: "no-cache" });
-        if (!res.ok) {
-          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
-            Missing include: <strong>${url}</strong> (HTTP ${res.status})
-          </div>`;
-          return false;
-        }
-        el.innerHTML = await res.text();
-        return true;
-      } catch (err) {
-        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
-          Failed to load include: <strong>${url}</strong>
-        </div>`;
-        return false;
-      }
-    }
-
-    function initNavAutoHide() {
-      const nav = document.getElementById("siteNav");
-      if (!nav) return;
-
-      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      if (!canHover) return; // don’t hide on touch devices
-
-      document.body.classList.add("autohide");
-
-      let hideTimer = null;
-      const HIDE_DELAY = 900;
-
-      const showNav = () => {
-        nav.classList.add("is-visible");
-        if (hideTimer) clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => {
-          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
-            nav.classList.remove("is-visible");
-          }
-        }, HIDE_DELAY);
-      };
-
-      const hideSoon = () => {
-        if (hideTimer) clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => {
-          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
-            nav.classList.remove("is-visible");
-          }
-        }, HIDE_DELAY);
-      };
-
-      // Start hidden
-      nav.classList.remove("is-visible");
-
-      document.addEventListener("mousemove", (e) => {
-        if (e.clientY < 90) showNav();
-      });
-
-      nav.addEventListener("mouseenter", showNav);
-      nav.addEventListener("mouseleave", hideSoon);
-      nav.addEventListener("focusin", showNav);
-      nav.addEventListener("focusout", hideSoon);
-    }
-
-    (async () => {
-      const navOK  = await includeHTML("site-nav", "/includes/Nav.html");
-      const footOK = await includeHTML("site-footer", "/includes/footer.html");
-
-      if (navOK) initNavAutoHide();
-      if (!footOK) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
-    })();
-  </script>
-</body>
-</html>
