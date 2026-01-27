@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
 
-  gtag('config', 'G-GYPE7JD4H9');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -32,8 +32,11 @@
   <meta name="twitter:image" content="https://tleclair.com/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp" />
 
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    :root{
+      /* ✅ nav clearance dial */
+      --nav-pad: 8.25rem; /* default */
     }
 
     body {
@@ -44,53 +47,75 @@
       min-height: 100vh;
     }
 
-    nav {
+    /* ================= NAV (MATCH CONTACT / HOME) ================= */
+    nav#siteNav{
       position: fixed;
-      top: 0;
+      top: 0; left: 0;
       width: 100%;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(14, 14, 14, 0.85);
-      backdrop-filter: blur(6px);
-      z-index: 10;
-    }
+      z-index: 1000;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
 
-    .brand img {
-      height: 50px;
-      width: auto;
-      display: block;
-      opacity: 0.95;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #f5f5f5;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    nav a:hover {
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
       opacity: 1;
+      pointer-events: auto;
+
+      /* gradient hairline */
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
     }
 
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* force visible on touch devices */
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    /* ✅ padding under fixed nav (safe-area aware) */
     main {
-      padding-top: 9.5rem;
+      padding-top: calc(var(--nav-pad) + env(safe-area-inset-top));
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 2rem;
       padding-right: 2rem;
     }
 
+    /* iPhone/nav wrap: give more headroom */
+    @media (max-width: 640px){
+      :root{ --nav-pad: 9.75rem; }
+      main{ padding-left: 1.25rem; padding-right: 1.25rem; }
+    }
+
+    /* ✅ ensure anchor jumps don’t hide headings under the nav */
+    :where(h1,h2,h3,h4,h5,h6,[id]){
+      scroll-margin-top: calc(var(--nav-pad) + 18px);
+    }
+
+    /* === PAGE TYPO / LAYOUT (UNCHANGED CONTENT STYLES) === */
     h1 {
       text-align: center;
       font-weight: 300;
@@ -104,7 +129,6 @@
       gap: 1.75rem;
     }
 
-    /* === MATCH AUTOMOTIVE / LANDSCAPE === */
     .gallery-grid img {
       width: 100%;
       height: auto;
@@ -114,9 +138,7 @@
       cursor: zoom-in;
     }
 
-    .gallery-grid img:hover {
-      opacity: 0.85;
-    }
+    .gallery-grid img:hover { opacity: 0.85; }
 
     footer {
       text-align: center;
@@ -131,9 +153,7 @@
       margin: 0 0.5rem;
     }
 
-    footer a:hover {
-      color: #e0e0e0;
-    }
+    footer a:hover { color: #e0e0e0; }
 
     /* === GLOBAL LIGHTBOX (shared) === */
     .lightbox {
@@ -148,9 +168,7 @@
       pointer-events: none;
     }
 
-    .lightbox[style*="display: flex"] {
-      pointer-events: auto;
-    }
+    .lightbox[style*="display: flex"] { pointer-events: auto; }
 
     .lightbox img {
       max-width: 92vw;
@@ -182,88 +200,145 @@
 </head>
 
 <body>
-<nav>
-  <div class="brand">
-    <a href="/">
-      <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+  <!-- GLOBAL NAV INCLUDE (matches Contact/Home) -->
+  <div id="site-nav"></div>
+
+  <main>
+    <header class="page-head">
+      <h1>Wildlife Photography</h1>
+      <p class="subtitle">
+        Wildlife is about timing and restraint—being ready without forcing the scene.
+        Highlights include a bald eagle and a longhorn portrait.
+      </p>
+    </header>
+
+    <h2 class="section-title">Selected Work</h2>
+
+    <section class="gallery-grid" aria-label="Wildlife photo gallery">
+      <img src="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp"
+           alt="Wildlife photograph at Bolsa Chica wetlands"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/round25.webp"
+           alt="Wildlife photograph at Deer Springs Ranch"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/20120408SoCalCoast-170.webp"
+           alt="Coastal wildlife photograph, Southern California"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp"
+           alt="Wildlife photograph at Bolsa Chica wetlands, second view"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp"
+           alt="Wildlife photograph at Deer Springs Ranch, 2019"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/RanchSpring2018.webp"
+           alt="Springtime wildlife photograph at the ranch"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/Zion-389.webp"
+           alt="Wildlife photograph near Zion National Park"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/round27.webp"
+           alt="Wildlife photograph at Deer Springs Ranch, alternate scene"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/wildlife/round44.webp"
+           alt="Wildlife photograph at Bolsa Chica wetlands, close detail"
+           loading="lazy" decoding="async">
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
+      Instagram — Motoring
     </a>
+    ·
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
+      Instagram — Outdoor
+    </a>
+  </footer>
+
+  <!-- GLOBAL LIGHTBOX -->
+  <div class="lightbox" id="global-lightbox" aria-hidden="true">
+    <img id="global-lightbox-img" alt="">
   </div>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/gallery/">Gallery</a></li>
-    <li><a href="/editorial/">Editorial</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/prints.html">Prints</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-  </ul>
-</nav>
 
-<main>
-  <header class="page-head">
-    <h1>Wildlife Photography</h1>
-    <p class="subtitle">
-      Wildlife is about timing and restraint—being ready without forcing the scene.
-      Highlights include a bald eagle and a longhorn portrait.
-    </p>
-  </header>
+  <script src="/js/lightbox.js" defer></script>
 
-  <h2 class="section-title">Selected Work</h2>
+  <script>
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
 
-  <section class="gallery-grid" aria-label="Wildlife photo gallery">
-    <img src="/images/gallery/wildlife/0190503Bolsa-Chica-IMG_0579.webp"
-         alt="Wildlife photograph at Bolsa Chica wetlands"
-         loading="lazy" decoding="async">
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
+    }
 
-    <img src="/images/gallery/wildlife/round25.webp"
-         alt="Wildlife photograph at Deer Springs Ranch"
-         loading="lazy" decoding="async">
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
 
-    <img src="/images/gallery/wildlife/20120408SoCalCoast-170.webp"
-         alt="Coastal wildlife photograph, Southern California"
-         loading="lazy" decoding="async">
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
 
-    <img src="/images/gallery/wildlife/20181106Bolsa-Chica-IMG_3989.webp"
-         alt="Wildlife photograph at Bolsa Chica wetlands, second view"
-         loading="lazy" decoding="async">
+      document.body.classList.add("autohide");
 
-    <img src="/images/gallery/wildlife/20190901DSR-2019-IMG_0584.webp"
-         alt="Wildlife photograph at Deer Springs Ranch, 2019"
-         loading="lazy" decoding="async">
+      let hideTimer = null;
 
-    <img src="/images/gallery/wildlife/RanchSpring2018.webp"
-         alt="Springtime wildlife photograph at the ranch"
-         loading="lazy" decoding="async">
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
 
-    <img src="/images/gallery/wildlife/Zion-389.webp"
-         alt="Wildlife photograph near Zion National Park"
-         loading="lazy" decoding="async">
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
 
-    <img src="/images/gallery/wildlife/round27.webp"
-         alt="Wildlife photograph at Deer Springs Ranch, alternate scene"
-         loading="lazy" decoding="async">
+      nav.classList.remove("is-visible");
 
-    <img src="/images/gallery/wildlife/round44.webp"
-         alt="Wildlife photograph at Bolsa Chica wetlands, close detail"
-         loading="lazy" decoding="async">
-  </section>
-</main>
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
 
-<footer>
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
-    Instagram — Motoring
-  </a>
-  ·
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
-    Instagram — Outdoor
-  </a>
-</footer>
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
 
-<!-- GLOBAL LIGHTBOX -->
-<div class="lightbox" id="global-lightbox" aria-hidden="true">
-  <img id="global-lightbox-img" alt="">
-</div>
-
-<script src="/js/lightbox.js" defer></script>
-
+    (async () => {
+      const navOk = await includeHTML("site-nav", "/includes/Nav.html");
+      if (navOk) initNavAutoHide();
+    })();
+  </script>
 </body>
 </html>
