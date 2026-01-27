@@ -38,6 +38,9 @@
       --text:#f5f5f5;
       --muted:rgba(245,245,245,.72);
       --muted2:rgba(245,245,245,.58);
+
+      /* ✅ nav clearance dial */
+      --nav-pad: 8rem; /* desktop/default */
     }
 
     body {
@@ -104,14 +107,24 @@
       }
     }
 
-    /* padding under fixed nav */
-    main {
-      padding-top: 8rem;
+    /* ✅ padding under fixed nav (prevents iPhone/iPad title clipping) */
+    main{
+      padding-top: calc(var(--nav-pad) + env(safe-area-inset-top));
       max-width: 900px;
       margin: 0 auto;
       padding-left: 2rem;
       padding-right: 2rem;
       padding-bottom: 5rem;
+    }
+
+    /* ✅ When nav wraps (iPhone), increase clearance */
+    @media (max-width: 640px){
+      :root{ --nav-pad: 9.75rem; }
+    }
+
+    /* ✅ ensure anchor jumps don’t hide headings under the nav */
+    :where(h1,h2,h3,h4,h5,h6,[id]){
+      scroll-margin-top: calc(var(--nav-pad) + 18px);
     }
 
     header {
@@ -248,10 +261,6 @@
       margin: 0 0.5rem;
     }
     .site-footer a:hover{ color:#e0e0e0; }
-
-    @media (max-width: 640px){
-      main{ padding-top: 9.25rem; } /* if nav wraps on small screens */
-    }
   </style>
 </head>
 
