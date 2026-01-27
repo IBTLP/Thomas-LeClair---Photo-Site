@@ -40,6 +40,9 @@
       --muted:rgba(245,245,245,.72);
       --muted2:rgba(245,245,245,.58);
       --line:rgba(255,255,255,.12);
+
+      /* ✅ nav clearance dial */
+      --nav-pad: 8rem; /* desktop/default */
     }
 
     body {
@@ -185,16 +188,32 @@
         font-size: 0.95rem;
         opacity: 0.9;
       }
+
+      /* ✅ extra clearance when nav wraps */
+      :root{ --nav-pad: 9.75rem; }
     }
 
-    /* ================= PAGE (UNCHANGED) ================= */
+    /* ================= PAGE (UPDATED: uses --nav-pad) ================= */
     main{
       max-width: 1120px;
       margin: 0 auto;
-      padding: 8rem 2rem 4rem; /* under fixed nav */
+      padding-top: calc(var(--nav-pad) + env(safe-area-inset-top));
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 4rem;
     }
-    @media (max-width: 640px){
-      main{ padding-top: 9.25rem; } /* if nav wraps */
+
+    @media (max-width: 980px) {
+      main {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        padding-bottom: 3.5rem;
+      }
+    }
+
+    /* ✅ anchor jumps won’t hide under the nav */
+    :where(h1,h2,h3,h4,h5,h6,[id]){
+      scroll-margin-top: calc(var(--nav-pad) + 18px);
     }
 
     h1{
@@ -212,7 +231,7 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ================= EDITORIAL CARDS (AS YOU HAVE IT) ================= */
+    /* ================= EDITORIAL CARDS (UNCHANGED) ================= */
     .grid{
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -233,7 +252,6 @@
 
     @media (max-width: 980px) {
       .card { grid-column: span 12; }
-      main { padding: 8rem 1.25rem 3.5rem; }
     }
 
     .thumb{
