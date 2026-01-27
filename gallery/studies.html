@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
 
-  gtag('config', 'G-GYPE7JD4H9');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -32,8 +32,11 @@
   <meta name="twitter:image" content="https://tleclair.com/images/gallery/studies/20181010the-Wedge-IMG_6905-Edit.webp" />
 
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    :root{
+      /* ✅ nav clearance dial */
+      --nav-pad: 8.25rem; /* default */
     }
 
     body {
@@ -44,51 +47,67 @@
       min-height: 100vh;
     }
 
-    nav {
+    /* ================= NAV (MATCH CONTACT / HOME) ================= */
+    nav#siteNav{
       position: fixed;
-      top: 0;
+      top: 0; left: 0;
       width: 100%;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(14, 14, 14, 0.85);
-      backdrop-filter: blur(6px);
-      z-index: 10;
-    }
+      z-index: 1000;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
 
-    .brand img {
-      height: 50px;
-      width: auto;
-      display: block;
-      opacity: 0.95;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #f5f5f5;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    nav a:hover {
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
       opacity: 1;
+      pointer-events: auto;
+
+      /* gradient hairline */
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
     }
 
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* force visible on touch devices */
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    /* ✅ padding under fixed nav (safe-area aware) */
     main {
-      padding-top: 9.5rem;
+      padding-top: calc(var(--nav-pad) + env(safe-area-inset-top));
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 2rem;
       padding-right: 2rem;
+    }
+
+    /* iPhone/nav wrap: give more headroom */
+    @media (max-width: 640px){
+      :root{ --nav-pad: 9.75rem; }
+      main{ padding-left: 1.25rem; padding-right: 1.25rem; }
     }
 
     h1 {
@@ -171,102 +190,159 @@
 </head>
 
 <body>
-<nav>
-  <div class="brand">
-    <a href="/">
-      <img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography">
+  <!-- GLOBAL NAV INCLUDE (matches Contact/Home) -->
+  <div id="site-nav"></div>
+
+  <main>
+    <h1>Studies</h1>
+
+    <p class="page-intro">
+      These images are personal studies — experiments in light, form, and process.
+      They’re created purely for exploration and enjoyment, not as commissioned work
+      or items for sale. This space exists to document curiosity, technique, and ideas
+      that may (or may not) inform future projects.
+      One frame in this set features actress and model Eugina Kuzmina, photographed at Lamborghini of Beverly Hills.
+    </p>
+
+    <section class="gallery-grid" aria-label="Studies photo gallery">
+      <img src="/images/gallery/studies/20181010the-Wedge-IMG_6905-Edit.webp"
+           alt="Surfing study photograph at The Wedge"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/20181012the-Wedge-IMG_7654.webp"
+           alt="Surfing study photograph, action and spray"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/2018Super-Girl-Pro19.webp"
+           alt="Surf competition study photograph, action moment"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp"
+           alt="Actress and model Eugina Kuzmina with a Lamborghini at Lamborghini of Beverly Hills"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/20191204Lay-Flat-IMG_5269.webp"
+           alt="Lay-flat study photograph, objects and composition"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/20191222Caitlin-IMG_0072.webp"
+           alt="Portrait study photograph, natural light"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/20201012GailWinegar-Head-shot-3O7A5697.webp"
+           alt="Headshot study photograph, portrait lighting"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/VansProAM Surf-262.webp"
+           alt="Vans Pro-AM surfing study photograph, action frame"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/round24.webp"
+           alt="People study photograph"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/round22.webp"
+           alt="People study photograph, candid moment"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/studies/20190125TheGrand NationalRoadsterShow-IMG_9028.webp"
+           alt="Event study photograph, Grand National Roadster Show"
+           loading="lazy" decoding="async">
+
+      <!-- IMPORTANT:
+           Once you identify the exact file that includes Eugina Kuzmina,
+           update that image's alt text to something like:
+           alt="Portrait study photograph featuring actress and model Eugina Kuzmina"
+      -->
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
+      Instagram — Motoring
     </a>
+    ·
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
+      Instagram — Outdoor
+    </a>
+  </footer>
+
+  <!-- GLOBAL LIGHTBOX -->
+  <div class="lightbox" id="global-lightbox" aria-hidden="true">
+    <img id="global-lightbox-img" alt="">
   </div>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/gallery/">Gallery</a></li>
-    <li><a href="/editorial/">Editorial</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/prints.html">Prints</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-  </ul>
-</nav>
 
-<main>
-  <h1>Studies</h1>
+  <script src="/js/lightbox.js" defer></script>
 
-<p class="page-intro">
-  These images are personal studies — experiments in light, form, and process.
-  They’re created purely for exploration and enjoyment, not as commissioned work
-  or items for sale. This space exists to document curiosity, technique, and ideas
-  that may (or may not) inform future projects.
-  One frame in this set features actress and model Eugina Kuzmina, photographed at Lamborghini of Beverly Hills.
-</p>
+  <script>
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
 
-  <section class="gallery-grid" aria-label="Studies photo gallery">
-    <img src="/images/gallery/studies/20181010the-Wedge-IMG_6905-Edit.webp"
-         alt="Surfing study photograph at The Wedge"
-         loading="lazy" decoding="async">
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
+    }
 
-    <img src="/images/gallery/studies/20181012the-Wedge-IMG_7654.webp"
-         alt="Surfing study photograph, action and spray"
-         loading="lazy" decoding="async">
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
 
-    <img src="/images/gallery/studies/2018Super-Girl-Pro19.webp"
-         alt="Surf competition study photograph, action moment"
-         loading="lazy" decoding="async">
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
 
-    <img src="/images/gallery/studies/20190115lamborghini-champagne-IMG_7485.webp"
-     alt="Actress and model Eugina Kuzmina with a Lamborghini at Lamborghini of Beverly Hills"
-     loading="lazy" decoding="async">
+      document.body.classList.add("autohide");
 
-    <img src="/images/gallery/studies/20191204Lay-Flat-IMG_5269.webp"
-         alt="Lay-flat study photograph, objects and composition"
-         loading="lazy" decoding="async">
+      let hideTimer = null;
 
-    <img src="/images/gallery/studies/20191222Caitlin-IMG_0072.webp"
-         alt="Portrait study photograph, natural light"
-         loading="lazy" decoding="async">
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
 
-    <img src="/images/gallery/studies/20201012GailWinegar-Head-shot-3O7A5697.webp"
-         alt="Headshot study photograph, portrait lighting"
-         loading="lazy" decoding="async">
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
 
-    <img src="/images/gallery/studies/VansProAM Surf-262.webp"
-         alt="Vans Pro-AM surfing study photograph, action frame"
-         loading="lazy" decoding="async">
+      nav.classList.remove("is-visible");
 
-    <img src="/images/gallery/studies/round24.webp"
-         alt="People study photograph"
-         loading="lazy" decoding="async">
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
 
-    <img src="/images/gallery/studies/round22.webp"
-         alt="People study photograph, candid moment"
-         loading="lazy" decoding="async">
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
 
-    <img src="/images/gallery/studies/20190125TheGrand NationalRoadsterShow-IMG_9028.webp"
-         alt="Event study photograph, Grand National Roadster Show"
-         loading="lazy" decoding="async">
-
-    <!-- IMPORTANT:
-         Once you identify the exact file that includes Eugina Kuzmina,
-         update that image's alt text to something like:
-         alt="Portrait study photograph featuring actress and model Eugina Kuzmina"
-    -->
-  </section>
-</main>
-
-<footer>
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
-    Instagram — Motoring
-  </a>
-  ·
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">
-    Instagram — Outdoor
-  </a>
-</footer>
-
-<!-- GLOBAL LIGHTBOX -->
-<div class="lightbox" id="global-lightbox" aria-hidden="true">
-  <img id="global-lightbox-img" alt="">
-</div>
-
-<script src="/js/lightbox.js" defer></script>
-
+    (async () => {
+      const navOk = await includeHTML("site-nav", "/includes/Nav.html");
+      if (navOk) initNavAutoHide();
+    })();
+  </script>
 </body>
 </html>
