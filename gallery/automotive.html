@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
 
-  gtag('config', 'G-GYPE7JD4H9');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -34,6 +34,11 @@
   <style>
     * { box-sizing: border-box; }
 
+    :root{
+      /* ✅ nav clearance dial */
+      --nav-pad: 8.25rem; /* works well for injected nav on this page */
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -42,47 +47,67 @@
       min-height: 100vh;
     }
 
-    nav {
+    /* ================= NAV (MATCH CONTACT / HOME) ================= */
+    nav#siteNav{
       position: fixed;
-      top: 0;
+      top: 0; left: 0;
       width: 100%;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(14, 14, 14, 0.85);
-      backdrop-filter: blur(6px);
-      z-index: 10;
+      z-index: 1000;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+
+      /* gradient hairline */
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
     }
 
-    .brand img {
-      height: 50px;
-      opacity: 0.95;
-      display: block;
+    /* auto-hide behavior (desktop only, JS adds body.autohide) */
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
+    /* force visible on touch devices */
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
     }
 
-    nav a {
-      text-decoration: none;
-      color: #f5f5f5;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    nav a:hover { opacity: 1; }
-
+    /* ✅ padding under fixed nav (safe-area aware) */
     main {
-      padding-top: 9.5rem;
+      padding-top: calc(var(--nav-pad) + env(safe-area-inset-top));
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    /* iPhone/nav wrap: give more headroom */
+    @media (max-width: 640px){
+      :root{ --nav-pad: 9.75rem; }
+      main{ padding-left: 1.25rem; padding-right: 1.25rem; }
     }
 
     h1 {
@@ -174,91 +199,149 @@
 </head>
 
 <body>
+  <!-- GLOBAL NAV INCLUDE (matches Contact/Home) -->
+  <div id="site-nav"></div>
 
-<nav>
-  <div class="brand">
-    <a href="/"><img src="/images/Signature-TuesdayNight_Font+photography_250.png" alt="Thomas LeClair Photography"></a>
+  <main>
+    <header class="page-head">
+      <h1>Automotive Photography</h1>
+      <p class="subtitle">
+        Track panning is my specialty—images built around speed, timing, and clean technique.
+        You’ll also see more of my recent static work, plus a classic Bronco shoot published by Power Auto Media.
+      </p>
+    </header>
+
+    <h2 class="section-title">Selected Work</h2>
+
+    <section class="gallery-grid" aria-label="Automotive photo gallery">
+      <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp"
+           alt="1962 Chevrolet Nova in red, automotive portrait photo"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp"
+           alt="Track panning photo at Rennsport Reunion, Porsche on track"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp"
+           alt="Panning shot at Rennsport Reunion, race car in motion"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp"
+           alt="Luftgekühlt event automotive photograph, editorial-style scene"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp"
+           alt="Lamborghini automotive portrait photograph"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/KoH2023-184.webp"
+           alt="Off-road racing scene, automotive action photograph"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp"
+           alt="Peterson Automotive Museum scene, car detail photo"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/round214.webp"
+           alt="Track panning shot, race car in motion"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/round213.webp"
+           alt="On-track panning shot, race car with motion blur"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/round41.webp"
+           alt="Track panning photograph, car passing at speed"
+           loading="lazy" decoding="async">
+
+      <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp"
+           alt="Classic car tour in Utah, automotive photograph"
+           loading="lazy" decoding="async">
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
+    ·
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
+  </footer>
+
+  <!-- GLOBAL LIGHTBOX -->
+  <div class="lightbox" id="global-lightbox">
+    <img id="global-lightbox-img" alt="">
   </div>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/gallery/">Gallery</a></li>
-    <li><a href="/editorial/">Editorial</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/prints.html">Prints</a></li>
-    <li><a href="/contact.html">Contact</a></li>
-  </ul>
-</nav>
 
-<main>
-  <header class="page-head">
-    <h1>Automotive Photography</h1>
-    <p class="subtitle">
-      Track panning is my specialty—images built around speed, timing, and clean technique.
-      You’ll also see more of my recent static work, plus a classic Bronco shoot published by Power Auto Media.
-    </p>
-  </header>
+  <script src="/js/lightbox.js" defer></script>
 
-  <h2 class="section-title">Selected Work</h2>
+  <script>
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
 
-  <section class="gallery-grid" aria-label="Automotive photo gallery">
-    <img src="/images/gallery/Automotive/1962-Nova-Red-65.webp"
-         alt="1962 Chevrolet Nova in red, automotive portrait photo"
-         loading="lazy" decoding="async">
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
+    }
 
-    <img src="/images/gallery/Automotive/20180928Rennsport-Reunion-VI-IMG_0283webp.webp"
-         alt="Track panning photo at Rennsport Reunion, Porsche on track"
-         loading="lazy" decoding="async">
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
 
-    <img src="/images/gallery/Automotive/20180930Rennsport-Reunion-VI-IMG_3718-Edit.webp"
-         alt="Panning shot at Rennsport Reunion, race car in motion"
-         loading="lazy" decoding="async">
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return; // don’t hide on touch devices
 
-    <img src="/images/gallery/Automotive/0190511Luftgekult-6-IMG_3806.webp"
-         alt="Luftgekühlt event automotive photograph, editorial-style scene"
-         loading="lazy" decoding="async">
+      document.body.classList.add("autohide");
 
-    <img src="/images/gallery/Automotive/20190115lamborghini-champagne-IMG_7444.webp"
-         alt="Lamborghini automotive portrait photograph"
-         loading="lazy" decoding="async">
+      let hideTimer = null;
 
-    <img src="/images/gallery/Automotive/KoH2023-184.webp"
-         alt="Off-road racing scene, automotive action photograph"
-         loading="lazy" decoding="async">
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
 
-    <img src="/images/gallery/Automotive/PetersonMuseum-146webp.webp"
-         alt="Peterson Automotive Museum scene, car detail photo"
-         loading="lazy" decoding="async">
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
 
-    <img src="/images/gallery/Automotive/round214.webp"
-         alt="Track panning shot, race car in motion"
-         loading="lazy" decoding="async">
+      nav.classList.remove("is-visible");
 
-    <img src="/images/gallery/Automotive/round213.webp"
-         alt="On-track panning shot, race car with motion blur"
-         loading="lazy" decoding="async">
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
 
-    <img src="/images/gallery/Automotive/round41.webp"
-         alt="Track panning photograph, car passing at speed"
-         loading="lazy" decoding="async">
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
 
-    <img src="/images/gallery/Automotive/ClassicCarTourUtah-716webp.webp"
-         alt="Classic car tour in Utah, automotive photograph"
-         loading="lazy" decoding="async">
-  </section>
-</main>
-
-<footer>
-  <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
-  ·
-  <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
-</footer>
-
-<!-- GLOBAL LIGHTBOX -->
-<div class="lightbox" id="global-lightbox">
-  <img id="global-lightbox-img" alt="">
-</div>
-
-<script src="/js/lightbox.js" defer></script>
-
+    (async () => {
+      const navOk = await includeHTML("site-nav", "/includes/Nav.html");
+      if (navOk) initNavAutoHide();
+    })();
+  </script>
 </body>
 </html>
