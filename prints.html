@@ -39,8 +39,8 @@
       --muted:rgba(245,245,245,.72);
       --muted2:rgba(245,245,245,.58);
 
-      /* ✅ nav clearance dial */
-      --nav-pad: 8rem; /* desktop/default */
+      /* ✅ nav clearance (fallback). JS will overwrite with actual nav height */
+      --nav-clear: 140px;
     }
 
     body {
@@ -109,7 +109,7 @@
 
     /* ✅ padding under fixed nav (prevents iPhone/iPad title clipping) */
     main{
-      padding-top: calc(var(--nav-pad) + env(safe-area-inset-top));
+      padding-top: calc(var(--nav-clear) + env(safe-area-inset-top));
       max-width: 900px;
       margin: 0 auto;
       padding-left: 2rem;
@@ -117,14 +117,9 @@
       padding-bottom: 5rem;
     }
 
-    /* ✅ When nav wraps (iPhone), increase clearance */
-    @media (max-width: 640px){
-      :root{ --nav-pad: 9.75rem; }
-    }
-
     /* ✅ ensure anchor jumps don’t hide headings under the nav */
     :where(h1,h2,h3,h4,h5,h6,[id]){
-      scroll-margin-top: calc(var(--nav-pad) + 18px);
+      scroll-margin-top: calc(var(--nav-clear) + 18px);
     }
 
     header {
@@ -136,6 +131,10 @@
       font-weight: 300;
       letter-spacing: 0.06em;
       margin: 0 0 0.75rem 0;
+
+      /* ✅ iOS Safari: tiny safety to avoid top glyph clipping */
+      line-height: 1.15;
+      padding-top: 0.12em;
     }
 
     .subtitle {
@@ -445,6 +444,29 @@
       }
     }
 
+    /* ✅ Measure injected nav height and set clearance dynamically */
+    function setNavClearance() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
+
+      const apply = () => {
+        const h = Math.ceil(nav.getBoundingClientRect().height);
+        // Add a little breathing room so headings never kiss the nav
+        document.documentElement.style.setProperty("--nav-clear", (h + 18) + "px");
+      };
+
+      apply();
+      requestAnimationFrame(apply);
+      setTimeout(apply, 150);
+
+      window.addEventListener("resize", apply, { passive: true });
+      window.addEventListener(
+        "orientationchange",
+        () => setTimeout(apply, 150),
+        { passive: true }
+      );
+    }
+
     function initNavAutoHide() {
       const nav = document.getElementById("siteNav");
       if (!nav) return;
@@ -492,7 +514,10 @@
       const navOk = await includeHTML("site-nav", "/includes/Nav.html");
       const footOk = await includeHTML("site-footer", "/includes/footer.html");
 
-      if (navOk) initNavAutoHide();
+      if (navOk) {
+        setNavClearance();
+        initNavAutoHide();
+      }
       if (!footOk) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
     })();
   </script>
