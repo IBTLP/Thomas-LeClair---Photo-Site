@@ -234,12 +234,16 @@
       padding-right: 1.25rem;
       padding-bottom: 3.25rem;
     }
-
     /* iPhone/nav wrap: give a little more headroom */
     @media (max-width: 640px){
       :root{ --nav-pad: 6.75rem; }
-      main{ padding-left: 1.1rem; padding-right: 1.1rem; }
+      main{
+        padding-top: calc(var(--nav-pad) + env(safe-area-inset-top) + 14px);
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+      }
     }
+
 
     /* optional: anchor jumps don’t hide headings under nav */
     :where(h1,h2,h3,h4,h5,h6,[id]){
@@ -270,12 +274,14 @@
       font-size:.78rem;
     }
 
-    h1{
-      margin:0 0 .65rem;
-      font-size:2.55rem;
-      letter-spacing:-.02em;
-      line-height:1.12;
-    }
+h1{
+  margin:0 0 .65rem;
+  font-size:2.55rem;
+  letter-spacing:-.02em;
+  line-height:1.15;     /* was 1.12 */
+  padding-top:0.12em;   /* tiny iOS safety */
+}
+
 
     .hero-sub{
       margin:0;
