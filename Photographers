@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GYPE7JD4H9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GYPE7JD4H9');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Photographers — Thomas LeClair Photography</title>
+
+  <meta name="description" content="Free Lightroom presets and a quick-start workflow for car shows — built for beginners, shared to support the craft." />
+  <link rel="canonical" href="https://www.tleclair.com/photographers.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="For Photographers — Free Lightroom Presets" />
+  <meta property="og:description" content="A small free toolkit for car-show shooting: 6 RAW-first Lightroom presets + a quick-start workflow." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.tleclair.com/photographers.html" />
+  <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="For Photographers — Free Lightroom Presets" />
+  <meta name="twitter:description" content="6 RAW-first Lightroom presets for car shows + quick-start guidance." />
+  <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root{
+      --bg:#0e0e0e;
+      --text:#f5f5f5;
+      --muted:rgba(245,245,245,.72);
+      --muted2:rgba(245,245,245,.58);
+      --hair: rgba(255,255,255,.10);
+      --panel:#151515;
+      --panel2:#121212;
+      --border: rgba(255,255,255,0.20);
+      --border2: rgba(255,255,255,0.14);
+    }
+
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main { flex: 1 0 auto; }
+
+    /* keep spacing consistent under fixed nav */
+    main{
+      padding-top: 10.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-bottom: 3.25rem;
+    }
+    @media (max-width: 640px){
+      main{ padding-top: 11.25rem; }
+    }
+
+    h1{
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      text-align: center;
+      margin: 0 0 1rem;
+    }
+
+    .lede{
+      text-align: center;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.65;
+    }
+
+    .section{
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(90deg, rgba(255,255,255,0), var(--hair), rgba(255,255,255,0)) 1;
+    }
+
+    .cta-wrap{
+      display: grid;
+      gap: 0.9rem;
+      justify-items: center;
+      margin-top: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn{
+      display: inline-block;
+      padding: 0.95rem 1.1rem;
+      background: #f5f5f5;
+      color: #0e0e0e;
+      border: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn:hover{ opacity: 0.9; }
+
+    .subtle{
+      font-size: 0.85rem;
+      color: var(--muted2);
+      line-height: 1.55;
+      text-align: center;
+      max-width: 720px;
+    }
+
+    .grid{
+      margin-top: 1.25rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--border2);
+      border-radius: 14px;
+      padding: 1.15rem 1.15rem;
+    }
+
+    .card h3{
+      margin: 0 0 .5rem;
+      font-weight: 450;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+    }
+
+    .card p{
+      margin: 0.35rem 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .k{
+      color: var(--muted2);
+    }
+
+    .mini{
+      margin-top: .9rem;
+      padding: .9rem 1rem;
+      border: 1px solid var(--border2);
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: .9rem;
+    }
+
+    .mini strong{ color: rgba(245,245,245,.88); font-weight: 520; }
+
+    .links{
+      display: inline-flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: .75rem;
+    }
+    .links a{
+      color: rgba(245,245,245,.72);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,245,245,.22);
+      padding-bottom: 2px;
+    }
+    .links a:hover{
+      color: rgba(245,245,245,.90);
+      border-bottom-color: rgba(245,245,245,.45);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV INCLUDE -->
+  <div id="site-nav"></div>
+
+  <main>
+    <h1>For photographers</h1>
+    <p class="lede">
+      I’m sharing a small set of tools I’ve built for car shows — because this craft is part of what I love,
+      and the more we raise the bar, the better it gets for everyone.
+    </p>
+
+    <div class="section">
+      <div class="cta-wrap">
+        <!-- TODO: update this href after you upload the zip -->
+        <a class="btn" href="/downloads/Auto-Hobbyist-by-Thomas-v10.zip" download>
+          DOWNLOAD: AUTO HOBBYIST PRESETS (ZIP)
+        </a>
+        <div class="subtle">
+          RAW-first. On JPEG, start with “Noon Sun Safe” or “Open Shade Clean,” then reduce Highlights + Contrast if it feels harsh.
+        </div>
+      </div>
+
+      <div class="mini">
+        <strong>Fast workflow:</strong> Apply preset → adjust Exposure → pull Highlights down if paint/chrome is hot → lift Shadows a touch if wheels/grille are dark.
+      </div>
+
+      <div class="mini">
+        <strong>Install:</strong> Lightroom → Presets panel → “…” menu → <span class="k">Import Presets</span> → select the ZIP (or unzip and import the folder).
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="grid">
+        <div class="card">
+          <h3>01 — Outdoor — Noon Sun Safe</h3>
+          <p><span class="k">Best for:</span> Harsh overhead sun (11am–3pm). The safe default.</p>
+          <p><span class="k">Look:</span> Protects highlights, opens shadows, stays clean on paint/chrome.</p>
+          <p><span class="k">Quick fix:</span> Too flat → add a touch of Contrast, or use “Noon Sun Pop.”</p>
+        </div>
+
+        <div class="card">
+          <h3>02 — Outdoor — Noon Sun Pop</h3>
+          <p><span class="k">Best for:</span> Harsh sun when you want extra punch and presence.</p>
+          <p><span class="k">Look:</span> More contrast/depth + subtle vignette to center attention.</p>
+          <p><span class="k">Quick fix:</span> Highlights too hot → reduce Highlights/Whites; gritty → lower Clarity.</p>
+        </div>
+
+        <div class="card">
+          <h3>03 — Outdoor — Open Shade Clean</h3>
+          <p><span class="k">Best for:</span> Overcast, shade, tents, trees, building shade.</p>
+          <p><span class="k">Look:</span> Brightens cleanly and helps counter green/yellow shade casts.</p>
+          <p><span class="k">Quick fix:</span> Still warm/green → nudge Temp cooler and Tint slightly.</p>
+        </div>
+
+        <div class="card">
+          <h3>04 — Outdoor — CPL Gloss Control</h3>
+          <p><span class="k">Best for:</span> CPL/polarizer shots, strong reflections, blue skies.</p>
+          <p><span class="k">Look:</span> Controlled reflections + clean glossy paint feel.</p>
+          <p><span class="k">Quick fix:</span> Feels dark → lift Exposure slightly.</p>
+        </div>
+
+        <div class="card">
+          <h3>05 — Indoor — Mixed Light Neutral</h3>
+          <p><span class="k">Best for:</span> Convention centers / mixed lighting.</p>
+          <p><span class="k">Look:</span> Cleaner color, reduced mixed-light casts, mild vignette.</p>
+          <p><span class="k">Quick fix:</span> Too warm/cool → adjust Temp; color weird → adjust Tint slightly.</p>
+        </div>
+
+        <div class="card">
+          <h3>06 — Indoor — High ISO Clean</h3>
+          <p><span class="k">Best for:</span> ISO 3200+ or noisy indoor files, dark cars.</p>
+          <p><span class="k">Look:</span> Smoother microcontrast + stronger NR for a clean file.</p>
+          <p><span class="k">Quick fix:</span> Too soft → increase Sharpening Amount a touch.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="subtle" style="margin:0 auto;">
+        Want more car-show shooting notes and before/after edits?
+      </p>
+      <div class="links" aria-label="Social links">
+        <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
+        <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- GLOBAL FOOTER INCLUDE -->
+  <div id="site-footer"></div>
+
+  <script>
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+        return false;
+      }
+    }
+
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
+
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return;
+
+      document.body.classList.add("autohide");
+
+      let hideTimer = null;
+      const HIDE_DELAY = 900;
+
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, HIDE_DELAY);
+      };
+
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, HIDE_DELAY);
+      };
+
+      nav.classList.remove("is-visible");
+
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
+
+    (async () => {
+      const navOK  = await includeHTML("site-nav", "/includes/Nav.html");
+      const footOK = await includeHTML("site-footer", "/includes/footer.html");
+
+      if (navOK) initNavAutoHide();
+      if (!footOK) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
+    })();
+  </script>
+</body>
+</html>
