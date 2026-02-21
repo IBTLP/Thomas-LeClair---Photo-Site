@@ -198,12 +198,12 @@
 
     <div class="section">
       <div class="cta-wrap">
-        <!-- TODO: update this href after you upload the zip -->
-        <a class="btn" href="/downloads/Auto Hobbyist by Thomas-2" download>
+        <!-- UPDATE THIS FILENAME IF YOU CHANGE THE ZIP NAME -->
+        <a class="btn" id="presetDownload" href="/downloads/Auto-Hobbyist-by-Thomas-v10.zip" download>
           DOWNLOAD: AUTO HOBBYIST PRESETS (ZIP)
         </a>
         <div class="subtle">
-          RAW-first. On JPEG, start with “Noon Sun Safe” or “Open Shade Clean,” then reduce Highlights + Contrast if it feels harsh.
+          RAW-first. On JPEG, start with "Noon Sun Safe" or "Open Shade Clean," then reduce Highlights + Contrast if it feels harsh.
         </div>
       </div>
 
@@ -212,7 +212,7 @@
       </div>
 
       <div class="mini">
-        <strong>Install:</strong> Lightroom → Presets panel → “…” menu → <span class="k">Import Presets</span> → select the ZIP (or unzip and import the folder).
+        <strong>Install:</strong> Lightroom → Presets panel → "..." menu → <span class="k">Import Presets</span> → select the ZIP (or unzip and import the folder).
       </div>
     </div>
 
@@ -348,6 +348,25 @@
 
       if (navOK) initNavAutoHide();
       if (!footOK) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
+    })();
+  </script>
+
+  <!-- GA4 DOWNLOAD COUNTER (PRIVATE): counts clicks on the ZIP download button -->
+  <script>
+    (function () {
+      var a = document.getElementById('presetDownload');
+      if (!a) return;
+
+      a.addEventListener('click', function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'preset_download', {
+            event_category: 'photographers',
+            event_label: 'Auto Hobbyist',
+            // UPDATE THIS IF YOU CHANGE THE ZIP NAME
+            file_name: 'Auto-Hobbyist-by-Thomas-v10.zip'
+          });
+        }
+      });
     })();
   </script>
 </body>
