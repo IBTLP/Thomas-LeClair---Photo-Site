@@ -6,6 +6,8 @@
       <span class="dot">·</span>
       <a href="/commissioned.html">Commissioned</a>
       <span class="dot">·</span>
+      <a href="/photographers.html">For Photographers</a>
+      <span class="dot">·</span>
 
       <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">
         Instagram — Motoring
@@ -18,6 +20,10 @@
       <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer">
         LinkedIn
       </a>
+    </div>
+
+    <div class="footer-note">
+      Free presets and quick-start guidance for car shows — shared to support the craft.
     </div>
 
     <div class="footer-meta">
@@ -40,7 +46,6 @@
     font-size: .82rem;
     color: var(--footer-text);
 
-    /* gradient hairline across top of footer (matches nav concept) */
     border-top: 1px solid transparent;
     border-image: linear-gradient(
       90deg,
@@ -54,7 +59,7 @@
     width: min(1040px, calc(100% - 84px));
     margin: 0 auto;
     display: grid;
-    gap: 0;                 /* we’ll control spacing per row */
+    gap: 0;
     justify-items: center;
   }
 
@@ -72,7 +77,7 @@
     text-decoration: none;
     opacity: .95;
     position: relative;
-    padding: .15rem 0;      /* gives room for underline */
+    padding: .15rem 0;
     transition: opacity 160ms ease, color 160ms ease;
   }
 
@@ -81,7 +86,6 @@
     color: var(--footer-text-strong);
   }
 
-  /* underline hairline on hover (like nav) */
   .site-footer a::after{
     content:"";
     position:absolute;
@@ -107,8 +111,14 @@
     margin: 0 .35rem;
   }
 
+  .footer-note{
+    margin-top: .55rem;
+    opacity: .55;
+    letter-spacing: .01em;
+  }
+
   .footer-meta{
-    margin-top: .8rem;      /* “another line” of air */
+    margin-top: .8rem;
     opacity: .55;
     letter-spacing: .02em;
   }
