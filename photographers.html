@@ -56,7 +56,6 @@
 
     main { flex: 1 0 auto; }
 
-    /* keep spacing consistent under fixed nav */
     main{
       padding-top: 10.5rem;
       max-width: 860px;
@@ -110,8 +109,19 @@
       text-decoration: none;
       border-radius: 10px;
       cursor: pointer;
+      text-align: center;
     }
     .btn:hover{ opacity: 0.9; }
+
+    .btn.secondary{
+      background: rgba(245,245,245,.12);
+      color: rgba(245,245,245,.88);
+      border: 1px solid rgba(255,255,255,.18);
+      letter-spacing: 0.06em;
+    }
+    .btn.secondary:hover{
+      background: rgba(245,245,245,.16);
+    }
 
     .subtle{
       font-size: 0.85rem;
@@ -182,6 +192,45 @@
       color: rgba(245,245,245,.90);
       border-bottom-color: rgba(245,245,245,.45);
     }
+
+    .dl-list{
+      margin-top: .75rem;
+      display: grid;
+      gap: .65rem;
+    }
+    .dl-item{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: .75rem;
+      padding: .85rem 1rem;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+    }
+    .dl-item .name{
+      color: rgba(245,245,245,.86);
+      letter-spacing: .01em;
+      font-size: .92rem;
+    }
+    .dl-item .hint{
+      color: var(--muted2);
+      font-size: .86rem;
+      line-height: 1.45;
+      flex: 1 1 320px;
+    }
+    .dl-item a{
+      color: rgba(245,245,245,.80);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,245,245,.22);
+      padding-bottom: 2px;
+      white-space: nowrap;
+    }
+    .dl-item a:hover{
+      color: rgba(245,245,245,.92);
+      border-bottom-color: rgba(245,245,245,.45);
+    }
   </style>
 </head>
 
@@ -198,12 +247,13 @@
 
     <div class="section">
       <div class="cta-wrap">
-        <!-- UPDATE THIS FILENAME IF YOU CHANGE THE ZIP NAME -->
-        <a class="btn" id="presetDownload" href="/downloads/Auto-Hobbyist-by-Thomas-v10.zip" download>
-          DOWNLOAD: AUTO HOBBYIST PRESETS (ZIP)
-        </a>
+        <button class="btn" id="downloadAllBtn" type="button">
+          DOWNLOAD ALL PRESETS (6 FILES)
+        </button>
+
         <div class="subtle">
-          RAW-first. On JPEG, start with "Noon Sun Safe" or "Open Shade Clean," then reduce Highlights + Contrast if it feels harsh.
+          Your browser may ask to allow multiple downloads. If it does, choose <span class="k">Allow</span>.
+          Prefer one ZIP instead? I’ll add a single-pack download shortly.
         </div>
       </div>
 
@@ -212,52 +262,50 @@
       </div>
 
       <div class="mini">
-        <strong>Install:</strong> Lightroom → Presets panel → "..." menu → <span class="k">Import Presets</span> → select the ZIP (or unzip and import the folder).
+        <strong>Install:</strong> Lightroom → Presets panel → "..." menu → <span class="k">Import Presets</span> → select the files (or place them into a folder and import as a group).
       </div>
     </div>
 
     <div class="section">
-      <div class="grid">
-        <div class="card">
-          <h3>01 — Outdoor — Noon Sun Safe</h3>
-          <p><span class="k">Best for:</span> Harsh overhead sun (11am–3pm). The safe default.</p>
-          <p><span class="k">Look:</span> Protects highlights, opens shadows, stays clean on paint/chrome.</p>
-          <p><span class="k">Quick fix:</span> Too flat → add a touch of Contrast, or use “Noon Sun Pop.”</p>
+      <div class="mini">
+        <strong>Individual downloads:</strong> If your browser blocks “Download All,” use these one-by-one.
+      </div>
+
+      <div class="dl-list" aria-label="Preset download list">
+        <div class="dl-item">
+          <div class="name">01 — Outdoor — Noon Sun Safe</div>
+          <div class="hint">Harsh overhead sun (11am–3pm). Safe default.</div>
+          <a class="presetLink" data-file="01_AH_Outdoor_Noon_Sun_Safe.xmp" href="#" download>Download</a>
         </div>
 
-        <div class="card">
-          <h3>02 — Outdoor — Noon Sun Pop</h3>
-          <p><span class="k">Best for:</span> Harsh sun when you want extra punch and presence.</p>
-          <p><span class="k">Look:</span> More contrast/depth + subtle vignette to center attention.</p>
-          <p><span class="k">Quick fix:</span> Highlights too hot → reduce Highlights/Whites; gritty → lower Clarity.</p>
+        <div class="dl-item">
+          <div class="name">02 — Outdoor — Noon Sun Pop</div>
+          <div class="hint">Harsh sun, more punch and presence.</div>
+          <a class="presetLink" data-file="02_AH_Outdoor_Noon_Sun_Pop.xmp" href="#" download>Download</a>
         </div>
 
-        <div class="card">
-          <h3>03 — Outdoor — Open Shade Clean</h3>
-          <p><span class="k">Best for:</span> Overcast, shade, tents, trees, building shade.</p>
-          <p><span class="k">Look:</span> Brightens cleanly and helps counter green/yellow shade casts.</p>
-          <p><span class="k">Quick fix:</span> Still warm/green → nudge Temp cooler and Tint slightly.</p>
+        <div class="dl-item">
+          <div class="name">03 — Outdoor — Open Shade Clean</div>
+          <div class="hint">Overcast, shade, tents, trees, building shade.</div>
+          <a class="presetLink" data-file="03_AH_Outdoor_Open_Shade_Clean.xmp" href="#" download>Download</a>
         </div>
 
-        <div class="card">
-          <h3>04 — Outdoor — CPL Gloss Control</h3>
-          <p><span class="k">Best for:</span> CPL/polarizer shots, strong reflections, blue skies.</p>
-          <p><span class="k">Look:</span> Controlled reflections + clean glossy paint feel.</p>
-          <p><span class="k">Quick fix:</span> Feels dark → lift Exposure slightly.</p>
+        <div class="dl-item">
+          <div class="name">04 — Outdoor — CPL Gloss Control</div>
+          <div class="hint">Polarizer/CPL shots, strong reflections, blue skies.</div>
+          <a class="presetLink" data-file="04_AH_Outdoor_CPL_Gloss_Control.xmp" href="#" download>Download</a>
         </div>
 
-        <div class="card">
-          <h3>05 — Indoor — Mixed Light Neutral</h3>
-          <p><span class="k">Best for:</span> Convention centers / mixed lighting.</p>
-          <p><span class="k">Look:</span> Cleaner color, reduced mixed-light casts, mild vignette.</p>
-          <p><span class="k">Quick fix:</span> Too warm/cool → adjust Temp; color weird → adjust Tint slightly.</p>
+        <div class="dl-item">
+          <div class="name">05 — Indoor — Mixed Light Neutral</div>
+          <div class="hint">Convention centers / mixed lighting. Clean and neutral.</div>
+          <a class="presetLink" data-file="05_AH_Indoor_Mixed_Light_Neutral.xmp" href="#" download>Download</a>
         </div>
 
-        <div class="card">
-          <h3>06 — Indoor — High ISO Clean</h3>
-          <p><span class="k">Best for:</span> ISO 3200+ or noisy indoor files, dark cars.</p>
-          <p><span class="k">Look:</span> Smoother microcontrast + stronger NR for a clean file.</p>
-          <p><span class="k">Quick fix:</span> Too soft → increase Sharpening Amount a touch.</p>
+        <div class="dl-item">
+          <div class="name">06 — Indoor — High ISO Clean</div>
+          <div class="hint">ISO 3200+ or noisy indoor files, dark cars.</div>
+          <a class="presetLink" data-file="06_AH_Indoor_High_ISO_Clean.xmp" href="#" download>Download</a>
         </div>
       </div>
     </div>
@@ -345,28 +393,74 @@
     (async () => {
       const navOK  = await includeHTML("site-nav", "/includes/Nav.html");
       const footOK = await includeHTML("site-footer", "/includes/footer.html");
-
       if (navOK) initNavAutoHide();
       if (!footOK) console.warn("footer include failed. Check exact path/case: /includes/footer.html");
     })();
   </script>
 
-  <!-- GA4 DOWNLOAD COUNTER (PRIVATE): counts clicks on the ZIP download button -->
   <script>
     (function () {
-      var a = document.getElementById('presetDownload');
-      if (!a) return;
+      // IMPORTANT: this matches your current uploaded folder exactly (space-sensitive)
+      const basePath = "/download/Auto%20Hobbyist%20by%20Thomas-2/";
 
-      a.addEventListener('click', function () {
-        if (typeof gtag === 'function') {
-          gtag('event', 'preset_download', {
-            event_category: 'photographers',
-            event_label: 'Auto Hobbyist',
-            // UPDATE THIS IF YOU CHANGE THE ZIP NAME
-            file_name: 'Auto-Hobbyist-by-Thomas-v10.zip'
-          });
-        }
+      const files = [
+        "01_AH_Outdoor_Noon_Sun_Safe.xmp",
+        "02_AH_Outdoor_Noon_Sun_Pop.xmp",
+        "03_AH_Outdoor_Open_Shade_Clean.xmp",
+        "04_AH_Outdoor_CPL_Gloss_Control.xmp",
+        "05_AH_Indoor_Mixed_Light_Neutral.xmp",
+        "06_AH_Indoor_High_ISO_Clean.xmp"
+      ];
+
+      // Wire individual links
+      document.querySelectorAll(".presetLink").forEach(a => {
+        const file = a.getAttribute("data-file");
+        a.href = basePath + encodeURIComponent(file);
+
+        a.addEventListener("click", function () {
+          if (typeof gtag === "function") {
+            gtag("event", "preset_download_single", {
+              event_category: "photographers",
+              event_label: "Auto Hobbyist",
+              file_name: file
+            });
+          }
+        });
       });
+
+      function triggerDownload(url) {
+        const a = document.createElement("a");
+        a.href = url;
+        a.setAttribute("download", "");
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      // Download All (6 files)
+      const btn = document.getElementById("downloadAllBtn");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          if (typeof gtag === "function") {
+            gtag("event", "preset_download_all", {
+              event_category: "photographers",
+              event_label: "Auto Hobbyist",
+              file_count: files.length
+            });
+          }
+
+          // Stagger downloads to reduce browser blocking
+          let delay = 0;
+          const step = 650; // ms between downloads
+
+          files.forEach(file => {
+            const url = basePath + encodeURIComponent(file);
+            setTimeout(() => triggerDownload(url), delay);
+            delay += step;
+          });
+        });
+      }
     })();
   </script>
 </body>
