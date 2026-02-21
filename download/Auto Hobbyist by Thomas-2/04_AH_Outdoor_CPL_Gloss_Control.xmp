@@ -1,0 +1,81 @@
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about=""
+   xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+   crs:PresetType="Normal"
+   crs:Cluster="Auto Hobbyist by Thomas"
+   crs:UUID="CD324BDA62F34559BE1B479A5BCA6751"
+   crs:SupportsAmount="True"
+   crs:SupportsColor="True"
+   crs:SupportsMonochrome="True"
+   crs:SupportsHighDynamicRange="True"
+   crs:SupportsNormalDynamicRange="True"
+   crs:SupportsSceneReferred="True"
+   crs:SupportsOutputReferred="True"
+   crs:Version="13.0"
+   crs:ProcessVersion="11.0">
+   <crs:Exposure2012>0</crs:Exposure2012>
+   <crs:Contrast2012>12</crs:Contrast2012>
+   <crs:Highlights2012>-60</crs:Highlights2012>
+   <crs:Shadows2012>35</crs:Shadows2012>
+   <crs:Whites2012>-10</crs:Whites2012>
+   <crs:Blacks2012>-14</crs:Blacks2012>
+   <crs:Texture>-6</crs:Texture>
+   <crs:Clarity2012>10</crs:Clarity2012>
+   <crs:Dehaze>3</crs:Dehaze>
+   <crs:Vibrance>10</crs:Vibrance>
+   <crs:Saturation>-3</crs:Saturation>
+   <crs:CameraProfile>Adobe Neutral</crs:CameraProfile>
+   <crs:WhiteBalance>As Shot</crs:WhiteBalance>
+   <crs:SharpenAmount>60</crs:SharpenAmount>
+   <crs:SharpenRadius>1</crs:SharpenRadius>
+   <crs:SharpenDetail>22</crs:SharpenDetail>
+   <crs:SharpenEdgeMasking>99</crs:SharpenEdgeMasking>
+   <crs:LuminanceSmoothing>10</crs:LuminanceSmoothing>
+   <crs:LuminanceDetail>50</crs:LuminanceDetail>
+   <crs:LuminanceContrast>0</crs:LuminanceContrast>
+   <crs:ColorNoiseReduction>25</crs:ColorNoiseReduction>
+   <crs:ColorNoiseReductionDetail>50</crs:ColorNoiseReductionDetail>
+   <crs:ColorNoiseReductionSmoothness>50</crs:ColorNoiseReductionSmoothness>
+   <crs:HueAdjustmentRed>0</crs:HueAdjustmentRed>
+   <crs:HueAdjustmentOrange>0</crs:HueAdjustmentOrange>
+   <crs:HueAdjustmentYellow>-5</crs:HueAdjustmentYellow>
+   <crs:HueAdjustmentGreen>-5</crs:HueAdjustmentGreen>
+   <crs:HueAdjustmentAqua>0</crs:HueAdjustmentAqua>
+   <crs:HueAdjustmentBlue>-5</crs:HueAdjustmentBlue>
+   <crs:HueAdjustmentPurple>0</crs:HueAdjustmentPurple>
+   <crs:HueAdjustmentMagenta>0</crs:HueAdjustmentMagenta>
+   <crs:SaturationAdjustmentRed>-6</crs:SaturationAdjustmentRed>
+   <crs:SaturationAdjustmentOrange>-4</crs:SaturationAdjustmentOrange>
+   <crs:SaturationAdjustmentYellow>-12</crs:SaturationAdjustmentYellow>
+   <crs:SaturationAdjustmentGreen>-10</crs:SaturationAdjustmentGreen>
+   <crs:SaturationAdjustmentAqua>-10</crs:SaturationAdjustmentAqua>
+   <crs:SaturationAdjustmentBlue>-14</crs:SaturationAdjustmentBlue>
+   <crs:SaturationAdjustmentPurple>-4</crs:SaturationAdjustmentPurple>
+   <crs:SaturationAdjustmentMagenta>-4</crs:SaturationAdjustmentMagenta>
+   <crs:LuminanceAdjustmentRed>0</crs:LuminanceAdjustmentRed>
+   <crs:LuminanceAdjustmentOrange>4</crs:LuminanceAdjustmentOrange>
+   <crs:LuminanceAdjustmentYellow>-6</crs:LuminanceAdjustmentYellow>
+   <crs:LuminanceAdjustmentGreen>-6</crs:LuminanceAdjustmentGreen>
+   <crs:LuminanceAdjustmentAqua>-10</crs:LuminanceAdjustmentAqua>
+   <crs:LuminanceAdjustmentBlue>-16</crs:LuminanceAdjustmentBlue>
+   <crs:LuminanceAdjustmentPurple>0</crs:LuminanceAdjustmentPurple>
+   <crs:LuminanceAdjustmentMagenta>0</crs:LuminanceAdjustmentMagenta>
+   <crs:ShadowsTint>3</crs:ShadowsTint>
+   <crs:RedPrimaryHue>6</crs:RedPrimaryHue>
+   <crs:RedPrimarySaturation>-6</crs:RedPrimarySaturation>
+   <crs:GreenPrimaryHue>4</crs:GreenPrimaryHue>
+   <crs:GreenPrimarySaturation>0</crs:GreenPrimarySaturation>
+   <crs:BluePrimaryHue>-6</crs:BluePrimaryHue>
+   <crs:BluePrimarySaturation>6</crs:BluePrimarySaturation>
+   <crs:LensProfileEnable>1</crs:LensProfileEnable>
+   <crs:RemoveChromaticAberration>True</crs:RemoveChromaticAberration>
+   <crs:Name>
+    <rdf:Alt><rdf:li xml:lang="x-default">Auto Hobbyist - Outdoor - CPL Gloss Control - by Thomas</rdf:li></rdf:Alt>
+   </crs:Name>
+   <crs:Group>
+    <rdf:Alt><rdf:li xml:lang="x-default">Auto Hobbyist - All Presets - by Thomas</rdf:li></rdf:Alt>
+   </crs:Group>
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>
