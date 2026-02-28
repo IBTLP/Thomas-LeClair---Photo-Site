@@ -14,20 +14,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- Primary SEO -->
-  <title>Why Bespoke Color Matters — Signature Finishing Notes | Thomas LeClair</title>
-  <meta name="description" content="Why bespoke color matters for collector cars: custom LUTs built per shoot (not presets) so paint, highlights, and panel contour read true—delivered as a cohesive, editorial set." />
+  <title>Signature Finishing — Bespoke Color & Editorial Finish | Thomas LeClair</title>
+  <meta name="description" content="Signature Finishing for collector cars: bespoke color foundations built per shoot so paint, highlights, and panel contour read true—delivered as a cohesive, editorial set." />
   <link rel="canonical" href="https://www.tleclair.com/signature-finishing.html" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
-  <!-- GEO (lightweight, consistent with Commissioned page) -->
+  <!-- GEO (lightweight) -->
   <meta name="geo.region" content="US-UT" />
   <meta name="geo.placename" content="Santa Clara, Utah" />
   <meta name="ICBM" content="37.133,-113.654" />
   <meta name="geo.position" content="37.133;-113.654" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Why Bespoke Color Matters — Signature Finishing Notes | Thomas LeClair" />
-  <meta property="og:description" content="Custom LUTs built per shoot (not presets) so paint, highlights, and panel contour read true—delivered as a cohesive, editorial set." />
+  <meta property="og:title" content="Signature Finishing — Bespoke Color & Editorial Finish | Thomas LeClair" />
+  <meta property="og:description" content="Bespoke color foundations built per shoot so paint reads true—clean highlights, dimensional panels, cohesive sets." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.tleclair.com/signature-finishing.html" />
   <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
@@ -35,8 +35,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Why Bespoke Color Matters — Thomas LeClair" />
-  <meta name="twitter:description" content="Custom LUTs built per shoot (not presets) so high-end paint reads true—clean highlights, dimensional panels, cohesive sets." />
+  <meta name="twitter:title" content="Signature Finishing — Thomas LeClair" />
+  <meta name="twitter:description" content="Bespoke color per shoot so high-end paint reads true—clean highlights, dimensional panels, cohesive sets." />
   <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
   <link rel="icon" href="/favicon.ico" />
@@ -51,7 +51,7 @@
         "@type": "WebPage",
         "@id": "https://www.tleclair.com/signature-finishing.html#webpage",
         "url": "https://www.tleclair.com/signature-finishing.html",
-        "name": "Why Bespoke Color Matters — Signature Finishing Notes | Thomas LeClair",
+        "name": "Signature Finishing — Bespoke Color & Editorial Finish | Thomas LeClair",
         "isPartOf": { "@id": "https://www.tleclair.com/#website" },
         "about": { "@id": "https://www.tleclair.com/#person" },
         "inLanguage": "en-US",
@@ -119,7 +119,7 @@
         "name": "Is this included in every commission?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Signature and Château commissions include bespoke color finishing as part of the editorial workflow. Essential commissions are smaller in scope, but still finished to the same standards for clean, consistent results."
+          "text": "Signature and Château commissions include bespoke finishing as part of the editorial workflow. Essential commissions are smaller in scope, but still finished to the same standards for clean, consistent results."
         }
       }
     ]
@@ -141,6 +141,9 @@
 
       /* nav pad for iPhone/iPad + safe area */
       --nav-pad: 7.25rem; /* desktop/default */
+
+      /* UPDATE THIS if your folder differs */
+      --sigfin-base: "/images/sig-fin";
     }
 
     *{ box-sizing:border-box; }
@@ -152,13 +155,10 @@
       background:var(--bg);
       color:var(--text);
       line-height:1.55;
-
-      /* footer behavior */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-
     main{ flex: 1 0 auto; }
 
     a{ color:var(--text); text-decoration:none; }
@@ -188,7 +188,6 @@
       ) 1;
     }
 
-    /* auto-hide behavior (desktop only, JS adds body.autohide) */
     body.autohide nav#siteNav{
       transform: translateY(-110%);
       opacity: 0;
@@ -202,7 +201,6 @@
       pointer-events: auto;
     }
 
-    /* force visible on touch devices */
     @media (max-width: 768px) {
       body.autohide nav#siteNav{
         transform: translateY(0) !important;
@@ -211,7 +209,7 @@
       }
     }
 
-    /* ---------------- PAGE WRAP (safe-area aware, iPhone/iPad friendly) ---------------- */
+    /* ---------------- PAGE WRAP ---------------- */
     main{
       max-width:var(--max);
       margin:0 auto;
@@ -220,7 +218,6 @@
       padding-right: 1.25rem;
       padding-bottom: 3.25rem;
     }
-    /* iPhone/nav wrap: give a little more headroom */
     @media (max-width: 640px){
       :root{ --nav-pad: 6.75rem; }
       main{
@@ -229,8 +226,6 @@
         padding-right: 1.1rem;
       }
     }
-
-    /* optional: anchor jumps don’t hide headings under nav */
     :where(h1,h2,h3,h4,h5,h6,[id]){
       scroll-margin-top: calc(var(--nav-pad) + 18px);
     }
@@ -248,7 +243,6 @@
       background-size:cover;
       background-position:center;
     }
-
     .hero-inner{ padding:2.35rem 1.65rem; }
 
     .kicker{
@@ -258,7 +252,6 @@
       text-transform:uppercase;
       font-size:.78rem;
     }
-
     h1{
       margin:0 0 .65rem;
       font-size:2.55rem;
@@ -266,21 +259,18 @@
       line-height:1.15;
       padding-top:0.12em;
     }
-
     .hero-sub{
       margin:0;
       color:var(--muted);
       max-width:78ch;
       font-size:1.08rem;
     }
-
     .hero-meta{
       margin-top:1.1rem;
       display:flex;
       flex-wrap:wrap;
       gap:.55rem;
     }
-
     .pill{
       border:1px solid var(--line);
       border-radius:999px;
@@ -290,7 +280,6 @@
       background:rgba(255,255,255,.03);
     }
 
-    /* --- Tasteful CTA links (NOT buttons) --- */
     .hero-actions{
       margin-top:1.25rem;
       display:flex;
@@ -301,7 +290,6 @@
       text-transform:uppercase;
       font-size:.82rem;
     }
-
     .cta-link{
       position:relative;
       display:inline-block;
@@ -342,11 +330,11 @@
       border-radius:var(--radius);
       padding:1.25rem 1.25rem;
       box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+      margin: 1.1rem 0;
     }
 
     h2{ margin:0 0 .65rem; font-size:1.4rem; letter-spacing:-.01em; }
     h3{ margin:0 0 .35rem; font-size:1.15rem; letter-spacing:-.01em; }
-
     .muted{ color:var(--muted); }
     .muted2{ color:var(--muted2); }
 
@@ -359,7 +347,7 @@
       margin:1.25rem 0;
     }
 
-    /* ---------------- TWO-UP ---------------- */
+    /* ---------------- TWO-UP CONTENT ---------------- */
     .cols{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -381,9 +369,76 @@
       margin-bottom:.35rem;
     }
     .box p{ margin:.2rem 0 0; color:var(--muted); }
-
     @media (max-width: 860px){
       .cols{ grid-template-columns: 1fr; }
+    }
+
+    /* ---------------- BEFORE / AFTER GRID ---------------- */
+    .ba-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: .9rem;
+    }
+    .ba-card{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+    }
+    .ba-img{
+      width:100%;
+      height:auto;
+      display:block;
+      background:#0b0b0b;
+    }
+    .ba-meta{
+      padding: .85rem .9rem .95rem;
+    }
+    .ba-label{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      margin-bottom:.35rem;
+    }
+    .tag{
+      display:inline-flex;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.03);
+      border-radius:999px;
+      padding:.28rem .6rem;
+      font-size:.72rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(245,245,245,.72);
+      white-space:nowrap;
+    }
+    .ba-caption{
+      margin:0;
+      color:var(--muted);
+      max-width: 70ch;
+      font-size:.95rem;
+    }
+    .pair{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding: .9rem .9rem 1.05rem;
+      background:rgba(255,255,255,.02);
+    }
+    .pair-title{
+      margin:0 0 .35rem;
+      font-size: 1.05rem;
+      letter-spacing:-.01em;
+    }
+    .pair-note{
+      margin:0 0 .75rem;
+      color:var(--muted2);
+      max-width: 80ch;
+      font-size:.95rem;
+    }
+    @media (max-width: 860px){
+      .ba-grid{ grid-template-columns: 1fr; }
     }
 
     /* ---------------- FAQ (Accordion) ---------------- */
@@ -393,14 +448,13 @@
       border-radius:var(--radius);
       padding:1.25rem 1.25rem;
       box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+      margin: 1.1rem 0;
     }
-
     .faq details{
       border-top:1px solid rgba(255,255,255,.06);
       padding:.85rem 0;
     }
     .faq details:first-of-type{ border-top:none; padding-top:0; }
-
     .faq summary{
       cursor:pointer;
       list-style:none;
@@ -411,9 +465,7 @@
       font-weight:650;
       color:rgba(245,245,245,.92);
     }
-
     .faq summary::-webkit-details-marker{ display:none; }
-
     .faq summary::after{
       content:"+";
       display:inline-flex;
@@ -428,13 +480,11 @@
       flex:0 0 auto;
       transition: transform .15s ease, background .2s ease, border-color .2s ease;
     }
-
     .faq details[open] summary::after{
       content:"–";
       background:rgba(255,255,255,.06);
       border-color:rgba(255,255,255,.22);
     }
-
     .faq .answer{
       margin:.55rem 0 0;
       color:var(--muted);
@@ -453,12 +503,12 @@
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       padding:1.1rem 1.1rem;
       box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+      margin: 1.1rem 0 0;
     }
-
     .cta strong{ font-size:1.05rem; }
     .cta p{ margin:.35rem 0 0; color:var(--muted); max-width:70ch; }
 
-    /* ================= GLOBAL FOOTER (same as your other pages) ================= */
+    /* ================= GLOBAL FOOTER ================= */
     .site-footer{
       border-top: 1px solid transparent;
       border-image: linear-gradient(
@@ -467,13 +517,11 @@
         rgba(255,255,255,.10),
         rgba(255,255,255,0)
       ) 1;
-
       padding: 2rem 1rem;
       font-size: 0.8rem;
       color: #b8b8b8;
       text-align: center;
     }
-
     .site-footer a{
       color: #b8b8b8;
       text-decoration: none;
@@ -484,23 +532,23 @@
 </head>
 
 <body>
-  <!-- GLOBAL NAV INCLUDE (MATCH COMMISSIONED PAGE) -->
+  <!-- GLOBAL NAV INCLUDE -->
   <div id="site-nav"></div>
 
   <main>
     <section class="hero" aria-label="Signature finishing hero">
       <div class="hero-inner">
-        <p class="kicker">Signature Finishing Notes</p>
-        <h1>Why bespoke color matters.</h1>
+        <p class="kicker">Signature Finishing</p>
+        <h1>Bespoke color. Quiet control.</h1>
         <p class="hero-sub">
           High-end paint is honest—and unforgiving. Metallics, pearls, candy colors, carbon, polished trim, and glass can’t be “preset” into looking correct.
-          For commissioned work, I build a custom LUT for each shoot and convert it into a Lightroom profile so the final set stays cohesive and the finish reads true in that exact light and environment.
+          For commissioned work, I build a custom color foundation for each shoot so the final set stays cohesive and the finish reads true in that exact light and environment.
         </p>
 
         <div class="hero-meta">
-          <span class="pill">Custom LUT per shoot</span>
-          <span class="pill">Converted to Lightroom profile</span>
+          <span class="pill">Custom foundation per shoot</span>
           <span class="pill">Cohesive editorial set</span>
+          <span class="pill">Print + web delivery</span>
           <span class="pill">Southern Utah • Worldwide</span>
         </div>
 
@@ -512,25 +560,195 @@
       </div>
     </section>
 
-<section class="panel" aria-label="Why buy bespoke finishing">
-  <h2>The difference you can’t unsee</h2>
+    <section class="panel" aria-label="The difference you can’t unsee">
+      <h2>The difference you can’t unsee</h2>
 
-  <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
-    Once you’ve lived with a great car, you notice when an image gets it wrong. The paint looks a little “off.” The depth disappears. Highlights go brittle. Panel contour stops feeling sculpted and starts feeling flat. That’s the gap between a nice photo and a collector-grade image.
-  </p>
+      <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
+        Once you’ve lived with a great car, you notice when an image gets it wrong. The paint looks a little “off.” The depth disappears. Highlights go brittle.
+        Panel contour stops feeling sculpted and starts feeling flat. That’s the gap between a nice photo and a collector-grade image.
+      </p>
 
-  <p class="muted" style="margin:.75rem 0 0; max-width:80ch;">
-    My finishing process is designed to close that gap. I don’t force a universal “look” onto every subject. For commissioned work, I build a custom LUT for the specific car, location, and light—then convert it into a Lightroom profile so the entire set starts from the same correct foundation. The result is quiet and controlled: paint reads true, reflections behave, and the collection feels made together.
-  </p>
+      <p class="muted" style="margin:.75rem 0 0; max-width:80ch;">
+        My finishing process is designed to close that gap. I don’t force a universal “look” onto every subject. For commissioned work, I build a custom color foundation
+        for the specific car, location, and light—so the entire set starts from the same correct baseline. The result is quiet and controlled: paint reads true,
+        reflections behave, and the collection feels made together.
+      </p>
 
-  <p class="muted" style="margin:.75rem 0 0; max-width:80ch;">
-    A big part of that consistency comes from an <strong>analogous color strategy</strong>. Instead of pushing color in opposite directions (which can create that loud, trendy “teal/orange” separation), I work inside a narrow neighborhood on the color wheel—small, deliberate shifts that stay harmonious. Think of it like tuning a rare finish rather than repainting it. By keeping adjustments within adjacent hues, metallics and pearls keep their character, reds stay red (not neon), silvers stay clean (not cyan), and shadows hold depth without turning muddy. It’s subtle—until you compare it to “close enough.” Then it’s the difference you can’t unsee.
-  </p>
-</section>
+      <p class="muted" style="margin:.75rem 0 0; max-width:80ch;">
+        A big part of that consistency comes from an <strong>analogous color strategy</strong>. Instead of pushing color in opposite directions (the loud, trendy “teal/orange” split),
+        I work inside a narrow neighborhood on the color wheel—small, deliberate shifts that stay harmonious. Think of it like tuning a rare finish rather than repainting it.
+        Subtle—until you compare it to “close enough.”
+      </p>
+    </section>
+
+    <section class="panel" aria-label="Before and after examples" id="examples">
+      <h2>Before / Signature Finish</h2>
+      <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
+        These pairs show what “signature finishing” means in practice: controlled highlights, believable color, and a cohesive look that doesn’t feel filtered.
+      </p>
 
       <div class="rule"></div>
 
+      <!-- Pair 1 -->
+      <div class="pair" aria-label="Hexagon before and after">
+        <h3 class="pair-title">Hexagon — reflection control + depth</h3>
+        <p class="pair-note">Paint reads cleaner, reflections are shaped, and the car separates from the environment without looking processed.</p>
+
+        <div class="ba-grid">
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_Hexagon-Before.jpg"
+              alt="Hexagon — before finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Before</span>
+                <span class="tag">Straight capture</span>
+              </div>
+              <p class="ba-caption">Baseline tonality and color, prior to finishing.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_Hexagon-After.jpg"
+              alt="Hexagon — after signature finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Signature Finish</span>
+                <span class="tag">Controlled + cohesive</span>
+              </div>
+              <p class="ba-caption">Cleaner highlights, better separation, and a set-ready foundation.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <!-- Pair 2 -->
+      <div class="pair" aria-label="Red 67 Chevelle before and after">
+        <h3 class="pair-title">Red ’67 Chevelle — color harmony + editorial polish</h3>
+        <p class="pair-note">Warmth and atmosphere without turning reds neon or losing chrome integrity.</p>
+
+        <div class="ba-grid">
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_Red%2067%20Chevelle-Before.jpg"
+              alt="Red 67 Chevelle — before finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Before</span>
+                <span class="tag">Straight capture</span>
+              </div>
+              <p class="ba-caption">Natural scene rendering, prior to finishing.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_Red%2067%20Chevelle-After.jpg"
+              alt="Red 67 Chevelle — after signature finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Signature Finish</span>
+                <span class="tag">Print-ready</span>
+              </div>
+              <p class="ba-caption">Cohesive color, refined contrast, and controlled highlight roll-off.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <!-- Pair 3 -->
+      <div class="pair" aria-label="Trans Am before and after">
+        <h3 class="pair-title">Trans Am — subtle refinement (not a filter)</h3>
+        <p class="pair-note">A quieter example: the goal is credibility—shape, paint integrity, and consistency.</p>
+
+        <div class="ba-grid">
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_Tranz%20Am-Before.jpg"
+              alt="Trans Am — before finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Before</span>
+                <span class="tag">Straight capture</span>
+              </div>
+              <p class="ba-caption">Good starting frame, prior to finishing.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_Tranz%20Am-After.jpg"
+              alt="Trans Am — after signature finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Signature Finish</span>
+                <span class="tag">Cohesive set</span>
+              </div>
+              <p class="ba-caption">Cleaner tonality and depth while staying natural.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <!-- Pair 4 -->
+      <div class="pair" aria-label="GG Scotts before and after">
+        <h3 class="pair-title">GG Scotts — background discipline + paint clarity</h3>
+        <p class="pair-note">Controlled contrast and separation so the car reads as the hero, not the environment.</p>
+
+        <div class="ba-grid">
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_GG%20Scotts-Before.jpg"
+              alt="GG Scotts — before finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Before</span>
+                <span class="tag">Straight capture</span>
+              </div>
+              <p class="ba-caption">Natural capture, prior to finishing.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="ba-card">
+            <img class="ba-img" loading="lazy" decoding="async"
+              src="/images/sig-fin/Thomas_LeClair_GG%20Scotts-After.jpg"
+              alt="GG Scotts — after signature finishing"
+            />
+            <figcaption class="ba-meta">
+              <div class="ba-label">
+                <span class="tag">Signature Finish</span>
+                <span class="tag">Controlled</span>
+              </div>
+              <p class="ba-caption">Cleaner separation and polish while keeping paint believable.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p class="muted2" style="margin:.25rem 0 0; max-width:80ch;">
+        Note: These examples are intentionally mixed—some are dramatic transformations, others are subtle. The consistent goal is credibility and cohesion.
+      </p>
+    </section>
+
+    <section class="panel" aria-label="LUTs vs presets">
       <h2>LUTs vs presets</h2>
+
       <div class="cols">
         <div class="box">
           <span class="mini">Presets</span>
@@ -540,16 +758,16 @@
           </p>
         </div>
         <div class="box">
-          <span class="mini">Custom LUT (built for the shoot)</span>
+          <span class="mini">Bespoke foundation</span>
           <p>
-            A LUT is a color transform. For commissioned work, I build a LUT to match the specific subject and conditions—paint type, location, sky color, time of day, and contrast range.
-            Then I convert it into a Lightroom profile so every frame in the set starts from the same, correct foundation.
+            For commissioned work, I build the color foundation for that car in that environment—paint type, location cast, time of day, sky influence, and contrast range.
+            The point is consistency across the full collection, not a one-off “wow” frame.
           </p>
         </div>
       </div>
+    </section>
 
-      <div class="rule"></div>
-
+    <section class="panel" aria-label="What this protects">
       <h2>What this protects</h2>
       <ul>
         <li><strong>Paint accuracy</strong> — hue stays true across metallics, pearls, candy, and restorations</li>
@@ -557,9 +775,9 @@
         <li><strong>Panel contour</strong> — the car keeps dimensionality (not “flat” or over-contrasty)</li>
         <li><strong>Set cohesion</strong> — the images feel made together, not stitched from different looks</li>
       </ul>
+    </section>
 
-      <div class="rule"></div>
-
+    <section class="panel" aria-label="Finishing workflow">
       <h2>The finishing workflow (high level)</h2>
       <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
         This isn’t about filters—it’s about control. The goal is consistency across the full collection.
@@ -572,28 +790,18 @@
         </div>
         <div class="box">
           <span class="mini">02 — Build</span>
-          <p>A custom LUT for that car in that environment—so the baseline color is correct.</p>
+          <p>A custom foundation for that car in that environment—so the baseline color is correct.</p>
         </div>
         <div class="box">
-          <span class="mini">03 — Convert</span>
-          <p>Converted into a Lightroom profile so the entire set shares one consistent foundation.</p>
-        </div>
-        <div class="box">
-          <span class="mini">04 — Finish</span>
+          <span class="mini">03 — Finish</span>
           <p>Targeted refinements only where needed—preserving texture, contour, and clean highlights.</p>
         </div>
         <div class="box">
-          <span class="mini">05 — Cohere</span>
-          <p>Sequence review to ensure the collection reads as one editorial story.</p>
-        </div>
-        <div class="box">
-          <span class="mini">06 — Deliver</span>
-          <p>Curated finals in high-resolution plus web-ready formats—built to hold up in print.</p>
+          <span class="mini">04 — Cohere</span>
+          <p>Sequence review to ensure the set reads as one editorial story.</p>
         </div>
       </div>
     </section>
-
-    <div class="rule"></div>
 
     <section class="faq" id="faq" aria-label="Signature finishing FAQ">
       <h2>FAQ</h2>
@@ -601,7 +809,7 @@
       <details>
         <summary>Is this included in every commission?</summary>
         <p class="answer">
-          Signature and Château commissions include bespoke color finishing as part of the editorial workflow.
+          Signature and Château commissions include bespoke finishing as part of the editorial workflow.
           Essential commissions are smaller in scope, but still finished to the same standards for clean, consistent results.
         </p>
       </details>
@@ -617,7 +825,8 @@
       <details>
         <summary>Can you match an existing set I already have?</summary>
         <p class="answer">
-          Often, yes. If you have a previous collection you love, share a few examples and the intended use. I’ll recommend an approach that preserves consistency without making the new work feel copied.
+          Often, yes. If you have a previous collection you love, share a few examples and the intended use. I’ll recommend an approach that preserves consistency
+          without making the new work feel copied.
         </p>
       </details>
 
@@ -631,12 +840,17 @@
       <details>
         <summary>What if the light changes during the shoot?</summary>
         <p class="answer">
-          Light always changes. The planning and finishing workflow are built around that reality—so the final set stays cohesive even when the sky, shadows, and reflections shift.
+          Light always changes. The finishing workflow is built around that reality—so the final set stays cohesive even when the sky, shadows, and reflections shift.
         </p>
       </details>
     </section>
 
-    <div class="rule"></div>
+    <section class="panel" aria-label="Image credits and rights">
+      <h2>Image credits</h2>
+      <p class="muted" style="margin:.25rem 0 0; max-width:80ch;">
+        Photography shown includes commissioned and professional work created for clients and employers. Images are displayed for portfolio purposes. Rights remain with their respective owners.
+      </p>
+    </section>
 
     <section id="request" class="cta" aria-label="Request a commission">
       <div>
@@ -714,7 +928,6 @@
         }, HIDE_DELAY);
       };
 
-      // Start hidden (matches Contact/Commissioned behavior)
       nav.classList.remove("is-visible");
 
       document.addEventListener("mousemove", (e) => {
