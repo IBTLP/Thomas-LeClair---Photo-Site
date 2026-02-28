@@ -13,55 +13,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Commissioned Shoots — Thomas LeClair Photography</title>
-  <meta name="description" content="Commissioned automotive shoots by Thomas LeClair—understated luxury, editorial direction, and curated delivery. One Perfect Frame, Essential Commission, Signature Commission, and Château Commission." />
+  <!-- Primary SEO -->
+  <title>Commissioned Automotive Photography (Utah + Worldwide) — Thomas LeClair</title>
+  <meta name="description" content="Commissioned automotive photography for collectors, builders, and sale-ready presentation. Essential ($500), Signature ($1,500), and Château ($5,000+). Southern Utah-based, available worldwide." />
   <link rel="canonical" href="https://www.tleclair.com/commissioned.html" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+  <!-- GEO (lightweight, non-spammy) -->
+  <meta name="geo.region" content="US-UT" />
+  <meta name="geo.placename" content="Santa Clara, Utah" />
+  <meta name="ICBM" content="37.133,-113.654" />
+  <meta name="geo.position" content="37.133;-113.654" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Commissioned Shoots — Thomas LeClair Photography" />
-  <meta property="og:description" content="A tailored, editorial-style experience designed to create finished images—clean, intentional, and built to hold up in print or on screen." />
+  <meta property="og:title" content="Commissioned Automotive Photography (Utah + Worldwide) — Thomas LeClair" />
+  <meta property="og:description" content="Understated, editorial commissions for collector cars and exceptional builds—curated finals, calm direction, and a bespoke color profile built for the car, light, and location." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.tleclair.com/commissioned.html" />
   <meta property="og:image" content="https://www.tleclair.com/images/home-auto.webp" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Commissioned Shoots — Thomas LeClair Photography" />
-  <meta name="twitter:description" content="Understated, editorial commissioned automotive photography with curated delivery." />
+  <meta name="twitter:title" content="Commissioned Automotive Photography — Thomas LeClair" />
+  <meta name="twitter:description" content="Editorial, sale-ready automotive photography for collectors and builders. Southern Utah-based. Available worldwide." />
   <meta name="twitter:image" content="https://www.tleclair.com/images/home-auto.webp" />
 
   <link rel="icon" href="/favicon.ico" />
   <meta name="theme-color" content="#0e0e0e" />
-  <meta name="robots" content="index,follow" />
 
-  <!-- Service Schema (JSON-LD) -->
+  <!-- (Optional) Small performance hints -->
+  <link rel="preload" as="image" href="/images/home-auto.webp" imagesrcset="/images/home-auto.webp" />
+
+  <!-- Structured Data: Service + OfferCatalog -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://www.tleclair.com/commissioned.html#service",
-    "name": "Commissioned Automotive Photography",
-    "serviceType": "Automotive photography commission",
-    "description": "Commissioned automotive shoots with editorial direction and curated delivery, designed to hold up in print and on screen.",
-    "url": "https://www.tleclair.com/commissioned.html",
-    "mainEntityOfPage": "https://www.tleclair.com/commissioned.html",
-    "provider": {
-      "@type": "Person",
-      "@id": "https://www.tleclair.com/#person"
-    },
-    "areaServed": [
-      { "@type": "Country", "name": "United States" }
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Commission Options",
-      "itemListElement": [
-        { "@type": "Offer", "name": "One Perfect Frame", "price": "135", "priceCurrency": "USD", "url": "https://www.tleclair.com/commissioned.html" },
-        { "@type": "Offer", "name": "Essential Commission", "url": "https://www.tleclair.com/commissioned.html" },
-        { "@type": "Offer", "name": "Signature Commission", "url": "https://www.tleclair.com/commissioned.html" },
-        { "@type": "Offer", "name": "Château Commission", "url": "https://www.tleclair.com/commissioned.html" }
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.tleclair.com/commissioned.html#webpage",
+        "url": "https://www.tleclair.com/commissioned.html",
+        "name": "Commissioned Automotive Photography (Utah + Worldwide) — Thomas LeClair",
+        "isPartOf": { "@id": "https://www.tleclair.com/#website" },
+        "about": { "@id": "https://www.tleclair.com/#person" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "@id": "https://www.tleclair.com/commissioned.html#primaryimage",
+          "url": "https://www.tleclair.com/images/home-auto.webp"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.tleclair.com/commissioned.html#service",
+        "name": "Commissioned Automotive Photography",
+        "serviceType": "Commissioned automotive photography",
+        "description": "Commissioned automotive photography with editorial direction and curated delivery for collectors, builders, restorers, and sale-ready presentation.",
+        "url": "https://www.tleclair.com/commissioned.html",
+        "mainEntityOfPage": "https://www.tleclair.com/commissioned.html",
+        "provider": {
+          "@type": "Person",
+          "@id": "https://www.tleclair.com/#person",
+          "name": "Thomas LeClair"
+        },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Utah" },
+          { "@type": "City", "name": "Santa Clara" },
+          { "@type": "City", "name": "St. George" },
+          { "@type": "City", "name": "Salt Lake City" },
+          { "@type": "City", "name": "Park City" },
+          { "@type": "Country", "name": "United States" }
+        ],
+        "serviceArea": {
+          "@type": "Place",
+          "name": "Southern Utah (based) + Worldwide (travel)"
+        },
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://www.tleclair.com/contact.html?subject=Commissioned%20Shoot%20Inquiry"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Commission Packages",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Essential Commission",
+              "price": "500",
+              "priceCurrency": "USD",
+              "url": "https://www.tleclair.com/commissioned.html#essential"
+            },
+            {
+              "@type": "Offer",
+              "name": "Signature Commission",
+              "price": "1500",
+              "priceCurrency": "USD",
+              "url": "https://www.tleclair.com/commissioned.html#signature"
+            },
+            {
+              "@type": "Offer",
+              "name": "Château Commission",
+              "price": "5000",
+              "priceCurrency": "USD",
+              "url": "https://www.tleclair.com/commissioned.html#chateau"
+            }
+          ]
+        }
+      }
+    ]
   }
   </script>
 
@@ -77,7 +137,7 @@
         "name": "How do I book a commission?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Start with a short message that includes the car, your city, and what you want the images used for. I’ll reply with a recommended option, scope, and next steps."
+          "text": "Start with a short message that includes the car, your city, and what you want the images used for (legacy, builder portfolio, or sale-ready presentation). I’ll reply with a recommended option, scope, and next steps."
         }
       },
       {
@@ -93,7 +153,7 @@
         "name": "How many final images will I receive?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Enough to match the scope. One Perfect Frame is one finished image. Essential is a tight curated set. Signature becomes a cohesive collection. Château is outcome-driven depth scoped to the project."
+          "text": "Enough to match the scope. Essential is a tight curated set. Signature becomes a cohesive collection. Château is outcome-driven depth scoped to the project."
         }
       },
       {
@@ -133,7 +193,7 @@
         "name": "What’s included with books and prints?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Signature and Château include a book and a fine print as part of the experience. Final size, finish, and presentation are selected together and priced to match your intent."
+          "text": "Signature and Château can include a book and a fine print as part of the experience. Final size, finish, and presentation are selected together and priced to match your intent."
         }
       }
     ]
@@ -244,7 +304,6 @@
       }
     }
 
-
     /* optional: anchor jumps don’t hide headings under nav */
     :where(h1,h2,h3,h4,h5,h6,[id]){
       scroll-margin-top: calc(var(--nav-pad) + 18px);
@@ -274,14 +333,13 @@
       font-size:.78rem;
     }
 
-h1{
-  margin:0 0 .65rem;
-  font-size:2.55rem;
-  letter-spacing:-.02em;
-  line-height:1.15;     /* was 1.12 */
-  padding-top:0.12em;   /* tiny iOS safety */
-}
-
+    h1{
+      margin:0 0 .65rem;
+      font-size:2.55rem;
+      letter-spacing:-.02em;
+      line-height:1.15;
+      padding-top:0.12em;
+    }
 
     .hero-sub{
       margin:0;
@@ -583,7 +641,7 @@ h1{
         <p class="kicker">Commissioned Shoots</p>
         <h1>Understated. Editorial. Finished.</h1>
         <p class="hero-sub">
-          This isn’t a quick photo session. It’s a tailored, editorial-style experience designed to create finished images—clean, intentional, and built to hold up on a large screen, in print, or in a feature story.
+          A tailored, editorial-style experience designed to create finished images—clean, intentional, and built to hold up on a large screen, in print, or in a feature story. Ideal for collector cars, exceptional builds, and sale-ready presentation.
         </p>
 
         <div class="hero-meta">
@@ -613,7 +671,7 @@ h1{
       <div class="process">
         <div class="step">
           <span class="mini">01 — Discovery</span>
-          <p>Car, city, intent. We align on the look and how the images will be used.</p>
+          <p>Car, city, intent. We align on the look and how the images will be used (legacy, builder portfolio, sale-ready).</p>
         </div>
         <div class="step">
           <span class="mini">02 — Plan</span>
@@ -631,9 +689,17 @@ h1{
 
       <div class="rule"></div>
 
+      <h2>Signature process</h2>
+      <ul>
+        <li><strong>Consultation + shot plan</strong> to align location, light, and usage</li>
+        <li><strong>Motion-capable execution</strong> when the story calls for it (static or dynamic)</li>
+        <li><strong>Bespoke color profile</strong> built for the car, the location, and the light (custom LUT → Lightroom profile)</li>
+      </ul>
+
+      <div class="rule"></div>
+
       <h2>What you can expect</h2>
       <ul>
-        <li><strong>Consultation first</strong> to align on look, location, and usage</li>
         <li><strong>Guidance and direction</strong> during the shoot (angles, light, pacing)</li>
         <li><strong>A curated set of fully edited finals</strong>—not hundreds of raw files</li>
         <li><strong>Delivery in high-resolution + web-ready formats</strong></li>
@@ -646,67 +712,21 @@ h1{
     <section aria-label="Commission packages">
       <h2>Select your experience</h2>
       <p class="muted" style="margin:.2rem 0 1rem; max-width:78ch;">
-        Every client gets the same respect and care. The packages simply reflect scope—how deep we go, how much we create, and what you want the final work to become.
+        Every client gets the same respect and care. The packages reflect scope—how deep we go, how much we create, and what you want the final work to become.
       </p>
 
       <div class="grid">
-        <div class="card" id="one">
-          <h3>One Perfect Frame</h3>
-
-          <div class="price">
-            From $135
-            <small>Single-image commission — same craft, smaller scope.</small>
-          </div>
-
-          <p class="tagline">
-            One image, made properly. Clean, intentional, ready to share or print. Ideal as a first commission—or when you only need one frame that simply nails it.
-          </p>
-
-          <div class="rule"></div>
-
-          <p class="muted"><strong>Includes:</strong></p>
-          <ul>
-            <li>One-vehicle focus</li>
-            <li>Local location within <strong>~20 minutes of Santa Clara</strong></li>
-            <li><strong>1 fully edited final image</strong> delivered ready to share or print</li>
-          </ul>
-
-          <p class="bestfor"><strong>Best for:</strong> a single hero image, a quick refresh, or your first time working together.</p>
-
-          <div class="card-actions">
-            <a class="cta-link" href="#request">Request this</a>
-            <a class="cta-link" href="/gallery/automotive.html">See automotive</a>
-          </div>
-        </div>
-
-        <div class="card" id="essential">
-          <h3>Essential Commission</h3>
-          <p class="tagline">
-            A focused commission for one vehicle—built to deliver a tight, elevated set that feels editorial and timeless.
-          </p>
-
-          <div class="rule"></div>
-
-          <p class="muted"><strong>Designed to include:</strong></p>
-          <ul>
-            <li>One-vehicle focus (static; optional motion when location allows)</li>
-            <li>Light planning (timing, location, visual direction)</li>
-            <li>A curated set of <strong>fully edited final images</strong></li>
-          </ul>
-
-          <p class="bestfor"><strong>Best for:</strong> personal keepsakes, social content, clean listings, and subtle flex images.</p>
-
-          <div class="card-actions">
-            <a class="cta-link" href="#request">Request this</a>
-            <a class="cta-link" href="/editorial/">View editorial</a>
-          </div>
-        </div>
-
         <div class="card" id="signature">
           <span class="badge">Most selected</span>
           <h3>Signature Commission</h3>
+
+          <div class="price">
+            $1,500
+            <small>The full story—built as a cohesive collection.</small>
+          </div>
+
           <p class="tagline">
-            The full story—built as a cohesive collection. Consistent, intentional, designed to live together.
+            Designed to feel like a magazine set: consistent, intentional, and meant to live together. Ideal for cars with provenance, full builds, and collector-level documentation.
           </p>
 
           <div class="rule"></div>
@@ -715,10 +735,11 @@ h1{
           <ul>
             <li>One primary vehicle focus (supporting vehicles when it serves the goal)</li>
             <li>Deeper consistency across the set (color, finish, retouching)</li>
-            <li><strong>Book + fine print</strong> as part of the experience (selected together)</li>
+            <li><strong>Bespoke color profile</strong> for the car, location, and light</li>
+            <li class="muted2"><strong>Optional:</strong> book + fine print (selected together)</li>
           </ul>
 
-          <p class="bestfor"><strong>Best for:</strong> cars with provenance, full builds, brand decks, and collector-level documentation.</p>
+          <p class="bestfor"><strong>Best for:</strong> legacy sets, builder portfolios, press-ready collections, and sale-ready presentation that holds up.</p>
 
           <div class="card-actions">
             <a class="cta-link" href="#request">Request this</a>
@@ -728,8 +749,14 @@ h1{
 
         <div class="card" id="chateau">
           <h3>Château Commission</h3>
+
+          <div class="price">
+            $5,000+
+            <small>Outcome-driven depth. Worldwide. Scoped to the project.</small>
+          </div>
+
           <p class="tagline">
-            Outcome-driven depth. Worldwide. For collectors and curators where the standard is concours-level, museum-level, or personal legacy.
+            For collectors and curators where the standard is concours-level, museum-level, or personal legacy. Built around the outcome—not the clock.
           </p>
 
           <div class="rule"></div>
@@ -737,9 +764,9 @@ h1{
           <p class="muted"><strong>Designed to include:</strong></p>
           <ul>
             <li><strong>Consultation first</strong> to align cars, locations, and outcome</li>
-            <li>Shooting time based on outcome—not the clock</li>
+            <li>Travel + schedule protection (weather adjustments when needed)</li>
             <li>Multi-location coverage when it supports the story</li>
-            <li><strong>Book + fine print</strong> as part of the experience</li>
+            <li><strong>Bespoke color profile</strong> + tighter finishing where it matters</li>
             <li class="muted2"><strong>Pricing:</strong> individually scoped (cars, locations, travel, deliverables, usage)</li>
           </ul>
 
@@ -748,6 +775,35 @@ h1{
           <div class="card-actions">
             <a class="cta-link" href="#request">Request this</a>
             <a class="cta-link" href="/contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="card" id="essential">
+          <h3>Essential Commission</h3>
+
+          <div class="price">
+            $500
+            <small>Short-format commission — smaller scope, same standards.</small>
+          </div>
+
+          <p class="tagline">
+            A focused commission for one vehicle—built to deliver a tight, elevated set that feels editorial and timeless.
+          </p>
+
+          <div class="rule"></div>
+
+          <p class="muted"><strong>Designed to include:</strong></p>
+          <ul>
+            <li>One-vehicle focus (static; motion optional when location allows)</li>
+            <li>Light planning (timing, location, visual direction)</li>
+            <li>A curated set of <strong>fully edited final images</strong></li>
+          </ul>
+
+          <p class="bestfor"><strong>Best for:</strong> local owners, clean listings, and a tasteful set without a full story build.</p>
+
+          <div class="card-actions">
+            <a class="cta-link" href="#request">Request this</a>
+            <a class="cta-link" href="/gallery/automotive.html">See automotive</a>
           </div>
         </div>
       </div>
@@ -761,7 +817,7 @@ h1{
       <details>
         <summary>How do I book a commission?</summary>
         <p class="answer">
-          Start with a short message that includes the car, your city, and what you want the images used for.
+          Start with a short message that includes the car, your city, and what you want the images used for (legacy, builder portfolio, or sale-ready).
           I’ll reply with a recommended option, scope, and next steps.
         </p>
       </details>
@@ -776,7 +832,7 @@ h1{
       <details>
         <summary>How many final images will I receive?</summary>
         <p class="answer">
-          Enough to match the scope. One Perfect Frame is one finished image. Essential is a tight curated set.
+          Enough to match the scope. Essential is a tight curated set.
           Signature becomes a cohesive collection. Château is outcome-driven depth scoped to the project.
         </p>
       </details>
@@ -812,7 +868,7 @@ h1{
       <details>
         <summary>What’s included with books and prints?</summary>
         <p class="answer">
-          Signature and Château include a book and a fine print as part of the experience.
+          Signature and Château can include a book and a fine print as part of the experience.
           Final size, finish, and presentation are selected together and priced to match your intent.
         </p>
       </details>
@@ -872,7 +928,7 @@ h1{
       <div>
         <strong>Request a Commission</strong>
         <p>
-          Tell me the car, your city, and the intended use (personal archive, print, publication, listing).
+          Tell me the car, your city, and the intended use (legacy, builder portfolio, publication, listing).
           I’ll recommend the best option and confirm scope before booking.
         </p>
         <p class="muted2" style="margin:.5rem 0 0;">
