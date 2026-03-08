@@ -106,6 +106,366 @@
       background: #0e0e0e;
       color: #f5f5f5;
       min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    nav#siteNav{
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(14,14,14,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: transform 1.25s ease, opacity 1.55s ease;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.10),
+        rgba(255,255,255,0)
+      ) 1;
+    }
+
+    body.autohide nav#siteNav{
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.autohide nav#siteNav.is-visible,
+    body.autohide nav#siteNav:hover,
+    body.autohide nav#siteNav:focus-within{
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 768px) {
+      body.autohide nav#siteNav{
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+    }
+
+    .hero {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fade 30s infinite;
+    }
+
+    .hero img:nth-child(1) { animation-delay: 0s; }
+    .hero img:nth-child(2) { animation-delay: 10s; }
+    .hero img:nth-child(3) { animation-delay: 20s; }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.50));
+      z-index: 2;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      10% { opacity: 0.42; }
+      40% { opacity: 0.42; }
+      50% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    main {
+      min-height: 100vh;
+      padding-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    h1 {
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      margin: 0 0 0.75rem 0;
+    }
+
+    .tagline {
+      font-size: 1.02rem;
+      opacity: 0.80;
+      line-height: 1.55;
+      max-width: 66ch;
+      margin: 0;
+    }
+
+    .proof {
+      margin-top: 0.9rem;
+      font-size: 0.92rem;
+      opacity: 0.64;
+      line-height: 1.5;
+    }
+
+    .cta-row{
+      margin-top: 1.7rem;
+      display: flex;
+      gap: 1.35rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-link{
+      position: relative;
+      color: rgba(245,245,245,0.92);
+      text-decoration: none;
+      padding: 0.15rem 0;
+      opacity: 0.90;
+    }
+
+    .cta-link::after{
+      content:"";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: rgba(245,245,245,0.40);
+      transform: scaleX(0.25);
+      transform-origin: left;
+      transition: transform 280ms ease, background 280ms ease;
+    }
+
+    @media (hover:hover){
+      .cta-link:hover{ opacity: 1; }
+      .cta-link:hover::after{
+        transform: scaleX(1);
+        background: rgba(245,245,245,0.72);
+      }
+    }
+
+    .cta-link:focus-visible{
+      outline: 2px solid rgba(245,245,245,0.55);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .secondary-row{
+      margin-top: 0.85rem;
+      font-size: 0.9rem;
+      opacity: 0.62;
+      letter-spacing: 0.02em;
+    }
+
+    .secondary-row a{
+      color: rgba(245,245,245,0.78);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,245,245,0.22);
+      padding-bottom: 2px;
+    }
+
+    @media (hover:hover){
+      .secondary-row a:hover{
+        color: rgba(245,245,245,0.92);
+        border-bottom-color: rgba(245,245,245,0.42);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #b8b8b8;
+      position: relative;
+      z-index: 3;
+    }
+
+    footer a {
+      color: #b8b8b8;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover { color: #e0e0e0; }
+  </style>
+</head>
+
+<body>
+  <div id="site-nav"></div>
+
+  <div class="hero" aria-hidden="true">
+    <img src="/images/Bronco_Hero00001.jpeg" alt="">
+    <img src="/images/home-auto.webp" alt="">
+    <img src="/images/Wagon_Hero00001.jpeg" alt="">
+  </div>
+
+  <main>
+    <h1>Thomas LeClair Photography</h1>
+
+    <p class="tagline">
+      Editorial and commissioned automotive photography for private collectors and premium publications.
+    </p>
+
+    <p class="proof">
+      Published in Hot Rod and Chevy Hub. Commissions and prints are handled individually, by request.
+    </p>
+
+    <div class="cta-row" aria-label="Primary actions">
+      <a class="cta-link" href="/commissioned.html">Commissioned work</a>
+      <a class="cta-link" href="/editorial/">View editorial</a>
+    </div>
+
+    <div class="secondary-row" aria-label="Secondary action">
+      <a href="/gallery/">Browse the gallery</a>
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
+    <span>·</span>
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
+    <span>·</span>
+    <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </footer>
+
+  <script>
+    async function includeHTML(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+
+      try {
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) {
+          el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+            Missing include: <strong>${url}</strong> (HTTP ${res.status})
+          </div>`;
+          return false;
+        }
+        el.innerHTML = await res.text();
+        return true;
+      } catch (err) {
+        el.innerHTML = `<div style="padding:18px; text-align:center; opacity:.7; font-size:.85rem;">
+          Failed to load include: <strong>${url}</strong>
+        </div>`;
+          return false;
+      }
+    }
+
+    function initNavAutoHide() {
+      const nav = document.getElementById("siteNav");
+      if (!nav) return;
+
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!canHover) return;
+
+      document.body.classList.add("autohide");
+
+      let hideTimer = null;
+
+      const showNav = () => {
+        nav.classList.add("is-visible");
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
+
+      const hideSoon = () => {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          if (!nav.matches(":hover") && !nav.matches(":focus-within")) {
+            nav.classList.remove("is-visible");
+          }
+        }, 900);
+      };
+
+      nav.classList.remove("is-visible");
+      document.addEventListener("mousemove", (e) => {
+        if (e.clientY < 90) showNav();
+      });
+
+      nav.addEventListener("mouseenter", showNav);
+      nav.addEventListener("mouseleave", hideSoon);
+      nav.addEventListener("focusin", showNav);
+      nav.addEventListener("focusout", hideSoon);
+    }
+
+    (async () => {
+      const navOk = await includeHTML("site-nav", "/includes/Nav.html");
+      if (navOk) initNavAutoHide();
+    })();
+  </script>
+</body>
+</html>          "Fine art prints"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/tlp_motoring_photography/",
+          "https://www.instagram.com/tlp_outdoor_photography/",
+          "https://www.linkedin.com/in/tomleclairphotography/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.tleclair.com/#website",
+        "url": "https://www.tleclair.com/",
+        "name": "Thomas LeClair Photography",
+        "description": "Editorial and commissioned automotive photography for private collectors and premium publications.",
+        "publisher": { "@id": "https://www.tleclair.com/#person" },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.tleclair.com/#webpage",
+        "url": "https://www.tleclair.com/",
+        "name": "Thomas LeClair Photography",
+        "description": "Editorial and commissioned automotive photography for private collectors and premium publications.",
+        "isPartOf": { "@id": "https://www.tleclair.com/#website" },
+        "about": { "@id": "https://www.tleclair.com/#person" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.tleclair.com/images/home-auto.webp"
+        },
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0e0e0e;
+      color: #f5f5f5;
+      min-height: 100vh;
 
       /* IMPORTANT: don’t trap the user */
       overflow-x: hidden;
