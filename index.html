@@ -180,7 +180,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.38));
+      background: linear-gradient(rgba(0,0,0,0.36), rgba(0,0,0,0.42));
       z-index: 2;
     }
 
@@ -206,25 +206,34 @@
       padding-right: 1.25rem;
     }
 
-    h1 {
-      font-weight: 300;
-      letter-spacing: 0.06em;
-      margin: 0 0 0.75rem 0;
+    .hero-logo-wrap {
+      margin: 0 0 1rem 0;
+      line-height: 1;
+    }
+
+    .hero-logo {
+      display: block;
+      width: min(68vw, 760px);
+      height: auto;
+      margin: 0 auto;
+      filter: drop-shadow(0 2px 12px rgba(0,0,0,0.30));
     }
 
     .tagline {
       font-size: 1.02rem;
-      opacity: 0.80;
+      opacity: 0.84;
       line-height: 1.55;
       max-width: 66ch;
       margin: 0;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
     }
 
     .proof {
       margin-top: 0.9rem;
       font-size: 0.92rem;
-      opacity: 0.70;
+      opacity: 0.74;
       line-height: 1.5;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
     }
 
     .cta-row{
@@ -245,6 +254,7 @@
       text-decoration: none;
       padding: 0.15rem 0;
       opacity: 0.90;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.30);
     }
 
     .cta-link::after{
@@ -277,8 +287,9 @@
     .secondary-row{
       margin-top: 0.85rem;
       font-size: 0.9rem;
-      opacity: 0.68;
+      opacity: 0.70;
       letter-spacing: 0.02em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.30);
     }
 
     .secondary-row a{
@@ -311,6 +322,37 @@
     }
 
     footer a:hover { color: #e0e0e0; }
+
+    @media (max-width: 768px) {
+      main {
+        padding-top: 4.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .hero-logo {
+        width: min(84vw, 420px);
+      }
+
+      .tagline {
+        font-size: 0.98rem;
+        max-width: 34ch;
+      }
+
+      .proof {
+        font-size: 0.88rem;
+        max-width: 34ch;
+      }
+
+      .cta-row {
+        gap: 1rem;
+        font-size: 0.88rem;
+      }
+
+      .secondary-row {
+        font-size: 0.86rem;
+      }
+    }
   </style>
 </head>
 
@@ -324,7 +366,17 @@
   </div>
 
   <main>
-    <h1>Thomas LeClair Photography</h1>
+    <h1 class="hero-logo-wrap">
+      <img
+        src="/images/1000px_TuesdayNightHelveticaThin_logo.png"
+        alt="Thomas LeClair Photography"
+        class="hero-logo"
+        width="1000"
+        height="181"
+        decoding="async"
+        fetchpriority="high"
+      >
+    </h1>
 
     <p class="tagline">
       Photography and editorial presentation for owners who want important cars represented properly.
@@ -345,9 +397,9 @@
   </main>
 
   <footer>
-    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram — Motoring</a>
+    <a href="https://www.instagram.com/tlp_motoring_photography/" target="_blank" rel="noopener noreferrer">Instagram - Motoring</a>
     <span>·</span>
-    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram — Outdoor</a>
+    <a href="https://www.instagram.com/tlp_outdoor_photography/" target="_blank" rel="noopener noreferrer">Instagram - Outdoor</a>
     <span>·</span>
     <a href="https://www.linkedin.com/in/tomleclairphotography/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </footer>
